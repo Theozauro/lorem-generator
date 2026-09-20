@@ -41,6 +41,9 @@ const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
   main: "vinext/server/fetch-handler",
+  // Vinext previews use the bundled local Miniflare runtime. This does not
+  // affect the production compatibility date in wrangler.jsonc.
+  compatibility_date: "2026-05-22",
   compatibility_flags: ["nodejs_compat"],
   d1_databases: d1
     ? [

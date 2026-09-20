@@ -14,4 +14,32 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://lorem-generator.com/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://lorem-generator.com/it/" />
   </url>
+  <url>
+    <loc>https://lorem-generator.com/privacy-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lorem-generator.com/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://lorem-generator.com/it/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://lorem-generator.com/it/privacy-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lorem-generator.com/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://lorem-generator.com/it/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://lorem-generator.com/cookie-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lorem-generator.com/cookie-policy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://lorem-generator.com/it/cookie-policy/" />
+  </url>
+  <url>
+    <loc>https://lorem-generator.com/it/cookie-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lorem-generator.com/cookie-policy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://lorem-generator.com/it/cookie-policy/" />
+  </url>
 </urlset>

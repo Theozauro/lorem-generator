@@ -317,7 +317,8 @@ button:disabled { cursor: not-allowed; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
-  gap: 14px;
+  column-gap: 40px;
+  row-gap: 14px;
 }
 .tool-card {
   min-width: 0;
@@ -492,7 +493,7 @@ button:disabled { cursor: not-allowed; }
   .layout-amounts, .precision-amount { grid-column: 1 / 2; grid-row: 2; border-left: 0 !important; }
   .presets { grid-column: 2 / 3; grid-row: 2; border-left: 1px solid var(--grid) !important; }
   .option-cell { grid-row: 3; grid-template-columns: 1fr; gap: 10px; }
-  .tool-grid { grid-template-columns: 1fr; }
+  .tool-grid { grid-template-columns: 1fr; column-gap: 14px; }
   .scale-list { flex-wrap: wrap; }
   .seo-content-grid { grid-template-columns: 1fr; gap: 26px; }
   .guide-grid { grid-template-columns: 1fr; gap: 24px; }

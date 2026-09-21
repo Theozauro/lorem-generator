@@ -506,7 +506,7 @@ button:disabled { cursor: not-allowed; }
   .main-section { padding: 24px 0 5px; }
   .utility-row { margin-bottom: 20px; }
   .title-row { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-  .main-section h1 { max-width: 360px; font-size: clamp(36px, 9vw, 48px); line-height: .99; }
+  .main-section h1 { max-width: 360px; font-size: clamp(32px, 8vw, 42px); line-height: .99; }
   .desktop-break { display: none; }
   .theme-switch { padding-bottom: 0; }
   .header-actions { width: 100%; align-items: center; justify-content: space-between; }

@@ -415,17 +415,17 @@ button:disabled { cursor: not-allowed; }
 .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 42px 0 65px; border-top: 2px solid var(--grid); }
 .about-section h2 { max-width: 480px; }
 .about-copy p { max-width: 640px; margin: 0 0 13px; color: var(--quiet); font-size: 15px; line-height: 1.65; }
-.faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; padding: 42px 0 58px; border-top: 2px solid var(--grid); }
+.faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; padding: 42px 0 58px; border-top: 2px solid var(--grid); }
 .seo-content { padding: 42px 0 48px; border-top: 2px solid var(--grid); }
 .seo-content-heading { max-width: 650px; }
 .seo-content h2 { margin: 7px 0 0; font-size: clamp(30px, 3.5vw, 48px); line-height: 1; letter-spacing: -.055em; }
-.seo-content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; margin-top: 30px; }
+.seo-content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 30px; }
 .seo-content-grid h3 { margin: 0 0 11px; font: 700 13px/1.2 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
 .seo-content-grid p { max-width: 610px; margin: 0 0 13px; color: var(--quiet); font-size: 15px; line-height: 1.62; }
 .guide-section { padding: 42px 0 48px; border-top: 1px solid var(--grid); }
 .guide-heading { max-width: 660px; }
 .guide-section h2 { margin: 7px 0 0; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.02; letter-spacing: -.05em; }
-.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 44px; margin-top: 30px; }
+.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; margin-top: 30px; }
 .guide-grid article { border-top: 1px solid var(--grid); padding-top: 15px; }
 .guide-grid h3 { margin: 0 0 10px; font: 700 12px/1.25 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
 .guide-grid p { max-width: 620px; margin: 0; color: var(--quiet); font-size: 15px; line-height: 1.62; }

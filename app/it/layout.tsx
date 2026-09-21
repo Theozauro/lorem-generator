@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online.",
     siteName: "lorem-generator.com",
   },
+  twitter: {
+    card: "summary",
+    title: "Generatore Lorem Ipsum — Testo segnaposto online",
+    description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online. Testo segnaposto pronto da copiare per layout, prototipi e progetti di design.",
+  },
 };
 
 export default function ItalianLayout({ children }: Readonly<{ children: React.ReactNode }>) {

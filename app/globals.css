@@ -211,6 +211,7 @@ button:disabled { cursor: not-allowed; }
   background: transparent !important;
   box-shadow: none;
   color: var(--ink);
+  font-family: var(--font-mono);
   font-size: 17px;
   font-variant-numeric: tabular-nums;
 }

@@ -519,7 +519,7 @@ button:disabled { cursor: not-allowed; }
   .theme-switch { padding-bottom: 0; }
   .header-actions { width: 100%; align-items: center; justify-content: space-between; }
   .generator-panel { border-radius: 9px; }
-  .controls-grid { grid-template-columns: minmax(0, 1fr) 145px; }
+  .controls-grid { grid-template-columns: minmax(0, 1fr) 165px; }
   .controls-grid > * { padding: 13px 12px; }
   .option-content { align-items: flex-start; flex-direction: column; gap: 10px; }
   .option-content { width: 100%; }

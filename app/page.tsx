@@ -150,6 +150,8 @@ export default function Home() {
   const [mode, setMode] = useState<MainMode>("layout");
   const [words, setWords] = useState(250);
   const [paragraphs, setParagraphs] = useState(3);
+  const [wordsInput, setWordsInput] = useState("250");
+  const [paragraphsInput, setParagraphsInput] = useState("3");
   const [amount, setAmount] = useState(300);
   const [startClassic, setStartClassic] = useState(true);
   const [sentenceLength, setSentenceLength] = useState<SentenceLength>("mixed");
@@ -188,6 +190,32 @@ export default function Home() {
     previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
   }, [mode, words, paragraphs, amount, startClassic, sentenceLength]);
   function selectMode(next: MainMode) { setMode(next); if (next !== "layout") setAmount(defaults[next]); }
+  function updateWords(value: string) {
+    setWordsInput(value);
+    if (value === "") return;
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) setWords(Math.max(paragraphs, Math.min(4000, parsed)));
+  }
+  function commitWords() {
+    const parsed = Number(wordsInput);
+    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(paragraphs, Math.min(4000, parsed)) : words;
+    setWords(next); setWordsInput(String(next));
+  }
+  function updateParagraphs(value: string) {
+    setParagraphsInput(value);
+    if (value === "") return;
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) setParagraphs(Math.max(1, Math.min(100, words, parsed)));
+  }
+  function commitParagraphs() {
+    const parsed = Number(paragraphsInput);
+    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(1, Math.min(100, words, parsed)) : paragraphs;
+    setParagraphs(next); setParagraphsInput(String(next));
+  }
+  function setPresetWords(value: number) {
+    const next = Math.max(paragraphs, value);
+    setWords(next); setWordsInput(String(next));
+  }
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
   return <main className="site-shell" lang="en">
     <div className="page-content">
@@ -201,10 +229,10 @@ export default function Home() {
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
             <div className="unit-control"><span className="field-label">Mode</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label="Generation mode">{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? "Words + paragraphs" : item[0].toUpperCase() + item.slice(1)}</TabsTrigger>)}</TabsList></Tabs></div>
             {mode === "layout" ? <div className="layout-amounts">
-              <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">Words</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={words} onChange={e => setWords(Math.max(paragraphs, Math.min(4000, Number(e.target.value) || paragraphs)))} /></div>
-              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">Paragraphs</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphs} onChange={e => setParagraphs(Math.max(1, Math.min(100, words, Number(e.target.value) || 1)))} /></div>
+              <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">Words</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
+              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">Paragraphs</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
             </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? "Characters" : "Sentences"}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={e => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(e.target.value) || 1)))} /></div>}
-            <div className="presets"><span className="field-label">{mode === "layout" ? "Word presets" : "Presets"}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setWords(Math.max(paragraphs, value)) : setAmount(value)}>{value}</Button>)}</div></div>
+            <div className="presets"><span className="field-label">{mode === "layout" ? "Word presets" : "Presets"}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
             <div className="option-cell"><span className="field-label">Options</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>Start with “Lorem ipsum…”</span></label><div className="sentence-length-control"><span className="sentence-length-label">Sentence length</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value}</button>)}</div></div></div></div>
           </div>
           <div className="output-panel"><span className="field-label">Output</span><div className="reading-area" role="region" aria-label="Generated Lorem Ipsum">{result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div></div>

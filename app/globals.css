@@ -303,8 +303,8 @@ button:disabled { cursor: not-allowed; }
 .secondary-action:hover { background: var(--muted) !important; color: var(--ink) !important; }
 
 /* Designer tools continue the same grid below the primary workspace. */
-.designer-section { padding: 34px 0 38px; }
-.remaining-tools { padding-bottom: 72px; }
+.designer-section { padding: 38px 0; }
+.remaining-tools { padding-bottom: 38px; }
 .eyebrow { color: var(--orange); }
 .designer-heading h2, .about-section h2 {
   margin: 5px 0 0;
@@ -396,11 +396,7 @@ button:disabled { cursor: not-allowed; }
 .fit-input input { height: 41px; padding-right: 31px; font-size: 14px; }
 .fit-input em { position: absolute; right: 10px; top: 13px; color: var(--quiet); font-style: normal; font-weight: 400; }
 .fit-preview-wrap { margin-top: 0; }
-.fit-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 11px; color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
-.fit-status { color: var(--ink); font-weight: 700; }
-.fit-status::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; background: var(--ink); }
-.fit-status.overflow::before { background: var(--orange); }
-.fit-status.underfilled::before { background: var(--ad-text); }
+.fit-meta { margin-bottom: 11px; color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
 .fit-preview-scroll { min-height: 260px; max-width: 100%; overflow-x: auto; padding: 10px 0; }
 .fit-preview { overflow: hidden; border: 1px solid var(--grid); background: var(--preview-bg); color: var(--ink); font-family: Arial, sans-serif; overflow-wrap: anywhere; white-space: normal; }
 .fit-measure { position: absolute; left: -99999px; top: 0; visibility: hidden; overflow: visible; box-sizing: border-box; font-family: Arial, sans-serif; overflow-wrap: anywhere; white-space: normal; }
@@ -527,8 +523,8 @@ button:disabled { cursor: not-allowed; }
   .compact-stats div + div::before { margin: 0 3px; }
   .result-actions .action-button { min-width: 0; min-height: 44px; }
   .result-actions .action-button { padding-inline: 9px; font-size: 10px; }
-  .designer-section { padding: 29px 0 34px; }
-  .remaining-tools { padding-bottom: 52px; }
+  .designer-section { padding: 34px 0; }
+  .remaining-tools { padding-bottom: 34px; }
   .tool-card { padding: 18px; }
   .fit-card { padding: 0; }
   .fit-card .tool-head, .fit-controls, .fit-preview-column { padding: 18px; }

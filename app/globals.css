@@ -303,7 +303,7 @@ button:disabled { cursor: not-allowed; }
 .secondary-action:hover { background: var(--muted) !important; color: var(--ink) !important; }
 
 /* Designer tools continue the same grid below the primary workspace. */
-.designer-section { padding: 34px 0 38px; border-top: 2px solid var(--grid); }
+.designer-section { padding: 34px 0 38px; }
 .remaining-tools { padding-bottom: 72px; }
 .eyebrow { color: var(--orange); }
 .designer-heading h2, .about-section h2 {
@@ -396,7 +396,7 @@ button:disabled { cursor: not-allowed; }
 .fit-input input { height: 41px; padding-right: 31px; font-size: 14px; }
 .fit-input em { position: absolute; right: 10px; top: 13px; color: var(--quiet); font-style: normal; font-weight: 400; }
 .fit-preview-wrap { margin-top: 0; }
-.fit-meta, .fit-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 11px; color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
+.fit-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 11px; color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
 .fit-status { color: var(--ink); font-weight: 700; }
 .fit-status::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; background: var(--ink); }
 .fit-status.overflow::before { background: var(--orange); }
@@ -404,7 +404,16 @@ button:disabled { cursor: not-allowed; }
 .fit-preview-scroll { min-height: 260px; max-width: 100%; overflow-x: auto; padding: 10px 0; }
 .fit-preview { overflow: hidden; border: 1px solid var(--grid); background: var(--preview-bg); color: var(--ink); font-family: Arial, sans-serif; overflow-wrap: anywhere; white-space: normal; }
 .fit-measure { position: absolute; left: -99999px; top: 0; visibility: hidden; overflow: visible; box-sizing: border-box; font-family: Arial, sans-serif; overflow-wrap: anywhere; white-space: normal; }
-.fit-footer { margin: auto 0 0; padding-top: 16px; }
+.fit-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; border-top: 1px solid var(--grid); }
+.fit-footer-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; min-width: 0; margin: 0; padding: 10px 16px; }
+.fit-footer-stats div { display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.fit-footer-stats div + div::before { content: "·"; margin: 0 10px; color: var(--quiet); }
+.fit-footer-stats dt, .fit-footer-stats dd { font: 700 11px/1.2 var(--font-mono); text-transform: uppercase; }
+.fit-footer-stats dt { order: 2; color: var(--quiet); }
+.fit-footer-stats dd { order: 1; margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+.fit-actions { display: flex; border-left: 1px solid var(--grid); }
+.fit-actions .action-button { min-height: 48px !important; border: 0 !important; white-space: nowrap; }
+.fit-actions .action-button + .action-button { border-left: 1px solid var(--grid) !important; }
 
 .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 42px 0 65px; border-top: 2px solid var(--grid); }
 .about-section h2 { max-width: 480px; }
@@ -476,6 +485,9 @@ button:disabled { cursor: not-allowed; }
   .result-actions { border-top: 1px solid var(--grid); border-left: 0; }
   .result-actions .action-button { flex: 1; }
   .compact-stats { min-height: 43px; }
+  .fit-footer { grid-template-columns: 1fr; }
+  .fit-actions { border-top: 1px solid var(--grid); border-left: 0; }
+  .fit-actions .action-button { flex: 1; }
 }
 @media (max-width: 800px) {
   .page-content, .site-footer { width: min(100% - 48px, 1360px); }
@@ -522,6 +534,9 @@ button:disabled { cursor: not-allowed; }
   .fit-card .tool-head, .fit-controls, .fit-preview-column { padding: 18px; }
   .fit-preview-column { min-height: 310px; }
   .fit-preview-scroll { min-height: 205px; }
+  .fit-footer-stats { gap: 3px 0; padding: 8px 10px; }
+  .fit-footer-stats div + div::before { margin: 0 3px; }
+  .fit-actions .action-button { min-width: 0; min-height: 44px !important; padding-inline: 9px; font-size: 10px; }
   .tool-head { min-height: 78px; }
   .tool-head h3 { font-size: 20px; }
   .fit-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }

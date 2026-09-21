@@ -120,6 +120,7 @@ function FitTool() {
   const [width, setWidth] = useState(340), [height, setHeight] = useState(220), [fontSize, setFontSize] = useState(16), [lineHeight, setLineHeight] = useState(1.5), [padding, setPadding] = useState(20);
   const [text, setText] = useState("");
   const [status, setStatus] = useState("Fitted");
+  const [variation, setVariation] = useState(0);
   const measure = useRef<HTMLDivElement>(null);
   const widthControl = useRef<HTMLDivElement>(null);
   const heightControl = useRef<HTMLDivElement>(null);
@@ -136,15 +137,15 @@ function FitTool() {
     const range = document.createRange(); range.selectNodeContents(el);
     const contentHeight = range.getBoundingClientRect().height;
     setText(fitted); setStatus(el.scrollHeight > height ? "Overflow" : contentHeight < height - padding * 2 - fontSize * lineHeight * 1.5 ? "Underfilled" : "Fitted");
-  }, [width, height, fontSize, lineHeight, padding]);
+  }, [width, height, fontSize, lineHeight, padding, variation]);
   const dimensions = { width, height, padding, fontSize, lineHeight };
   return <article className="tool-card fit-card"><ToolHead title="Fit to Box" note="Test how much text fits in a fixed-size box." />
     <div className="fit-workspace"><div className="fit-controls"><div className="fit-fields">
       <div ref={widthControl} className="fit-field fit-range"><span id="fit-width-label">Width</span><div className="range-row"><Slider aria-labelledby="fit-width-label" value={[width]} min={150} max={1200} step={10} onValueChange={values => setWidth(values[0])} /><output>{width} px</output></div></div>
       <div ref={heightControl} className="fit-field fit-range"><span id="fit-height-label">Height</span><div className="range-row"><Slider aria-labelledby="fit-height-label" value={[height]} min={80} max={800} step={10} onValueChange={values => setHeight(values[0])} /><output>{height} px</output></div></div>
       {([["Font size", fontSize, setFontSize, 10, 48, "px"], ["Line height", lineHeight, setLineHeight, 1, 2.5, "×"], ["Padding", padding, setPadding, 0, 80, "px"]] as const).map(([label, value, setter, min, max, suffix]) => <label key={label} className="fit-field fit-number"><span>{label}</span><span className="fit-input"><Input type="number" min={min} max={max} step={label === "Line height" ? .1 : 1} value={value} onChange={e => setter(Math.max(min, Math.min(max, Number(e.target.value) || min)))} /><em>{suffix}</em></span></label>)}
-    </div></div><div className="fit-preview-column"><div className="fit-preview-wrap"><div className="fit-meta"><span>Preview</span><span className={`fit-status ${status.toLowerCase()}`}>{status}</span></div><div className="fit-preview-scroll"><div className="fit-preview" style={dimensions}>{text}</div></div></div>
-    <div className="fit-footer"><span>Approximate fit · {stats(text).words} words</span><ActionCopy text={text} compact /></div></div></div>
+    </div></div><div className="fit-preview-column"><div className="fit-preview-wrap"><div className="fit-meta"><span>Preview</span><span className={`fit-status ${status.toLowerCase()}`}>{status}</span></div><div className="fit-preview-scroll"><div className="fit-preview" style={dimensions}>{text}</div></div></div></div></div>
+    <div className="fit-footer"><dl className="fit-footer-stats"><div><dt>approximate fit</dt><dd>{formatCount(stats(text).words)} words</dd></div><div><dt>box</dt><dd>{width} × {height} px</dd></div><div><dt>status</dt><dd>{status}</dd></div></dl><div className="fit-actions"><ActionCopy text={text} /><ActionCopyHtml text={text} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={() => setVariation(current => current + 1)}><RefreshCw aria-hidden="true" /> Regenerate</Button></div></div>
     <div ref={measure} aria-hidden="true" className="fit-measure" style={dimensions} />
   </article>;
 }

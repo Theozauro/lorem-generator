@@ -30,17 +30,17 @@ const content = {
       intro: "Questa informativa descrive il comportamento attuale di lorem-generator.com in materia di privacy.",
       sections: [
         ["Generazione del testo", "La generazione di Lorem Ipsum avviene localmente nel browser. Il testo generato e quello inserito negli strumenti della pagina non vengono inviati al server applicativo del sito."],
-        ["Preferenze", "La preferenza del tema colore e la preferenza privacy possono essere salvate localmente nel browser per permettere all’interfaccia di ricordare tali scelte."],
-        ["Hosting e sicurezza", "lorem-generator.com viene distribuito tramite l’infrastruttura Cloudflare. Cloudflare può trattare informazioni tecniche limitate necessarie a distribuire, proteggere e gestire il sito, quali indirizzo IP, informazioni sulla richiesta e dati relativi alla sicurezza, secondo le proprie condizioni privacy."],
+        ["Preferenze", "La preferenza del tema colore e la preferenza sulla privacy possono essere salvate localmente nel browser per permettere all’interfaccia di ricordare tali scelte."],
+        ["Hosting e sicurezza", "lorem-generator.com viene distribuito tramite l’infrastruttura Cloudflare. Cloudflare può trattare informazioni tecniche limitate necessarie a distribuire, proteggere e gestire il sito, quali indirizzo IP, informazioni sulla richiesta e dati relativi alla sicurezza, secondo la propria informativa sulla privacy."],
         ["Modifiche", "Il sito non abilita attualmente analytics, pubblicità, AdSense o altri servizi di tracciamento non essenziali di terze parti. Questa informativa verrà aggiornata prima di attivare un nuovo servizio che comporti il trattamento di dati."]
       ]
     },
     cookies: {
-      title: "Cookie policy",
+      title: "Informativa sui cookie",
       intro: "Questa informativa spiega l’uso attuale dei cookie e della memoria del browser su lorem-generator.com.",
       sections: [
-        ["Cookie", "Il sito non utilizza attualmente cookie analytics, pubblicitari o altri cookie non essenziali."],
-        ["Memoria locale", "La memoria locale non è un cookie. L’interfaccia può usarla per ricordare la preferenza del tema colore e la preferenza privacy salvata su questo dispositivo."],
+        ["Cookie", "Il sito non utilizza attualmente cookie per analytics, pubblicitari o altri cookie non essenziali."],
+        ["Memoria locale", "La memoria locale non è un cookie. L’interfaccia può usarla per ricordare la preferenza del tema colore e la preferenza sulla privacy salvata su questo dispositivo."],
         ["Servizi opzionali", "Analytics, pubblicità e AdSense non sono attivi. Se uno di questi servizi verrà aggiunto, i controlli del consenso e questa informativa saranno aggiornati prima dell’attivazione."],
         ["Gestione della memoria", "Puoi cancellare la memoria locale dalle impostazioni del browser. Così verranno reimpostate le preferenze di tema e privacy salvate."]
       ]

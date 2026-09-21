@@ -89,18 +89,18 @@ function ConsentBanner() {
     setAnalytics(nextAnalytics); setAdvertising(nextAdvertising); setVisible(false); setCustomize(false);
   }
   if (!visible) return null;
-  return <aside className="consent-banner" aria-label="Avviso su privacy e cookie"><div className="consent-copy"><strong>Preferenze privacy</strong><p>Usiamo l’archiviazione locale solo per le preferenze essenziali. Analytics e pubblicità restano disattivati finché non li abiliti.</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>Necessari</b><small>Tema e preferenze del consenso.</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>Analytics</b><small>Statistiche anonime sull’utilizzo del prodotto.</small></span></label><label><input type="checkbox" checked={advertising} onChange={event => setAdvertising(event.target.checked)} /> <span><b>Pubblicità</b><small>Erogazione e misurazione degli annunci.</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics, advertising)}>Salva preferenze</Button></> : <><Button type="button" variant="outline" onClick={() => save(false, false)}>Rifiuta opzionali</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>Personalizza</Button><Button type="button" onClick={() => save(true, true)}>Accetta tutto</Button></>}</div></aside>;
+  return <aside className="consent-banner" aria-label="Avviso su privacy e cookie"><div className="consent-copy"><strong>Preferenze sulla privacy</strong><p>Usiamo la memoria locale del browser solo per le preferenze essenziali. Analytics e pubblicità restano disattivati finché non li abiliti.</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>Necessari</b><small>Tema e preferenze del consenso.</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>Analytics</b><small>Statistiche anonime sull’utilizzo del sito.</small></span></label><label><input type="checkbox" checked={advertising} onChange={event => setAdvertising(event.target.checked)} /> <span><b>Pubblicità</b><small>Erogazione e misurazione degli annunci.</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics, advertising)}>Salva preferenze</Button></> : <><Button type="button" variant="outline" onClick={() => save(false, false)}>Rifiuta</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>Personalizza</Button><Button type="button" onClick={() => save(true, true)}>Accetta tutto</Button></>}</div></aside>;
 }
 function MatchTool() {
   const [source, setSource] = useState("");
   const [result, setResult] = useState("");
   const s = stats(source);
   function match(unit: Unit) { if (source.trim()) setResult(generateLorem(unit, unit === "characters" ? s.characters : unit === "words" ? s.words : s.paragraphs, false)); }
-  return <article className="tool-card"><ToolHead title="Abbina testo esistente" note="Sostituisci il testo mantenendo lo stesso ingombro." />
-    <label className="field-label" htmlFor="match-source">Testo sorgente</label><Textarea id="match-source" className="tool-textarea" placeholder="Incolla il testo da misurare…" value={source} onChange={e => setSource(e.target.value)} />
+  return <article className="tool-card"><ToolHead title="Sostituisci testo esistente" note="Sostituisci il testo mantenendo lo stesso ingombro." />
+    <label className="field-label" htmlFor="match-source">Testo di partenza</label><Textarea id="match-source" className="tool-textarea" placeholder="Incolla il testo da misurare…" value={source} onChange={e => setSource(e.target.value)} />
     <div className="mini-stats"><span>{s.words} parole</span><span>{s.characters} caratteri</span><span>{s.paragraphs} paragrafi</span></div>
     <div className="tool-actions"><Button variant="outline" disabled={!source.trim()} onClick={() => match("characters")}>Stessi caratteri</Button><Button variant="outline" disabled={!source.trim()} onClick={() => match("words")}>Stesse parole</Button><Button variant="outline" disabled={!source.trim()} onClick={() => match("paragraphs")}>Stessi paragrafi</Button></div>
-    {result && <div className="tool-output"><div className="output-top"><span>Testo abbinato</span><ActionCopy text={result} compact /></div><p>{result}</p></div>}
+    {result && <div className="tool-output"><div className="output-top"><span>Testo sostitutivo</span><ActionCopy text={result} compact /></div><p>{result}</p></div>}
   </article>;
 }
 function ExpansionTool() {
@@ -108,11 +108,11 @@ function ExpansionTool() {
   const [scale, setScale] = useState(0);
   const [result, setResult] = useState("");
   const target = Math.max(1, Math.round(source.length * (1 + scale / 100)));
-  return <article className="tool-card"><ToolHead title="Espansione testo" note="Verifica come reagisce un layout con più o meno testo." />
-    <label className="field-label" htmlFor="expand-source">Testo sorgente</label><Textarea id="expand-source" className="tool-textarea" placeholder="Incolla un testo di riferimento…" value={source} onChange={e => setSource(e.target.value)} />
-    <div className="scale-controls"><div className="scale-list" aria-label="Regolazione lunghezza">{[-40, -20, -10, 10, 20, 40].map(value => <Button key={value} type="button" variant={scale === value ? "default" : "outline"} className="scale-button" aria-pressed={scale === value} onClick={() => setScale(value)}>{`${value > 0 ? "+" : ""}${value}%`}</Button>)}</div><label className="custom-scale"><span>Percentuale</span><div className="range-row custom-scale-row"><Slider aria-label="Percentuale personalizzata" value={[Math.max(-100, Math.min(100, scale))]} min={-100} max={100} step={1} onValueChange={values => setScale(values[0])} /><div className="custom-scale-number"><Input type="number" min={-100} step={1} value={scale} onChange={event => setScale(Math.max(-100, Number(event.target.value) || 0))} /><em>%</em></div></div></label></div>
-    <div className="target-row"><span>Lunghezza obiettivo</span><strong>{source ? formatCount(target) : 0} caratteri</strong></div>
-    <Button className="tool-generate" disabled={!source.trim()} onClick={() => setResult(generateLorem("characters", target, false))}>Genera variazione <ArrowUpRight aria-hidden="true" /></Button>
+  return <article className="tool-card"><ToolHead title="Espansione del testo" note="Verifica come reagisce un layout con più o meno testo." />
+    <label className="field-label" htmlFor="expand-source">Testo di partenza</label><Textarea id="expand-source" className="tool-textarea" placeholder="Incolla un testo di riferimento…" value={source} onChange={e => setSource(e.target.value)} />
+    <div className="scale-controls"><div className="scale-list" aria-label="Regolazione della lunghezza">{[-40, -20, -10, 10, 20, 40].map(value => <Button key={value} type="button" variant={scale === value ? "default" : "outline"} className="scale-button" aria-pressed={scale === value} onClick={() => setScale(value)}>{`${value > 0 ? "+" : ""}${value}%`}</Button>)}</div><label className="custom-scale"><span>Percentuale</span><div className="range-row custom-scale-row"><Slider aria-label="Percentuale personalizzata" value={[Math.max(-100, Math.min(100, scale))]} min={-100} max={100} step={1} onValueChange={values => setScale(values[0])} /><div className="custom-scale-number"><Input type="number" min={-100} step={1} value={scale} onChange={event => setScale(Math.max(-100, Number(event.target.value) || 0))} /><em>%</em></div></div></label></div>
+    <div className="target-row"><span>Lunghezza desiderata</span><strong>{source ? formatCount(target) : 0} caratteri</strong></div>
+    <Button className="tool-generate" disabled={!source.trim()} onClick={() => setResult(generateLorem("characters", target, false))}>Genera variante <ArrowUpRight aria-hidden="true" /></Button>
     {result && <div className="tool-output"><div className="output-top"><span>{stats(result).characters} caratteri</span><ActionCopy text={result} compact /></div><p>{result}</p></div>}
   </article>;
 }
@@ -151,6 +151,8 @@ export default function Home() {
   const [mode, setMode] = useState<MainMode>("layout");
   const [words, setWords] = useState(250);
   const [paragraphs, setParagraphs] = useState(3);
+  const [wordsInput, setWordsInput] = useState("250");
+  const [paragraphsInput, setParagraphsInput] = useState("3");
   const [amount, setAmount] = useState(300);
   const [startClassic, setStartClassic] = useState(true);
   const [sentenceLength, setSentenceLength] = useState<SentenceLength>("mixed");
@@ -189,6 +191,32 @@ export default function Home() {
     previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
   }, [mode, words, paragraphs, amount, startClassic, sentenceLength]);
   function selectMode(next: MainMode) { setMode(next); if (next !== "layout") setAmount(defaults[next]); }
+  function updateWords(value: string) {
+    setWordsInput(value);
+    if (value === "") return;
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) setWords(Math.max(paragraphs, Math.min(4000, parsed)));
+  }
+  function commitWords() {
+    const parsed = Number(wordsInput);
+    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(paragraphs, Math.min(4000, parsed)) : words;
+    setWords(next); setWordsInput(String(next));
+  }
+  function updateParagraphs(value: string) {
+    setParagraphsInput(value);
+    if (value === "") return;
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) setParagraphs(Math.max(1, Math.min(100, words, parsed)));
+  }
+  function commitParagraphs() {
+    const parsed = Number(paragraphsInput);
+    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(1, Math.min(100, words, parsed)) : paragraphs;
+    setParagraphs(next); setParagraphsInput(String(next));
+  }
+  function setPresetWords(value: number) {
+    const next = Math.max(paragraphs, value);
+    setWords(next); setWordsInput(String(next));
+  }
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
   return <main className="site-shell" lang="it">
     <div className="page-content">
@@ -202,11 +230,11 @@ export default function Home() {
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
             <div className="unit-control"><span className="field-label">Modalità</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label="Modalità di generazione">{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? "Parole + paragrafi" : item === "characters" ? "Caratteri" : "Frasi"}</TabsTrigger>)}</TabsList></Tabs></div>
             {mode === "layout" ? <div className="layout-amounts">
-              <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">Parole</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={words} onChange={e => setWords(Math.max(paragraphs, Math.min(4000, Number(e.target.value) || paragraphs)))} /></div>
-              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">Paragrafi</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphs} onChange={e => setParagraphs(Math.max(1, Math.min(100, words, Number(e.target.value) || 1)))} /></div>
+              <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">Parole</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
+              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">Paragrafi</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
             </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? "Caratteri" : "Frasi"}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={e => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(e.target.value) || 1)))} /></div>}
-            <div className="presets"><span className="field-label">{mode === "layout" ? "Valori parole" : "Valori predefiniti"}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setWords(Math.max(paragraphs, value)) : setAmount(value)}>{value}</Button>)}</div></div>
-            <div className="option-cell"><span className="field-label">Opzioni</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>Inizia con “Lorem ipsum…”</span></label><div className="sentence-length-control"><span className="sentence-length-label">Lunghezza frasi</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? "brevi" : value === "mixed" ? "miste" : "lunghe"}</button>)}</div></div></div></div>
+            <div className="presets"><span className="field-label">{mode === "layout" ? "Quantità rapide" : "Valori predefiniti"}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
+            <div className="option-cell"><span className="field-label">Opzioni</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>Inizia con “Lorem ipsum…”</span></label><div className="sentence-length-control"><span className="sentence-length-label">Lunghezza delle frasi</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? "brevi" : value === "mixed" ? "miste" : "lunghe"}</button>)}</div></div></div></div>
           </div>
           <div className="output-panel"><span className="field-label">Risultato</span><div className="reading-area" role="region" aria-label="Testo Lorem Ipsum generato">{result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div></div>
           <div className="module-footer"><StatStrip text={result} /><div className="result-actions"><ActionCopy text={result} /><ActionCopyHtml text={result} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={regenerate}><RefreshCw aria-hidden="true" /> Rigenera</Button></div></div>
@@ -215,9 +243,9 @@ export default function Home() {
       <section className="designer-section" aria-label="Adatta al riquadro"><FitTool /></section>
       <section className="remaining-tools" aria-label="Altri strumenti"><div className="tool-grid"><MatchTool /><ExpansionTool /></div></section>
       <section className="about-section" aria-labelledby="about-title"><div><span className="eyebrow">UNA NOTA SUL TESTO SEGNAPOSTO</span><h2 id="about-title">Una bozza per ogni layout.</h2></div><div className="about-copy"><p>Lorem Ipsum è un testo segnaposto derivato dal latino classico. I designer lo usano per valutare gerarchia, ritmo, lunghezza delle righe e spaziatura prima che il testo finale sia pronto.</p><p>Imposta insieme parole e paragrafi per controllare densità e ritmo del layout, oppure passa a caratteri o frasi quando serve una lunghezza precisa.</p></div></section>
-      <section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">PENSATO PER LAYOUT REALI</span><h2 id="why-title">Un generatore Lorem Ipsum per designer e sviluppatori.</h2></div><div className="seo-content-grid"><article><h3>Mantieni fedele il layout.</h3><p>Genera Lorem Ipsum con parole e paragrafi esatti insieme, poi regola la densità senza ricreare le impostazioni. Usa caratteri o frasi quando un componente, un titolo o un blocco richiede un ingombro preciso.</p><p>Generate Lorem è pensato per wireframe, layout editoriali, prototipi di interfacce e studi tipografici. Adatta al riquadro aiuta a verificare il comportamento del testo prima che arrivi il contenuto definitivo.</p></article><article><h3>Copia il formato che ti serve.</h3><p>Copia testo semplice per note e bozze, oppure usa <strong>Copia HTML</strong> quando inserisci il testo segnaposto in una pagina o componente. Passa da un formato all’altro mentre il layout passa dall’esplorazione all’implementazione.</p><p>Usa il risultato come contenuto temporaneo durante il design. Sostituiscilo con il testo finale approvato prima di pubblicare il progetto.</p></article></div></section>
+      <section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">PENSATO PER LAYOUT REALI</span><h2 id="why-title">Un generatore Lorem Ipsum per designer e sviluppatori.</h2></div><div className="seo-content-grid"><article><h3>Mantieni fedele il layout.</h3><p>Genera Lorem Ipsum con parole e paragrafi esatti insieme, poi regola la densità senza ricreare le impostazioni. Usa caratteri o frasi quando un componente, un titolo o un blocco richiede un ingombro preciso.</p><p>Il generatore è pensato per wireframe, layout editoriali, prototipi di interfacce e studi tipografici. La funzione Adatta al riquadro aiuta a verificare il comportamento del testo prima che arrivi il contenuto definitivo.</p></article><article><h3>Copia il formato che ti serve.</h3><p>Copia testo semplice per note e bozze, oppure usa <strong>Copia HTML</strong> quando inserisci il testo segnaposto in una pagina o componente. Passa da un formato all’altro mentre il layout passa dall’esplorazione all’implementazione.</p><p>Usa il risultato come contenuto temporaneo durante il design. Sostituiscilo con il testo finale approvato prima di pubblicare il progetto.</p></article></div></section>
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">GUIDA BREVE AL LOREM IPSUM</span><h2 id="guide-title">Perché il testo segnaposto è ancora utile.</h2></div><div className="guide-grid"><article><h3>Cos’è il Lorem Ipsum</h3><p>Il Lorem Ipsum è un testo temporaneo usato per provare una pagina prima che le parole definitive siano disponibili. Ricorda una lingua ma non comunica un messaggio immediato: permette di valutare gerarchia, lunghezza delle righe, dimensione dei caratteri, spaziatura ed equilibrio visivo.</p></article><article><h3>Da dove proviene</h3><p>L’incipit conosciuto deriva da un passaggio del <em>De finibus bonorum et malorum</em> di Cicerone. Nel tempo il testo latino è stato abbreviato e riorganizzato, fino a diventare il contenuto neutro usato dagli strumenti di progettazione grafica e digitale.</p></article><article><h3>Quando usarlo</h3><p>Il Lorem Ipsum è utile per wireframe, primi prototipi, impaginazione editoriale, brochure, packaging e studi tipografici. Mantiene l’attenzione sulla struttura quando le decisioni sui contenuti sono ancora aperte.</p></article><article><h3>Quando sostituirlo</h3><p>Il testo segnaposto va rimosso prima della pubblicazione di un sito, di un documento o di un progetto stampato. Il contenuto reale serve per verificare tono, accessibilità, significato, visibilità sui motori di ricerca e reale esperienza di lettura.</p></article></div></section>
       <FaqSection />
-    </div><footer className="site-footer"><div className="footer-brand"><span>lorem-generator.com © 2026</span><p>Testo segnaposto per layout curati.</p></div><nav className="footer-links" aria-label="Informazioni legali"><a href="/it/privacy-policy/">Informativa privacy</a><a href="/it/cookie-policy/">Cookie policy</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>Gestisci privacy</button></nav></footer><ConsentBanner />
+    </div><footer className="site-footer"><div className="footer-brand"><span>lorem-generator.com © 2026</span><p>Testo segnaposto per layout curati.</p></div><nav className="footer-links" aria-label="Informazioni legali"><a href="/it/privacy-policy/">Informativa privacy</a><a href="/it/cookie-policy/">Informativa sui cookie</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>Gestisci preferenze</button></nav></footer><ConsentBanner />
   </main>;
 }

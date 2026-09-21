@@ -111,7 +111,7 @@ button { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
 ::selection { background: var(--orange); color: var(--accent-foreground); }
 .site-shell { position: relative; min-height: 100vh; }
-.page-content, .site-footer { width: min(100% - 96px, 1360px); margin-inline: auto; }
+.page-content, .site-footer { width: min(100% - 96px, 1280px); margin-inline: auto; }
 .eyebrow, .field-label {
   font: 700 11px/1.25 var(--font-mono);
   letter-spacing: .09em;
@@ -437,7 +437,7 @@ button:disabled { cursor: not-allowed; }
 .faq-list summary::after { content: "+"; color: var(--orange); font-size: 18px; font-weight: 400; }
 .faq-list details[open] summary::after { content: "−"; }
 .faq-list details p { max-width: 700px; margin: -4px 35px 18px 0; color: var(--quiet); font-size: 14px; line-height: 1.6; }
-.site-footer { display: grid; width: 100%; margin-inline: 0; grid-template-columns: 1fr auto; gap: 30px 50px; padding: 27px max(48px, calc((100% - 1360px) / 2)) 32px; border-top: 1px solid var(--grid); color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
+.site-footer { display: grid; width: 100%; margin-inline: 0; grid-template-columns: 1fr auto; gap: 30px 50px; padding: 27px max(48px, calc((100% - 1280px) / 2)) 32px; border-top: 1px solid var(--grid); color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
 .footer-brand span { color: var(--ink); }
 .footer-brand p { margin: 9px 0 0; color: var(--quiet); font: 13px/1.4 var(--font-sans); text-transform: none; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 20px; align-items: start; }

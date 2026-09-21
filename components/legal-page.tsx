@@ -1,5 +1,5 @@
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it";
+type LegalLanguage = "en" | "it" | "es";
 
 const content = {
   en: {
@@ -48,14 +48,37 @@ const content = {
   }
 } as const;
 
+const spanishPrivacy = {
+  title: "Política de privacidad",
+  intro: "Esta política describe el funcionamiento actual de lorem-generator.com en materia de privacidad.",
+  sections: [
+    ["Generación de texto", "La generación de Lorem Ipsum se realiza localmente en tu navegador. El texto generado y el que introduces en las herramientas de la página no se envían al servidor de la aplicación."],
+    ["Preferencias", "Tus preferencias de tema de color y privacidad pueden guardarse localmente en el navegador para que la interfaz las recuerde."],
+    ["Alojamiento y seguridad", "lorem-generator.com se distribuye mediante la infraestructura de Cloudflare. Cloudflare puede tratar información técnica limitada necesaria para prestar, proteger y operar el sitio web, como la dirección IP, información sobre las solicitudes y datos relacionados con la seguridad, de acuerdo con su propia política de privacidad."],
+    ["Cambios", "El sitio no tiene activados actualmente servicios de analítica, publicidad, AdSense ni otros servicios de seguimiento no esenciales de terceros. Esta política se actualizará antes de activar cualquier nuevo servicio que implique tratamiento de datos."]
+  ]
+} as const;
+
+const spanishCookies = {
+  title: "Política de cookies",
+  intro: "Esta política explica el uso actual de cookies y del almacenamiento local del navegador en lorem-generator.com.",
+  sections: [
+    ["Cookies", "El sitio no utiliza actualmente cookies de analítica, publicidad ni otras cookies no esenciales."],
+    ["Almacenamiento local", "El almacenamiento local no es una cookie. La interfaz puede utilizarlo para recordar en este dispositivo tus preferencias de tema de color y privacidad."],
+    ["Servicios opcionales", "Los servicios de analítica, publicidad y AdSense no están activados actualmente. Si se añade alguno de estos servicios, los controles de consentimiento y esta política se actualizarán antes de su activación."],
+    ["Gestión del almacenamiento local", "Puedes borrar el almacenamiento local desde la configuración de tu navegador. Esto restablece las preferencias guardadas de tema y privacidad."]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : content[language][kind];
   const isItalian = language === "it";
-  const home = isItalian ? "/it/" : "/";
+  const isSpanish = language === "es";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : "/";
 
   return <main className="site-shell legal-shell" lang={language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : "← Back to generator"}</a>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : "← Back to generator"}</a>
       <span className="legal-eyebrow">{isItalian ? "LEGALE" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>

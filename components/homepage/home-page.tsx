@@ -143,9 +143,9 @@ function FitTool({ copy }: { copy: HomepageCopy }) {
 }
 export default function Home({ locale }: { locale: HomepageLocale }) {
   const copy = homepageCopy[locale];
+  const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : "/";
   useEffect(() => {
-    if (locale !== "it") return;
-    document.documentElement.lang = "it";
+    document.documentElement.lang = locale;
     return () => { document.documentElement.lang = "en"; };
   }, [locale]);
   const [mode, setMode] = useState<MainMode>("layout");
@@ -220,11 +220,11 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
   return <main className="site-shell" lang={copy.locale}>
     <div className="page-content">
-      <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><label className="language-picker"><span className="sr-only">{copy.languageLabel}</span><select aria-label={copy.languageLabel} value={locale === "it" ? "/it/" : "/"} onChange={event => window.location.assign(event.target.value)}><option value="/">English</option><option value="/it/">Italiano</option></select></label><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="desktop-break"><br /></span> {copy.titleAfterBreak}</h1></div></div>
+      <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><label className="language-picker"><span className="sr-only">{copy.languageLabel}</span><select aria-label={copy.languageLabel} value={locale === "it" ? "/it/" : locale === "es" ? "/es/" : "/"} onChange={event => window.location.assign(event.target.value)}><option value="/">English</option><option value="/it/">Italiano</option><option value="/es/">Español</option></select></label><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="desktop-break"><br /></span> {copy.titleAfterBreak}</h1></div></div>
         <h2 className="seo-intro">{copy.intro}</h2>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
-          { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${locale === "it" ? "/it/" : "/"}`, inLanguage: locale },
-          { "@type": "WebApplication", name: "lorem-generator.com", url: `https://lorem-generator.com${locale === "it" ? "/it/" : "/"}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, featureList: copy.schema.featureList }
+          { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },
+          { "@type": "WebApplication", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, featureList: copy.schema.featureList }
         ] }) }} />
         <div className="generator-panel generator-module">
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>

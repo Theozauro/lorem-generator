@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online. Testo segnaposto pronto da copiare per layout, prototipi e progetti di design.",
   alternates: {
     canonical: "/it/",
-    languages: { en: "/", it: "/it/" },
+    languages: { en: "/", it: "/it/", es: "/es/" },
   },
   openGraph: {
     type: "website",

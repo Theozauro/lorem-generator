@@ -494,6 +494,9 @@ button:disabled { cursor: not-allowed; }
   .presets { grid-column: 2 / 3; grid-row: 2; border-left: 1px solid var(--grid) !important; }
   .option-cell { grid-row: 3; grid-template-columns: 1fr; gap: 10px; }
   .tool-grid { grid-template-columns: 1fr; column-gap: 14px; }
+  .fit-fields { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .fit-range { grid-column: span 3; }
+  .fit-number { grid-column: span 2; }
   .scale-list { flex-wrap: wrap; }
   .seo-content-grid { grid-template-columns: 1fr; gap: 26px; }
   .guide-grid { grid-template-columns: 1fr; gap: 24px; }

@@ -1,5 +1,5 @@
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es";
+type LegalLanguage = "en" | "it" | "es" | "fr";
 
 const content = {
   en: {
@@ -70,16 +70,39 @@ const spanishCookies = {
   ]
 } as const;
 
+const frenchPrivacy = {
+  title: "Politique de confidentialité",
+  intro: "Cette politique décrit les pratiques actuelles de lorem-generator.com en matière de confidentialité.",
+  sections: [
+    ["Génération du texte", "La génération de Lorem Ipsum s’effectue localement dans votre navigateur. Le texte généré et celui que vous saisissez dans les outils de la page ne sont pas envoyés au serveur de l’application."],
+    ["Préférences", "Vos préférences de thème de couleur et de confidentialité peuvent être enregistrées localement dans votre navigateur afin que l’interface puisse s’en souvenir."],
+    ["Hébergement et sécurité", "lorem-generator.com est distribué via l’infrastructure de Cloudflare. Cloudflare peut traiter un volume limité d’informations techniques nécessaires à la fourniture, à la sécurisation et au fonctionnement du site, notamment l’adresse IP, des informations relatives aux requêtes et des données liées à la sécurité, conformément à sa propre politique de confidentialité."],
+    ["Modifications", "Le site n’active actuellement aucun service de mesure d’audience, de publicité, AdSense ni aucun autre service tiers de suivi non essentiel. Cette politique sera mise à jour avant l’activation de tout nouveau service impliquant un traitement de données."]
+  ]
+} as const;
+
+const frenchCookies = {
+  title: "Politique relative aux cookies",
+  intro: "Cette politique explique l’utilisation actuelle des cookies et du stockage local du navigateur sur lorem-generator.com.",
+  sections: [
+    ["Cookies", "Le site n’utilise actuellement aucun cookie de mesure d’audience, de publicité ni aucun autre cookie non essentiel."],
+    ["Stockage local", "Le stockage local n’est pas un cookie. L’interface peut l’utiliser pour mémoriser, sur cet appareil, vos préférences de thème de couleur et de confidentialité."],
+    ["Services facultatifs", "Les services de mesure d’audience, de publicité et AdSense ne sont actuellement pas activés. Si l’un de ces services est ajouté, les contrôles de consentement et cette politique seront mis à jour avant son activation."],
+    ["Gestion du stockage local", "Vous pouvez effacer le stockage local depuis les paramètres de votre navigateur. Cela réinitialise les préférences de thème et de confidentialité enregistrées."]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : "/";
+  const isFrench = language === "fr";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : "/";
 
   return <main className="site-shell legal-shell" lang={language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : "← Back to generator"}</a>
-      <span className="legal-eyebrow">{isItalian ? "LEGALE" : "LEGAL"}</span>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : "← Back to generator"}</a>
+      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">

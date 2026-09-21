@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com
 export const metadata: Metadata = {
   title: "Política de cookies | lorem-generator.com",
   description: "Política de cookies y almacenamiento local de lorem-generator.com.",
-  alternates: { canonical: "/es/cookie-policy/", languages: { en: "/cookie-policy/", it: "/it/cookie-policy/", es: "/es/cookie-policy/" } },
+  alternates: { canonical: "/es/cookie-policy/", languages: { en: "/cookie-policy/", it: "/it/cookie-policy/", es: "/es/cookie-policy/", fr: "/fr/cookie-policy/" } },
   openGraph: {
     type: "website",
     url: `${siteUrl}/es/cookie-policy/`,

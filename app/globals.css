@@ -303,8 +303,8 @@ button:disabled { cursor: not-allowed; }
 .secondary-action:hover { background: var(--muted) !important; color: var(--ink) !important; }
 
 /* Designer tools continue the same grid below the primary workspace. */
-.designer-section { padding: 38px 0; }
-.remaining-tools { padding-bottom: 38px; }
+.designer-section { padding: 34px 0 38px; }
+.remaining-tools { padding-bottom: 72px; }
 .eyebrow { color: var(--orange); }
 .designer-heading h2, .about-section h2 {
   margin: 5px 0 0;
@@ -376,7 +376,7 @@ button:disabled { cursor: not-allowed; }
 .specimen-tabs { margin-bottom: 16px; }
 .specimen-output { min-height: 190px; padding: 18px; border: 1px solid var(--grid); overflow-wrap: anywhere; white-space: pre-wrap; font-size: 18px; line-height: 1.75; }
 .specimen-copy { display: flex; justify-content: flex-end; margin-top: 12px; }
-.fit-card { width: 100%; padding: 0; border: 2px solid var(--grid); }
+.fit-card { width: 100%; padding: 0; overflow: hidden; border: 2px solid var(--grid); }
 .fit-card .tool-head { min-height: 0; padding: 21px 24px 19px; border-bottom: 1px solid var(--grid); }
 .fit-workspace { display: block; }
 .fit-controls { min-width: 0; padding: 24px; border-bottom: 1px solid var(--grid); }
@@ -523,8 +523,8 @@ button:disabled { cursor: not-allowed; }
   .compact-stats div + div::before { margin: 0 3px; }
   .result-actions .action-button { min-width: 0; min-height: 44px; }
   .result-actions .action-button { padding-inline: 9px; font-size: 10px; }
-  .designer-section { padding: 34px 0; }
-  .remaining-tools { padding-bottom: 34px; }
+  .designer-section { padding: 29px 0 34px; }
+  .remaining-tools { padding-bottom: 52px; }
   .tool-card { padding: 18px; }
   .fit-card { padding: 0; }
   .fit-card .tool-head, .fit-controls, .fit-preview-column { padding: 18px; }

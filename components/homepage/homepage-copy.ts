@@ -7,7 +7,7 @@ export type HomepageCopy = {
   themeLabel: string;
   theme: { system: string; light: string; dark: string };
   title: string;
-  titleAfterBreak: string;
+  heroSubtitle: string;
   intro: string;
   schema: { description: string; featureList: string[] };
   generator: {
@@ -65,7 +65,7 @@ export type HomepageCopy = {
 const baseHomepageCopy: Record<Exclude<HomepageLocale, "es" | "fr" | "de">, HomepageCopy> = {
   en: {
     locale: "en", numberLocale: "en-US", languageLabel: "Language", themeLabel: "Color theme", theme: { system: "Auto", light: "light", dark: "dark" },
-    title: "Generate clean placeholder text", titleAfterBreak: "with the Lorem Ipsum Generator", intro: "Generate exact words, paragraphs, sentences, or characters for layouts, prototypes, and design work.",
+    title: "Lorem Ipsum Generator", heroSubtitle: "Generate clean placeholder text for layouts, prototypes and design work", intro: "Generate exact words, paragraphs, sentences, or characters for layouts, prototypes, and design work.",
     schema: { description: "A browser-based Lorem Ipsum generator for exact words, paragraphs, sentences, and characters.", featureList: ["Exact word and paragraph counts", "Character and sentence generation", "Fit to Box preview", "Browser-local generation"] },
     generator: { mode: "Mode", modeLabel: "Generation mode", layout: "Words + paragraphs", characters: "Characters", sentences: "Sentences", quickWords: "Quick word counts", presets: "Presets", options: "Options", startClassic: "Start with “Lorem ipsum…”", sentenceLength: "Sentence length", short: "Short", mixed: "Mixed", long: "Long", output: "Output", outputAria: "Generated Lorem Ipsum", words: "Words", paragraphs: "Paragraphs", stats: { words: "words", characters: "characters", withoutSpaces: "without spaces", sentences: "sentences", paragraphs: "paragraphs" }, copy: "Copy", copied: "Copied", copyHtml: "Copy HTML", regenerate: "Regenerate" },
     consent: { aria: "Privacy and cookie notice", title: "Privacy preferences", intro: "We use local storage for essential preferences. Optional analytics and advertising remain off until you choose them.", necessary: "Necessary", necessaryNote: "Theme and consent preferences.", analytics: "Analytics", analyticsNote: "Anonymous usage statistics", advertising: "Advertising", advertisingNote: "Ad delivery and measurement.", accept: "Accept all", reject: "Reject optional", customize: "Customize", save: "Save choices" },
@@ -78,7 +78,7 @@ const baseHomepageCopy: Record<Exclude<HomepageLocale, "es" | "fr" | "de">, Home
   },
   it: {
     locale: "it", numberLocale: "it-IT", languageLabel: "Lingua", themeLabel: "Tema colore", theme: { system: "Auto", light: "Chiaro", dark: "Scuro" },
-    title: "Genera testo segnaposto", titleAfterBreak: "con il generatore Lorem Ipsum", intro: "Genera parole, paragrafi, frasi o caratteri per layout, prototipi e progetti di design.",
+    title: "Lorem Ipsum Generator", heroSubtitle: "Genera testo segnaposto per layout, prototipi e progetti di design", intro: "Genera parole, paragrafi, frasi o caratteri per layout, prototipi e progetti di design.",
     schema: { description: "Un generatore Lorem Ipsum nel browser per parole, paragrafi, frasi e caratteri esatti.", featureList: ["Conteggio esatto di parole e paragrafi", "Generazione di caratteri e frasi", "Anteprima Adatta al riquadro", "Generazione nel browser"] },
     generator: { mode: "Modalità", modeLabel: "Modalità di generazione", layout: "Parole + paragrafi", characters: "Caratteri", sentences: "Frasi", quickWords: "Quantità rapide", presets: "Valori predefiniti", options: "Opzioni", startClassic: "Inizia con “Lorem ipsum…”", sentenceLength: "Lunghezza delle frasi", short: "brevi", mixed: "miste", long: "lunghe", output: "Risultato", outputAria: "Testo Lorem Ipsum generato", words: "Parole", paragraphs: "Paragrafi", stats: { words: "parole", characters: "caratteri", withoutSpaces: "senza spazi", sentences: "frasi", paragraphs: "paragrafi" }, copy: "Copia", copied: "Copiato", copyHtml: "Copia HTML", regenerate: "Rigenera" },
     consent: { aria: "Avviso su privacy e cookie", title: "Preferenze sulla privacy", intro: "Usiamo la memoria locale del browser solo per le preferenze essenziali. Analytics e pubblicità restano disattivati finché non li abiliti.", necessary: "Necessari", necessaryNote: "Tema e preferenze del consenso.", analytics: "Analytics", analyticsNote: "Statistiche anonime sull’utilizzo del sito.", advertising: "Pubblicità", advertisingNote: "Erogazione e misurazione degli annunci.", accept: "Accetta tutto", reject: "Rifiuta", customize: "Personalizza", save: "Salva preferenze" },
@@ -97,8 +97,8 @@ const spanishHomepageCopy: HomepageCopy = {
   languageLabel: "Idioma",
   themeLabel: "Tema de color",
   theme: { system: "Automático", light: "claro", dark: "oscuro" },
-  title: "Genera texto de relleno listo para usar",
-  titleAfterBreak: "con el generador de Lorem Ipsum",
+  title: "Lorem Ipsum Generator",
+  heroSubtitle: "Genera texto de relleno para maquetas, prototipos y proyectos de diseño",
   intro: "Genera un número exacto de palabras, párrafos, frases o caracteres para maquetas, prototipos y proyectos de diseño.",
   schema: {
     description: "Generador de Lorem Ipsum que funciona en el navegador para crear cantidades exactas de palabras, párrafos, frases y caracteres.",
@@ -231,8 +231,8 @@ const frenchHomepageCopy: HomepageCopy = {
   languageLabel: "Langue",
   themeLabel: "Thème de couleur",
   theme: { system: "Auto", light: "clair", dark: "sombre" },
-  title: "Générez du texte de substitution prêt à l’emploi",
-  titleAfterBreak: "avec le générateur de Lorem Ipsum",
+  title: "Lorem Ipsum Generator",
+  heroSubtitle: "Générez du texte de substitution pour vos mises en page, prototypes et projets de design",
   intro: "Générez un nombre exact de mots, paragraphes, phrases ou caractères pour vos mises en page, prototypes et projets de design.",
   schema: {
     description: "Un générateur de Lorem Ipsum dans le navigateur pour créer un nombre exact de mots, paragraphes, phrases et caractères.",
@@ -367,8 +367,8 @@ const germanHomepageCopy: HomepageCopy = {
   languageLabel: "Sprache",
   themeLabel: "Farbschema",
   theme: { system: "Auto", light: "hell", dark: "dunkel" },
-  title: "Erzeuge sofort einsatzbereiten Blindtext",
-  titleAfterBreak: "mit dem Lorem-Ipsum-Generator",
+  title: "Lorem Ipsum Generator",
+  heroSubtitle: "Erzeuge Blindtext für Layouts, Prototypen und Designprojekte",
   intro: "Erzeuge eine genaue Anzahl an Wörtern, Absätzen, Sätzen oder Zeichen für Layouts, Prototypen und Designprojekte.",
   schema: {
     description: "Ein browserbasierter Lorem-Ipsum-Generator für eine exakte Anzahl an Wörtern, Absätzen, Sätzen und Zeichen.",

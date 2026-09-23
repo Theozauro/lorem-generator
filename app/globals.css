@@ -24,7 +24,7 @@
   --ring: #f15a24;
   --radius: 0.125rem;
   --orange: #f15a24;
-  --orange-foreground: #242424;
+  --orange-control: #b84a14;
   --orange-small: #a83d17;
   --ink: #242424;
   --paper: #fbfbf9;
@@ -35,8 +35,8 @@
   --ad-text: #85857f;
   --preview-bg: #fff;
   --slider-track: #bebeb8;
-  --active-bg: var(--orange);
-  --active-text: var(--orange-foreground);
+  --active-bg: var(--orange-control);
+  --active-text: #fff;
   --active-edge: transparent;
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -59,7 +59,7 @@
     --muted: #20201d; --muted-foreground: #a4a19a;
     --accent: #ff5a1f; --accent-foreground: #11110f;
     --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #ff5a1f;
-    --orange: #ff5a1f; --orange-foreground: #11110f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
+    --orange: #ff5a1f; --orange-control: #ff5a1f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
     --grid: #5a5750; --ad-bg: #191917; --ad-border: #45443f; --ad-text: #918e87;
     --preview-bg: #20201d; --slider-track: #5a5750;
     --active-bg: transparent; --active-text: #ff5a1f; --active-edge: #ff5a1f;
@@ -75,7 +75,7 @@
   --muted: #20201d; --muted-foreground: #a4a19a;
   --accent: #ff5a1f; --accent-foreground: #11110f;
   --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #ff5a1f;
-  --orange: #ff5a1f; --orange-foreground: #11110f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
+  --orange: #ff5a1f; --orange-control: #ff5a1f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
   --grid: #5a5750; --ad-bg: #191917; --ad-border: #45443f; --ad-text: #918e87;
   --preview-bg: #20201d; --slider-track: #5a5750;
   --active-bg: transparent; --active-text: #ff5a1f; --active-edge: #ff5a1f;
@@ -305,7 +305,7 @@ button:disabled { cursor: not-allowed; }
 .action-button + .action-button { border-left: 1px solid var(--grid); }
 .action-button svg { width: 15px; height: 15px; }
 .primary-copy { background: var(--ink) !important; color: var(--background) !important; }
-.primary-copy:hover { background: var(--orange) !important; color: var(--orange-foreground) !important; }
+.primary-copy:hover { background: var(--orange-control) !important; color: var(--accent-foreground) !important; }
 .secondary-action:hover { background: var(--muted) !important; color: var(--ink) !important; }
 
 /* Designer tools continue the same grid below the primary workspace. */
@@ -474,7 +474,7 @@ button:disabled { cursor: not-allowed; }
 .consent-banner p { margin: 5px 0 0; color: var(--quiet); font-size: 13px; line-height: 1.35; }
 .consent-actions { display: flex; flex: none; gap: 7px; }
 .consent-actions button { min-height: 36px; border-radius: 0; font: 700 11px/1 var(--font-mono); text-transform: uppercase; }
-.consent-actions .consent-accept:hover { background: var(--orange); color: var(--orange-foreground); }
+.consent-actions .consent-accept:hover { background: var(--orange-control); color: var(--accent-foreground); }
 .consent-actions button:first-child { order: 3; }
 .consent-actions button:nth-child(2) { order: 1; }
 .consent-actions button:last-child { order: 2; }

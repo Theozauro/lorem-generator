@@ -1,5 +1,5 @@
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es" | "fr" | "de";
+type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR";
 
 const content = {
   en: {
@@ -114,17 +114,40 @@ const germanCookies = {
   ]
 } as const;
 
+const brazilianPortuguesePrivacy = {
+  title: "Política de Privacidade",
+  intro: "Esta política descreve as práticas atuais de privacidade do lorem-generator.com.",
+  sections: [
+    ["Geração de texto", "A geração de Lorem Ipsum ocorre localmente no seu navegador. O texto gerado e o texto que você insere nas ferramentas da página não são enviados ao servidor da aplicação."],
+    ["Preferências", "Suas preferências de tema de cores e privacidade podem ser armazenadas localmente no navegador para que a interface possa lembrá-las."],
+    ["Hospedagem e segurança", "lorem-generator.com é distribuído pela infraestrutura da Cloudflare. A Cloudflare pode processar uma quantidade limitada de informações técnicas necessárias para fornecer, proteger e operar o site, como endereço IP, informações sobre solicitações e dados relacionados à segurança, de acordo com sua própria Política de Privacidade."],
+    ["Alterações", "O site não utiliza atualmente serviços de análise, publicidade, AdSense nem outros serviços de rastreamento não essenciais de terceiros. Esta política será atualizada antes da ativação de qualquer novo serviço que envolva processamento adicional de dados."]
+  ]
+} as const;
+
+const brazilianPortugueseCookies = {
+  title: "Política de Cookies",
+  intro: "Esta política explica o uso atual de cookies e do armazenamento local do navegador no lorem-generator.com.",
+  sections: [
+    ["Cookies", "O site não utiliza atualmente cookies de análise, publicidade ou outros cookies não essenciais."],
+    ["Armazenamento local", "O armazenamento local não é um cookie. A interface pode utilizá-lo para lembrar, neste dispositivo, suas preferências de tema de cores e privacidade."],
+    ["Serviços opcionais", "Serviços de análise, publicidade e AdSense não estão atualmente ativados. Se algum desses serviços for adicionado, os controles de consentimento e esta política serão atualizados antes da ativação."],
+    ["Gerenciar o armazenamento local", "Você pode apagar o armazenamento local nas configurações do navegador. Isso redefine as preferências de tema e privacidade armazenadas."]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
   const isFrench = language === "fr";
   const isGerman = language === "de";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : "/";
+  const isBrazilianPortuguese = language === "pt-BR";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : "/";
 
   return <main className="site-shell legal-shell" lang={language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : "← Back to generator"}</a>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : "← Back to generator"}</a>
       <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>

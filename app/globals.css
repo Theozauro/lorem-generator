@@ -470,6 +470,7 @@ button:disabled { cursor: not-allowed; }
 .consent-banner p { margin: 5px 0 0; color: var(--quiet); font-size: 13px; line-height: 1.35; }
 .consent-actions { display: flex; flex: none; gap: 7px; }
 .consent-actions button { min-height: 36px; border-radius: 0; font: 700 11px/1 var(--font-mono); text-transform: uppercase; }
+.consent-actions .consent-accept:hover { background: var(--orange); color: var(--accent-foreground); }
 .consent-actions button:first-child { order: 3; }
 .consent-actions button:nth-child(2) { order: 1; }
 .consent-actions button:last-child { order: 2; }
@@ -509,6 +510,7 @@ button:disabled { cursor: not-allowed; }
   .guide-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 @media (max-width: 560px) {
+  .consent-banner { right: 0; bottom: 0; left: 0; border-right: 0; border-bottom: 0; border-left: 0; }
   .page-content, .site-footer { width: min(100% - 32px, 1360px); }
   .main-section { padding: 24px 0 5px; }
   .utility-row { margin-bottom: 20px; }

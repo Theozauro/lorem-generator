@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Genera palabras, párrafos, frases o caracteres de Lorem Ipsum online. Texto de relleno listo para copiar para maquetas, prototipos y proyectos de diseño.",
   alternates: {
     canonical: "/es/",
-    languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/" },
+    languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", "nl-NL": "/nl/" },
   },
   openGraph: {
     type: "website",

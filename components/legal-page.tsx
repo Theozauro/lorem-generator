@@ -1,5 +1,5 @@
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR";
+type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL";
 
 const content = {
   en: {
@@ -136,19 +136,42 @@ const brazilianPortugueseCookies = {
   ]
 } as const;
 
+const dutchPrivacy = {
+  title: "Privacybeleid",
+  intro: "Dit beleid beschrijft de huidige privacypraktijken van lorem-generator.com.",
+  sections: [
+    ["Tekstgeneratie", "Het genereren van Lorem Ipsum gebeurt lokaal in je browser. Gegenereerde tekst en tekst die je in de tools op de pagina invoert, worden niet naar de applicatieserver verzonden."],
+    ["Voorkeuren", "Je voorkeuren voor kleurthema en privacy kunnen lokaal in de browser worden opgeslagen, zodat de interface deze kan onthouden."],
+    ["Hosting en beveiliging", "lorem-generator.com wordt geleverd via de infrastructuur van Cloudflare. Cloudflare kan een beperkte hoeveelheid technische informatie verwerken die nodig is om de site te leveren, te beveiligen en te laten functioneren, zoals het IP-adres, informatie over verzoeken en beveiligingsgerelateerde gegevens, in overeenstemming met het eigen privacybeleid van Cloudflare."],
+    ["Wijzigingen", "De site maakt momenteel geen gebruik van analysetools, advertenties, AdSense of andere niet-essentiële trackingdiensten van derden. Dit beleid wordt bijgewerkt voordat een nieuwe dienst wordt geactiveerd die aanvullende gegevensverwerking met zich meebrengt."]
+  ]
+} as const;
+
+const dutchCookies = {
+  title: "Cookiebeleid",
+  intro: "Dit beleid legt het huidige gebruik van cookies en lokale browseropslag op lorem-generator.com uit.",
+  sections: [
+    ["Cookies", "De site gebruikt momenteel geen analytische, advertentie- of andere niet-essentiële cookies."],
+    ["Lokale opslag", "Lokale opslag is geen cookie. De interface kan deze gebruiken om je voorkeuren voor kleurthema en privacy op dit apparaat te onthouden."],
+    ["Optionele diensten", "Analyse, advertenties en AdSense zijn momenteel niet geactiveerd. Als een van deze diensten wordt toegevoegd, worden de toestemmingsinstellingen en dit beleid bijgewerkt voordat de dienst wordt geactiveerd."],
+    ["Lokale opslag beheren", "Je kunt lokale opslag wissen via de instellingen van je browser. Hierdoor worden opgeslagen voorkeuren voor kleurthema en privacy opnieuw ingesteld."]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
   const isFrench = language === "fr";
   const isGerman = language === "de";
   const isBrazilianPortuguese = language === "pt-BR";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : "/";
+  const isDutch = language === "nl-NL";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : "/";
 
   return <main className="site-shell legal-shell" lang={language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : "← Back to generator"}</a>
-      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : "LEGAL"}</span>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : "← Back to generator"}</a>
+      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">

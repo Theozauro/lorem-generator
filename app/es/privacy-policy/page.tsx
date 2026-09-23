@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com
 export const metadata: Metadata = {
   title: "Política de privacidad | lorem-generator.com",
   description: "Política de privacidad de lorem-generator.com y su generador de Lorem Ipsum en el navegador.",
-  alternates: { canonical: "/es/privacy-policy/", languages: { en: "/privacy-policy/", it: "/it/privacy-policy/", es: "/es/privacy-policy/", fr: "/fr/privacy-policy/", de: "/de/privacy-policy/", "pt-BR": "/pt-br/privacy-policy/" } },
+  alternates: { canonical: "/es/privacy-policy/", languages: { en: "/privacy-policy/", it: "/it/privacy-policy/", es: "/es/privacy-policy/", fr: "/fr/privacy-policy/", de: "/de/privacy-policy/", "pt-BR": "/pt-br/privacy-policy/", "nl-NL": "/nl/privacy-policy/" } },
   openGraph: {
     type: "website",
     url: `${siteUrl}/es/privacy-policy/`,

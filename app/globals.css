@@ -455,9 +455,9 @@ button:disabled { cursor: not-allowed; }
 .faq-list details[open] summary::after { content: "−"; }
 .faq-list details p { max-width: 700px; margin: -4px 35px 18px 0; color: var(--quiet); font-size: 14px; line-height: 1.6; }
 .site-footer { display: grid; width: 100%; margin-inline: 0; grid-template-columns: 1fr auto; gap: 30px 50px; padding: 27px max(48px, calc((100% - 1200px) / 2)) 32px; border-top: 1px solid var(--grid); color: var(--quiet); font: 11px/1.2 var(--font-mono); text-transform: uppercase; }
-.footer-badge-area { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+.footer-badge-area { grid-column: 1 / -1; display: flex; min-width: 0; max-width: 100%; flex-direction: column; align-items: flex-start; gap: 9px; }
 .footer-badge-label { flex: none; color: var(--quiet); font: 700 10px/1.2 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
-.directory-badge-list { position: relative; width: 100%; min-width: 0; overflow: hidden; }
+.directory-badge-list { position: relative; width: 100%; max-width: 100%; min-width: 0; overflow: hidden; }
 .directory-badge-list::before, .directory-badge-list::after { position: absolute; z-index: 1; top: 0; bottom: 0; width: 56px; content: ""; pointer-events: none; }
 .directory-badge-list::before { left: 0; background: linear-gradient(to right, var(--background) 0%, transparent 100%); }
 .directory-badge-list::after { right: 0; background: linear-gradient(to left, var(--background) 0%, transparent 100%); }

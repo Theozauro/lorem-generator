@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, initialLayoutText, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
 import { homepageCopy, type HomepageCopy, type HomepageLocale } from "./homepage-copy";
@@ -57,7 +57,7 @@ function StatStrip({ text, copy }: { text: string; copy: HomepageCopy }) {
   return <dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{formatCount(s.words, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{formatCount(s.characters, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{formatCount(s.charactersNoSpaces, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{formatCount(s.sentences, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.paragraphs}</dt><dd>{formatCount(s.paragraphs, copy.numberLocale)}</dd></div></dl>;
 }
 function ToolHead({ title, note }: { title: string; note: string }) {
-  return <div className="tool-head"><div><h2>{title}</h2><p>{note}</p></div></div>;
+  return <div className="tool-head"><div><h3>{title}</h3><p>{note}</p></div></div>;
 }
 function FaqSection({ copy }: { copy: HomepageCopy }) {
   return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{copy.faq.items.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: copy.faq.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
@@ -228,23 +228,13 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
         ] }) }} />
         <div className="generator-panel generator-module">
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
-            <Tabs value={mode} onValueChange={value => selectMode(value as MainMode)} className="mode-tabs">
-              <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList></div>
-              <TabsContent value="layout" asChild forceMount>
-                <div className="layout-amounts">
-                  <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">{copy.generator.words}</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
-                  <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">{copy.generator.paragraphs}</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
-                </div>
-              </TabsContent>
-              <TabsContent value="characters" asChild forceMount>
-                <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount-characters">{copy.generator.characters}</label><Input id="amount-characters" type="number" min="1" max="20000" value={amount} onChange={e => setAmount(Math.max(1, Math.min(20000, Number(e.target.value) || 1)))} /></div>
-              </TabsContent>
-              <TabsContent value="sentences" asChild forceMount>
-                <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount-sentences">{copy.generator.sentences}</label><Input id="amount-sentences" type="number" min="1" max="100" value={amount} onChange={e => setAmount(Math.max(1, Math.min(100, Number(e.target.value) || 1)))} /></div>
-              </TabsContent>
-              <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
-              <div className="option-cell"><span className="field-label">{copy.generator.options}</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label><div className="sentence-length-control"><span className="sentence-length-label">{copy.generator.sentenceLength}</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? copy.generator.short : value === "mixed" ? copy.generator.mixed : copy.generator.long}</button>)}</div></div></div></div>
-            </Tabs>
+            <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList></Tabs></div>
+            {mode === "layout" ? <div className="layout-amounts">
+              <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">{copy.generator.words}</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
+              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">{copy.generator.paragraphs}</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
+            </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={e => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(e.target.value) || 1)))} /></div>}
+            <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
+            <div className="option-cell"><span className="field-label">{copy.generator.options}</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label><div className="sentence-length-control"><span className="sentence-length-label">{copy.generator.sentenceLength}</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? copy.generator.short : value === "mixed" ? copy.generator.mixed : copy.generator.long}</button>)}</div></div></div></div>
           </div>
           <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div></div>
           <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={regenerate}><RefreshCw aria-hidden="true" /> {copy.generator.regenerate}</Button></div></div>

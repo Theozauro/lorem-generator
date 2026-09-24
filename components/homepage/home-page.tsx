@@ -22,11 +22,16 @@ const directoryBadges: Array<{ id: string; embed: ReactNode }> = [
   { id: "domainrank", embed: <a href="https://domainrank.app" target="_blank"><img src="https://domainrank.app/api/badge/lorem-generator.com?style=small" alt="lorem-generator.com Domain Rating" width="249" height="40" /></a> },
   { id: "wired-business", embed: <a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-white.svg" alt="Featured on Wired Business" width="200" height="54" /></a> },
   { id: "startup-fame", embed: <a href="https://startupfa.me/s/lorem-generator?utm_source=lorem-generator.com" target="_blank"><img src="https://startupfa.me/badge?t=classic&theme=light&r=full" alt="Lorem Generator - Featured on Startup Fame" width="171" height="54" /></a> },
+  { id: "uno-directory", embed: <a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a> },
+  { id: "twelve-tools", embed: <a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width="148" height="40" /></a> },
+  { id: "turbo0", embed: <a href="https://turbo0.com/item/lorem-ipsum-generator" target="_blank" rel="noopener noreferrer"><img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style={{ height: "54px", width: "auto" }} /></a> },
+  { id: "racoondr", embed: <a href="https://racoondr.com/lorem-generator.com"><img src="https://racoondr.com/badge/lorem-generator.com?style=default&theme=light&shape=rounded&label=Featured+on" alt="Domain Rating of lorem-generator.com" width="206" height="44" loading="lazy" /></a> },
 ];
 
 function DirectoryBadges({ copy }: { copy: HomepageCopy }) {
   if (!directoryBadges.length) return null;
-  return <div className="footer-badge-area"><span className="footer-badge-label">{copy.footer.featuredOn}</span><div className="directory-badge-list">{directoryBadges.map(({ id, embed }) => <div className="directory-badge-item" key={id}>{embed}</div>)}</div></div>;
+  const renderSequence = (hidden = false) => <div className="directory-badge-sequence" aria-hidden={hidden || undefined} inert={hidden || undefined}>{directoryBadges.map(({ id, embed }) => <div className="directory-badge-item" key={`${id}-${hidden ? "duplicate" : "source"}`}>{embed}</div>)}</div>;
+  return <div className="footer-badge-area"><span className="footer-badge-label">{copy.footer.featuredOn}</span><div className="directory-badge-list"><div className="directory-badge-track">{renderSequence()}{renderSequence(true)}</div></div></div>;
 }
 
 function ActionCopy({ text, copy, compact = false }: { text: string; copy: HomepageCopy; compact?: boolean }) {

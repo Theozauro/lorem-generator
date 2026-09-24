@@ -17,7 +17,12 @@ const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250, 500], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
-const directoryBadges: Array<{ id: string; embed: ReactNode }> = [{ id: "nick-launches", embed: <a href="https://nicklaunches.com/products/lorem-ipsum-generator/?utm_source=lorem-generator.com&utm_medium=badge&utm_campaign=featured" target="_blank" rel="noopener"><img src="https://nicklaunches.com/badges/featured.png" alt="Lorem Ipsum Generator on Nick Launches" width="244" height="56" /></a> }];
+const directoryBadges: Array<{ id: string; embed: ReactNode }> = [
+  { id: "nick-launches", embed: <a href="https://nicklaunches.com/products/lorem-ipsum-generator/?utm_source=lorem-generator.com&utm_medium=badge&utm_campaign=featured" target="_blank" rel="noopener"><img src="https://nicklaunches.com/badges/featured.png" alt="Lorem Ipsum Generator on Nick Launches" width="244" height="56" /></a> },
+  { id: "domainrank", embed: <a href="https://domainrank.app" target="_blank"><img src="https://domainrank.app/api/badge/lorem-generator.com?style=small" alt="lorem-generator.com Domain Rating" width="249" height="40" /></a> },
+  { id: "wired-business", embed: <a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-white.svg" alt="Featured on Wired Business" width="200" height="54" /></a> },
+  { id: "startup-fame", embed: <a href="https://startupfa.me/s/lorem-generator?utm_source=lorem-generator.com" target="_blank"><img src="https://startupfa.me/badge?t=classic&theme=light&r=full" alt="Lorem Generator - Featured on Startup Fame" width="171" height="54" /></a> },
+];
 
 function DirectoryBadges({ copy }: { copy: HomepageCopy }) {
   if (!directoryBadges.length) return null;

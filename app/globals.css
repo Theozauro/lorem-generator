@@ -308,7 +308,7 @@ button:disabled { cursor: not-allowed; }
 /* Designer tools continue the same grid below the primary workspace. */
 .designer-section { padding: 34px 0 38px; }
 .remaining-tools { padding-bottom: 72px; }
-.eyebrow { color: var(--orange); }
+.eyebrow { color: var(--orange-small); }
 .designer-heading h2, .about-section h2 {
   margin: 5px 0 0;
   font-size: clamp(31px, 3.2vw, 44px);

@@ -466,6 +466,10 @@ button:disabled { cursor: not-allowed; }
 @keyframes directory-badge-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .directory-badge-item { display: inline-flex; align-items: center; min-height: 32px; }
 .directory-badge-item img { display: block; width: auto; height: 32px !important; object-fit: contain; filter: grayscale(1); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .directory-badge-item img { filter: grayscale(1) invert(1); }
+}
+:root[data-theme="dark"] .directory-badge-item img { filter: grayscale(1) invert(1); }
 @media (prefers-reduced-motion: reduce) {
   .directory-badge-track { animation: none; transform: none; }
   .directory-badge-sequence[aria-hidden="true"] { display: none; }

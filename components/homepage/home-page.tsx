@@ -26,6 +26,9 @@ const directoryBadges: Array<{ id: string; embed: ReactNode }> = [
   { id: "twelve-tools", embed: <a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width="148" height="40" /></a> },
   { id: "turbo0", embed: <a href="https://turbo0.com/item/lorem-ipsum-generator" target="_blank" rel="noopener noreferrer"><img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style={{ height: "54px", width: "auto" }} /></a> },
   { id: "racoondr", embed: <a href="https://racoondr.com/lorem-generator.com"><img src="https://racoondr.com/badge/lorem-generator.com?style=default&theme=light&shape=rounded&label=Featured+on" alt="Domain Rating of lorem-generator.com" width="206" height="44" loading="lazy" /></a> },
+  { id: "theaitoolsdir", embed: <a href="https://theaitoolsdir.com/product/lorem-ipsum-generator?ref=badge" rel="dofollow"><img src="https://theaitoolsdir.com/badge/lorem-ipsum-generator.svg" alt="Featured on TheAIToolsDir" width="160" height="44" /></a> },
+  { id: "saasbison", embed: <a href="https://saasbison.com" target="_blank" rel="dofollow"><img src="https://saasbison.com/badge.png" alt="Featured on SaaSBison" width="200" height="54" /></a> },
+  { id: "tooldirs", embed: <a href="https://tooldirs.com" target="_blank"><img src="https://tooldirs.com/badge/badge_light.svg" alt="Featured on ToolDirs" width="200" height="54" /></a> },
 ];
 
 function DirectoryBadges({ copy }: { copy: HomepageCopy }) {

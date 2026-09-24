@@ -40,7 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.lang=location.pathname.startsWith('/it')?'it':location.pathname.startsWith('/es')?'es':location.pathname.startsWith('/fr')?'fr':location.pathname.startsWith('/de')?'de':location.pathname.startsWith('/pt-br')?'pt-BR':location.pathname.startsWith('/nl')?'nl-NL':'en';var theme=localStorage.getItem('lorem-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme}catch(e){}" }} /></head>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.lang=location.pathname.startsWith('/it')?'it':location.pathname.startsWith('/es')?'es':location.pathname.startsWith('/fr')?'fr':location.pathname.startsWith('/de')?'de':location.pathname.startsWith('/pt-br')?'pt-BR':location.pathname.startsWith('/nl')?'nl-NL':'en';var theme=localStorage.getItem('lorem-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme}catch(e){}" }} />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="NHN9TqQ3aJGiePnIyQ6Tiw" async />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

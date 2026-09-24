@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowUpRight, Check, Code2, Copy, Moon, RefreshCw, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -17,6 +17,12 @@ const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250, 500], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
+const directoryBadges: Array<{ id: string; embed: ReactNode }> = [{ id: "nick-launches", embed: <a href="https://nicklaunches.com/products/lorem-ipsum-generator/?utm_source=lorem-generator.com&utm_medium=badge&utm_campaign=featured" target="_blank" rel="noopener"><img src="https://nicklaunches.com/badges/featured.png" alt="Lorem Ipsum Generator on Nick Launches" width="244" height="56" /></a> }];
+
+function DirectoryBadges({ copy }: { copy: HomepageCopy }) {
+  if (!directoryBadges.length) return null;
+  return <div className="footer-badge-area"><span className="footer-badge-label">{copy.footer.featuredOn}</span><div className="directory-badge-list">{directoryBadges.map(({ id, embed }) => <div className="directory-badge-item" key={id}>{embed}</div>)}</div></div>;
+}
 
 function ActionCopy({ text, copy, compact = false }: { text: string; copy: HomepageCopy; compact?: boolean }) {
   const [copied, setCopied] = useState(false);
@@ -246,6 +252,6 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
       <section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section>
       <FaqSection copy={copy} />
-    </div><footer className="site-footer"><div className="footer-brand"><span>lorem-generator.com © 2026</span><p>{copy.footer.description}</p></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} />
+    </div><footer className="site-footer"><DirectoryBadges copy={copy} /><div className="footer-brand"><span>lorem-generator.com © 2026</span><p>{copy.footer.description}</p></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} />
   </main>;
 }

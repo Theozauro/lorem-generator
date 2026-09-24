@@ -141,6 +141,7 @@ button:disabled { cursor: not-allowed; }
 }
 @media (min-width: 801px) {
   .main-section h1 { max-width: none; white-space: nowrap; }
+  .seo-intro { max-width: none; }
 }
 .seo-intro { max-width: 650px; margin: 0 0 20px; color: var(--quiet); font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: normal; }
 .title-period { color: var(--orange); }

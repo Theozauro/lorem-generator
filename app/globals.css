@@ -141,10 +141,15 @@ button:disabled { cursor: not-allowed; }
 }
 @media (min-width: 801px) {
   .main-section h1 { max-width: none; white-space: nowrap; }
+  .seo-intro { max-width: none; }
 }
 .seo-intro { max-width: 650px; margin: 0 0 20px; color: var(--quiet); font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: normal; }
 .title-period { color: var(--orange); }
 .title-generator { display: inline-block; font-family: "Geist Pixel", var(--font-mono); font-size: 1.06em; font-weight: 400; letter-spacing: -.035em; line-height: .8; vertical-align: -.025em; }
+@media (min-width: 801px) {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { opacity: 1; }
+}
 .theme-switch { display: flex; flex: none; align-items: center; gap: 4px; padding-bottom: 3px; }
 .theme-switch button { display: inline-flex; align-items: center; gap: 4px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; padding: 7px 6px; background: transparent; color: var(--quiet); font: 700 10px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
 .theme-icon { width: 11px; height: 11px; stroke-width: 1.8; }
@@ -307,13 +312,22 @@ button:disabled { cursor: not-allowed; }
 /* Designer tools continue the same grid below the primary workspace. */
 .designer-section { padding: 34px 0 38px; }
 .remaining-tools { padding-bottom: 72px; }
-.eyebrow { color: var(--orange-small); }
-.designer-heading h2, .about-section h2 {
+.eyebrow { color: var(--orange); }
+.designer-heading h2 {
   margin: 5px 0 0;
   font-size: clamp(31px, 3.2vw, 44px);
   line-height: 1;
   letter-spacing: -.055em;
   font-weight: 730;
+}
+.about-section h2 {
+  margin: 5px 0 0;
+}
+.about-section h2, .seo-content h2, .guide-section h2, .faq-heading h2 {
+  font-size: clamp(30px, 3.5vw, 48px);
+  line-height: 1;
+  letter-spacing: -.055em;
+  font-weight: 400;
 }
 .tool-grid {
   display: grid;
@@ -420,18 +434,18 @@ button:disabled { cursor: not-allowed; }
 .faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; padding: 42px 0 58px; border-top: 2px solid var(--grid); }
 .seo-content { padding: 42px 0 48px; border-top: 2px solid var(--grid); }
 .seo-content-heading { max-width: 650px; }
-.seo-content h2 { margin: 7px 0 0; font-size: clamp(30px, 3.5vw, 48px); line-height: 1; letter-spacing: -.055em; }
+.seo-content h2 { max-width: 100%; margin: 7px 0 0; }
 .seo-content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 30px; }
 .seo-content-grid h3 { margin: 0 0 11px; font: 700 13px/1.2 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
 .seo-content-grid p { max-width: 610px; margin: 0 0 13px; color: var(--quiet); font-size: 15px; line-height: 1.62; }
 .guide-section { padding: 42px 0 48px; border-top: 1px solid var(--grid); }
 .guide-heading { max-width: 660px; }
-.guide-section h2 { margin: 7px 0 0; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.02; letter-spacing: -.05em; }
+.guide-section h2 { margin: 7px 0 0; }
 .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; margin-top: 30px; }
 .guide-grid article { border-top: 1px solid var(--grid); padding-top: 15px; }
 .guide-grid h3 { margin: 0 0 10px; font: 700 12px/1.25 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
 .guide-grid p { max-width: 620px; margin: 0; color: var(--quiet); font-size: 15px; line-height: 1.62; }
-.faq-heading h2 { margin: 6px 0 12px; max-width: 460px; font-size: clamp(31px, 3.2vw, 44px); line-height: 1; letter-spacing: -.055em; font-weight: 730; }
+.faq-heading h2 { margin: 6px 0 12px; max-width: 460px; }
 .faq-heading p { max-width: 390px; margin: 0; color: var(--quiet); font-size: 15px; line-height: 1.55; }
 .faq-list { border-top: 1px solid var(--grid); }
 .faq-list details { border-bottom: 1px solid var(--grid); }

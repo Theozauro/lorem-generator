@@ -1,5 +1,5 @@
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL";
+type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr";
 
 const content = {
   en: {
@@ -158,20 +158,43 @@ const dutchCookies = {
   ]
 } as const;
 
+const turkishPrivacy = {
+  title: "Gizlilik Politikası",
+  intro: "Bu politika, lorem-generator.com sitesinin gizlilikle ilgili mevcut uygulamalarını açıklar.",
+  sections: [
+    ["Metin oluşturma", "Lorem Ipsum oluşturma işlemi tarayıcınızda yerel olarak gerçekleşir. Oluşturulan metin ve sayfadaki araçlara girdiğiniz metinler sitenin uygulama sunucusuna gönderilmez."],
+    ["Tercihler", "Renk teması tercihiniz ve gizlilik tercihiniz, arayüzün bu seçimleri hatırlayabilmesi için tarayıcınızda yerel olarak saklanabilir."],
+    ["Barındırma ve güvenlik", "lorem-generator.com, Cloudflare altyapısı kullanılarak sunulur. Cloudflare, kendi gizlilik şartlarına uygun olarak web sitesini sunmak, güvenliğini sağlamak ve işletmek için gereken IP adresi, istek bilgileri ve güvenlikle ilgili veriler gibi sınırlı teknik bilgileri işleyebilir."],
+    ["Değişiklikler", "Site şu anda analiz, reklam, AdSense veya zorunlu olmayan diğer üçüncü taraf izleme hizmetlerini etkinleştirmemektedir. Ek veri işleme gerektiren yeni bir hizmet etkinleştirilmeden önce bu politika güncellenecektir."]
+  ]
+} as const;
+
+const turkishCookies = {
+  title: "Çerez Politikası",
+  intro: "Bu politika, lorem-generator.com sitesindeki çerezlerin ve tarayıcı yerel depolamasının mevcut kullanımını açıklar.",
+  sections: [
+    ["Çerezler", "Site şu anda analiz, reklam veya zorunlu olmayan başka çerezler kullanmamaktadır."],
+    ["Yerel depolama", "Yerel depolama bir çerez değildir. Arayüz, bu cihazdaki renk teması ve gizlilik tercihlerinizi hatırlamak için yerel depolamayı kullanabilir."],
+    ["İsteğe bağlı hizmetler", "Analiz, reklam ve AdSense hizmetleri şu anda etkin değildir. Bu hizmetlerden biri eklenirse izin kontrolleri ve bu politika etkinleştirilmeden önce güncellenecektir."],
+    ["Yerel depolamayı yönetme", "Yerel depolamayı tarayıcı ayarlarınızdan silebilirsiniz. Bu işlem, kaydedilmiş tema ve gizlilik tercihlerini sıfırlar."]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : language === "tr" ? (kind === "cookies" ? turkishCookies : turkishPrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
   const isFrench = language === "fr";
   const isGerman = language === "de";
   const isBrazilianPortuguese = language === "pt-BR";
   const isDutch = language === "nl-NL";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : "/";
+  const isTurkish = language === "tr";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : "/";
 
   return <main className="site-shell legal-shell" lang={language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : "← Back to generator"}</a>
-      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : "LEGAL"}</span>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : "← Back to generator"}</a>
+      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">

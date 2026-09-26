@@ -17,6 +17,16 @@ const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250, 500], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
+const localeOptions = [
+  ["de", "Deutsch", "/de/"],
+  ["en", "English", "/"],
+  ["es", "Español", "/es/"],
+  ["fr", "Français", "/fr/"],
+  ["it", "Italiano", "/it/"],
+  ["nl", "Nederlands", "/nl/"],
+  ["pt-BR", "Português (Brasil)", "/pt-br/"],
+  ["tr", "Türkçe", "/tr/"],
+] as const;
 const directoryBadges: Array<{ id: string; embed: ReactNode }> = [
   { id: "nick-launches", embed: <a href="https://nicklaunches.com/products/lorem-ipsum-generator/?utm_source=lorem-generator.com&utm_medium=badge&utm_campaign=featured" target="_blank" rel="noopener"><img src="https://nicklaunches.com/badges/featured.png" alt="Lorem Ipsum Generator on Nick Launches" width="244" height="56" /></a> },
   { id: "domainrank", embed: <a href="https://domainrank.app" target="_blank"><img src="https://domainrank.app/api/badge/lorem-generator.com?style=small" alt="lorem-generator.com Domain Rating" width="249" height="40" /></a> },
@@ -163,6 +173,7 @@ function FitTool({ copy }: { copy: HomepageCopy }) {
 export default function Home({ locale }: { locale: HomepageLocale }) {
   const copy = homepageCopy[locale];
   const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : "/";
+  const currentLocaleLabel = localeOptions.find(([, , path]) => path === localePath)?.[1] ?? "English";
   useEffect(() => {
     document.documentElement.lang = locale === "nl-NL" ? "nl" : locale;
     return () => { document.documentElement.lang = "en"; };
@@ -239,7 +250,7 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
   return <main className="site-shell" lang={copy.locale}>
     <div className="page-content">
-      <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><label className="language-picker"><span className="sr-only">{copy.languageLabel}</span><select aria-label={copy.languageLabel} value={locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : "/"} onChange={event => window.location.assign(event.target.value)}><option value="/de/">Deutsch</option><option value="/">English</option><option value="/es/">Español</option><option value="/fr/">Français</option><option value="/it/">Italiano</option><option value="/nl/">Nederlands</option><option value="/pt-br/">Português (Brasil)</option><option value="/tr/">Türkçe</option></select></label><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
+      <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
         <p className="seo-intro">{copy.intro}</p>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
           { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },

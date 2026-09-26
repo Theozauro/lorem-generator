@@ -16,11 +16,13 @@ export const metadata: Metadata = {
     title: "Generatore Lorem Ipsum — Testo segnaposto online",
     description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online.",
     siteName: "lorem-generator.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Generatore Lorem Ipsum — Testo segnaposto online",
     description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online. Testo segnaposto pronto da copiare per layout, prototipi e progetti di design.",
+    images: ["/og-image.png"],
   },
 };
 

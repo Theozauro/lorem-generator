@@ -13,11 +13,13 @@ export const metadata: Metadata = {
     title: "Lorem-Ipsum-Generator — Kostenloser Blindtext-Generator online",
     description: "Erzeuge Lorem Ipsum mit einer exakten Anzahl an Wörtern, Absätzen, Sätzen oder Zeichen. Kopiere Blindtext direkt in deinem Browser.",
     siteName: "lorem-generator.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Lorem-Ipsum-Generator — Kostenloser Blindtext-Generator online",
     description: "Erzeuge Lorem Ipsum mit einer exakten Anzahl an Wörtern, Absätzen, Sätzen oder Zeichen. Kopiere Blindtext direkt in deinem Browser.",
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };

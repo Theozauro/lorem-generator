@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/pt-br/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/", "x-default": "/" } },
-  openGraph: { type: "website", url: `${siteUrl}/pt-br/`, locale: "pt_BR", title, description, siteName: "lorem-generator.com" },
-  twitter: { card: "summary", title, description },
+  openGraph: { type: "website", url: `${siteUrl}/pt-br/`, locale: "pt_BR", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
   robots: { index: true, follow: true },
 };
 

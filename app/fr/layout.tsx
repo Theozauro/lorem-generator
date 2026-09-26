@@ -13,11 +13,13 @@ export const metadata: Metadata = {
     title: "Générateur de Lorem Ipsum — Texte de substitution gratuit en ligne",
     description: "Générez du Lorem Ipsum avec un nombre exact de mots, paragraphes, phrases ou caractères.",
     siteName: "lorem-generator.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Générateur de Lorem Ipsum — Texte de substitution gratuit en ligne",
     description: "Générez du Lorem Ipsum avec un nombre exact de mots, paragraphes, phrases ou caractères. Copiez instantanément du texte de substitution dans votre navigateur.",
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };

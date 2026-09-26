@@ -13,11 +13,13 @@ export const metadata: Metadata = {
     title: "Lorem Ipsum Generator — Free Online Placeholder Text Tool",
     description: "Generate Lorem Ipsum by exact words, paragraphs, sentences, or characters. Copy clean placeholder text instantly in your browser.",
     siteName: "lorem-generator.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Lorem Ipsum Generator — Free Online Placeholder Text Tool",
     description: "Generate Lorem Ipsum by exact words, paragraphs, sentences, or characters. Copy clean placeholder text instantly in your browser.",
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
   icons: {

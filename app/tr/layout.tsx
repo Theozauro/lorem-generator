@@ -3,14 +3,13 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com";
 const title = "Lorem Ipsum Oluşturucu — Çevrim içi yer tutucu metin";
 const description = "Mizanpajlar, prototipler ve tasarım çalışmaları için tam sayıda sözcük, paragraf, cümle veya karakter oluşturun. Metni tarayıcınızda hemen kopyalayın.";
-const socialDescription = "Mizanpajlar, prototipler ve tasarım çalışmaları için tam sayıda sözcük, paragraf, cümle veya karakter oluşturun. Yer tutucu metni tarayıcınızda hemen kopyalayın.";
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/tr/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/", "x-default": "/" } },
-  openGraph: { type: "website", url: `${siteUrl}/tr/`, locale: "tr_TR", title, description: socialDescription, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
-  twitter: { card: "summary_large_image", title, description: socialDescription, images: ["/og-image.png"] },
+  openGraph: { type: "website", url: `${siteUrl}/tr/`, locale: "tr_TR", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
   robots: { index: true, follow: true },
 };
 

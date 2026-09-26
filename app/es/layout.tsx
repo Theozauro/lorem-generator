@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/es/`,
     locale: "es_ES",
     title: "Generador de Lorem Ipsum — Texto de relleno online",
-    description: "Genera palabras, párrafos, frases o caracteres de Lorem Ipsum online.",
+    description: "Genera palabras, párrafos, frases o caracteres de Lorem Ipsum online. Texto de relleno listo para copiar para maquetas, prototipos y proyectos de diseño.",
     siteName: "lorem-generator.com",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },

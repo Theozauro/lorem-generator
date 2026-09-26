@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/it/`,
     locale: "it_IT",
     title: "Generatore Lorem Ipsum — Testo segnaposto online",
-    description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online.",
+    description: "Genera parole, paragrafi, frasi o caratteri Lorem Ipsum online. Testo segnaposto pronto da copiare per layout, prototipi e progetti di design.",
     siteName: "lorem-generator.com",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },

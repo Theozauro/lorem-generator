@@ -191,7 +191,7 @@ export function LegalPage({ language, kind }: { language: LegalLanguage; kind: L
   const isTurkish = language === "tr";
   const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : "/";
 
-  return <main className="site-shell legal-shell" lang={language}>
+  return <main className="site-shell legal-shell" lang={language === "nl-NL" ? "nl" : language}>
     <article className="page-content legal-content">
       <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : "← Back to generator"}</a>
       <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : "LEGAL"}</span>

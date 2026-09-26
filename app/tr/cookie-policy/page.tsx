@@ -8,7 +8,7 @@ const description = "lorem-generator.com sitesindeki çerezler ve tarayıcı yer
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/tr/cookie-policy/", languages: { en: "/cookie-policy/", it: "/it/cookie-policy/", es: "/es/cookie-policy/", fr: "/fr/cookie-policy/", de: "/de/cookie-policy/", "pt-BR": "/pt-br/cookie-policy/", "nl-NL": "/nl/cookie-policy/", tr: "/tr/cookie-policy/" } },
+  alternates: { canonical: "/tr/cookie-policy/", languages: { en: "/cookie-policy/", it: "/it/cookie-policy/", es: "/es/cookie-policy/", fr: "/fr/cookie-policy/", de: "/de/cookie-policy/", "pt-BR": "/pt-br/cookie-policy/", nl: "/nl/cookie-policy/", tr: "/tr/cookie-policy/" } },
   openGraph: { type: "website", url: `${siteUrl}/tr/cookie-policy/`, locale: "tr_TR", title, description, siteName: "lorem-generator.com" },
   twitter: { card: "summary", title, description },
   robots: { index: true, follow: true },

@@ -7,7 +7,7 @@ const description = "Mizanpajlar, prototipler ve tasarım çalışmaları için 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/tr/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", "nl-NL": "/nl/", tr: "/tr/" } },
+  alternates: { canonical: "/tr/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/" } },
   openGraph: { type: "website", url: `${siteUrl}/tr/`, locale: "tr_TR", title, description, siteName: "lorem-generator.com" },
   twitter: { card: "summary", title, description },
   robots: { index: true, follow: true },

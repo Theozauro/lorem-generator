@@ -7,7 +7,7 @@ const description = "Gere Lorem Ipsum com uma quantidade exata de palavras, par√
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/pt-br/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", "nl-NL": "/nl/", tr: "/tr/" } },
+  alternates: { canonical: "/pt-br/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/" } },
   openGraph: { type: "website", url: `${siteUrl}/pt-br/`, locale: "pt_BR", title, description, siteName: "lorem-generator.com" },
   twitter: { card: "summary", title, description },
   robots: { index: true, follow: true },

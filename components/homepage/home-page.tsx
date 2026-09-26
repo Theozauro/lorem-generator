@@ -164,7 +164,7 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
   const copy = homepageCopy[locale];
   const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : "/";
   useEffect(() => {
-    document.documentElement.lang = locale;
+    document.documentElement.lang = locale === "nl-NL" ? "nl" : locale;
     return () => { document.documentElement.lang = "en"; };
   }, [locale]);
   const [mode, setMode] = useState<MainMode>("layout");

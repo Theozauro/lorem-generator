@@ -5,7 +5,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com
 export const metadata: Metadata = {
   title: "Lorem-Ipsum-Generator — Kostenloser Blindtext-Generator online",
   description: "Erzeuge Lorem Ipsum mit einer exakten Anzahl an Wörtern, Absätzen, Sätzen oder Zeichen. Kopiere Blindtext direkt in deinem Browser.",
-  alternates: { canonical: "/de/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", "nl-NL": "/nl/", tr: "/tr/" } },
+  alternates: { canonical: "/de/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/" } },
   openGraph: {
     type: "website",
     url: `${siteUrl}/de/`,

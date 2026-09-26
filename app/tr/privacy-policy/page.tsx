@@ -8,10 +8,10 @@ const description = "lorem-generator.com ve tarayıcı tabanlı Lorem Ipsum olu�
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/tr/privacy-policy/", languages: { en: "/privacy-policy/", it: "/it/privacy-policy/", es: "/es/privacy-policy/", fr: "/fr/privacy-policy/", de: "/de/privacy-policy/", "pt-BR": "/pt-br/privacy-policy/", nl: "/nl/privacy-policy/", tr: "/tr/privacy-policy/", "x-default": "/" } },
+alternates: { canonical: "/tr/privacy-policy/" },
   openGraph: { type: "website", url: `${siteUrl}/tr/privacy-policy/`, locale: "tr_TR", title, description, siteName: "lorem-generator.com" },
   twitter: { card: "summary", title, description },
-  robots: { index: true, follow: true },
+robots: { index: false, follow: true },
 };
 
 export default function TurkishPrivacyPolicyPage() {

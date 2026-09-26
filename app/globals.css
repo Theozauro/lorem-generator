@@ -550,7 +550,7 @@ button:disabled { cursor: not-allowed; }
   .title-row { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 18px; }
   .main-section h1 { max-width: 360px; font-size: clamp(27px, 7vw, 38px); line-height: .95; letter-spacing: -.03em; }
   .theme-switch { padding-bottom: 0; }
-  .header-actions { width: 100%; align-items: center; justify-content: space-between; }
+  .header-actions { width: 100%; align-items: center; justify-content: flex-end; }
   .generator-panel { border-radius: 9px; }
   .controls-grid { grid-template-columns: minmax(0, 1fr) 165px; }
   .controls-grid > * { padding: 13px 12px; }

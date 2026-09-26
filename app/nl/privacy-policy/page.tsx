@@ -8,7 +8,7 @@ const description = "Privacybeleid van lorem-generator.com en de Lorem Ipsum Gen
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/nl/privacy-policy/", languages: { en: "/privacy-policy/", it: "/it/privacy-policy/", es: "/es/privacy-policy/", fr: "/fr/privacy-policy/", de: "/de/privacy-policy/", "pt-BR": "/pt-br/privacy-policy/", nl: "/nl/privacy-policy/", tr: "/tr/privacy-policy/" } },
+  alternates: { canonical: "/nl/privacy-policy/", languages: { en: "/privacy-policy/", it: "/it/privacy-policy/", es: "/es/privacy-policy/", fr: "/fr/privacy-policy/", de: "/de/privacy-policy/", "pt-BR": "/pt-br/privacy-policy/", nl: "/nl/privacy-policy/", tr: "/tr/privacy-policy/", "x-default": "/" } },
   openGraph: { type: "website", url: `${siteUrl}/nl/privacy-policy/`, locale: "nl_NL", title, description, siteName: "lorem-generator.com" },
   twitter: { card: "summary", title, description },
   robots: { index: true, follow: true },

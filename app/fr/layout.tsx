@@ -5,7 +5,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com
 export const metadata: Metadata = {
   title: "Générateur de Lorem Ipsum — Texte de substitution gratuit en ligne",
   description: "Générez du Lorem Ipsum avec un nombre exact de mots, paragraphes, phrases ou caractères. Copiez instantanément du texte de substitution dans votre navigateur.",
-  alternates: { canonical: "/fr/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/" } },
+  alternates: { canonical: "/fr/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/", "x-default": "/" } },
   openGraph: {
     type: "website",
     url: `${siteUrl}/fr/`,

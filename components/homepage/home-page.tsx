@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, initialLayoutText, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
 import { homepageCopy, type HomepageCopy, type HomepageLocale } from "./homepage-copy";
@@ -86,7 +86,7 @@ function StatStrip({ text, copy }: { text: string; copy: HomepageCopy }) {
   return <dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{formatCount(s.words, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{formatCount(s.characters, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{formatCount(s.charactersNoSpaces, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{formatCount(s.sentences, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.paragraphs}</dt><dd>{formatCount(s.paragraphs, copy.numberLocale)}</dd></div></dl>;
 }
 function ToolHead({ title, note }: { title: string; note: string }) {
-  return <div className="tool-head"><div><h3>{title}</h3><p>{note}</p></div></div>;
+  return <div className="tool-head"><div><h2>{title}</h2><p>{note}</p></div></div>;
 }
 function FaqSection({ copy }: { copy: HomepageCopy }) {
   return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{copy.faq.items.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: copy.faq.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
@@ -267,7 +267,7 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
         ] }) }} />
         <div className="generator-panel generator-module">
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
-            <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList></Tabs></div>
+            <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList>{modes.map(item => <TabsContent key={item} value={item} hidden aria-hidden="true" />)}</Tabs></div>
             {mode === "layout" ? <div className="layout-amounts">
               <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">{copy.generator.words}</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
               <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">{copy.generator.paragraphs}</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>

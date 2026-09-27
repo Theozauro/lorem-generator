@@ -11,7 +11,7 @@ export const enHomepageCopy: HomepageCopy = {
     "dark": "dark"
   },
   "title": "Lorem Ipsum Generator",
-  "intro": "Generate exact words, paragraphs, sentences, or characters for layouts, prototypes, and design work.",
+  "intro": "Generate Lorem Ipsum placeholder text by exact words, paragraphs, sentences, or characters for layouts, prototypes, and design work.",
   "schema": {
     "description": "A browser-based Lorem Ipsum generator for exact words, paragraphs, sentences, and characters.",
     "featureList": [

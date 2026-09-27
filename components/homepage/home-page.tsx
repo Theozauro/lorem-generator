@@ -262,7 +262,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
         <p className="seo-intro">{copy.intro}</p>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
           { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },
-          { "@type": "WebApplication", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, featureList: copy.schema.featureList }
+          { "@type": "WebApplication", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, offers: { "@type": "Offer", price: 0 }, featureList: copy.schema.featureList }
         ] }) }} />
         <div className="generator-panel generator-module">
           <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>

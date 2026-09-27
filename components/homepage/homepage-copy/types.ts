@@ -48,7 +48,7 @@ export type HomepageCopy = {
   };
   match: { aria: string; title: string; note: string; source: string; placeholder: string; matched: string; characters: string; words: string; paragraphs: string };
   expansion: { title: string; note: string; source: string; placeholder: string; adjustment: string; custom: string; percentage: string; target: string; characters: string; generate: string };
-  fit: { aria: string; title: string; note: string; width: string; height: string; fontSize: string; lineHeight: string; padding: string; preview: string; approximate: string; box: string };
+  fit: { aria: string; title: string; note: string; width: string; height: string; fontSize: string; lineHeight: string; preview: string; approximate: string; box: string };
   sections: {
     remainingTools: string;
     aboutEyebrow: string; aboutTitle: string; aboutOne: string; aboutTwo: string;
@@ -58,4 +58,3 @@ export type HomepageCopy = {
   faq: { eyebrow: string; title: string; intro: string; items: Array<[string, string]> };
   footer: { featuredOn: string; aria: string; privacy: string; cookies: string; manage: string; privacyHref: string; cookiesHref: string };
 };
-

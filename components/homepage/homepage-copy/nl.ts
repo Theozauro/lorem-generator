@@ -95,7 +95,6 @@ export const nlHomepageCopy: HomepageCopy = {
     "height": "Hoogte",
     "fontSize": "Lettergrootte",
     "lineHeight": "Regelafstand",
-    "padding": "Binnenruimte",
     "preview": "Voorbeeld",
     "approximate": "Geschat aantal woorden",
     "box": "Afmetingen"

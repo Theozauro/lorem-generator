@@ -95,7 +95,6 @@ export const itHomepageCopy: HomepageCopy = {
     "height": "Altezza",
     "fontSize": "Dimensione carattere",
     "lineHeight": "Interlinea",
-    "padding": "Spaziatura interna",
     "preview": "Anteprima",
     "approximate": "adattamento approssimativo",
     "box": "riquadro"

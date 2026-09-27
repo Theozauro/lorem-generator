@@ -59,7 +59,6 @@ export const esHomepageCopy: HomepageCopy = {
     "height": "Altura",
     "fontSize": "Tamaño de fuente",
     "lineHeight": "Interlineado",
-    "padding": "Margen interior",
     "preview": "Vista previa",
     "approximate": "Número aproximado de palabras",
     "box": "Dimensiones"

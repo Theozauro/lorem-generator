@@ -95,7 +95,6 @@ export const enHomepageCopy: HomepageCopy = {
     "height": "Height",
     "fontSize": "Font size",
     "lineHeight": "Line height",
-    "padding": "Padding",
     "preview": "Preview",
     "approximate": "Approximate word count",
     "box": "box"

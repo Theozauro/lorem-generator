@@ -59,7 +59,6 @@ export const frHomepageCopy: HomepageCopy = {
     "height": "Hauteur",
     "fontSize": "Taille de police",
     "lineHeight": "Interligne",
-    "padding": "Marge intérieure",
     "preview": "Aperçu",
     "approximate": "Nombre approximatif de mots",
     "box": "Dimensions"

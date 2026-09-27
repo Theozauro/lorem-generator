@@ -59,7 +59,6 @@ export const deHomepageCopy: HomepageCopy = {
     "height": "Höhe",
     "fontSize": "Schriftgröße",
     "lineHeight": "Zeilenabstand",
-    "padding": "Innenabstand",
     "preview": "Vorschau",
     "approximate": "Ungefähre Wortanzahl",
     "box": "Abmessungen"

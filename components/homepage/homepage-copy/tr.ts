@@ -95,7 +95,6 @@ export const trHomepageCopy: HomepageCopy = {
     "height": "Yükseklik",
     "fontSize": "Yazı boyutu",
     "lineHeight": "Satır yüksekliği",
-    "padding": "İç boşluk",
     "preview": "Önizleme",
     "approximate": "Yaklaşık sözcük sayısı",
     "box": "Boyutlar"

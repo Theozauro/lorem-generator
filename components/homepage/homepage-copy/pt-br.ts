@@ -95,7 +95,6 @@ export const ptbrHomepageCopy: HomepageCopy = {
     "height": "Altura",
     "fontSize": "Tamanho da fonte",
     "lineHeight": "Entrelinha",
-    "padding": "Espaçamento interno",
     "preview": "Visualização",
     "approximate": "Contagem aproximada de palavras",
     "box": "Dimensões"

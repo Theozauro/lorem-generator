@@ -41,8 +41,6 @@ export type HomepageCopy = {
     necessaryNote: string;
     analytics: string;
     analyticsNote: string;
-    advertising: string;
-    advertisingNote: string;
     accept: string;
     reject: string;
     customize: string;
@@ -67,7 +65,7 @@ const baseHomepageCopy: Record<Exclude<HomepageLocale, "es" | "fr" | "de" | "pt-
     title: "Lorem Ipsum Generator", intro: "Generate exact words, paragraphs, sentences, or characters for layouts, prototypes, and design work.",
     schema: { description: "A browser-based Lorem Ipsum generator for exact words, paragraphs, sentences, and characters.", featureList: ["Exact word and paragraph counts", "Character and sentence generation", "Fit to Box preview", "Browser-local generation"] },
     generator: { mode: "Mode", modeLabel: "Generation mode", layout: "Words + paragraphs", characters: "Characters", sentences: "Sentences", quickWords: "Quick word counts", presets: "Presets", options: "Options", startClassic: "Start with “Lorem ipsum…”", sentenceLength: "Sentence length", short: "Short", mixed: "Mixed", long: "Long", output: "Output", outputAria: "Generated Lorem Ipsum", words: "Words", paragraphs: "Paragraphs", stats: { words: "words", characters: "characters", withoutSpaces: "without spaces", sentences: "sentences", paragraphs: "paragraphs" }, copy: "Copy", copied: "Copied", copyHtml: "Copy HTML", regenerate: "Regenerate" },
-    consent: { aria: "Privacy and cookie notice", title: "Privacy preferences", intro: "We use local storage for essential preferences. Optional analytics and advertising remain off until you choose them.", necessary: "Necessary", necessaryNote: "Theme and consent preferences.", analytics: "Analytics", analyticsNote: "Anonymous usage statistics", advertising: "Advertising", advertisingNote: "Ad delivery and measurement.", accept: "Accept all", reject: "Reject optional", customize: "Customize", save: "Save choices" },
+    consent: { aria: "Privacy and cookie notice", title: "Privacy preferences", intro: "We use local storage for essential preferences. Optional analytics remain off until you choose it.", necessary: "Necessary", necessaryNote: "Theme and consent preferences.", analytics: "Analytics", analyticsNote: "Anonymous usage statistics", accept: "Accept all", reject: "Reject optional", customize: "Customize", save: "Save choices" },
     match: { aria: "Match existing text", title: "Match existing text", note: "Replace copy while keeping a similar text footprint.", source: "Source text", placeholder: "Paste text to measure…", matched: "Matched text", characters: "Match character count", words: "Match word count", paragraphs: "Match paragraph count" },
     expansion: { title: "Text expansion", note: "See how a layout behaves with more or less copy.", source: "Source text", placeholder: "Paste text to expand or reduce…", adjustment: "Length adjustment", custom: "Custom %", percentage: "Custom percentage", target: "Target length", characters: "characters", generate: "Generate variant" },
     fit: { aria: "Fit to Box", title: "Fit to Box", note: "Test how much text fits in a fixed-size box.", width: "Width", height: "Height", fontSize: "Font size", lineHeight: "Line height", padding: "Padding", preview: "Preview", approximate: "Approximate word count", box: "box" },
@@ -80,7 +78,7 @@ const baseHomepageCopy: Record<Exclude<HomepageLocale, "es" | "fr" | "de" | "pt-
     title: "Lorem Ipsum Generator", intro: "Genera un numero esatto di parole, paragrafi, frasi o caratteri per layout, prototipi e progetti di design.",
     schema: { description: "Un generatore Lorem Ipsum nel browser per parole, paragrafi, frasi e caratteri esatti.", featureList: ["Conteggio esatto di parole e paragrafi", "Generazione di caratteri e frasi", "Anteprima Adatta al riquadro", "Generazione nel browser"] },
     generator: { mode: "Modalità", modeLabel: "Modalità di generazione", layout: "Parole + paragrafi", characters: "Caratteri", sentences: "Frasi", quickWords: "Quantità rapide", presets: "Valori predefiniti", options: "Opzioni", startClassic: "Inizia con “Lorem ipsum…”", sentenceLength: "Lunghezza delle frasi", short: "brevi", mixed: "miste", long: "lunghe", output: "Risultato", outputAria: "Testo Lorem Ipsum generato", words: "Parole", paragraphs: "Paragrafi", stats: { words: "parole", characters: "caratteri", withoutSpaces: "senza spazi", sentences: "frasi", paragraphs: "paragrafi" }, copy: "Copia", copied: "Copiato", copyHtml: "Copia HTML", regenerate: "Rigenera" },
-    consent: { aria: "Avviso su privacy e cookie", title: "Preferenze sulla privacy", intro: "Usiamo la memoria locale del browser solo per le preferenze essenziali. Analytics e pubblicità restano disattivati finché non li abiliti.", necessary: "Necessari", necessaryNote: "Tema e preferenze del consenso.", analytics: "Analytics", analyticsNote: "Statistiche anonime sull’utilizzo del sito.", advertising: "Pubblicità", advertisingNote: "Erogazione e misurazione degli annunci.", accept: "Accetta tutto", reject: "Rifiuta", customize: "Personalizza", save: "Salva preferenze" },
+    consent: { aria: "Avviso su privacy e cookie", title: "Preferenze sulla privacy", intro: "Usiamo la memoria locale del browser solo per le preferenze essenziali. Analytics resta disattivato finché non lo abiliti.", necessary: "Necessari", necessaryNote: "Tema e preferenze del consenso.", analytics: "Analytics", analyticsNote: "Statistiche anonime sull’utilizzo del sito.", accept: "Accetta tutto", reject: "Rifiuta", customize: "Personalizza", save: "Salva preferenze" },
     match: { aria: "Sostituisci testo esistente", title: "Sostituisci testo esistente", note: "Sostituisci il testo mantenendo lo stesso ingombro.", source: "Testo di partenza", placeholder: "Incolla il testo da misurare…", matched: "Testo sostitutivo", characters: "Stessi caratteri", words: "Stesse parole", paragraphs: "Stessi paragrafi" },
     expansion: { title: "Espansione del testo", note: "Verifica come reagisce un layout con più o meno testo.", source: "Testo di partenza", placeholder: "Incolla un testo di riferimento…", adjustment: "Regolazione della lunghezza", custom: "Percentuale", percentage: "Percentuale personalizzata", target: "Lunghezza desiderata", characters: "caratteri", generate: "Genera variante" },
     fit: { aria: "Adatta al riquadro", title: "Adatta al riquadro", note: "Verifica quanto testo entra in un riquadro.", width: "Larghezza", height: "Altezza", fontSize: "Dimensione carattere", lineHeight: "Interlinea", padding: "Spaziatura interna", preview: "Anteprima", approximate: "adattamento approssimativo", box: "riquadro" },
@@ -165,13 +163,11 @@ const spanishHomepageCopy: HomepageCopy = {
   consent: {
     aria: "Aviso de privacidad y cookies",
     title: "Preferencias de privacidad",
-    intro: "Usamos el almacenamiento local del navegador para guardar preferencias esenciales. Las funciones opcionales de analítica y publicidad permanecen desactivadas hasta que las actives.",
+    intro: "Usamos el almacenamiento local del navegador para guardar preferencias esenciales. La analítica opcional permanece desactivada hasta que la actives.",
     necessary: "Esenciales",
     necessaryNote: "Preferencias de tema y consentimiento.",
     analytics: "Analítica",
     analyticsNote: "Estadísticas de uso anónimas",
-    advertising: "Publicidad",
-    advertisingNote: "Visualización y medición de anuncios.",
     accept: "Aceptar todo",
     reject: "Rechazar todo",
     customize: "Personalizar",
@@ -298,13 +294,11 @@ const frenchHomepageCopy: HomepageCopy = {
   consent: {
     aria: "Avis de confidentialité et de cookies",
     title: "Préférences de confidentialité",
-    intro: "Nous utilisons le stockage local du navigateur pour les préférences essentielles. Les fonctions facultatives de statistiques et de publicité restent désactivées tant que vous ne les activez pas.",
+    intro: "Nous utilisons le stockage local du navigateur pour les préférences essentielles. Les statistiques facultatives restent désactivées tant que vous ne les activez pas.",
     necessary: "Essentiels",
     necessaryNote: "Préférences de thème et de consentement.",
     analytics: "Statistiques",
     analyticsNote: "Statistiques d’utilisation anonymes",
-    advertising: "Publicité",
-    advertisingNote: "Affichage et mesure des publicités.",
     accept: "Tout accepter",
     reject: "Tout refuser",
     customize: "Personnaliser",
@@ -432,13 +426,11 @@ const germanHomepageCopy: HomepageCopy = {
   consent: {
     aria: "Hinweis zu Datenschutz und Cookies",
     title: "Datenschutzeinstellungen",
-    intro: "Wir verwenden den lokalen Browserspeicher für notwendige Einstellungen. Optionale Analyse- und Werbefunktionen bleiben deaktiviert, bis du sie aktivierst.",
+    intro: "Wir verwenden den lokalen Browserspeicher für notwendige Einstellungen. Optionale Analyse bleibt deaktiviert, bis du sie aktivierst.",
     necessary: "Notwendig",
     necessaryNote: "Design- und Einwilligungseinstellungen.",
     analytics: "Analyse",
     analyticsNote: "Anonyme Nutzungsstatistiken",
-    advertising: "Werbung",
-    advertisingNote: "Ausspielung und Messung von Werbung.",
     accept: "Alle akzeptieren",
     reject: "Alle ablehnen",
     customize: "Einstellungen",
@@ -499,7 +491,7 @@ const brazilianPortugueseHomepageCopy: HomepageCopy = {
   intro: "Gere uma quantidade exata de palavras, parágrafos, frases ou caracteres para layouts, protótipos e projetos de design.",
   schema: { description: "Um gerador de Lorem Ipsum no navegador para criar uma quantidade exata de palavras, parágrafos, frases e caracteres.", featureList: ["Contagem exata de palavras e parágrafos", "Geração por caracteres e frases", "Visualização do ajuste ao quadro", "Geração local no navegador"] },
   generator: { mode: "Modo", modeLabel: "Modo de geração", layout: "Palavras + parágrafos", characters: "Caracteres", sentences: "Frases", quickWords: "Quantidades rápidas", presets: "Predefinições", options: "Opções", startClassic: "Começar com “Lorem ipsum…”", sentenceLength: "Comprimento das frases", short: "Curtas", mixed: "Variadas", long: "Longas", output: "Resultado", outputAria: "Lorem Ipsum gerado", words: "Palavras", paragraphs: "Parágrafos", stats: { words: "palavras", characters: "caracteres", withoutSpaces: "sem espaços", sentences: "frases", paragraphs: "parágrafos" }, copy: "Copiar", copied: "Copiado", copyHtml: "Copiar HTML", regenerate: "Gerar novamente" },
-  consent: { aria: "Aviso de privacidade e cookies", title: "Preferências de privacidade", intro: "Usamos o armazenamento local do navegador para preferências essenciais. Recursos opcionais de análise e publicidade permanecem desativados até que você os ative.", necessary: "Essenciais", necessaryNote: "Preferências de tema e consentimento.", analytics: "Análises", analyticsNote: "Estatísticas anônimas de uso", advertising: "Publicidade", advertisingNote: "Exibição e medição de anúncios.", accept: "Aceitar tudo", reject: "Recusar opcionais", customize: "Personalizar", save: "Salvar preferências" },
+  consent: { aria: "Aviso de privacidade e cookies", title: "Preferências de privacidade", intro: "Usamos o armazenamento local do navegador para preferências essenciais. As análises opcionais permanecem desativadas até que você as ative.", necessary: "Essenciais", necessaryNote: "Preferências de tema e consentimento.", analytics: "Análises", analyticsNote: "Estatísticas anônimas de uso", accept: "Aceitar tudo", reject: "Recusar opcionais", customize: "Personalizar", save: "Salvar preferências" },
   match: { aria: "Ajustar ao texto existente", title: "Ajustar ao texto existente", note: "Substitua o texto mantendo uma extensão semelhante.", source: "Texto de referência", placeholder: "Cole um texto para medir…", matched: "Texto ajustado", characters: "Mesma quantidade de caracteres", words: "Mesma quantidade de palavras", paragraphs: "Mesma quantidade de parágrafos" },
   expansion: { title: "Variação de comprimento", note: "Veja como um layout se comporta com mais ou menos texto.", source: "Texto de referência", placeholder: "Cole um texto para alongar ou encurtar…", adjustment: "Ajuste de comprimento", custom: "% personalizado", percentage: "Porcentagem personalizada", target: "Comprimento desejado", characters: "caracteres", generate: "Gerar variação" },
   fit: { aria: "Ajustar ao quadro", title: "Ajustar ao quadro", note: "Teste quanto texto cabe em um quadro de tamanho fixo.", width: "Largura", height: "Altura", fontSize: "Tamanho da fonte", lineHeight: "Entrelinha", padding: "Espaçamento interno", preview: "Visualização", approximate: "Contagem aproximada de palavras", box: "Dimensões" },
@@ -535,7 +527,7 @@ const dutchHomepageCopy: HomepageCopy = {
   intro: "Genereer een exact aantal woorden, alinea’s, zinnen of tekens voor layouts, prototypes en ontwerpwerk.",
   schema: { description: "Een Lorem Ipsum Generator in de browser voor het maken van een exact aantal woorden, alinea’s, zinnen en tekens.", featureList: ["Exact aantal woorden en alinea’s", "Genereren op tekens en zinnen", "Voorbeeld voor aanpassen aan kader", "Lokale generatie in de browser"] },
   generator: { mode: "Modus", modeLabel: "Generatiemodus", layout: "Woorden + alinea’s", characters: "Tekens", sentences: "Zinnen", quickWords: "Snelle aantallen", presets: "Voorinstellingen", options: "Opties", startClassic: "Begin met “Lorem ipsum…”", sentenceLength: "Zinslengte", short: "Kort", mixed: "Gemengd", long: "Lang", output: "Resultaat", outputAria: "Gegenereerde Lorem Ipsum", words: "Woorden", paragraphs: "Alinea’s", stats: { words: "woorden", characters: "tekens", withoutSpaces: "zonder spaties", sentences: "zinnen", paragraphs: "alinea’s" }, copy: "Kopiëren", copied: "Gekopieerd", copyHtml: "HTML kopiëren", regenerate: "Opnieuw genereren" },
-  consent: { aria: "Privacy- en cookiemelding", title: "Privacyvoorkeuren", intro: "We gebruiken lokale browseropslag voor essentiële voorkeuren. Optionele functies voor analyse en advertenties blijven uitgeschakeld totdat je ze inschakelt.", necessary: "Essentieel", necessaryNote: "Thema- en toestemmingsvoorkeuren.", analytics: "Analyse", analyticsNote: "Anonieme gebruiksstatistieken", advertising: "Advertenties", advertisingNote: "Weergave en meting van advertenties.", accept: "Alles accepteren", reject: "Optionele functies weigeren", customize: "Aanpassen", save: "Voorkeuren opslaan" },
+  consent: { aria: "Privacy- en cookiemelding", title: "Privacyvoorkeuren", intro: "We gebruiken lokale browseropslag voor essentiële voorkeuren. Optionele analysefuncties blijven uitgeschakeld totdat je ze inschakelt.", necessary: "Essentieel", necessaryNote: "Thema- en toestemmingsvoorkeuren.", analytics: "Analyse", analyticsNote: "Anonieme gebruiksstatistieken", accept: "Alles accepteren", reject: "Optionele functies weigeren", customize: "Aanpassen", save: "Voorkeuren opslaan" },
   match: { aria: "Aanpassen aan bestaande tekst", title: "Aanpassen aan bestaande tekst", note: "Vervang tekst terwijl je ongeveer dezelfde lengte behoudt.", source: "Referentietekst", placeholder: "Plak tekst om te meten…", matched: "Aangepaste tekst", characters: "Zelfde aantal tekens", words: "Zelfde aantal woorden", paragraphs: "Zelfde aantal alinea’s" },
   expansion: { title: "Lengtevariatie", note: "Bekijk hoe een layout reageert op meer of minder tekst.", source: "Referentietekst", placeholder: "Plak tekst om deze langer of korter te maken…", adjustment: "Lengte aanpassen", custom: "aangepast %", percentage: "Aangepast percentage", target: "Gewenste lengte", characters: "tekens", generate: "Variatie genereren" },
   fit: { aria: "Aanpassen aan kader", title: "Aanpassen aan kader", note: "Test hoeveel tekst in een kader met vaste afmetingen past.", width: "Breedte", height: "Hoogte", fontSize: "Lettergrootte", lineHeight: "Regelafstand", padding: "Binnenruimte", preview: "Voorbeeld", approximate: "Geschat aantal woorden", box: "Afmetingen" },
@@ -600,13 +592,11 @@ const turkishHomepageCopy: HomepageCopy = {
   consent: {
     aria: "Gizlilik ve çerez bildirimi",
     title: "Gizlilik tercihleri",
-    intro: "Temel tercihler için tarayıcının yerel depolamasını kullanıyoruz. İsteğe bağlı analiz ve reklam özellikleri siz etkinleştirene kadar kapalı kalır.",
+    intro: "Temel tercihler için tarayıcının yerel depolamasını kullanıyoruz. İsteğe bağlı analiz özelliği siz etkinleştirene kadar kapalı kalır.",
     necessary: "Gerekli",
     necessaryNote: "Tema ve izin tercihleri.",
     analytics: "Analiz",
     analyticsNote: "Anonim kullanım istatistikleri",
-    advertising: "Reklam",
-    advertisingNote: "Reklam sunumu ve ölçümü.",
     accept: "Tümünü kabul et",
     reject: "İsteğe bağlı olanları reddet",
     customize: "Özelleştir",

@@ -95,7 +95,6 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
   const [visible, setVisible] = useState(false);
   const [customize, setCustomize] = useState(false);
   const [analytics, setAnalytics] = useState(false);
-  const [advertising, setAdvertising] = useState(false);
   useEffect(() => {
     const openPrivacy = () => { setCustomize(true); setVisible(true); };
     window.addEventListener("open-privacy", openPrivacy);
@@ -104,11 +103,11 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
       // Hydrate the banner from the browser-only consent store.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       if (!saved) setVisible(true);
-      else { const parsed = JSON.parse(saved) as { analytics?: boolean; advertising?: boolean }; setAnalytics(parsed.analytics === true); setAdvertising(parsed.advertising === true); }
+      else { const parsed = JSON.parse(saved) as { analytics?: boolean }; setAnalytics(parsed.analytics === true); }
     } catch { setVisible(false); }
     return () => window.removeEventListener("open-privacy", openPrivacy);
   }, []);
-  function save(nextAnalytics: boolean, nextAdvertising: boolean) {
+  function save(nextAnalytics: boolean) {
     let previousAnalytics = analytics;
     try {
       const saved = window.localStorage.getItem("lorem-consent");
@@ -117,13 +116,13 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
         previousAnalytics = parsed.analytics === true;
       }
     } catch {}
-    try { window.localStorage.setItem("lorem-consent", JSON.stringify({ necessary: true, preferences: true, analytics: nextAnalytics, advertising: nextAdvertising, version: "1.0", updatedAt: new Date().toISOString() })); } catch {}
-    setAnalytics(nextAnalytics); setAdvertising(nextAdvertising); setVisible(false); setCustomize(false);
+    try { window.localStorage.setItem("lorem-consent", JSON.stringify({ necessary: true, preferences: true, analytics: nextAnalytics, version: "1.0", updatedAt: new Date().toISOString() })); } catch {}
+    setAnalytics(nextAnalytics); setVisible(false); setCustomize(false);
     if (previousAnalytics && !nextAnalytics) { window.location.reload(); return; }
     window.dispatchEvent(new CustomEvent("analytics-consent-changed", { detail: { analytics: nextAnalytics } }));
   }
   if (!visible) return null;
-  return <aside className="consent-banner" aria-label={copy.consent.aria}><div className="consent-copy"><strong>{copy.consent.title}</strong><p>{copy.consent.intro}</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>{copy.consent.necessary}</b><small>{copy.consent.necessaryNote}</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>{copy.consent.analytics}</b><small>{copy.consent.analyticsNote}</small></span></label><label><input type="checkbox" checked={advertising} onChange={event => setAdvertising(event.target.checked)} /> <span><b>{copy.consent.advertising}</b><small>{copy.consent.advertisingNote}</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics, advertising)}>{copy.consent.save}</Button></> : <><Button type="button" className="consent-accept" onClick={() => save(true, true)}>{copy.consent.accept}</Button><Button type="button" variant="outline" onClick={() => save(false, false)}>{copy.consent.reject}</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>{copy.consent.customize}</Button></>}</div></aside>;
+  return <aside className="consent-banner" aria-label={copy.consent.aria}><div className="consent-copy"><strong>{copy.consent.title}</strong><p>{copy.consent.intro}</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>{copy.consent.necessary}</b><small>{copy.consent.necessaryNote}</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>{copy.consent.analytics}</b><small>{copy.consent.analyticsNote}</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics)}>{copy.consent.save}</Button></> : <><Button type="button" className="consent-accept" onClick={() => save(true)}>{copy.consent.accept}</Button><Button type="button" variant="outline" onClick={() => save(false)}>{copy.consent.reject}</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>{copy.consent.customize}</Button></>}</div></aside>;
 }
 function MatchTool({ copy }: { copy: HomepageCopy }) {
   const [source, setSource] = useState("");

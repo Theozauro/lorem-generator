@@ -258,7 +258,7 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
     setWords(next); setWordsInput(String(next));
   }
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
-  return <main className="site-shell" lang={copy.locale}>
+  return <><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533538512095765" crossOrigin="anonymous" /><main className="site-shell" lang={copy.locale}>
     <div className="page-content">
       <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
         <p className="seo-intro">{copy.intro}</p>
@@ -287,5 +287,5 @@ export default function Home({ locale }: { locale: HomepageLocale }) {
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section>
       <FaqSection copy={copy} />
     </div><footer className="site-footer"><DirectoryBadges copy={copy} /><div className="footer-brand"><span>lorem-generator.com © 2026</span></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} />
-  </main>;
+  </main></>;
 }

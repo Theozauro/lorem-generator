@@ -5,44 +5,60 @@ const content = {
   en: {
     privacy: {
       title: "Privacy Policy",
-      intro: "This policy describes the current privacy behaviour of lorem-generator.com.",
+      intro: "This Privacy Policy explains how lorem-generator.com handles information when you use the website.",
       sections: [
-        ["Text generation", "Lorem Ipsum generation runs locally in your browser. Generated text and text entered into the on-page tools are not sent to the site’s application server."],
-        ["Preferences", "Your colour theme preference and privacy preference can be stored locally in your browser so the interface can remember those choices."],
-        ["Hosting and security", "lorem-generator.com is delivered using Cloudflare infrastructure. Cloudflare may process limited technical information needed to deliver, secure, and operate the website, including IP address, request information, and security-related data, according to its own privacy terms."],
-        ["Changes", "The site does not currently enable analytics, advertising, AdSense, or other non-essential third-party tracking services. This policy will be updated before a new data-processing service is enabled."]
+        ["Text generation", "Lorem Ipsum generation and the text tools available on the site run locally in your browser. Generated text and text entered into these tools are not sent to the site’s application server."],
+        ["Local preferences", "The site uses browser local storage to remember interface settings such as your colour theme and your analytics consent preference. This information remains on your device until you change your preferences or clear your browser storage."],
+        ["Analytics", <><p>lorem-generator.com uses Ahrefs Web Analytics to understand aggregate website traffic and usage. Ahrefs describes its Web Analytics service as cookie-free and states that it does not collect personal data. On this site, the Ahrefs analytics script is loaded only after you choose to allow analytics.</p><p>You can change your analytics preference through the site’s privacy controls.</p><p>Learn more about <a href="https://ahrefs.com/web-analytics">Ahrefs Web Analytics</a>.</p></>],
+        ["Advertising and Google AdSense", <><p>lorem-generator.com uses Google AdSense to display advertising.</p><p>Google and its advertising partners may use cookies, local storage, IP addresses, web beacons or other identifiers in connection with ad delivery, measurement, fraud prevention and, where permitted, ad personalisation.</p><p>For users in the European Economic Area, the United Kingdom and Switzerland, advertising consent is managed through Google Privacy &amp; Messaging, a consent management platform that supports the IAB Europe Transparency &amp; Consent Framework. The message allows users to consent, refuse consent or manage individual options for advertising purposes and participating vendors.</p><p>Users can later review or withdraw their advertising consent through the Privacy and cookie settings provided by Google’s consent system.</p><p>See <a href="https://policies.google.com/technologies/ads">Google’s advertising information</a>.</p></>],
+        ["Hosting and security", <><p>lorem-generator.com is delivered through Cloudflare infrastructure. When users access websites delivered through Cloudflare, Cloudflare may process limited technical information such as IP addresses, traffic-routing data, system configuration information and other request-related data necessary to deliver, secure and operate its services.</p><p>See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy documentation</a>.</p></>],
+        ["Data retention", "The site does not create user accounts and does not store the text generated with the Lorem Ipsum tools on its application server. Local preferences remain in your browser until you change them or clear browser storage. Information processed by third-party providers is retained according to their respective policies and service configurations."],
+        ["Your choices and rights", <><p>Where applicable under data-protection law, you may have rights relating to access, rectification, erasure, restriction, objection, data portability and withdrawal of consent.</p><p>Withdrawing consent does not affect the lawfulness of processing carried out before withdrawal.</p><p>For privacy-related requests concerning lorem-generator.com, contact <a href="mailto:privacy@lorem-generator.com">privacy@lorem-generator.com</a>.</p></>],
+        ["Third-party services", <><p>For more information about how third-party providers process information, refer to their respective privacy documentation:</p><ul><li><a href="https://policies.google.com/privacy">Google</a></li><li><a href="https://ahrefs.com/privacy">Ahrefs</a></li><li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a></li></ul></>],
+        ["Changes to this policy", "This Privacy Policy may be updated when the site’s services, technologies or data-processing practices change. The version published on this page reflects the current operation of lorem-generator.com."]
       ]
     },
     cookies: {
       title: "Cookie Policy",
-      intro: "This policy explains the current use of cookies and browser storage on lorem-generator.com.",
+      intro: "This Cookie Policy explains how lorem-generator.com uses cookies and browser storage and how you can manage your choices.",
       sections: [
-        ["Cookies", "The site does not currently use analytics, advertising, or other non-essential cookies."],
-        ["Local storage", "Local storage is not a cookie. The interface may use it to remember your colour theme preference and your saved privacy preference on this device."],
-        ["Optional services", "Analytics, advertising, and AdSense are not currently enabled. If any of these services are added, the consent controls and this policy will be updated before they are activated."],
-        ["Managing storage", "You can clear local storage through your browser settings. This resets saved theme and privacy preferences."]
+        ["Necessary browser storage", <><p>The site uses browser local storage for essential interface functions, including:</p><ul><li>your colour theme preference;</li><li>your saved analytics consent preference.</li></ul><p>Local storage is not a cookie. These values remain on your device until you change your preferences or clear your browser storage.</p></>],
+        ["Analytics", <><p>Ahrefs Web Analytics is used only after analytics consent has been granted.</p><p>Ahrefs describes this service as cookie-free and states that it does not collect personal data. If analytics consent is not granted, the Ahrefs analytics script is not loaded.</p><p>Learn more about <a href="https://ahrefs.com/web-analytics">Ahrefs Web Analytics</a>.</p></>],
+        ["Advertising cookies and storage", <><p>Google AdSense may use cookies or other forms of local storage when advertising services are provided. Google states that AdSense uses cookies for functions including ad delivery, frequency control, reporting and, where permitted, personalisation.</p><p>For eligible users in the EEA, the UK and Switzerland, Google Privacy &amp; Messaging manages consent for advertising cookies, local storage and associated processing.</p><p>See <a href="https://policies.google.com/technologies/ads">Google’s advertising information</a>.</p></>],
+        ["Managing analytics preferences", "The site’s own privacy controls manage the optional Ahrefs analytics setting. If analytics is disabled, Ahrefs is not loaded on subsequent page loads."],
+        ["Managing advertising preferences", "Advertising preferences are managed separately through Google’s consent system. Eligible users can reopen the Google consent interface using the Privacy and cookie settings control and can change or withdraw previous choices."],
+        ["Browser controls", "You can also delete cookies and local storage through your browser settings. Doing so may reset saved preferences and may cause consent choices to be requested again."],
+        ["Changes to this policy", "This Cookie Policy may be updated when the cookies, browser-storage mechanisms or third-party services used by lorem-generator.com change."]
       ]
     }
   },
   it: {
     privacy: {
       title: "Informativa privacy",
-      intro: "Questa informativa descrive il comportamento attuale di lorem-generator.com in materia di privacy.",
+      intro: "Questa informativa descrive come lorem-generator.com tratta le informazioni durante l’utilizzo del sito.",
       sections: [
-        ["Generazione del testo", "La generazione di Lorem Ipsum avviene localmente nel browser. Il testo generato e quello inserito negli strumenti della pagina non vengono inviati al server applicativo del sito."],
-        ["Preferenze", "La preferenza del tema colore e la preferenza sulla privacy possono essere salvate localmente nel browser per permettere all’interfaccia di ricordare tali scelte."],
-        ["Hosting e sicurezza", "lorem-generator.com viene distribuito tramite l’infrastruttura Cloudflare. Cloudflare può trattare informazioni tecniche limitate necessarie a distribuire, proteggere e gestire il sito, quali indirizzo IP, informazioni sulla richiesta e dati relativi alla sicurezza, secondo la propria informativa sulla privacy."],
-        ["Modifiche", "Il sito non abilita attualmente analytics, pubblicità, AdSense o altri servizi di tracciamento non essenziali di terze parti. Questa informativa verrà aggiornata prima di attivare un nuovo servizio che comporti il trattamento di dati."]
+        ["Generazione del testo", "La generazione di Lorem Ipsum e gli strumenti di testo disponibili sul sito funzionano localmente nel browser. Il testo generato e quello inserito negli strumenti non vengono inviati al server applicativo del sito."],
+        ["Preferenze locali", "Il sito utilizza la memoria locale del browser per ricordare alcune impostazioni dell’interfaccia, come il tema colore e la preferenza relativa agli analytics. Queste informazioni rimangono sul dispositivo finché non modifichi le preferenze o cancelli i dati memorizzati dal browser."],
+        ["Analytics", <><p>lorem-generator.com utilizza <a href="https://ahrefs.com/it/web-analytics">Ahrefs Web Analytics</a> per comprendere in forma aggregata il traffico e l’utilizzo del sito. Ahrefs descrive il proprio servizio Web Analytics come privo di cookie e dichiara di non raccogliere dati personali. Su questo sito lo script di Ahrefs viene caricato solo dopo che l’utente ha scelto di consentire gli analytics.</p><p>La preferenza relativa agli analytics può essere modificata tramite i controlli privacy del sito.</p></>],
+        ["Pubblicità e Google AdSense", <><p>lorem-generator.com utilizza Google AdSense per mostrare contenuti pubblicitari.</p><p>Google e i suoi partner pubblicitari possono utilizzare cookie, archiviazione locale, indirizzi IP, web beacon o altri identificatori in relazione alla pubblicazione e misurazione degli annunci, alla prevenzione delle frodi e, quando consentito, alla personalizzazione della pubblicità.</p><p>Per gli utenti dello Spazio economico europeo, del Regno Unito e della Svizzera, le preferenze relative alla pubblicità sono gestite tramite Google Privacy e messaggi, una piattaforma di gestione del consenso compatibile con il Transparency &amp; Consent Framework di IAB Europe. Il messaggio permette di acconsentire, negare il consenso o gestire singolarmente le opzioni relative alle finalità pubblicitarie e ai fornitori coinvolti.</p><p>Le preferenze pubblicitarie possono essere successivamente modificate o revocate tramite le impostazioni relative alla privacy e ai cookie messe a disposizione dal sistema di consenso Google.</p><p>Consulta le <a href="https://policies.google.com/technologies/ads?hl=it">informazioni di Google sulla pubblicità</a>.</p></>],
+        ["Hosting e sicurezza", <><p>lorem-generator.com viene distribuito attraverso l’infrastruttura Cloudflare. Durante l’accesso al sito, Cloudflare può trattare informazioni tecniche limitate, tra cui indirizzi IP, dati di instradamento del traffico, informazioni sulla configurazione del sistema e altri dati relativi alle richieste, necessari per distribuire, proteggere e gestire il servizio.</p><p>Consulta la <a href="https://www.cloudflare.com/it-it/privacypolicy/">documentazione sulla privacy di Cloudflare</a>.</p></>],
+        ["Conservazione dei dati", "Il sito non crea account utente e non memorizza sul proprio server applicativo il testo generato tramite gli strumenti Lorem Ipsum. Le preferenze locali restano memorizzate nel browser finché non vengono modificate o cancellate. Le informazioni eventualmente trattate dai fornitori terzi vengono conservate secondo le rispettive informative e configurazioni dei servizi."],
+        ["Scelte e diritti dell’utente", <><p>Quando previsto dalla normativa applicabile, l’utente può esercitare i diritti relativi ad accesso, rettifica, cancellazione, limitazione del trattamento, opposizione, portabilità dei dati e revoca del consenso.</p><p>La revoca del consenso non pregiudica la liceità dei trattamenti effettuati prima della revoca.</p><p>Per richieste relative alla privacy di lorem-generator.com è possibile contattare <a href="mailto:privacy@lorem-generator.com">privacy@lorem-generator.com</a>.</p></>],
+        ["Servizi di terze parti", <><p>Per maggiori informazioni sul trattamento effettuato dai fornitori terzi è possibile consultare le rispettive informative:</p><ul><li><a href="https://policies.google.com/privacy?hl=it">Google</a></li><li><a href="https://ahrefs.com/privacy">Ahrefs</a></li><li><a href="https://www.cloudflare.com/it-it/privacypolicy/">Cloudflare</a></li></ul></>],
+        ["Modifiche all’informativa", "Questa informativa può essere aggiornata quando cambiano i servizi, le tecnologie o le modalità di trattamento dei dati utilizzate dal sito. La versione pubblicata in questa pagina descrive il funzionamento attuale di lorem-generator.com."]
       ]
     },
     cookies: {
       title: "Informativa sui cookie",
-      intro: "Questa informativa spiega l’uso attuale dei cookie e della memoria del browser su lorem-generator.com.",
+      intro: "Questa informativa descrive l’utilizzo di cookie e memoria del browser da parte di lorem-generator.com e spiega come gestire le proprie preferenze.",
       sections: [
-        ["Cookie", "Il sito non utilizza attualmente cookie per analytics, pubblicitari o altri cookie non essenziali."],
-        ["Memoria locale", "La memoria locale non è un cookie. L’interfaccia può usarla per ricordare la preferenza del tema colore e la preferenza sulla privacy salvata su questo dispositivo."],
-        ["Servizi opzionali", "Analytics, pubblicità e AdSense non sono attivi. Se uno di questi servizi verrà aggiunto, i controlli del consenso e questa informativa saranno aggiornati prima dell’attivazione."],
-        ["Gestione della memoria", "Puoi cancellare la memoria locale dalle impostazioni del browser. Così verranno reimpostate le preferenze di tema e privacy salvate."]
+        ["Memoria locale necessaria", <><p>Il sito utilizza la memoria locale del browser per alcune funzioni dell’interfaccia, tra cui:</p><ul><li>la preferenza relativa al tema colore;</li><li>la preferenza salvata relativa agli analytics.</li></ul><p>La memoria locale non è un cookie. Questi valori rimangono sul dispositivo finché non vengono modificati oppure cancellati dalle impostazioni del browser.</p></>],
+        ["Analytics", <><p><a href="https://ahrefs.com/it/web-analytics">Ahrefs Web Analytics</a> viene utilizzato soltanto dopo che l’utente ha espresso il consenso agli analytics.</p><p>Ahrefs descrive questo servizio come privo di cookie e dichiara di non raccogliere dati personali. Se il consenso agli analytics non viene fornito, lo script Ahrefs non viene caricato.</p></>],
+        ["Cookie e archiviazione per la pubblicità", <><p>Google AdSense può utilizzare cookie o altre forme di archiviazione locale durante l’erogazione dei servizi pubblicitari. Secondo Google, i cookie di AdSense possono essere utilizzati, tra le altre cose, per pubblicare annunci, limitarne la frequenza, misurarne le prestazioni e, quando consentito, personalizzarli.</p><p>Per gli utenti interessati nello SEE, nel Regno Unito e in Svizzera, Google Privacy e messaggi gestisce il consenso relativo ai cookie pubblicitari, all’archiviazione locale e ai trattamenti collegati.</p><p>Consulta le <a href="https://policies.google.com/technologies/ads?hl=it">informazioni di Google sulla pubblicità</a>.</p></>],
+        ["Gestione delle preferenze analytics", "I controlli privacy propri di lorem-generator.com gestiscono esclusivamente la preferenza opzionale relativa ad Ahrefs Analytics. Quando gli analytics vengono disabilitati, Ahrefs non viene caricato ai successivi caricamenti della pagina."],
+        ["Gestione delle preferenze pubblicitarie", "Le preferenze pubblicitarie sono gestite separatamente tramite il sistema di consenso Google. Gli utenti interessati possono riaprire l’interfaccia Google tramite il comando Impostazioni relative alla privacy e ai cookie e modificare o revocare le scelte effettuate in precedenza."],
+        ["Impostazioni del browser", "Cookie e memoria locale possono essere eliminati anche attraverso le impostazioni del browser. Questa operazione può reimpostare le preferenze salvate e comportare una nuova richiesta di consenso."],
+        ["Modifiche all’informativa", "Questa informativa può essere aggiornata quando cambiano i cookie, i meccanismi di archiviazione del browser o i servizi di terze parti utilizzati da lorem-generator.com."]
       ]
     }
   }
@@ -198,7 +214,12 @@ export function LegalPage({ language, kind }: { language: LegalLanguage; kind: L
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">
-        {copy.sections.map(([heading, body]) => <section key={heading}><h2>{heading}</h2><p>{body}</p></section>)}
+        {copy.sections.map(([heading, body]) => (
+          <section key={heading}>
+            <h2>{heading}</h2>
+            {typeof body === "string" ? <p>{body}</p> : body}
+          </section>
+        ))}
       </div>
     </article>
   </main>;

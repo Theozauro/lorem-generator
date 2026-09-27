@@ -9,7 +9,7 @@ import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, initialLayoutText, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
-import { homepageCopy, type HomepageCopy, type HomepageLocale } from "./homepage-copy";
+import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "system" | "light" | "dark";
@@ -179,8 +179,7 @@ function FitTool({ copy }: { copy: HomepageCopy }) {
     <div ref={measure} aria-hidden="true" className="fit-measure" style={dimensions} />
   </article>;
 }
-export default function Home({ locale }: { locale: HomepageLocale }) {
-  const copy = homepageCopy[locale];
+export default function Home({ locale, copy }: { locale: HomepageLocale; copy: HomepageCopy }) {
   const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : "/";
   const currentLocaleLabel = localeOptions.find(([, , path]) => path === localePath)?.[1] ?? "English";
   useEffect(() => {

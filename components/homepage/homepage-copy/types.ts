@@ -1,0 +1,61 @@
+export type HomepageLocale = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr";
+
+export type HomepageCopy = {
+  locale: HomepageLocale;
+  numberLocale: string;
+  languageLabel: string;
+  themeLabel: string;
+  theme: { system: string; light: string; dark: string };
+  title: string;
+  intro: string;
+  schema: { description: string; featureList: string[] };
+  generator: {
+    mode: string;
+    modeLabel: string;
+    layout: string;
+    characters: string;
+    sentences: string;
+    quickWords: string;
+    presets: string;
+    options: string;
+    startClassic: string;
+    sentenceLength: string;
+    short: string;
+    mixed: string;
+    long: string;
+    output: string;
+    outputAria: string;
+    words: string;
+    paragraphs: string;
+    stats: { words: string; characters: string; withoutSpaces: string; sentences: string; paragraphs: string };
+    copy: string;
+    copied: string;
+    copyHtml: string;
+    regenerate: string;
+  };
+  consent: {
+    aria: string;
+    title: string;
+    intro: string;
+    necessary: string;
+    necessaryNote: string;
+    analytics: string;
+    analyticsNote: string;
+    accept: string;
+    reject: string;
+    customize: string;
+    save: string;
+  };
+  match: { aria: string; title: string; note: string; source: string; placeholder: string; matched: string; characters: string; words: string; paragraphs: string };
+  expansion: { title: string; note: string; source: string; placeholder: string; adjustment: string; custom: string; percentage: string; target: string; characters: string; generate: string };
+  fit: { aria: string; title: string; note: string; width: string; height: string; fontSize: string; lineHeight: string; padding: string; preview: string; approximate: string; box: string };
+  sections: {
+    remainingTools: string;
+    aboutEyebrow: string; aboutTitle: string; aboutOne: string; aboutTwo: string;
+    seoEyebrow: string; seoTitle: string; seoOneTitle: string; seoOneA: string; seoOneB: string; seoTwoTitle: string; seoTwoA: string; seoTwoB: string;
+    guideEyebrow: string; guideTitle: string; guide: Array<[string, string]>;
+  };
+  faq: { eyebrow: string; title: string; intro: string; items: Array<[string, string]> };
+  footer: { featuredOn: string; aria: string; privacy: string; cookies: string; manage: string; privacyHref: string; cookiesHref: string };
+};
+

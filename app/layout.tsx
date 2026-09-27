@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AhrefsAnalytics } from "@/components/analytics/ahrefs-analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -44,9 +45,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.lang=location.pathname.startsWith('/it')?'it':location.pathname.startsWith('/es')?'es':location.pathname.startsWith('/fr')?'fr':location.pathname.startsWith('/de')?'de':location.pathname.startsWith('/pt-br')?'pt-BR':location.pathname.startsWith('/nl')?'nl':location.pathname.startsWith('/tr')?'tr':'en';var theme=localStorage.getItem('lorem-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme}catch(e){}" }} />
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="NHN9TqQ3aJGiePnIyQ6Tiw" async />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased"><AhrefsAnalytics />{children}</body>
     </html>
   );
 }

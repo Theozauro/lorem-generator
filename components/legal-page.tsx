@@ -1,5 +1,6 @@
+import { Fragment } from "react";
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr";
+type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr" | "pl";
 
 const content = {
   en: {
@@ -244,8 +245,38 @@ const turkishCookies = {
   ]
 } as const;
 
+const polishPrivacy = {
+  title: "Polityka prywatności",
+  intro: "Niniejsza Polityka prywatności wyjaśnia, jak lorem-generator.com przetwarza informacje podczas korzystania z witryny.",
+  sections: [
+    ["Generowanie tekstu", <p key="generowanie">Generowanie Lorem Ipsum i narzędzia tekstowe działają lokalnie w przeglądarce. Wygenerowany tekst oraz tekst wpisany do narzędzi nie są wysyłane na serwer aplikacji.</p>],
+    ["Preferencje lokalne", <p key="preferencje">Witryna korzysta z pamięci lokalnej przeglądarki, aby zapamiętać ustawienia interfejsu, takie jak motyw kolorystyczny i zgoda na analitykę. Informacje pozostają na urządzeniu do czasu zmiany preferencji lub wyczyszczenia pamięci przeglądarki.</p>],
+    ["Analityka", <Fragment key="analityka"><p>lorem-generator.com używa Ahrefs Web Analytics do analizy zagregowanego ruchu i korzystania z witryny. Ahrefs opisuje tę usługę jako bezplikową i deklaruje, że nie zbiera danych osobowych. Skrypt Ahrefs jest ładowany dopiero po wyrażeniu zgody na analitykę.</p><p>Preferencję można zmienić w ustawieniach prywatności witryny.</p><p>Więcej informacji: <a href="https://ahrefs.com/web-analytics">Ahrefs Web Analytics</a>.</p></Fragment>],
+    ["Reklamy i Google AdSense", <Fragment key="reklamy"><p>lorem-generator.com używa Google AdSense do wyświetlania reklam.</p><p>Google i jego partnerzy reklamowi mogą używać plików cookie, pamięci lokalnej, adresów IP, sygnałów web beacon lub innych identyfikatorów do dostarczania i pomiaru reklam, zapobiegania oszustwom oraz, gdy jest to dozwolone, personalizacji reklam.</p><p>Dla użytkowników z EOG, Wielkiej Brytanii i Szwajcarii zgody reklamowe są zarządzane przez Google Privacy &amp; Messaging, platformę zgodną z IAB Europe Transparency &amp; Consent Framework.</p><p>Informacje Google o reklamach: <a href="https://policies.google.com/technologies/ads?hl=pl">policies.google.com</a>.</p></Fragment>],
+    ["Hosting i bezpieczeństwo", <Fragment key="hosting"><p>lorem-generator.com działa w infrastrukturze Cloudflare. Cloudflare może przetwarzać ograniczone informacje techniczne, takie jak adres IP, dane routingu i konfiguracji systemu, niezbędne do dostarczania i zabezpieczania usług.</p><p><a href="https://www.cloudflare.com/privacypolicy/">Dokumentacja prywatności Cloudflare</a>.</p></Fragment>],
+    ["Przechowywanie danych", <p key="przechowywanie">Witryna nie tworzy kont użytkowników i nie przechowuje wygenerowanego tekstu na serwerze aplikacji. Preferencje lokalne pozostają w przeglądarce do czasu ich zmiany lub wyczyszczenia pamięci. Dane przetwarzane przez dostawców zewnętrznych są przechowywane zgodnie z ich politykami.</p>],
+    ["Wybory i prawa użytkownika", <Fragment key="prawa"><p>W zakresie wymaganym przez prawo możesz mieć prawa dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu, przenoszenia danych i wycofania zgody.</p><p>Wycofanie zgody nie wpływa na zgodność z prawem wcześniejszego przetwarzania.</p><p>W sprawach prywatności skontaktuj się: <a href="mailto:privacy@lorem-generator.com">privacy@lorem-generator.com</a>.</p></Fragment>],
+    ["Usługi zewnętrzne", <Fragment key="uslugi"><p>Informacje o przetwarzaniu przez dostawców zewnętrznych:</p><ul><li><a href="https://policies.google.com/privacy?hl=pl">Google</a></li><li><a href="https://ahrefs.com/privacy">Ahrefs</a></li><li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a></li></ul></Fragment>],
+    ["Zmiany w polityce", <p key="zmiany">Polityka może być aktualizowana, gdy zmienią się usługi, technologie lub praktyki przetwarzania danych witryny. Wersja opublikowana na tej stronie opisuje bieżące działanie lorem-generator.com.</p>]
+  ]
+} as const;
+
+const polishCookies = {
+  title: "Polityka cookies",
+  intro: "Niniejsza polityka wyjaśnia, jak lorem-generator.com używa plików cookie i pamięci przeglądarki oraz jak zarządzać preferencjami.",
+  sections: [
+    ["Niezbędna pamięć przeglądarki", <Fragment key="niezbędna"><p>Witryna używa pamięci lokalnej przeglądarki do podstawowych funkcji interfejsu, w tym:</p><ul><li>preferencji motywu kolorystycznego;</li><li>zapisanej zgody na analitykę.</li></ul><p>Pamięć lokalna nie jest plikiem cookie i pozostaje na urządzeniu do czasu zmiany ustawień lub wyczyszczenia pamięci.</p></Fragment>],
+    ["Analityka", <Fragment key="analityka"><p>Ahrefs Web Analytics jest używany wyłącznie po wyrażeniu zgody na analitykę.</p><p>Ahrefs opisuje usługę jako bezplikową i deklaruje brak zbierania danych osobowych. Bez zgody skrypt Ahrefs nie jest ładowany.</p><p><a href="https://ahrefs.com/web-analytics">Więcej o Ahrefs Web Analytics</a>.</p></Fragment>],
+    ["Reklamy i pamięć lokalna", <Fragment key="reklamy-lokalna"><p>Google AdSense może używać plików cookie lub pamięci lokalnej podczas świadczenia usług reklamowych.</p><p>Dla użytkowników z EOG, Wielkiej Brytanii i Szwajcarii Google Privacy &amp; Messaging zarządza zgodą na reklamy i powiązane przetwarzanie.</p><p><a href="https://policies.google.com/technologies/ads?hl=pl">Informacje Google o reklamach</a>.</p></Fragment>],
+    ["Zarządzanie preferencjami analityki", <p key="zarzadzanie-analityka">Ustawienia prywatności witryny zarządzają opcjonalną analityką Ahrefs. Po jej wyłączeniu Ahrefs nie jest ładowany przy kolejnych wizytach.</p>],
+    ["Zarządzanie preferencjami reklam", <p key="zarzadzanie-reklam">Preferencje reklam są zarządzane osobno przez system zgody Google. Możesz ponownie otworzyć ustawienia prywatności i cookies oraz zmienić wcześniejsze wybory.</p>],
+    ["Ustawienia przeglądarki", <p key="ustawienia">Pliki cookie i pamięć lokalną można usunąć w ustawieniach przeglądarki. Może to zresetować preferencje i spowodować ponowne pytanie o zgodę.</p>],
+    ["Zmiany w polityce", <p key="zmiany">Polityka może być aktualizowana, gdy zmienią się pliki cookie, mechanizmy pamięci przeglądarki lub usługi zewnętrzne używane przez lorem-generator.com.</p>]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : language === "tr" ? (kind === "cookies" ? turkishCookies : turkishPrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : language === "tr" ? (kind === "cookies" ? turkishCookies : turkishPrivacy) : language === "pl" ? (kind === "cookies" ? polishCookies : polishPrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
   const isFrench = language === "fr";
@@ -253,12 +284,13 @@ export function LegalPage({ language, kind }: { language: LegalLanguage; kind: L
   const isBrazilianPortuguese = language === "pt-BR";
   const isDutch = language === "nl-NL";
   const isTurkish = language === "tr";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : "/";
+  const isPolish = language === "pl";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : isPolish ? "/pl/" : "/";
 
   return <main className="site-shell legal-shell" lang={language === "nl-NL" ? "nl" : language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : "← Back to generator"}</a>
-      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : "LEGAL"}</span>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : isPolish ? "← Wróć do generatora" : "← Back to generator"}</a>
+      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : isPolish ? "PRAWO" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">

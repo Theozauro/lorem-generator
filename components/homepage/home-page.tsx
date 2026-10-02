@@ -24,6 +24,7 @@ const localeOptions = [
   ["fr", "Français", "/fr/"],
   ["it", "Italiano", "/it/"],
   ["nl", "Nederlands", "/nl/"],
+  ["pl", "Polski", "/pl/"],
   ["pt-BR", "Português (Brasil)", "/pt-br/"],
   ["tr", "Türkçe", "/tr/"],
 ] as const;
@@ -180,7 +181,7 @@ function FitTool({ copy }: { copy: HomepageCopy }) {
   </article>;
 }
 export default function Home({ locale, copy }: { locale: HomepageLocale; copy: HomepageCopy }) {
-  const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : "/";
+  const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : locale === "pl" ? "/pl/" : "/";
   const currentLocaleLabel = localeOptions.find(([, , path]) => path === localePath)?.[1] ?? "English";
   useEffect(() => {
     document.documentElement.lang = locale === "nl-NL" ? "nl" : locale;

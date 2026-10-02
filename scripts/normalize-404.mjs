@@ -9,7 +9,7 @@ if (existsSync(file)) {
   writeFileSync(file, withoutRobots.replace("<head>", '<head><meta name="robots" content="noindex, follow"/>'), "utf8");
 }
 
-const localizedLanguages = { de: "de", es: "es", fr: "fr", it: "it", nl: "nl", "pt-br": "pt-BR", tr: "tr" };
+const localizedLanguages = { de: "de", es: "es", fr: "fr", hu: "hu", it: "it", nl: "nl", pl: "pl", "pt-br": "pt-BR", tr: "tr" };
 function htmlLanguage(relativePath) {
   const firstSegment = relativePath.split("/")[0].replace(/\.html$/, "");
   return localizedLanguages[firstSegment] ?? "en";

@@ -7,6 +7,7 @@ import { nlHomepageCopy } from "./homepage-copy/nl";
 import { ptbrHomepageCopy } from "./homepage-copy/pt-br";
 import { trHomepageCopy } from "./homepage-copy/tr";
 import { plHomepageCopy } from "./homepage-copy/pl";
+import { huHomepageCopy } from "./homepage-copy/hu";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy/types";
 
 export type { HomepageCopy, HomepageLocale } from "./homepage-copy/types";
@@ -21,4 +22,5 @@ export const homepageCopy: Record<HomepageLocale, HomepageCopy> = {
   "nl-NL": nlHomepageCopy,
   tr: trHomepageCopy,
   pl: plHomepageCopy,
+  hu: huHomepageCopy,
 };

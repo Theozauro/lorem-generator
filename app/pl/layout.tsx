@@ -7,7 +7,7 @@ const description = "Generuj Lorem Ipsum z dokładną liczbą słów, akapitów,
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/pl/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/", pl: "/pl/", "x-default": "/" } },
+  alternates: { canonical: "/pl/", languages: { en: "/", it: "/it/", es: "/es/", fr: "/fr/", de: "/de/", "pt-BR": "/pt-br/", nl: "/nl/", tr: "/tr/", pl: "/pl/", hu: "/hu/", "x-default": "/" } },
   openGraph: { type: "website", url: `${siteUrl}/pl/`, locale: "pl_PL", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
   robots: { index: true, follow: true },

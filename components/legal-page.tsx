@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 type LegalKind = "privacy" | "cookies";
-type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr" | "pl";
+type LegalLanguage = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr" | "pl" | "hu";
 
 const content = {
   en: {
@@ -275,8 +275,38 @@ const polishCookies = {
   ]
 } as const;
 
+const hungarianPrivacy = {
+  title: "Adatvédelmi szabályzat",
+  intro: "Ez az adatvédelmi szabályzat bemutatja, hogyan kezeli a lorem-generator.com az információkat a webhely használata során.",
+  sections: [
+    ["Szöveggenerálás", <p key="szoveg">A Lorem Ipsum generálása és az oldalon elérhető szöveges eszközök helyben, a böngészőben működnek. A generált és a beírt szöveget az oldal nem küldi az alkalmazás szerverére.</p>],
+    ["Helyi beállítások", <p key="helyi">Az oldal a böngésző helyi tárhelyét használja a kezelőfelület beállításainak, például a színtémának és az analitikai hozzájárulással kapcsolatos választásnak a megjegyzésére. Ezek az információk mindaddig az eszközödön maradnak, amíg nem módosítod a beállításaidat, vagy nem törlöd a böngészőben tárolt adatokat.</p>],
+    ["Analitika", <Fragment key="analitika-hu"><p>A lorem-generator.com az összesített webhelyforgalom és használat megértéséhez Ahrefs Web Analyticset használ. Az Ahrefs cookie-mentes szolgáltatásként írja le a Web Analytics szolgáltatását, és azt állítja, hogy nem gyűjt személyes adatokat. Ezen az oldalon az Ahrefs analitikai szkriptje csak azután töltődik be, hogy engedélyezted az analitikát.</p><p>Az analitikai beállításodat az oldal adatvédelmi vezérlőivel módosíthatod.</p><p>További információ: <a href="https://ahrefs.com/web-analytics">Ahrefs Web Analytics</a>.</p></Fragment>],
+    ["Hirdetések és Google AdSense", <Fragment key="hirdetes-hu"><p>A lorem-generator.com Google AdSense-t használ hirdetések megjelenítésére.</p><p>A Google és hirdetési partnerei cookie-kat, helyi tárhelyet, IP-címeket, webjelzőket vagy más azonosítókat használhatnak a hirdetések megjelenítésével, mérésével, a csalások megelőzésével és – ahol ez megengedett – a hirdetések személyre szabásával kapcsolatban.</p><p>Az Európai Gazdasági Térségben, az Egyesült Királyságban és Svájcban élő felhasználók esetében a hirdetési hozzájárulást a Google Privacy &amp; Messaging kezeli. Ez egy olyan hozzájárulás-kezelő platform, amely támogatja az IAB Europe Transparency &amp; Consent Framework keretrendszerét. Az üzenet lehetővé teszi, hogy a felhasználók hozzájáruljanak, elutasítsák a hozzájárulást, vagy egyenként kezeljék a hirdetési célokra és a részt vevő szolgáltatókra vonatkozó beállításokat.</p><p>A felhasználók később a Google hozzájárulási rendszere által biztosított Adatvédelmi és cookie-beállítások segítségével áttekinthetik vagy visszavonhatják hirdetési hozzájárulásukat.</p><p>Lásd a <a href="https://policies.google.com/technologies/ads?hl=hu">Google hirdetésekkel kapcsolatos tájékoztatóját</a>.</p></Fragment>],
+    ["Tárhely és biztonság", <Fragment key="tarhely-hu"><p>A lorem-generator.com a Cloudflare infrastruktúráján keresztül érhető el. Amikor a felhasználók a Cloudflare-en keresztül kiszolgált webhelyeket keresnek fel, a Cloudflare korlátozott technikai információkat dolgozhat fel, például IP-címeket, forgalomirányítási adatokat, rendszerkonfigurációs információkat és a kérésekhez kapcsolódó egyéb adatokat, amelyek szolgáltatásai nyújtásához, biztonságossá tételéhez és működtetéséhez szükségesek.</p><p>Lásd a <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare adatvédelmi dokumentációját</a>.</p></Fragment>],
+    ["Adatmegőrzés", <p key="adatmegorzes">Az oldal nem hoz létre felhasználói fiókokat, és nem tárolja az alkalmazás szerverén a Lorem Ipsum eszközökkel generált szöveget. A helyi beállítások mindaddig a böngésződben maradnak, amíg nem módosítod őket, vagy nem törlöd a böngészőben tárolt adatokat. A külső szolgáltatók által feldolgozott információkat az adott szolgáltatók saját szabályzataiknak és szolgáltatásbeállításaiknak megfelelően őrzik meg.</p>],
+    ["Választási lehetőségek és jogok", <Fragment key="jogok-hu"><p>Az alkalmazandó adatvédelmi jogszabályok alapján hozzáférési, helyesbítési, törlési, korlátozási, tiltakozási, adathordozhatósági és hozzájárulás-visszavonási jogaid lehetnek.</p><p>A hozzájárulás visszavonása nem érinti a visszavonás előtt végzett adatkezelés jogszerűségét.</p><p>Adatvédelmi kérdésekben írj a <a href="mailto:privacy@lorem-generator.com">privacy@lorem-generator.com</a> címre.</p></Fragment>],
+    ["Külső szolgáltatások", <Fragment key="kulso-hu"><p>A külső szolgáltatók adatkezeléséről az alábbi tájékoztatókban olvashatsz:</p><ul><li><a href="https://policies.google.com/privacy?hl=hu">Google</a></li><li><a href="https://ahrefs.com/privacy">Ahrefs</a></li><li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a></li></ul></Fragment>],
+    ["A szabályzat módosításai", <p key="modositas-hu">Ez az adatvédelmi szabályzat frissülhet, ha változnak az oldal szolgáltatásai, technológiái vagy adatkezelési gyakorlatai. Az ezen az oldalon közzétett változat a lorem-generator.com jelenlegi működését tükrözi.</p>]
+  ]
+} as const;
+
+const hungarianCookies = {
+  title: "Cookie-szabályzat",
+  intro: "Ez a szabályzat bemutatja, hogyan használja a lorem-generator.com a cookie-kat és a böngésző tárhelyét, valamint hogyan kezelheted a választásaidat.",
+  sections: [
+    ["Szükséges böngészőtárhely", <Fragment key="tarhely-szukseges-hu"><p>Az oldal a helyi tárhelyet alapvető felületi funkciókhoz használja, többek között:</p><ul><li>a színtéma beállításához;</li><li>az analitikai hozzájárulás mentéséhez.</li></ul><p>A helyi tárhely nem cookie. Ezek az értékek mindaddig az eszközödön maradnak, amíg nem módosítod a beállításaidat, vagy nem törlöd a böngészőben tárolt adatokat.</p></Fragment>],
+    ["Analitika", <Fragment key="analitika-hu"><p>Az Ahrefs Web Analytics csak az analitikai hozzájárulás megadása után használható.</p><p>Az Ahrefs ezt a szolgáltatást cookie-mentesként írja le, és azt állítja, hogy nem gyűjt személyes adatokat. Ha nem adsz hozzájárulást az analitikához, az Ahrefs analitikai szkriptje nem töltődik be.</p><p><a href="https://ahrefs.com/web-analytics">További információ az Ahrefs Web Analyticsről</a>.</p></Fragment>],
+    ["Hirdetési cookie-k és tárhely", <Fragment key="cookie-hu"><p>A Google AdSense cookie-kat vagy a helyi tárolás más formáit használhatja a hirdetési szolgáltatások nyújtása során. A Google tájékoztatása szerint az AdSense cookie-kat többek között a hirdetések megjelenítésére, a gyakoriság szabályozására, jelentéskészítésre és – ahol ez megengedett – személyre szabásra használja.</p><p>Az Európai Gazdasági Térségben, az Egyesült Királyságban és Svájcban élő jogosult felhasználók esetében a Google Privacy &amp; Messaging kezeli a hirdetési cookie-khoz, a helyi tárhelyhez és a kapcsolódó adatkezeléshez való hozzájárulást.</p><p>Lásd a <a href="https://policies.google.com/technologies/ads?hl=hu">Google hirdetésekkel kapcsolatos tájékoztatóját</a>.</p></Fragment>],
+    ["Analitikai beállítások kezelése", <p key="analitika-beallitas-hu">Az oldal adatvédelmi beállításai kezelik az Ahrefs opcionális analitikáját. Kikapcsolás után az Ahrefs nem töltődik be a következő oldalbetöltéseknél.</p>],
+    ["Hirdetési beállítások kezelése", <p key="hirdetesi-beallitas-hu">A hirdetési beállításokat külön a Google hozzájárulási rendszere kezeli. A jogosult felhasználók az Adatvédelmi és cookie-beállítások vezérlővel újra megnyithatják a Google hozzájárulási felületét, és módosíthatják vagy visszavonhatják korábbi választásaikat.</p>],
+    ["Böngészőbeállítások", <p key="bongeszo-hu">A cookie-kat és a helyi tárhelyet a böngésző beállításaiban is törölheted. Ez visszaállíthatja a mentett beállításokat, és azt eredményezheti, hogy a rendszer ismét hozzájárulást kér.</p>],
+    ["A szabályzat módosításai", <p key="modositas-hu">A szabályzat frissülhet, ha változnak a cookie-k, a böngészőtárhely mechanizmusai vagy a lorem-generator.com külső szolgáltatásai.</p>]
+  ]
+} as const;
+
 export function LegalPage({ language, kind }: { language: LegalLanguage; kind: LegalKind }) {
-  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : language === "tr" ? (kind === "cookies" ? turkishCookies : turkishPrivacy) : language === "pl" ? (kind === "cookies" ? polishCookies : polishPrivacy) : content[language][kind];
+  const copy = language === "es" ? (kind === "cookies" ? spanishCookies : spanishPrivacy) : language === "fr" ? (kind === "cookies" ? frenchCookies : frenchPrivacy) : language === "de" ? (kind === "cookies" ? germanCookies : germanPrivacy) : language === "pt-BR" ? (kind === "cookies" ? brazilianPortugueseCookies : brazilianPortuguesePrivacy) : language === "nl-NL" ? (kind === "cookies" ? dutchCookies : dutchPrivacy) : language === "tr" ? (kind === "cookies" ? turkishCookies : turkishPrivacy) : language === "pl" ? (kind === "cookies" ? polishCookies : polishPrivacy) : language === "hu" ? (kind === "cookies" ? hungarianCookies : hungarianPrivacy) : content[language][kind];
   const isItalian = language === "it";
   const isSpanish = language === "es";
   const isFrench = language === "fr";
@@ -285,12 +315,13 @@ export function LegalPage({ language, kind }: { language: LegalLanguage; kind: L
   const isDutch = language === "nl-NL";
   const isTurkish = language === "tr";
   const isPolish = language === "pl";
-  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : isPolish ? "/pl/" : "/";
+  const isHungarian = language === "hu";
+  const home = isItalian ? "/it/" : isSpanish ? "/es/" : isFrench ? "/fr/" : isGerman ? "/de/" : isBrazilianPortuguese ? "/pt-br/" : isDutch ? "/nl/" : isTurkish ? "/tr/" : isPolish ? "/pl/" : isHungarian ? "/hu/" : "/";
 
   return <main className="site-shell legal-shell" lang={language === "nl-NL" ? "nl" : language}>
     <article className="page-content legal-content">
-      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : isPolish ? "← Wróć do generatora" : "← Back to generator"}</a>
-      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : isPolish ? "PRAWO" : "LEGAL"}</span>
+      <a className="legal-back" href={home}>{isItalian ? "← Torna al generatore" : isSpanish ? "← Volver al generador" : isFrench ? "← Retour au générateur" : isGerman ? "← Zurück zum Generator" : isBrazilianPortuguese ? "← Voltar ao gerador" : isDutch ? "← Terug naar de generator" : isTurkish ? "← Oluşturucuya dön" : isPolish ? "← Wróć do generatora" : isHungarian ? "← Vissza a generátorhoz" : "← Back to generator"}</a>
+      <span className="legal-eyebrow">{isItalian ? "LEGALE" : isFrench ? "LÉGAL" : isGerman ? "RECHTLICHES" : isDutch ? "JURIDISCH" : isTurkish ? "YASAL" : isPolish ? "PRAWO" : isHungarian ? "JOGI" : "LEGAL"}</span>
       <h1>{copy.title}</h1>
       <p className="legal-intro">{copy.intro}</p>
       <div className="legal-sections">

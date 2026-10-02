@@ -1,4 +1,4 @@
-export type HomepageLocale = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr" | "pl";
+export type HomepageLocale = "en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl-NL" | "tr" | "pl" | "hu";
 
 export type HomepageCopy = {
   locale: HomepageLocale;

@@ -10,7 +10,7 @@ export const itHomepageCopy: HomepageCopy = {
     "light": "Chiaro",
     "dark": "Scuro"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Generatore Lorem Ipsum",
   "intro": "Genera un numero esatto di parole, paragrafi, frasi o caratteri per layout, prototipi e progetti di design.",
   "schema": {
     "description": "Un generatore Lorem Ipsum nel browser per parole, paragrafi, frasi e caratteri esatti.",
@@ -102,8 +102,8 @@ export const itHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Altri strumenti",
     "aboutEyebrow": "UNA NOTA SUL TESTO SEGNAPOSTO",
-    "aboutTitle": "Una bozza per ogni layout.",
-    "aboutOne": "Lorem Ipsum è un testo segnaposto derivato dal latino classico. I designer lo usano per valutare gerarchia, ritmo, lunghezza delle righe e spaziatura prima che il testo finale sia pronto.",
+    "aboutTitle": "Generatore di testo finto e segnaposto",
+    "aboutOne": "Crea testo di riempimento per layout, mockup e prototipi, scegliendo con precisione parole, paragrafi, frasi o caratteri. Lorem Ipsum è un testo segnaposto derivato dal latino classico. I designer lo usano per valutare gerarchia, ritmo, lunghezza delle righe e spaziatura prima che il testo finale sia pronto.",
     "aboutTwo": "Imposta insieme parole e paragrafi per controllare densità e ritmo del layout, oppure passa a caratteri o frasi quando serve una lunghezza precisa.",
     "seoEyebrow": "PENSATO PER LAYOUT REALI",
     "seoTitle": "Un generatore Lorem Ipsum per designer e sviluppatori.",

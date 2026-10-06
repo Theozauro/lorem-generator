@@ -10,7 +10,7 @@ export const nlHomepageCopy: HomepageCopy = {
     "light": "licht",
     "dark": "donker"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Lorem Ipsum-generator",
   "intro": "Genereer een exact aantal woorden, alinea’s, zinnen of tekens voor layouts, prototypes en ontwerpwerk.",
   "schema": {
     "description": "Een Lorem Ipsum Generator in de browser voor het maken van een exact aantal woorden, alinea’s, zinnen en tekens.",
@@ -102,8 +102,8 @@ export const nlHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Meer tools voor designers",
     "aboutEyebrow": "EEN OPMERKING OVER TIJDELIJKE TEKST",
-    "aboutTitle": "Een werkbasis voor elke layout.",
-    "aboutOne": "Lorem Ipsum is een bekende tijdelijke tekst die is afgeleid van klassiek Latijn. Designers gebruiken deze tekst om hiërarchie, ritme, regellengte en tussenruimte te beoordelen voordat de definitieve inhoud klaar is.",
+    "aboutTitle": "Opvultekstgenerator voor layouts en prototypes",
+    "aboutOne": "Maak opvultekst voor mock-ups, wireframes en interfacetests met controle over woorden, alinea’s, zinnen en tekens. Lorem Ipsum is een bekende tijdelijke tekst die is afgeleid van klassiek Latijn. Designers gebruiken deze tekst om hiërarchie, ritme, regellengte en tussenruimte te beoordelen voordat de definitieve inhoud klaar is.",
     "aboutTwo": "Stel woorden en alinea’s tegelijk in om de dichtheid en het ritme van een layout af te stemmen, of gebruik tekens of zinnen wanneer je een precieze lengte nodig hebt.",
     "seoEyebrow": "GEMAAKT VOOR ECHTE LAYOUTS",
     "seoTitle": "Een Lorem Ipsum Generator voor designers en developers.",

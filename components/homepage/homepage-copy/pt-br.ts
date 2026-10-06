@@ -10,7 +10,7 @@ export const ptbrHomepageCopy: HomepageCopy = {
     "light": "claro",
     "dark": "escuro"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Gerador de Lorem Ipsum",
   "intro": "Gere uma quantidade exata de palavras, parágrafos, frases ou caracteres para layouts, protótipos e projetos de design.",
   "schema": {
     "description": "Um gerador de Lorem Ipsum no navegador para criar uma quantidade exata de palavras, parágrafos, frases e caracteres.",
@@ -102,8 +102,8 @@ export const ptbrHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Mais ferramentas para designers",
     "aboutEyebrow": "UMA NOTA SOBRE TEXTO DE ESPAÇO RESERVADO",
-    "aboutTitle": "Uma base de trabalho para qualquer layout.",
-    "aboutOne": "Lorem Ipsum é um conhecido texto de espaço reservado derivado do latim clássico. Designers o utilizam para avaliar hierarquia, ritmo, comprimento das linhas e espaçamento antes que o conteúdo final esteja pronto.",
+    "aboutTitle": "Gerador de texto de preenchimento para layouts e protótipos",
+    "aboutOne": "Crie texto de preenchimento para mockups, interfaces e testes de layout com controle preciso de tamanho e formato. Lorem Ipsum é um conhecido texto de espaço reservado derivado do latim clássico. Designers o utilizam para avaliar hierarquia, ritmo, comprimento das linhas e espaçamento antes que o conteúdo final esteja pronto.",
     "aboutTwo": "Defina palavras e parágrafos ao mesmo tempo para ajustar a densidade e o ritmo de um layout, ou use caracteres ou frases quando precisar de um comprimento preciso.",
     "seoEyebrow": "CRIADO PARA LAYOUTS REAIS",
     "seoTitle": "Um gerador de Lorem Ipsum para designers e desenvolvedores.",

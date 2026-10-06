@@ -102,8 +102,8 @@ export const huHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "További tervezői eszközök",
     "aboutEyebrow": "A HELYKITÖLTŐ SZÖVEGRŐL",
-    "aboutTitle": "Munkavázlat minden elrendezéshez.",
-    "aboutOne": "A Lorem Ipsum klasszikus latinból származó ismert helykitöltő szöveg. A tervezők a hierarchia, a ritmus, a sorhossz és a térközök ellenőrzésére használják.",
+    "aboutTitle": "Helykitöltő szöveg makettekhez és prototípusokhoz",
+    "aboutOne": "Készíts helykitöltő szöveget elrendezésekhez, makettekhez és felülettesztekhez pontos szó-, bekezdés-, mondat- vagy karakterszámmal. A Lorem Ipsum klasszikus latinból származó ismert helykitöltő szöveg. A tervezők a hierarchia, a ritmus, a sorhossz és a térközök ellenőrzésére használják.",
     "aboutTwo": "Állítsd be együtt a szavakat és bekezdéseket az elrendezés sűrűségéhez, vagy válts karakterekre és mondatokra, ha pontos hosszra van szükség.",
     "seoEyebrow": "VALÓDI ELRENDEZÉSEKHEZ KÉSZÜLT",
     "seoTitle": "Lorem Ipsum generátor tervezőknek és fejlesztőknek.",

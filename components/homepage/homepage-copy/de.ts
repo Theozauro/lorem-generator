@@ -10,7 +10,7 @@ export const deHomepageCopy: HomepageCopy = {
     "light": "hell",
     "dark": "dunkel"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Lorem-Ipsum-Generator",
   "intro": "Erzeuge eine genaue Anzahl an Wörtern, Absätzen, Sätzen oder Zeichen für Layouts, Prototypen und Designprojekte.",
   "schema": {
     "description": "Ein browserbasierter Lorem-Ipsum-Generator für eine exakte Anzahl an Wörtern, Absätzen, Sätzen und Zeichen.",
@@ -102,8 +102,8 @@ export const deHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Weitere Werkzeuge für Designer",
     "aboutEyebrow": "EIN HINWEIS ZU BLINDTEXT",
-    "aboutTitle": "Eine Arbeitsgrundlage für jedes Layout.",
-    "aboutOne": "Lorem Ipsum ist ein bekannter Blindtext, der auf klassischem Latein basiert. Designer nutzen ihn, um Hierarchie, Rhythmus, Zeilenlänge und Abstände zu beurteilen, bevor der endgültige Inhalt vorliegt.",
+    "aboutTitle": "Blindtextgenerator für Layouts und Prototypen",
+    "aboutOne": "Erzeuge Blindtext und Platzhaltertext für Mockups, Wireframes und UI-Tests mit genau der gewünschten Länge. Lorem Ipsum ist ein bekannter Blindtext, der auf klassischem Latein basiert. Designer nutzen ihn, um Hierarchie, Rhythmus, Zeilenlänge und Abstände zu beurteilen, bevor der endgültige Inhalt vorliegt.",
     "aboutTwo": "Lege Wörter und Absätze gleichzeitig fest, um Dichte und Rhythmus eines Layouts anzupassen, oder wechsle zu Zeichen oder Sätzen, wenn eine präzise Länge wichtig ist.",
     "seoEyebrow": "FÜR REALE LAYOUTS ENTWICKELT",
     "seoTitle": "Ein Lorem-Ipsum-Generator für Designer und Entwickler.",

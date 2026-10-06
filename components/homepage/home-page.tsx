@@ -10,9 +10,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, initialLayoutText, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
+import { ItalianExperienceHeader } from "./italian-experience-header";
 
 type MainMode = "layout" | "characters" | "sentences";
-type ThemeChoice = "system" | "light" | "dark";
+type ThemeChoice = "light" | "dark";
 const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250, 500], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
@@ -126,6 +127,9 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
   if (!visible) return null;
   return <aside className="consent-banner" aria-label={copy.consent.aria}><div className="consent-copy"><strong>{copy.consent.title}</strong><p>{copy.consent.intro}</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>{copy.consent.necessary}</b><small>{copy.consent.necessaryNote}</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>{copy.consent.analytics}</b><small>{copy.consent.analyticsNote}</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics)}>{copy.consent.save}</Button></> : <><Button type="button" className="consent-accept" onClick={() => save(true)}>{copy.consent.accept}</Button><Button type="button" variant="outline" onClick={() => save(false)}>{copy.consent.reject}</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>{copy.consent.customize}</Button></>}</div></aside>;
 }
+export function HomepageFooter({ copy }: { copy: HomepageCopy }) {
+  return <><footer className="site-footer"><DirectoryBadges copy={copy} /><div className="footer-brand"><span>lorem-generator.com © 2026</span></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} /></>;
+}
 function MatchTool({ copy }: { copy: HomepageCopy }) {
   const [source, setSource] = useState("");
   const [result, setResult] = useState("");
@@ -197,7 +201,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const [startClassic, setStartClassic] = useState(true);
   const [sentenceLength, setSentenceLength] = useState<SentenceLength>("mixed");
   const [result, setResult] = useState(initialLayoutText);
-  const [themeChoice, setThemeChoice] = useState<ThemeChoice>("system");
+  const [themeChoice, setThemeChoice] = useState<ThemeChoice | null>(null);
+  const [systemIsDark, setSystemIsDark] = useState(false);
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem("lorem-theme");
@@ -208,18 +213,21 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       }
     } catch { /* The system theme still works when local storage is unavailable. */ }
   }, []);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSystemIsDark(mediaQuery.matches);
+    const handleChange = (event: MediaQueryListEvent) => setSystemIsDark(event.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
   function selectTheme(next: ThemeChoice) {
     setThemeChoice(next);
-    if (next === "system") {
-      // eslint-disable-next-line react-hooks/immutability
-      delete document.documentElement.dataset.theme;
-      try { window.localStorage.removeItem("lorem-theme"); } catch {}
-    } else {
-      // eslint-disable-next-line react-hooks/immutability
-      document.documentElement.dataset.theme = next;
-      try { window.localStorage.setItem("lorem-theme", next); } catch {}
-    }
+    // eslint-disable-next-line react-hooks/immutability
+    document.documentElement.dataset.theme = next;
+    try { window.localStorage.setItem("lorem-theme", next); } catch {}
   }
+  const activeTheme = themeChoice ?? (systemIsDark ? "dark" : "light");
   const previousSettings = useRef({ mode, words, paragraphs, amount, startClassic, sentenceLength });
   useEffect(() => {
     const previous = previousSettings.current;
@@ -259,8 +267,9 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   }
   function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
   return <><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533538512095765" crossOrigin="anonymous" /><main className="site-shell" lang={copy.locale}>
-    <div className="page-content">
-      <section className="main-section" aria-labelledby="page-title"><div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["system", "light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={themeChoice === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "system" ? copy.theme.system : choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div><div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
+    <div className={locale === "it" ? "page-content italian-experience-page" : "page-content"}>
+      {locale === "it" && <ItalianExperienceHeader active="classic" copy={copy} />}
+      <section className="main-section" aria-labelledby="page-title">{locale !== "it" && <div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div>}<div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
         <p className="seo-intro">{copy.intro}</p>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
           { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },
@@ -286,6 +295,6 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       <section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section>
       <FaqSection copy={copy} />
-    </div><footer className="site-footer"><DirectoryBadges copy={copy} /><div className="footer-brand"><span>lorem-generator.com © 2026</span></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} />
+    </div><HomepageFooter copy={copy} />
   </main></>;
 }

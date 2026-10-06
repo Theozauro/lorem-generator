@@ -10,7 +10,7 @@ export const frHomepageCopy: HomepageCopy = {
     "light": "clair",
     "dark": "sombre"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Générateur de Lorem Ipsum",
   "intro": "Générez un nombre exact de mots, paragraphes, phrases ou caractères pour vos mises en page, prototypes et projets de design.",
   "schema": {
     "description": "Un générateur de Lorem Ipsum dans le navigateur pour créer un nombre exact de mots, paragraphes, phrases et caractères.",
@@ -102,8 +102,8 @@ export const frHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Autres outils pour designers",
     "aboutEyebrow": "À PROPOS DU TEXTE DE SUBSTITUTION",
-    "aboutTitle": "Une base de travail pour chaque mise en page.",
-    "aboutOne": "Lorem Ipsum est un texte de substitution bien connu dérivé du latin classique. Les designers l’utilisent pour évaluer la hiérarchie, le rythme, la longueur des lignes et l’espacement avant de disposer du contenu final.",
+    "aboutTitle": "Générateur de texte de substitution pour maquettes et prototypes",
+    "aboutOne": "Créez du texte factice ou de remplissage pour vos mises en page, wireframes et tests d’interface. Lorem Ipsum est un texte de substitution bien connu dérivé du latin classique. Les designers l’utilisent pour évaluer la hiérarchie, le rythme, la longueur des lignes et l’espacement avant de disposer du contenu final.",
     "aboutTwo": "Définissez simultanément le nombre de mots et de paragraphes pour ajuster la densité et le rythme d’une mise en page, ou passez aux caractères ou aux phrases lorsqu’une longueur précise est nécessaire.",
     "seoEyebrow": "CONÇU POUR DE VRAIES MISES EN PAGE",
     "seoTitle": "Un générateur de Lorem Ipsum pour designers et développeurs.",

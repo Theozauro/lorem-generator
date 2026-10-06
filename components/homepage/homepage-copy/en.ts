@@ -102,8 +102,8 @@ export const enHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "More Designer Tools",
     "aboutEyebrow": "A NOTE ON PLACEHOLDER TEXT",
-    "aboutTitle": "A working draft for every layout.",
-    "aboutOne": "Lorem Ipsum is familiar placeholder text derived from classical Latin. Designers use it to judge hierarchy, rhythm, line length, and spacing before final copy is ready.",
+    "aboutTitle": "Placeholder text generator for layouts and prototypes",
+    "aboutOne": "Generate filler text for mockups, wireframes and interface tests with precise control over words, paragraphs, sentences and characters. Lorem Ipsum is familiar placeholder text derived from classical Latin. Designers use it to judge hierarchy, rhythm, line length, and spacing before final copy is ready.",
     "aboutTwo": "Set words and paragraphs together to match a layout's density and rhythm, or switch to characters or sentences when a precise length matters.",
     "seoEyebrow": "BUILT FOR REAL LAYOUTS",
     "seoTitle": "A Lorem Ipsum Generator for designers and developers.",

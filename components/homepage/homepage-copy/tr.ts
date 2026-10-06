@@ -102,8 +102,8 @@ export const trHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Tasarımcılar için daha fazla araç",
     "aboutEyebrow": "YER TUTUCU METİN HAKKINDA",
-    "aboutTitle": "Her mizanpaj için bir çalışma taslağı.",
-    "aboutOne": "Lorem Ipsum, klasik Latinceden türetilmiş tanıdık bir yer tutucu metindir. Tasarımcılar, nihai metin hazır olmadan önce hiyerarşiyi, ritmi, satır uzunluğunu ve boşlukları değerlendirmek için kullanır.",
+    "aboutTitle": "Tasarımlar ve prototipler için yer tutucu metin oluşturucu",
+    "aboutOne": "Düzenler, maketler ve arayüz testleri için istediğiniz uzunlukta yer tutucu metin oluşturun. Lorem Ipsum, klasik Latinceden türetilmiş tanıdık bir yer tutucu metindir. Tasarımcılar, nihai metin hazır olmadan önce hiyerarşiyi, ritmi, satır uzunluğunu ve boşlukları değerlendirmek için kullanır.",
     "aboutTwo": "Bir mizanpajın yoğunluğunu ve ritmini ayarlamak için sözcük ve paragraf sayılarını birlikte belirleyin; kesin bir uzunluk gerektiğinde karakterlere veya cümlelere geçin.",
     "seoEyebrow": "GERÇEK MİZANPAJLAR İÇİN TASARLANDI",
     "seoTitle": "Tasarımcılar ve geliştiriciler için Lorem Ipsum oluşturucu.",

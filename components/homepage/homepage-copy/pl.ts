@@ -10,7 +10,7 @@ export const plHomepageCopy: HomepageCopy = {
     "light": "jasny",
     "dark": "ciemny"
   },
-  "title": "Lorem Ipsum Generator",
+  "title": "Generator Lorem Ipsum",
   "intro": "Generuj tekst zastępczy Lorem Ipsum według dokładnej liczby słów, akapitów, zdań lub znaków do makiet, prototypów i projektów.",
   "schema": {
     "description": "Przeglądarkowy generator Lorem Ipsum z dokładną liczbą słów, akapitów, zdań i znaków.",
@@ -102,8 +102,8 @@ export const plHomepageCopy: HomepageCopy = {
   "sections": {
     "remainingTools": "Więcej narzędzi dla projektantów",
     "aboutEyebrow": "O TEKŚCIE ZASTĘPCZYM",
-    "aboutTitle": "Wersja robocza dla każdego układu.",
-    "aboutOne": "Lorem Ipsum to znany tekst zastępczy wywodzący się z klasycznej łaciny. Projektanci używają go do oceny hierarchii, rytmu, długości wierszy i odstępów przed przygotowaniem finalnej treści.",
+    "aboutTitle": "Generator tekstu zastępczego do makiet i prototypów",
+    "aboutOne": "Twórz tekst zastępczy do layoutów, makiet i testów interfejsu z dokładną kontrolą liczby słów, akapitów, zdań i znaków. Lorem Ipsum to znany tekst zastępczy wywodzący się z klasycznej łaciny. Projektanci używają go do oceny hierarchii, rytmu, długości wierszy i odstępów przed przygotowaniem finalnej treści.",
     "aboutTwo": "Ustaw słowa i akapity razem, aby dopasować gęstość i rytm układu, albo przełącz się na znaki lub zdania, gdy liczy się dokładna długość.",
     "seoEyebrow": "STWORZONE DLA PRAWDZIWYCH UKŁADÓW",
     "seoTitle": "Generator Lorem Ipsum dla projektantów i programistów.",

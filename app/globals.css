@@ -329,8 +329,7 @@ button:disabled { cursor: not-allowed; }
   font-size: 17px;
   font-variant-numeric: tabular-nums;
 }
-.preset-buttons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
-.controls-grid.classic-controls-grid .preset-buttons, .controls-grid.themed-controls-grid .preset-buttons:has(> :nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.preset-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
 .preset-button {
   min-width: 0;
   height: 39px;
@@ -638,7 +637,7 @@ button:disabled { cursor: not-allowed; }
 }
 @media (max-width: 1050px) {
   .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr) minmax(190px, 220px); }
-  .classic-controls-grid > .unit-control { grid-column: 1 / -1; grid-row: 1; border-left: 0; }
+  .classic-controls-grid > .unit-control { grid-column: 1 / -1; grid-row: 1; border-left: 0; border-bottom: 1px solid var(--grid); }
   .classic-controls-grid > .layout-amounts, .classic-controls-grid > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0 !important; }
   .classic-controls-grid > .presets { grid-column: 2; grid-row: 2; }
 }

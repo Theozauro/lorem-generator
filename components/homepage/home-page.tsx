@@ -15,7 +15,7 @@ import { ExperienceHeader } from "./italian-experience-header";
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
 const modes: MainMode[] = ["layout", "characters", "sentences"];
-const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
+const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500], sentences: [2, 5, 10] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
 const localeOptions = [

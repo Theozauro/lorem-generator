@@ -14,6 +14,7 @@ import { ExperienceHeader } from "./italian-experience-header";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
+type GeneratorSettings = { mode: MainMode; words: number; paragraphs: number; amount: number; startClassic: boolean };
 const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500], sentences: [2, 5, 10] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
@@ -199,11 +200,15 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const [wordsInput, setWordsInput] = useState("250");
   const [paragraphsInput, setParagraphsInput] = useState("3");
   const [amount, setAmount] = useState(300);
+  const [amountInput, setAmountInput] = useState("300");
   const [startClassic, setStartClassic] = useState(true);
   const [result, setResult] = useState("");
   const [hasGenerated, setHasGenerated] = useState(false);
   const [themeChoice, setThemeChoice] = useState<ThemeChoice | null>(null);
   const [systemIsDark, setSystemIsDark] = useState(false);
+  const pendingWordsChange = useRef(false);
+  const pendingParagraphsChange = useRef(false);
+  const pendingAmountChange = useRef(false);
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem("lorem-theme");
@@ -229,7 +234,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     try { window.localStorage.setItem("lorem-theme", next); } catch {}
   }
   const activeTheme = themeChoice ?? (systemIsDark ? "dark" : "light");
-  const previousSettings = useRef({ mode, words, paragraphs, amount, startClassic });
+  const previousSettings = useRef<GeneratorSettings>({ mode, words, paragraphs, amount, startClassic });
   useEffect(() => {
     if (!hasGenerated) return;
     const previous = previousSettings.current;
@@ -240,37 +245,83 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
         : generateLorem(mode, amount, startClassic));
     previousSettings.current = { mode, words, paragraphs, amount, startClassic };
   }, [hasGenerated, mode, words, paragraphs, amount, startClassic]);
-  function selectMode(next: MainMode) { setMode(next); if (next !== "layout") setAmount(defaults[next]); }
+  function generateWithSettings(next: GeneratorSettings) {
+    setResult(next.mode === "layout" ? generateLayout(next.words, next.paragraphs, next.startClassic, Math.random) : generateLorem(next.mode, next.amount, next.startClassic));
+    previousSettings.current = next;
+    setHasGenerated(true);
+  }
+  function selectMode(next: MainMode) {
+    const nextAmount = next === "layout" ? amount : defaults[next];
+    setMode(next);
+    if (next !== "layout") { setAmount(nextAmount); setAmountInput(String(nextAmount)); }
+    if (!hasGenerated) generateWithSettings({ mode: next, words, paragraphs, amount: nextAmount, startClassic });
+  }
   function updateWords(value: string) {
     setWordsInput(value);
-    if (value === "") return;
+    if (value === "") { pendingWordsChange.current = false; return; }
     const parsed = Number(value);
-    if (Number.isFinite(parsed)) setWords(Math.max(paragraphs, Math.min(4000, parsed)));
+    if (!Number.isFinite(parsed)) { pendingWordsChange.current = false; return; }
+    const next = Math.max(paragraphs, Math.min(4000, parsed));
+    if (next !== words) pendingWordsChange.current = true;
+    setWords(next);
   }
   function commitWords() {
     const parsed = Number(wordsInput);
     const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(paragraphs, Math.min(4000, parsed)) : words;
+    const shouldGenerate = !hasGenerated && pendingWordsChange.current;
+    pendingWordsChange.current = false;
     setWords(next); setWordsInput(String(next));
+    if (shouldGenerate) generateWithSettings({ mode, words: next, paragraphs, amount, startClassic });
   }
   function updateParagraphs(value: string) {
     setParagraphsInput(value);
-    if (value === "") return;
+    if (value === "") { pendingParagraphsChange.current = false; return; }
     const parsed = Number(value);
-    if (Number.isFinite(parsed)) setParagraphs(Math.max(1, Math.min(100, words, parsed)));
+    if (!Number.isFinite(parsed)) { pendingParagraphsChange.current = false; return; }
+    const next = Math.max(1, Math.min(100, words, parsed));
+    if (next !== paragraphs) pendingParagraphsChange.current = true;
+    setParagraphs(next);
   }
   function commitParagraphs() {
     const parsed = Number(paragraphsInput);
     const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(1, Math.min(100, words, parsed)) : paragraphs;
+    const shouldGenerate = !hasGenerated && pendingParagraphsChange.current;
+    pendingParagraphsChange.current = false;
     setParagraphs(next); setParagraphsInput(String(next));
+    if (shouldGenerate) generateWithSettings({ mode, words, paragraphs: next, amount, startClassic });
   }
   function setPresetWords(value: number) {
     const next = Math.max(paragraphs, value);
     setWords(next); setWordsInput(String(next));
+    if (!hasGenerated) generateWithSettings({ mode, words: next, paragraphs, amount, startClassic });
+  }
+  function updateAmount(value: string) {
+    setAmountInput(value);
+    if (value === "") { pendingAmountChange.current = false; return; }
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) { pendingAmountChange.current = false; return; }
+    const next = Math.max(1, Math.min(mode === "characters" ? 20000 : 100, parsed));
+    if (next !== amount) pendingAmountChange.current = true;
+    setAmount(next);
+  }
+  function commitAmount() {
+    const parsed = Number(amountInput);
+    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(1, Math.min(mode === "characters" ? 20000 : 100, parsed)) : amount;
+    const shouldGenerate = !hasGenerated && pendingAmountChange.current;
+    pendingAmountChange.current = false;
+    setAmount(next); setAmountInput(String(next));
+    if (shouldGenerate) generateWithSettings({ mode, words, paragraphs, amount: next, startClassic });
+  }
+  function setPresetAmount(value: number) {
+    setAmount(value); setAmountInput(String(value));
+    if (!hasGenerated) generateWithSettings({ mode, words, paragraphs, amount: value, startClassic });
+  }
+  function toggleStartClassic(checked: boolean) {
+    setStartClassic(checked);
+    if (!hasGenerated) generateWithSettings({ mode, words, paragraphs, amount, startClassic: checked });
   }
   function generateResult() {
-    setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random) : generateLorem(mode, amount, startClassic));
-    previousSettings.current = { mode, words, paragraphs, amount, startClassic };
-    setHasGenerated(true);
+    generateWithSettings({ mode, words, paragraphs, amount, startClassic });
   }
   return <main className="site-shell" lang={copy.locale}>
     <div className={experienceLocale ? "page-content italian-experience-page" : "page-content"}>
@@ -287,10 +338,10 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
             {mode === "layout" ? <div className="layout-amounts">
               <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">{copy.generator.words}</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
               <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">{copy.generator.paragraphs}</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
-            </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={e => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(e.target.value) || 1)))} /></div>}
-            <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
+            </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amountInput} onChange={e => updateAmount(e.target.value)} onBlur={commitAmount} /></div>}
+            <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setPresetAmount(value)}>{value}</Button>)}</div></div>
           </div>
-          <div className="start-control-row"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label></div>
+          <div className="start-control-row"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => toggleStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label></div>
           <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result ? result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>) : <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div></div>
           <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
         </div>

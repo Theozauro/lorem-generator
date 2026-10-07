@@ -61,6 +61,19 @@ const experience = {
     lightLabel: "Cambiar al tema claro",
     darkLabel: "Cambiar al tema oscuro",
   },
+  de: {
+    homePath: "/de/",
+    themedPath: "/de/lorem-ipsum-nach-themen/",
+    languageName: "Deutsch",
+    classicLabel: "Lorem-Ipsum-Generator",
+    themedLabel: "Themen-Ipsum",
+    navLabel: "Lorem-Ipsum-Werkzeuge",
+    mobileNavLabel: "Deutsche Navigation",
+    openMenuLabel: "Navigation öffnen",
+    closeMenuLabel: "Navigation schließen",
+    lightLabel: "Helles Design aktivieren",
+    darkLabel: "Dunkles Design aktivieren",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -112,6 +125,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;
     if (code === "es") return experience.es.themedPath;
+    if (code === "de") return experience.de.themedPath;
     return classicHref;
   }
 

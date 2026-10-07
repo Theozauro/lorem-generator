@@ -1,6 +1,6 @@
 export type ThemedTheme = "corporate" | "tech" | "ai" | "design" | "fashion" | "zombie";
 export type ThemedMode = "layout" | "characters" | "sentences";
-export type ThemedLanguage = "en" | "it" | "es";
+export type ThemedLanguage = "en" | "it" | "es" | "de";
 
 type ThemeData = {
   openers: string[];
@@ -224,10 +224,82 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
+  corporate: {
+    openers: [
+      "Führungsteams verbinden strategische Ziele mit operativer Effizienz und messbaren Geschäftsergebnissen.",
+      "Unternehmen entwickeln belastbare Roadmaps und beschleunigen die Wertschöpfung über alle Geschäftsbereiche.",
+      "Stakeholder stimmen Prioritäten, Governance und Prozesse für skalierbares Wachstum aufeinander ab.",
+      "Agile Führung verbindet langfristige Strategie, verlässliche Umsetzung und datenbasierte Entscheidungen.",
+    ],
+    vocabulary: terms("Ausrichtung, Benchmark, Bandbreite, Blueprint, Business, Buy-in, Fähigkeit, Kompetenz, bereichsübergreifend, Lieferumfang, Deliverable, Disruption, Ökosystem, Effizienz, Enablement, Enterprise, Führung, Framework, Governance, Wachstum, Wirkung, Initiative, Integration, KPI, Leadership, Markt, Meilenstein, Monetarisierung, Ziel, Omnichannel, Betrieb, Optimierung, Ergebnis, Performance, Pipeline, Portfolio, Priorität, Prozess, Quartal, Roadmap, ROI, Skalierbarkeit, Stakeholder, Strategie, strategisch, Synergie, Zielwert, Kontaktpunkt, Transformation, Wert, Workflow, Workstream, Best Practice, Geschäftsmodell, Kernkompetenz, Entscheidungsfindung, Go-to-Market, langfristig, Marktanteil, Betriebsmodell, Umsatzstrom, Risikomanagement, Wertschöpfung"),
+    phrases: terms("bereichsübergreifende Stakeholder, strategische Ausrichtung, quartalsweise Performance, skalierbare Deliverables, operative Effizienz, langfristiger Wert, Geschäftsergebnisse, Marktchancen, Umsatzwachstum, Unternehmenstransformation"),
+    verbs: terms("ausrichten, beschleunigen, bewerten, bauen, liefern, treiben, ermöglichen, erweitern, ausführen, maximieren, optimieren, priorisieren, skalieren, vereinfachen, transformieren, erschließen"),
+  },
+  tech: {
+    openers: [
+      "Moderne Engineering-Teams betreiben verteilte Microservices auf Kubernetes-Clustern mit automatisierten CI/CD-Pipelines.",
+      "Cloud-native Plattformen orchestrieren ereignisgesteuerte Systeme durch skalierbare Infrastruktur und hohe Verfügbarkeit.",
+      "Verteilte Systeme verbinden APIs, Service Meshes und automatisierte Deployments für Durchsatz und Ausfallsicherheit.",
+      "Entwicklungsteams provisionieren containerisierte Services mit Telemetrie, Replikation und belastbarer Fehlertoleranz.",
+    ],
+    vocabulary: terms("API, Authentifizierung, Backend, Bandbreite, Bytecode, Cache, CI/CD, Cloud, Cluster, Compiler, Container, Datenbank, Deployment, verteilt, Docker, Endpunkt, ereignisgesteuert, Framework, Frontend, Gateway, GitOps, GraphQL, Infrastruktur, Integration, Interface, Kafka, Kubernetes, Latenz, Load Balancer, Logging, Microservices, Middleware, Netzwerk, Node, OAuth, Observability, Orchestrierung, Pipeline, Postgres, Protokoll, Queue, Redis, Replikat, REST, Laufzeit, Skalierbarkeit, Schema, Sicherheit, Server, Serverless, Service, Sharding, Socket, Speicher, Stream, Telemetrie, Token, Virtualisierung, WebSocket, Zero Trust, Autoscaling, Containerisierung, Rechenzentrum, Fehlertoleranz, Hochverfügbarkeit, Multi-Region, Rate Limit, Replikation, Service Mesh, Durchsatz, Versionierung, Webhook, Edge Computing, Cloud-native, Event Stream, In-Memory, Request-Response"),
+    phrases: terms("verteilte Microservices, Multi-Region-Infrastruktur, automatisiertes Deployment, Cloud-native-Architektur, ereignisgesteuerte Systeme, Observability-Telemetrie, skalierbare Infrastruktur, Zero-Trust-Sicherheit, Service-Orchestrierung, hochverfügbare Cluster"),
+    verbs: terms("authentifizieren, cachen, kompilieren, verbinden, deployen, verteilen, ausführen, integrieren, überwachen, orchestrieren, speichern, bereitstellen, replizieren, routen, skalieren, streamen, synchronisieren, validieren"),
+  },
+  ai: {
+    openers: [
+      "Large Language Models verarbeiten multimodale Tokens durch Attention-Schichten und erzeugen kontextbezogene Embeddings.",
+      "KI-Teams optimieren Foundation Models mit kuratierten Trainingsdaten, Fine-Tuning und sorgfältiger Modellevaluierung.",
+      "Multimodale Modelle verbinden Retrieval Augmented Generation, Vektorsuche und kontextbezogenes Schlussfolgern.",
+      "GPU-Cluster trainieren Transformer-Architekturen mit Gradient Descent, Checkpoints und abgestimmten Hyperparametern.",
+    ],
+    vocabulary: terms("Agent, Alignment, Attention, Backpropagation, Benchmark, Checkpoint, Klassifikation, Kontext, Context Window, Datensatz, Diffusion, Embedding, Epoche, Evaluierung, Few-shot, Fine-Tuning, Foundation Model, Generierung, generativ, GPU, GPU-Cluster, Gradient, Gradient Descent, Halluzination, Hyperparameter, Inferenz, Instruction Tuning, Intelligenz, Latent Space, LLM, Loss, Loss Function, Machine Learning, Modell, multimodal, neuronales Netz, Optimierung, Parameter, Pretraining, Prompt, Prompt Engineering, Quantisierung, RAG, Schlussfolgern, Reinforcement Learning, RLHF, Sampling, semantisch, überwacht, synthetische Daten, Token, Tokenisierung, Training, Transformer, unüberwacht, Vektor, Vektordatenbank, Gewichte, Zero-shot, agentisch, Attention Head, kontextuell, Decoder, Encoder, Knowledge Base, Language Model, Model Evaluation, Model Training, Retrieval, Reward Model, Sequenz, Temperatur, Trainingsdaten, Vision Model"),
+    phrases: terms("Large Language Models, Multi-Head-Attention, kontextbezogene Embeddings, Retrieval Augmented Generation, Reinforcement Learning, Vektorsuche, Modellinferenz, Trainingsdatensätze, neuronale Architekturen, multimodale Modelle"),
+    verbs: terms("klassifizieren, einbetten, evaluieren, feinabstimmen, generieren, schlussfolgern, optimieren, vorhersagen, vortrainieren, ranken, abrufen, sampeln, trainieren, tokenisieren, transformieren"),
+  },
+  design: {
+    openers: [
+      "Produktteams gestalten responsive Interfaces mit modularen Komponenten, klarer visueller Hierarchie und einem konsistenten Schriftsystem.",
+      "Designsysteme verbinden wiederverwendbare Komponenten, zugängliche Interaktionsmuster und responsive Raster über alle Bildschirme.",
+      "Kreativteams verfeinern visuelle Identität durch ausgewogene Layouts, modulare Typografie und gezielten Weißraum.",
+      "Interface-Designer verbinden User Flows, Komponentenstatus und visuellen Rhythmus durch eine gemeinsame Designsprache.",
+    ],
+    vocabulary: terms("Ausrichtung, Art Direction, Asset, Grundlinie, Marke, Brand System, Breakpoint, Canvas, Komponente, Komponentenbibliothek, Komposition, Konzept, Konsistenz, Kontrast, kreativ, Designsystem, Designtoken, Editorial, Flow, Schrift, Raster, Hierarchie, Identität, Illustration, Interaktion, Interface, Iteration, Layout, Rand, Mockup, modular, Navigation, Palette, Muster, Prototyp, Proportion, responsive, Rhythmus, Abstand, Styleguide, Symbol, Vorlage, Typografie, UI, UX, visuell, visuelle Identität, visuelle Sprache, Weißraum, Wireframe, Barrierefreiheit, Affordance, Balance, Farbsystem, Inhaltsstruktur, Designprozess, Iconografie, Interface Design, Layoutsystem, Modularität, Pixel, responsives Raster, Maßstab, Bildschirm, Interaktionsdesign, User Flow, visuelles System, Mikrointeraktion, Informationsarchitektur, Designmuster, kreative Richtung, Rasterdesign"),
+    phrases: terms("visuelle Hierarchie, responsives Raster, modulare Komponenten, typografisches System, Designsprache, visuelle Identität, Interaktionsmuster, Komponentenbibliothek, kreative Leitung, konsistentes Interface"),
+    verbs: terms("ausrichten, komponieren, gestalten, iterieren, prototypisieren, verfeinern, skalieren, strukturieren, stylen, testen, visualisieren, balancieren, organisieren, anpassen"),
+  },
+  fashion: {
+    openers: [
+      "Zeitgenössische Modehäuser entwickeln saisonale Kollektionen mit raffinierten Silhouetten, haptischen Materialien und sorgfältigen Details.",
+      "Redaktionelle Teams verbinden moderne Proportionen, texturalen Kontrast und zeitgemäßes Tailoring in jedem Look.",
+      "Das Atelier interpretiert traditionelle Handwerkskunst mit geschichteten Materialien, strukturiertem Volumen und einer monochromen Palette neu.",
+      "Runway-Kollektionen balancieren drapierte Silhouetten, handwerkliche Konstruktion und ausdrucksstarkes Styling.",
+    ],
+    vocabulary: terms("Accessoire, Atelier, Bespoke, Kampagne, Capsule, Kollektion, zeitgenössisch, Handwerk, Schnitt, Detail, Drapierung, Editorial, Stickerei, Stoff, Finish, Kleidungsstück, Heritage, Strick, Knitwear, Layering, Leder, Look, Lookbook, Material, minimal, Outerwear, Palette, Muster, Proportion, Ready-to-wear, Runway, Saison, saisonal, Silhouette, Styling, Tailoring, Textil, Textur, Garderobe, Webart, Wolle, Couture, Denim, Schuhwerk, Form, handgefertigt, Luxus, monochrom, Motiv, organisch, Oversize, raffiniert, Satin, transparent, strukturiert, Wildleder, Volumen, Accessoires, Konstruktion, Faltenwurf, Studio, transluzent, Webstoff, Schneiderkunst, Tonalität, Linie, Print"),
+    phrases: terms("saisonale Kollektion, raffinierte Silhouette, haptische Materialien, zeitgemäßes Tailoring, redaktionelles Styling, Capsule-Kollektion, sorgfältige Details, texturaler Kontrast, moderne Proportionen, Runway-Kollektion"),
+    verbs: terms("kombinieren, konstruieren, fertigen, drapieren, schichten, verfeinern, neu interpretieren, formen, stylen, schneidern, weben, vollenden"),
+  },
+  zombie: {
+    openers: [
+      "Die letzten Überlebenden verstärken das Versteck, während eine weitere Zombiehorde durch die verlassenen Straßen zieht.",
+      "Eine Notfunkmeldung führt den Konvoi zu einem verlassenen Kontrollpunkt mit Medikamenten und Überlebensvorräten.",
+      "Bei Einbruch der Nacht zwingt ein Ausbruch aus der Quarantäne die Patrouille zurück in das verbarrikadierte Safehouse.",
+      "Vom Wachturm aus verfolgen die Überlebenden einen Schwarm Untoter zwischen den Ruinen der verlassenen Stadt.",
+      "Die Sirene markiert eine neue Evakuierungsroute, bevor die Infizierten die Straßensperre erreichen.",
+      "Nach dem Alarm durchsucht ein Rettungsteam leere Dächer nach einem Signal des vermissten Konvois.",
+    ],
+    vocabulary: terms("Zombie, Untoter, Horde, Ausbruch, Überlebender, Überleben, Zuflucht, Safehouse, Barrikade, Apokalypse, Infektion, infiziert, Friedhof, Quarantäne, verlassen, Ödland, Bunker, Biss, Plünderer, Ruinen, Sirene, Schwarm, Verfall, Flucht, Einbruch der Nacht, Stadt, Zufluchtsort, Vorräte, Warnung, Chaos, Patrouille, Dunkelheit, Straßen, Funk, Rettung, Kontamination, Lockdown, menschenleer, Mutation, Gefahr, Perimeter, Evakuierung, Widerstand, Kontrollpunkt, Notfall, Generator, Taschenlampe, Rationen, Medizin, Fahrzeug, Signal, Dach, Keller, Zaun, Wachturm, Konvoi, Straßensperre, Notruf, Verfolgung, Ausbruch, Eindämmung"),
+    phrases: terms("Zombiehorde, verlassene Stadt, Überlebenszuflucht, infizierte Zone, Notvorräte, Quarantäneperimeter, menschenleere Straßen, Ausbruch der Untoten, letzte Überlebende, Barrikade am Safehouse, Evakuierungsroute, Ausbruch aus der Eindämmung, verlassener Kontrollpunkt, Notfunkmeldung, Überlebensvorräte"),
+    verbs: terms("fliehen, überleben, verbarrikadieren, verstärken, evakuieren, plündern, infizieren, ausbreiten, patrouillieren, suchen, verstecken, retten, eindämmen, durchbrechen, verteidigen, sichern, signalisieren, warnen, vorrücken"),
+  },
+};
+
 export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeData>> = {
   en: englishThemedIpsumData,
   it: italianThemedIpsumData,
   es: spanishThemedIpsumData,
+  de: germanThemedIpsumData,
 };
 
 type GeneratorOptions = {
@@ -461,6 +533,7 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   en: ["a", "an", "and", "as", "by", "for", "in", "of", "on", "or", "to", "with"],
   it: ["a", "e", "o", "di", "da", "in", "su", "per", "con", "tra", "fra", "un", "una", "il", "lo", "la", "i", "gli", "le"],
   es: ["a", "y", "o", "de", "del", "en", "por", "para", "con", "entre", "un", "una", "el", "la", "los", "las"],
+  de: ["an", "auf", "aus", "bei", "durch", "für", "in", "mit", "nach", "oder", "und", "von", "zu", "ein", "eine", "der", "die", "das", "den", "dem"],
 };
 
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], includeStandaloneVerbs = true) {
@@ -484,6 +557,10 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
       );
     });
     const candidates = withoutRelatedPhrases.length > 0 ? withoutRelatedPhrases : fresh;
+
+    if (candidates.length === 0) {
+      return `${text}${".".repeat(remaining)}`;
+    }
 
     const thematicCandidates = candidates.filter(component => !connectors.includes(component));
     const component = thematicCandidates.length > 0 && (!text || random() < .86)

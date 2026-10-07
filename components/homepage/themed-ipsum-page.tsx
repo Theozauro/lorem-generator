@@ -127,7 +127,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
             {config.showContentLanguageSelector && <div className="themed-language-selector" aria-labelledby="themed-language-label">
               <span className="field-label" id="themed-language-label">{config.contentLanguageLabel}</span>
               <div className="themed-language-list" role="group" aria-label={config.contentLanguageLabel}>
-                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : "EN"}</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : "EN"}</button>
                 <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.secondary} aria-pressed={contentLanguage !== config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage === "en" ? "it" : "en")}>EN</button>
               </div>
             </div>}

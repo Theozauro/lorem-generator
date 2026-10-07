@@ -10,7 +10,7 @@ const description = "Genera texto de prueba temático para Corporate, Tech, IA, 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: path, languages: { en: "/themed-lorem-ipsum/", it: "/it/lorem-ipsum-a-tema/", es: path, "x-default": "/themed-lorem-ipsum/" } },
+  alternates: { canonical: path, languages: { en: "/themed-lorem-ipsum/", it: "/it/lorem-ipsum-a-tema/", es: path, de: "/de/lorem-ipsum-nach-themen/", "x-default": "/themed-lorem-ipsum/" } },
   robots: { index: true, follow: true },
   openGraph: { type: "website", url: `${siteUrl}${path}`, locale: "es_ES", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },

@@ -1,9 +1,10 @@
 import type { HomepageCopy } from "./homepage-copy";
 import { enHomepageCopy } from "./homepage-copy/en";
 import { itHomepageCopy } from "./homepage-copy/it";
+import { deHomepageCopy } from "./homepage-copy/de";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 
-export type ThemedPageLocale = "en" | "it" | "es";
+export type ThemedPageLocale = "en" | "it" | "es" | "de";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -117,5 +118,27 @@ export const spanishThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Design Ipsum", description: "Texto de prueba para tipografía, layouts, componentes, retículas y procesos creativos.", action: "Generar Ipsum de diseño" },
     { id: "fashion", title: "Fashion Ipsum", description: "Texto de prueba para colecciones, tejidos, siluetas, estilismo y conceptos editoriales.", action: "Generar Ipsum de moda" },
     { id: "zombie", title: "Zombie Ipsum", description: "Texto de prueba apocalíptico con zombis, hordas, refugios, ciudades abandonadas y supervivencia.", action: "Generar Zombie Ipsum" },
+  ],
+};
+
+export const germanThemedPageConfig: ThemedPageConfig = {
+  locale: "de",
+  copy: deHomepageCopy,
+  defaultContentLanguage: "de",
+  showContentLanguageSelector: true,
+  title: "Thematischer Lorem-Ipsum-Generator",
+  intro: "Erzeuge Blindtext für bestimmte Branchen und Themen und behalte dabei die genaue Kontrolle über Umfang und Format des Inhalts.",
+  topicLabel: "Themen",
+  themeLabels: { corporate: "Corporate", tech: "Tech", ai: "KI", design: "Design", fashion: "Fashion", zombie: "Zombie" },
+  contentLanguageLabel: "Textsprache",
+  contentLanguageNames: { primary: "Deutsch", secondary: "English" },
+  exploreTitle: "Themen entdecken",
+  cards: [
+    { id: "corporate", title: "Corporate Ipsum", description: "Professioneller Blindtext für Unternehmen, Strategie, Prozesse und Unternehmenskommunikation.", action: "Corporate Ipsum generieren" },
+    { id: "tech", title: "Tech Ipsum", description: "Technischer Blindtext für Produkte, Plattformen, Systeme, Infrastruktur und Entwicklung.", action: "Tech Ipsum generieren" },
+    { id: "ai", title: "KI Ipsum", description: "Blindtext rund um künstliche Intelligenz, Modelle, Daten, Agenten, Automatisierung und maschinelles Lernen.", action: "KI Ipsum generieren" },
+    { id: "design", title: "Design Ipsum", description: "Blindtext für Typografie, Layouts, Komponenten, Rastersysteme und kreative Prozesse.", action: "Design Ipsum generieren" },
+    { id: "fashion", title: "Fashion Ipsum", description: "Blindtext für Kollektionen, Stoffe, Silhouetten, Styling und redaktionelle Konzepte.", action: "Fashion Ipsum generieren" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Apokalyptischer Blindtext mit Zombies, Horden, Zufluchtsorten, verlassenen Städten und Überleben.", action: "Zombie Ipsum generieren" },
   ],
 };

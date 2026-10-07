@@ -48,6 +48,19 @@ const experience = {
     lightLabel: "Passa al tema chiaro",
     darkLabel: "Passa al tema scuro",
   },
+  es: {
+    homePath: "/es/",
+    themedPath: "/es/lorem-ipsum-tematico/",
+    languageName: "Español",
+    classicLabel: "Generador de Lorem Ipsum",
+    themedLabel: "Ipsum temático",
+    navLabel: "Herramientas Lorem Ipsum",
+    mobileNavLabel: "Navegación en español",
+    openMenuLabel: "Abrir navegación",
+    closeMenuLabel: "Cerrar navegación",
+    lightLabel: "Cambiar al tema claro",
+    darkLabel: "Cambiar al tema oscuro",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -98,6 +111,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;
+    if (code === "es") return experience.es.themedPath;
     return classicHref;
   }
 

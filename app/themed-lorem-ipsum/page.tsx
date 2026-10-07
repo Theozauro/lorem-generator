@@ -10,7 +10,7 @@ const description = "Generate themed placeholder text for Corporate, Tech, AI, D
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: path, languages: { en: path, it: "/it/lorem-ipsum-a-tema/", "x-default": path } },
+  alternates: { canonical: path, languages: { en: path, it: "/it/lorem-ipsum-a-tema/", es: "/es/lorem-ipsum-tematico/", "x-default": path } },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",

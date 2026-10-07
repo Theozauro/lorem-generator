@@ -119,7 +119,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
 
         <div className="themed-topic-selector" aria-labelledby="themed-topic-label">
           <span className="field-label" id="themed-topic-label">{config.topicLabel}</span>
-          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon: Icon }) => <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{label}</span></button>)}</div></div>
+          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon: Icon }) => <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{config.themeLabels[id] ?? label}</span></button>)}</div></div>
         </div>
 
         <div className="generator-panel generator-module themed-generator-panel" id="themed-generator">
@@ -127,8 +127,8 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
             {config.showContentLanguageSelector && <div className="themed-language-selector" aria-labelledby="themed-language-label">
               <span className="field-label" id="themed-language-label">{config.contentLanguageLabel}</span>
               <div className="themed-language-list" role="group" aria-label={config.contentLanguageLabel}>
-                <button type="button" className="themed-language-button" aria-label="Italiano" aria-pressed={contentLanguage === "it"} onClick={() => setContentLanguage("it")}>IT</button>
-                <button type="button" className="themed-language-button" aria-label="English" aria-pressed={contentLanguage === "en"} onClick={() => setContentLanguage("en")}>EN</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : "EN"}</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.secondary} aria-pressed={contentLanguage !== config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage === "en" ? "it" : "en")}>EN</button>
               </div>
             </div>}
             <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList>{modes.map(item => <TabsContent key={item} value={item} hidden aria-hidden="true" />)}</Tabs></div>

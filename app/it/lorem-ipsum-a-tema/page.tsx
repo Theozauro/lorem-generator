@@ -9,7 +9,7 @@ const description = "Genera testo segnaposto a tema Corporate, Tech, AI, Design,
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: path, languages: { en: "/themed-lorem-ipsum/", it: path, "x-default": "/themed-lorem-ipsum/" } },
+  alternates: { canonical: path, languages: { en: "/themed-lorem-ipsum/", it: path, es: "/es/lorem-ipsum-tematico/", "x-default": "/themed-lorem-ipsum/" } },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",

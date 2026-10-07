@@ -1,6 +1,6 @@
 export type ThemedTheme = "corporate" | "tech" | "ai" | "design" | "fashion" | "zombie";
 export type ThemedMode = "layout" | "characters" | "sentences";
-export type ThemedLanguage = "en" | "it";
+export type ThemedLanguage = "en" | "it" | "es";
 
 type ThemeData = {
   openers: string[];
@@ -153,9 +153,81 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
+  corporate: {
+    openers: [
+      "Los equipos directivos alinean prioridades estratégicas, stakeholders y KPI para convertir los objetivos en resultados medibles.",
+      "La dirección conecta roadmap, gobernanza y workflow operativos para sostener un crecimiento escalable y un valor duradero.",
+      "Las organizaciones comparan oportunidades de mercado, simplifican procesos y aceleran la creación de valor en cada iniciativa.",
+      "La estrategia, la ejecución y la colaboración transversal impulsan decisiones rápidas, ROI verificable y continuidad operativa.",
+    ],
+    vocabulary: terms("acción, agile, alineación, análisis, benchmark, business, capacidad, competencias, colaboración, decisión, deliverable, dirección, ecosistema, eficiencia, ejecución, framework, gobernanza, crecimiento, impacto, iniciativa, integración, KPI, liderazgo, mercado, milestone, monetización, objetivo, omnicanal, operaciones, optimización, outcome, paradigma, performance, pipeline, prioridades, proceso, proyecto, trimestre, roadmap, ROI, escalabilidad, stakeholder, estrategia, target, transformación, valor, workflow, planificación, resultado, inversión, recursos, posicionamiento, oportunidades, sostenibilidad, medición, go-to-market"),
+    phrases: terms("stakeholders transversales, alineación estratégica, rendimiento trimestral, deliverables escalables, eficiencia operativa, valor a largo plazo, resultados de negocio, oportunidades de mercado, crecimiento de ingresos, transformación empresarial"),
+    verbs: terms("alinear, acelerar, analizar, construir, definir, desarrollar, ejecutar, expandir, guiar, maximizar, medir, optimizar, planificar, priorizar, escalar, simplificar, transformar, impulsar"),
+  },
+  tech: {
+    openers: [
+      "Los equipos de ingeniería despliegan microservicios distribuidos en clusters Kubernetes multi-región con pipelines CI/CD y telemetría de observabilidad.",
+      "Las plataformas cloud-native integran API, backend y servicios event-driven para garantizar escalabilidad, seguridad y disponibilidad.",
+      "Las arquitecturas distribuidas coordinan contenedores, bases de datos y sistemas de caché mediante deployments automatizados y monitorización continua.",
+      "Los productos de software conectan frontend, infraestructura y workflows de desarrollo con endpoints fiables e integraciones verificables.",
+    ],
+    vocabulary: terms("API, autenticación, backend, ancho-de-banda, bytecode, cache, CI/CD, cloud, cluster, compilador, contenedor, database, deployment, distribuido, Docker, endpoint, event-driven, framework, frontend, gateway, GitOps, GraphQL, infraestructura, integración, interfaz, Kafka, Kubernetes, latencia, load-balancer, logging, microservicios, middleware, network, nodo, OAuth, observabilidad, orquestación, pipeline, Postgres, protocolo, pubsub, queue, Redis, réplica, REST, runtime, escalabilidad, schema, seguridad, server, serverless, servicio, sharding, socket, storage, stream, telemetría, token, virtualización, websocket, zero-trust, autoscaling, datacenter, fault-tolerance, high-availability, multi-region, replication, service-mesh, throughput, versioning, webhook, edge-computing, cloud-native"),
+    phrases: terms("microservicios distribuidos, infraestructura multi-región, deployment automatizado, arquitectura cloud-native, sistemas event-driven, telemetría de observabilidad, infraestructura escalable, seguridad zero-trust, orquestación de servicios, clusters de alta disponibilidad"),
+    verbs: terms("autenticar, almacenar, compilar, conectar, desplegar, distribuir, ejecutar, integrar, monitorizar, orquestar, persistir, provisionar, replicar, enrutar, escalar, transmitir, sincronizar, validar"),
+  },
+  ai: {
+    openers: [
+      "Los modelos de lenguaje de gran tamaño procesan tokens multimodales mediante capas de atención para generar embeddings contextuales.",
+      "Los equipos de IA optimizan foundation models con datasets seleccionados, fine-tuning, reinforcement learning y evaluaciones rigurosas.",
+      "Los modelos multimodales combinan RAG, vector search y razonamiento contextual sobre bases de conocimiento complejas.",
+      "Los clusters GPU entrenan arquitecturas transformer con gradient descent, checkpoints e hiperparámetros calibrados.",
+    ],
+    vocabulary: terms("agente, alignment, atención, backpropagation, benchmark, checkpoint, clasificación, contexto, context-window, dataset, difusión, embedding, evaluación, few-shot, fine-tuning, foundation-model, generación, generativo, GPU, gradiente, gradient-descent, hallucination, hyperparameter, inferencia, instruction-tuning, inteligencia, latent-space, LLM, loss, machine-learning, modelo, multimodal, neural-network, optimización, parámetro, pretraining, prompt, prompt-engineering, cuantización, RAG, razonamiento, reinforcement-learning, RLHF, sampling, semántica, supervisado, synthetic-data, token, tokenización, training, transformer, vector, vector-database, pesos, zero-shot, agentic, decoder, encoder, knowledge-base, language-model, model-evaluation, retrieval, reward-model, secuencia, temperatura, vision-model"),
+    phrases: terms("modelos de lenguaje de gran tamaño, atención multi-head, embeddings contextuales, retrieval augmented generation, reinforcement learning, vector search, inferencia del modelo, datasets de entrenamiento, arquitecturas neuronales, modelos multimodales"),
+    verbs: terms("clasificar, entrenar, muestrear, codificar, ajustar, generar, inferir, optimizar, predecir, preentrenar, recuperar, razonar, transformar, evaluar"),
+  },
+  design: {
+    openers: [
+      "Los equipos de producto componen interfaces responsive con componentes modulares, jerarquías visuales claras y un sistema tipográfico coherente.",
+      "Los design systems alinean componentes reutilizables, patrones de interacción accesibles y retículas responsive en cada pantalla.",
+      "Las direcciones creativas refinan la identidad visual mediante layouts equilibrados, tipografía modular y espacios intencionados.",
+      "Los diseñadores conectan user flows, estados de componentes y ritmo visual con un lenguaje de diseño compartido.",
+    ],
+    vocabulary: terms("alineación, asset, baseline, marca, breakpoint, canvas, componente, composición, concepto, coherencia, contraste, creativo, design-system, design-token, editorial, flow, font, grid, jerarquía, identidad, ilustración, interacción, interfaz, iteración, layout, margen, mockup, modular, navegación, paleta, patrón, prototipo, proporción, responsive, ritmo, espaciado, styleguide, símbolo, template, tipografía, UI, UX, wireframe, accesibilidad, equilibrio, iconografía, pixel, escala, pantalla, microinteracción, estructura, legibilidad, usabilidad, user-flow, color-system, visual-system"),
+    phrases: terms("jerarquía visual, retícula responsive, componentes modulares, sistema tipográfico, lenguaje de diseño, identidad visual, patrón de interacción, librería de componentes, dirección creativa, interfaz coherente"),
+    verbs: terms("adaptar, alinear, equilibrar, componer, definir, diseñar, iterar, organizar, planificar, prototipar, refinar, escalar, estructurar, probar, visualizar"),
+  },
+  fashion: {
+    openers: [
+      "Las casas de moda contemporáneas construyen colecciones de temporada con siluetas refinadas, materiales táctiles y detalles cuidados.",
+      "Los equipos editoriales combinan proporciones modernas, contrastes de textura y tailoring contemporáneo en cada look de temporada.",
+      "El atelier reinterpreta la artesanía mediante tejidos superpuestos, volúmenes estructurados y una paleta monocromática refinada.",
+      "Las colecciones runway equilibran siluetas drapeadas, construcción artesanal y styling expresivo para un armario distintivo.",
+    ],
+    vocabulary: terms("accesorio, atelier, bespoke, campaña, capsule, colección, contemporáneo, artesanía, corte, detalle, drapeado, editorial, bordado, tejido, acabado, prenda, heritage, punto, knitwear, layering, piel, look, lookbook, material, minimalista, outerwear, paleta, pattern, proporción, ready-to-wear, runway, temporada, silueta, styling, tailoring, textura, armario, trama, lana, couture, denim, calzado, forma, lujo, monocromático, motivo, orgánico, oversize, refinado, satén, estructurado, ante, volumen, construcción, plisado, estudio, translúcido, tejido, sastrería, tonalidad, línea, estampado"),
+    phrases: terms("colección de temporada, silueta refinada, materiales táctiles, tailoring contemporáneo, styling editorial, colección capsule, detalles cuidados, contraste de texturas, proporciones modernas, colección runway"),
+    verbs: terms("combinar, construir, crear, definir, drapear, finalizar, entrelazar, modelar, refinar, reinterpretar, confeccionar, superponer, tejer, realzar"),
+  },
+  zombie: {
+    openers: [
+      "Los últimos supervivientes refuerzan el refugio mientras otra horda de zombis atraviesa las calles desiertas más allá del perímetro de cuarentena.",
+      "Una transmisión de emergencia guía al convoy hacia un puesto de control abandonado, donde quedan medicinas y suministros de supervivencia.",
+      "Al caer la noche, una brecha de contención obliga a la patrulla a regresar al búnker antes de que lleguen los no muertos.",
+      "Desde la torre de vigilancia, los supervivientes siguen el movimiento de los infectados entre las ruinas de la ciudad abandonada.",
+      "La sirena anuncia una nueva evacuación mientras la señal de radio indica una ruta de escape fuera de la zona contaminada.",
+      "Un equipo de rescate busca provisiones en el sótano antes de atrincherar la entrada del refugio.",
+    ],
+    vocabulary: terms("zombi, horda, brote, supervivientes, supervivencia, refugio, barricada, apocalipsis, infección, infectados, cementerio, cuarentena, búnker, mordedura, saqueador, ruinas, sirena, enjambre, descomposición, escape, noche, suministros, alarma, caos, patrulla, oscuridad, radio, rescate, contaminación, confinamiento, mutación, peligro, perímetro, evacuación, resistencia, emergencia, linterna, raciones, medicinas, vehículo, señal, azotea, sótano, valla, torre, convoy, persecución, brecha, contención, generador, contagio, aislamiento, incursión, puesto, carretera"),
+    phrases: terms("no muertos, ciudad abandonada, zona contaminada, calles desiertas, zona muerta, puesto de control, torre de vigilancia, bloqueo de carretera, señal de socorro, horda de zombis, refugio de supervivencia, zona infectada, suministros de emergencia, perímetro de cuarentena, brote zombi, últimos supervivientes, barricada del refugio, ruta de evacuación, brecha de contención, puesto abandonado, transmisión de emergencia, provisiones de supervivencia"),
+    verbs: terms("escapar, sobrevivir, atrincherar, reforzar, evacuar, recuperar, infectar, extenderse, patrullar, buscar, esconderse, rescatar, contener, defender, asegurar, señalar, advertir, avanzar"),
+  },
+};
+
 export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeData>> = {
   en: englishThemedIpsumData,
   it: italianThemedIpsumData,
+  es: spanishThemedIpsumData,
 };
 
 type GeneratorOptions = {
@@ -388,6 +460,7 @@ function generateSentences(data: ThemeData, amount: number, random: () => number
 const characterConnectors: Record<ThemedLanguage, string[]> = {
   en: ["a", "an", "and", "as", "by", "for", "in", "of", "on", "or", "to", "with"],
   it: ["a", "e", "o", "di", "da", "in", "su", "per", "con", "tra", "fra", "un", "una", "il", "lo", "la", "i", "gli", "le"],
+  es: ["a", "y", "o", "de", "del", "en", "por", "para", "con", "entre", "un", "una", "el", "la", "los", "las"],
 };
 
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], includeStandaloneVerbs = true) {

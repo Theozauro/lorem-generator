@@ -37,6 +37,8 @@ export const frHomepageCopy: HomepageCopy = {
     "long": "Longues",
     "output": "Résultat",
     "outputAria": "Lorem Ipsum généré",
+    "emptyState": "Choisissez vos réglages et générez du texte Lorem Ipsum.",
+    "generate": "Générer",
     "words": "Mots",
     "paragraphs": "Paragraphes",
     "stats": {
@@ -103,8 +105,8 @@ export const frHomepageCopy: HomepageCopy = {
     "remainingTools": "Autres outils pour designers",
     "aboutEyebrow": "À PROPOS DU TEXTE DE SUBSTITUTION",
     "aboutTitle": "Générateur de texte de substitution pour maquettes et prototypes",
-    "aboutOne": "Créez du texte factice ou de remplissage pour vos mises en page, wireframes et tests d’interface. Lorem Ipsum est un texte de substitution bien connu dérivé du latin classique. Les designers l’utilisent pour évaluer la hiérarchie, le rythme, la longueur des lignes et l’espacement avant de disposer du contenu final.",
-    "aboutTwo": "Définissez simultanément le nombre de mots et de paragraphes pour ajuster la densité et le rythme d’une mise en page, ou passez aux caractères ou aux phrases lorsqu’une longueur précise est nécessaire.",
+    "aboutOne": "Créez du texte factice ou de remplissage pour vos mises en page, wireframes et tests d’interface.",
+    "aboutTwo": "",
     "seoEyebrow": "CONÇU POUR DE VRAIES MISES EN PAGE",
     "seoTitle": "Un générateur de Lorem Ipsum pour designers et développeurs.",
     "seoOneTitle": "Gardez une mise en page fidèle à la réalité.",
@@ -132,7 +134,37 @@ export const frHomepageCopy: HomepageCopy = {
         "Quand le remplacer",
         "Le texte de substitution doit être remplacé avant la finalisation d’un site web, d’un document ou d’un projet imprimé. Le contenu réel est indispensable pour évaluer le ton, l’accessibilité, le sens, la visibilité dans les moteurs de recherche et l’expérience de lecture."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Quand utiliser le Lorem Ipsum",
+        "paragraphs": [
+          "Le Lorem Ipsum est utile lorsque le contenu final n’est pas encore prêt, mais que la structure visuelle d’une page doit déjà être évaluée. Designers et développeurs peuvent employer du texte de substitution dans des sites, applications, présentations, maquettes, wireframes et prototypes afin de vérifier les espacements, la hiérarchie, les colonnes et le comportement des composants.",
+          "Comme il ne porte pas de message cohérent, il permet d’observer la composition sans se laisser détourner par le sens des mots. Aux premières étapes d’un projet, il aide à estimer la place occupée par les titres, paragraphes, cartes et blocs de texte longs. Avant publication, il doit être remplacé par le contenu réel.",
+        ]
+      },
+      {
+        "heading": "Pourquoi le Lorem Ipsum fonctionne dans les mises en page",
+        "paragraphs": [
+          "Répéter sans cesse le même mot ne reproduit pas le rythme visuel d’un texte réel. Le Lorem Ipsum associe des mots de longueurs variées et crée des lignes irrégulières ; il est donc plus pertinent pour évaluer la typographie, l’interlignage, la densité et la répartition du contenu.",
+          "Ce générateur permet de produire une quantité précise de texte de remplissage selon un besoin de conception : un court bloc pour une carte, plusieurs paragraphes pour une page éditoriale, un nombre défini de phrases ou un échantillon limité en caractères. Le texte factice devient ainsi un outil de test de mise en page, et non un simple remplissage.",
+        ]
+      },
+      {
+        "heading": "D’où vient le Lorem Ipsum",
+        "paragraphs": [
+          "Le Lorem Ipsum provient de fragments modifiés du De finibus bonorum et malorum, un ouvrage philosophique écrit par Cicéron en 45 av. J.-C. Le texte utilisé aujourd’hui n’est pas un passage cohérent de latin classique : ses mots ont été altérés et réorganisés pour évoquer visuellement un texte naturel sans former de message continu.",
+          "Sa popularité moderne est liée à la composition typographique et à l’emploi de texte de substitution dans les planches Letraset au XXe siècle. Il s’est ensuite imposé dans les logiciels de publication assistée par ordinateur et les flux de design numérique, pour les maquettes, gabarits et essais de composition.",
+        ]
+      },
+      {
+        "heading": "Le Lorem Ipsum dans le web design et le prototypage",
+        "paragraphs": [
+          "Dans le design numérique, le texte de remplissage aide à vérifier le comportement d’une interface avant l’arrivée du contenu final. Il peut révéler des débordements, des cartes trop petites, des colonnes déséquilibrées, des titres trop longs ou des difficultés de mise en page entre mobile et ordinateur.",
+          "Il est également utile pour comparer différentes densités de contenu pendant la conception d’un produit. Son rôle reste toutefois temporaire. Dès que le vrai texte est disponible, il faut tester à nouveau la mise en page afin d’évaluer le ton, les retours à la ligne et les longueurs réelles à prendre en charge.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "RÉPONSES POUR LES DESIGNERS",

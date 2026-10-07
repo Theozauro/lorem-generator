@@ -37,6 +37,8 @@ export const plHomepageCopy: HomepageCopy = {
     "long": "Długie",
     "output": "Wynik",
     "outputAria": "Wygenerowany tekst Lorem Ipsum",
+    "emptyState": "Wybierz ustawienia i wygeneruj tekst Lorem Ipsum.",
+    "generate": "Generuj",
     "words": "Słowa",
     "paragraphs": "Akapity",
     "stats": {
@@ -103,8 +105,8 @@ export const plHomepageCopy: HomepageCopy = {
     "remainingTools": "Więcej narzędzi dla projektantów",
     "aboutEyebrow": "O TEKŚCIE ZASTĘPCZYM",
     "aboutTitle": "Generator tekstu zastępczego do makiet i prototypów",
-    "aboutOne": "Twórz tekst zastępczy do layoutów, makiet i testów interfejsu z dokładną kontrolą liczby słów, akapitów, zdań i znaków. Lorem Ipsum to znany tekst zastępczy wywodzący się z klasycznej łaciny. Projektanci używają go do oceny hierarchii, rytmu, długości wierszy i odstępów przed przygotowaniem finalnej treści.",
-    "aboutTwo": "Ustaw słowa i akapity razem, aby dopasować gęstość i rytm układu, albo przełącz się na znaki lub zdania, gdy liczy się dokładna długość.",
+    "aboutOne": "Twórz tekst zastępczy do layoutów, makiet i testów interfejsu z dokładną kontrolą liczby słów, akapitów, zdań i znaków.",
+    "aboutTwo": "",
     "seoEyebrow": "STWORZONE DLA PRAWDZIWYCH UKŁADÓW",
     "seoTitle": "Generator Lorem Ipsum dla projektantów i programistów.",
     "seoOneTitle": "Zachowaj wiarygodny układ.",
@@ -132,7 +134,37 @@ export const plHomepageCopy: HomepageCopy = {
         "Kiedy go zastąpić",
         "Tekst zastępczy powinien zniknąć przed ukończeniem strony, dokumentu lub projektu drukowanego. Rzeczywista treść jest potrzebna do oceny tonu, dostępności, znaczenia, widoczności w wyszukiwarkach i odbioru tekstu."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Kiedy używać Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum przydaje się wtedy, gdy finalna treść nie jest jeszcze gotowa, ale trzeba już ocenić wizualną strukturę strony. Projektanci i deweloperzy mogą używać tekstu zastępczego w serwisach, aplikacjach, prezentacjach, makietach, wireframe’ach i prototypach, aby sprawdzić odstępy, hierarchię, szerokość kolumn oraz zachowanie komponentów.",
+          "Ponieważ taki tekst nie przekazuje spójnego komunikatu, uwaga pozostaje na kompozycji, a nie na znaczeniu tymczasowych słów. We wczesnej fazie projektu pomaga oszacować miejsce zajmowane przez nagłówki, akapity, karty i dłuższe bloki. Przed publikacją należy zastąpić go prawdziwą treścią.",
+        ]
+      },
+      {
+        "heading": "Dlaczego Lorem Ipsum sprawdza się w layoutach",
+        "paragraphs": [
+          "Powtarzanie wciąż tego samego słowa nie oddaje wizualnego rytmu prawdziwego tekstu. Lorem Ipsum łączy wyrazy o różnej długości i tworzy nieregularne wiersze, dzięki czemu lepiej nadaje się do oceny typografii, interlinii, gęstości i rozkładu treści.",
+          "Ten generator pozwala przygotować dokładną ilość tekstu zastępczego do konkretnego zadania: krótki blok do karty, kilka akapitów na stronę redakcyjną, określoną liczbę zdań albo próbkę z limitem znaków. Dzięki temu tekst zastępczy staje się praktycznym narzędziem do testowania layoutu, a nie tylko wypełnieniem. Możesz też przygotować kilka wariantów dla tego samego komponentu i porównać, jak krótsza oraz dłuższa treść zmienia jego proporcje. Takie porównanie ułatwia decyzje projektowe przed przygotowaniem finalnego copy.",
+        ]
+      },
+      {
+        "heading": "Skąd pochodzi Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum wywodzi się ze zmienionych fragmentów De finibus bonorum et malorum, dzieła filozoficznego napisanego przez Cycerona w 45 roku p.n.e. Współczesny tekst nie jest spójnym fragmentem klasycznej łaciny. Słowa zostały zmodyfikowane i przestawione tak, aby wizualnie przypominały naturalny tekst, lecz nie tworzyły ciągłego znaczenia.",
+          "Jego nowoczesna popularność wiąże się ze składem typograficznym i użyciem tekstu zastępczego w materiałach Letraset w XX wieku. Później Lorem Ipsum upowszechnił się w programach DTP oraz cyfrowych procesach projektowych, gdzie nadal służy do makiet, szablonów i testów układu.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum w projektowaniu stron i prototypowaniu",
+        "paragraphs": [
+          "W projektowaniu cyfrowym tekst zastępczy pomaga sprawdzić zachowanie interfejsu, zanim dostępna będzie finalna treść. Może ujawnić przepełnienia tekstu, zbyt małe karty, niezrównoważone kolumny, za długie nagłówki oraz problemy z responsywnym układem na różnych ekranach.",
+          "Pozwala też szybko porównać różną gęstość treści podczas projektowania produktu. Jego rola powinna jednak pozostać tymczasowa. Gdy pojawi się rzeczywisty tekst, layout trzeba ponownie przetestować, aby ocenić ton, łamanie wierszy i rzeczywiste długości treści, które produkt musi obsłużyć.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "ODPOWIEDZI DLA PROJEKTANTÓW",

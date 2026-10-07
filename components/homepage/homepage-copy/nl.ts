@@ -37,6 +37,8 @@ export const nlHomepageCopy: HomepageCopy = {
     "long": "Lang",
     "output": "Resultaat",
     "outputAria": "Gegenereerde Lorem Ipsum",
+    "emptyState": "Kies je instellingen en genereer Lorem Ipsum-tekst.",
+    "generate": "Genereren",
     "words": "Woorden",
     "paragraphs": "Alinea’s",
     "stats": {
@@ -103,8 +105,8 @@ export const nlHomepageCopy: HomepageCopy = {
     "remainingTools": "Meer tools voor designers",
     "aboutEyebrow": "EEN OPMERKING OVER TIJDELIJKE TEKST",
     "aboutTitle": "Opvultekstgenerator voor layouts en prototypes",
-    "aboutOne": "Maak opvultekst voor mock-ups, wireframes en interfacetests met controle over woorden, alinea’s, zinnen en tekens. Lorem Ipsum is een bekende tijdelijke tekst die is afgeleid van klassiek Latijn. Designers gebruiken deze tekst om hiërarchie, ritme, regellengte en tussenruimte te beoordelen voordat de definitieve inhoud klaar is.",
-    "aboutTwo": "Stel woorden en alinea’s tegelijk in om de dichtheid en het ritme van een layout af te stemmen, of gebruik tekens of zinnen wanneer je een precieze lengte nodig hebt.",
+    "aboutOne": "Maak opvultekst voor mock-ups, wireframes en interfacetests met controle over woorden, alinea’s, zinnen en tekens.",
+    "aboutTwo": "",
     "seoEyebrow": "GEMAAKT VOOR ECHTE LAYOUTS",
     "seoTitle": "Een Lorem Ipsum Generator voor designers en developers.",
     "seoOneTitle": "Houd je layout realistisch.",
@@ -132,7 +134,37 @@ export const nlHomepageCopy: HomepageCopy = {
         "Wanneer vervangen",
         "Tijdelijke tekst moet worden vervangen voordat een website, document of gedrukt ontwerp wordt afgerond. Echte inhoud is nodig om toon, toegankelijkheid, betekenis, zichtbaarheid in zoekmachines en de daadwerkelijke leeservaring te beoordelen."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Wanneer je Lorem Ipsum gebruikt",
+        "paragraphs": [
+          "Lorem Ipsum is nuttig wanneer de definitieve inhoud nog niet beschikbaar is, maar de visuele structuur van een pagina al moet worden beoordeeld. Designers en ontwikkelaars gebruiken opvultekst in websites, apps, presentaties, mock-ups, wireframes en prototypes om witruimte, hiërarchie, kolombreedte en het gedrag van componenten te testen.",
+          "Omdat de woorden geen samenhangende boodschap vormen, blijft de aandacht bij de compositie in plaats van bij de tijdelijke tekst. In vroege projectfasen helpt dit om in te schatten hoeveel ruimte koppen, alinea’s, kaarten en langere tekstblokken innemen. Voor publicatie moet opvultekst altijd worden vervangen door echte inhoud.",
+        ]
+      },
+      {
+        "heading": "Waarom Lorem Ipsum werkt in layouts",
+        "paragraphs": [
+          "Eenzelfde woord steeds herhalen geeft het visuele ritme van echte tekst niet weer. Lorem Ipsum combineert woorden met verschillende lengtes en maakt onregelmatige regels, waardoor het beter bruikbaar is om typografie, regelafstand, dichtheid en tekstverdeling te beoordelen.",
+          "Met deze generator maak je een precieze hoeveelheid tijdelijke tekst voor een specifieke ontwerpvraag: een kort blok voor een kaart, meerdere alinea’s voor een redactionele pagina, een exact aantal zinnen of een voorbeeld met een tekenlimiet. Zo wordt opvultekst een praktisch hulpmiddel om een layout te testen en niet alleen een vulling.",
+        ]
+      },
+      {
+        "heading": "Waar Lorem Ipsum vandaan komt",
+        "paragraphs": [
+          "Lorem Ipsum is afgeleid van bewerkte fragmenten uit De finibus bonorum et malorum, een filosofisch werk dat Cicero in 45 v.Chr. schreef. De moderne opvultekst is geen samenhangende passage in klassiek Latijn. Woorden zijn aangepast en opnieuw geordend zodat de tekst er natuurlijk uitziet zonder een doorlopende betekenis over te brengen.",
+          "De moderne verspreiding hangt samen met zetwerk en het gebruik van tijdelijke tekst in Letraset-materiaal in de twintigste eeuw. Daarna werd Lorem Ipsum gebruikelijk in desktop-publishingsoftware en digitale ontwerpworkflows, waar het nog steeds wordt gebruikt voor mock-ups, sjablonen en layouttests.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum in webdesign en prototyping",
+        "paragraphs": [
+          "In digitaal ontwerp helpt opvultekst te zien hoe een interface zich gedraagt voordat de definitieve inhoud beschikbaar is. Het kan overlopende tekst, te kleine kaarten, onevenwichtige kolommen, te lange koppen en problemen met responsieve layouts op verschillende schermformaten zichtbaar maken.",
+          "Ook kun je tijdens het ontwerpen snel verschillende inhoudsdichtheden vergelijken. De tekst blijft echter tijdelijk. Zodra echte copy beschikbaar is, moet de layout opnieuw worden getest zodat toon, afbrekingen en werkelijke tekstlengtes goed kunnen worden beoordeeld.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "ANTWOORDEN VOOR DESIGNERS",

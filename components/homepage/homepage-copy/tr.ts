@@ -37,6 +37,8 @@ export const trHomepageCopy: HomepageCopy = {
     "long": "Uzun",
     "output": "Çıktı",
     "outputAria": "Oluşturulan Lorem Ipsum",
+    "emptyState": "Ayarlarınızı seçin ve Lorem Ipsum metni oluşturun.",
+    "generate": "Oluştur",
     "words": "Sözcükler",
     "paragraphs": "Paragraflar",
     "stats": {
@@ -103,8 +105,8 @@ export const trHomepageCopy: HomepageCopy = {
     "remainingTools": "Tasarımcılar için daha fazla araç",
     "aboutEyebrow": "YER TUTUCU METİN HAKKINDA",
     "aboutTitle": "Tasarımlar ve prototipler için yer tutucu metin oluşturucu",
-    "aboutOne": "Düzenler, maketler ve arayüz testleri için istediğiniz uzunlukta yer tutucu metin oluşturun. Lorem Ipsum, klasik Latinceden türetilmiş tanıdık bir yer tutucu metindir. Tasarımcılar, nihai metin hazır olmadan önce hiyerarşiyi, ritmi, satır uzunluğunu ve boşlukları değerlendirmek için kullanır.",
-    "aboutTwo": "Bir mizanpajın yoğunluğunu ve ritmini ayarlamak için sözcük ve paragraf sayılarını birlikte belirleyin; kesin bir uzunluk gerektiğinde karakterlere veya cümlelere geçin.",
+    "aboutOne": "Düzenler, maketler ve arayüz testleri için istediğiniz uzunlukta yer tutucu metin oluşturun.",
+    "aboutTwo": "",
     "seoEyebrow": "GERÇEK MİZANPAJLAR İÇİN TASARLANDI",
     "seoTitle": "Tasarımcılar ve geliştiriciler için Lorem Ipsum oluşturucu.",
     "seoOneTitle": "Mizanpajı gerçeğe uygun tutun.",
@@ -132,7 +134,37 @@ export const trHomepageCopy: HomepageCopy = {
         "Ne zaman değiştirilmeli",
         "Yer tutucu metin, bir web sitesi, belge veya basılı proje tamamlanmadan önce kaldırılmalıdır. Tonu, erişilebilirliği, anlamı, arama görünürlüğünü ve gerçek okuma deneyimini değerlendirmek için gerçek içerik gerekir."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Lorem Ipsum ne zaman kullanılır",
+        "paragraphs": [
+          "Lorem Ipsum, nihai içerik henüz hazır değilken bir sayfanın görsel yapısının değerlendirilmesi gerektiğinde kullanışlıdır. Tasarımcılar ve geliştiriciler; boşlukları, hiyerarşiyi, sütun genişliklerini ve bileşenlerin davranışını sınamak için web sitelerinde, uygulamalarda, sunumlarda, maketlerde, wireframe’lerde ve prototiplerde yer tutucu metinden yararlanabilir.",
+          "Tutarlı bir mesaj taşımadığı için dikkati geçici metnin anlamından çok kompozisyona yöneltir. Projenin ilk aşamalarında başlıkların, paragrafların, kartların ve uzun metin bloklarının kaplayacağı alanı tahmin etmeye yardımcı olur. Yayına geçmeden önce bu metin gerçek içerikle değiştirilmelidir.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum düzenlerde neden işe yarar",
+        "paragraphs": [
+          "Aynı kelimeyi sürekli tekrarlamak, gerçek metnin görsel ritmini yansıtmaz. Lorem Ipsum farklı uzunluklarda kelimeleri bir araya getirir ve düzensiz satırlar oluşturur; bu nedenle tipografiyi, satır aralığını, yoğunluğu ve metnin dağılımını değerlendirmek için daha uygundur.",
+          "Bu araçla belirli bir tasarım ihtiyacı için kesin miktarda yer tutucu metin üretebilirsiniz: bir kart için kısa bir blok, editoryal bir sayfa için birkaç paragraf, belirli sayıda cümle ya da karakter sınırı olan bir arayüz örneği. Böylece metin yalnızca dolgu değil, pratik bir layout test aracı olur. Farklı sayfa türleri için birkaç varyasyon üreterek aynı bileşenin kısa ve uzun içerikte nasıl değiştiğini de görebilirsiniz. Bu karşılaştırma, gerçek içerik gelmeden önce tasarım kararlarını daha güvenle vermeyi kolaylaştırır. Bu yöntem, metin miktarı değiştiğinde arayüzün dayanıklılığını erken aşamada kontrol etmeyi de sağlar.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum nereden gelir",
+        "paragraphs": [
+          "Lorem Ipsum, Cicero’nun MÖ 45 yılında yazdığı felsefi eser De finibus bonorum et malorum’dan değiştirilmiş parçalara dayanır. Günümüzde kullanılan metin klasik Latincenin tutarlı bir bölümü değildir. Kelimeler, sürekli bir anlam iletmeden doğal metne benzer bir görünüm vermek için değiştirilmiş ve yeniden sıralanmıştır.",
+          "Modern yaygınlığı, dizgi çalışmalarıyla ve yirminci yüzyılda Letraset materyallerinde kullanılan yer tutucu metinlerle ilişkilidir. Daha sonra masaüstü yayıncılık yazılımlarında ve dijital tasarım iş akışlarında yaygınlaşmış; maketler, şablonlar ve layout testleri için kullanılmaya devam etmiştir.",
+        ]
+      },
+      {
+        "heading": "Web tasarımında ve prototiplemede Lorem Ipsum",
+        "paragraphs": [
+          "Dijital tasarımda yer tutucu metin, nihai içerik gelmeden önce bir arayüzün nasıl davrandığını görmeye yardımcı olur. Taşan metinleri, fazla küçük kartları, dengesiz sütunları, gereğinden uzun başlıkları ve farklı ekran boyutlarındaki duyarlı düzen sorunlarını ortaya çıkarabilir.",
+          "Ürün tasarlanırken farklı içerik yoğunluklarını karşılaştırmak için de yararlıdır. Ancak kullanımı geçici kalmalıdır. Gerçek metin hazır olduğunda layout yeniden test edilmeli; ürünün yöneteceği ton, satır kırılımları ve gerçek metin uzunlukları değerlendirilmelidir.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "TASARIMCILAR İÇİN YANITLAR",

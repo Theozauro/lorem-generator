@@ -37,6 +37,8 @@ export const esHomepageCopy: HomepageCopy = {
     "long": "Largas",
     "output": "Resultado",
     "outputAria": "Lorem Ipsum generado",
+    "emptyState": "Elige las opciones y genera texto Lorem Ipsum.",
+    "generate": "Generar",
     "words": "Palabras",
     "paragraphs": "Párrafos",
     "stats": {
@@ -103,8 +105,8 @@ export const esHomepageCopy: HomepageCopy = {
     "remainingTools": "Más herramientas para diseñadores",
     "aboutEyebrow": "UNA NOTA SOBRE EL TEXTO DE RELLENO",
     "aboutTitle": "Generador de texto de prueba para maquetas y prototipos",
-    "aboutOne": "Crea texto ficticio o simulado para diseños, wireframes y pruebas de interfaz con la longitud que necesitas. Lorem Ipsum es un conocido texto de relleno derivado del latín clásico. Los diseñadores lo utilizan para evaluar la jerarquía, el ritmo, la longitud de línea y el espaciado antes de disponer del texto definitivo.",
-    "aboutTwo": "Define a la vez el número de palabras y párrafos para ajustar la densidad y el ritmo de una maqueta, o cambia a caracteres o frases cuando necesites una longitud precisa.",
+    "aboutOne": "Crea texto ficticio o simulado para diseños, wireframes y pruebas de interfaz con la longitud que necesitas.",
+    "aboutTwo": "",
     "seoEyebrow": "PENSADO PARA MAQUETAS REALES",
     "seoTitle": "Un generador de Lorem Ipsum para diseñadores y desarrolladores.",
     "seoOneTitle": "Mantén la maqueta fiel a la realidad.",
@@ -132,7 +134,37 @@ export const esHomepageCopy: HomepageCopy = {
         "Cuándo sustituirlo",
         "El texto de relleno debe sustituirse antes de dar por terminado un sitio web, documento o proyecto impreso. El contenido real es necesario para revisar el tono, la accesibilidad, el significado, la visibilidad en buscadores y la experiencia de lectura."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Cuándo usar Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum resulta útil cuando el contenido final todavía no está disponible, pero ya es necesario evaluar la estructura visual de una página. Diseñadores y desarrolladores pueden usar texto de prueba en sitios web, aplicaciones, presentaciones, maquetas, wireframes y prototipos para comprobar espaciados, jerarquías, columnas y el comportamiento de los componentes.",
+          "Como no transmite un mensaje concreto, permite observar la composición sin distraerse con el significado de las palabras. En las primeras fases de un proyecto ayuda a calcular el espacio que ocuparán titulares, párrafos, tarjetas y bloques de texto extensos. Antes de publicar, el texto ficticio debe sustituirse por contenido real.",
+        ]
+      },
+      {
+        "heading": "Por qué Lorem Ipsum funciona en los diseños",
+        "paragraphs": [
+          "Repetir siempre la misma palabra no reproduce el ritmo visual de un texto real. Lorem Ipsum combina palabras de longitudes distintas y forma líneas irregulares, por lo que resulta más útil para valorar tipografía, interlineado, densidad y distribución del contenido.",
+          "Con este generador puedes crear una cantidad precisa de texto para una necesidad concreta: un bloque breve para una tarjeta, varios párrafos para una página editorial, un número exacto de frases o una muestra limitada por caracteres. Así, el texto de prueba sirve para comprobar un diseño y no solo para rellenarlo.",
+        ]
+      },
+      {
+        "heading": "De dónde viene Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum procede de fragmentos alterados de De finibus bonorum et malorum, una obra filosófica que Cicerón escribió en el año 45 a. C. El texto moderno no es un pasaje coherente de latín clásico: sus palabras se han modificado y reordenado para que parezca texto natural sin comunicar una idea continua.",
+          "Su difusión moderna se relaciona con la composición tipográfica y con el uso de textos de relleno en materiales Letraset durante el siglo XX. Más tarde se incorporó al software de autoedición y a los flujos de diseño digital, donde sigue siendo útil para maquetas, plantillas y pruebas de composición.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum en diseño web y prototipado",
+        "paragraphs": [
+          "En productos digitales, el texto simulado ayuda a comprobar cómo responde una interfaz antes de tener el contenido definitivo. Puede revelar desbordamientos, tarjetas demasiado pequeñas, columnas desequilibradas, titulares excesivamente largos y problemas de diseño adaptable entre distintos tamaños de pantalla.",
+          "También permite comparar rápidamente diferentes densidades de contenido mientras se diseña un producto. Sin embargo, su uso debe ser temporal. Cuando el texto real esté disponible, conviene probar de nuevo el layout para valorar tono, saltos de línea y longitudes que el producto deberá gestionar al publicarse.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "RESPUESTAS PARA DISEÑADORES",

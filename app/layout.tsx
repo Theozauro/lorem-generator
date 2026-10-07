@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
+  other: {
+    "google-adsense-account": "ca-pub-2533538512095765",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

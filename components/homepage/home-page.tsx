@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { generateLayout, generateLorem, initialLayoutText, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
+import { generateLayout, generateLorem, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 import { ItalianExperienceHeader } from "./italian-experience-header";
 
@@ -200,7 +200,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const [amount, setAmount] = useState(300);
   const [startClassic, setStartClassic] = useState(true);
   const [sentenceLength, setSentenceLength] = useState<SentenceLength>("mixed");
-  const [result, setResult] = useState(initialLayoutText);
+  const [result, setResult] = useState("");
+  const [hasGenerated, setHasGenerated] = useState(false);
   const [themeChoice, setThemeChoice] = useState<ThemeChoice | null>(null);
   const [systemIsDark, setSystemIsDark] = useState(false);
   useEffect(() => {
@@ -230,6 +231,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const activeTheme = themeChoice ?? (systemIsDark ? "dark" : "light");
   const previousSettings = useRef({ mode, words, paragraphs, amount, startClassic, sentenceLength });
   useEffect(() => {
+    if (!hasGenerated) return;
     const previous = previousSettings.current;
     if (previous.mode === mode && previous.words === words && previous.paragraphs === paragraphs && previous.amount === amount && previous.startClassic === startClassic && previous.sentenceLength === sentenceLength) return;
     setResult(current => mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength)
@@ -237,7 +239,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
         ? resizeLorem(current, mode, previous.amount, amount, startClassic, sentenceLength)
         : generateLorem(mode, amount, startClassic, sentenceLength));
     previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
-  }, [mode, words, paragraphs, amount, startClassic, sentenceLength]);
+  }, [hasGenerated, mode, words, paragraphs, amount, startClassic, sentenceLength]);
   function selectMode(next: MainMode) { setMode(next); if (next !== "layout") setAmount(defaults[next]); }
   function updateWords(value: string) {
     setWordsInput(value);
@@ -265,8 +267,12 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     const next = Math.max(paragraphs, value);
     setWords(next); setWordsInput(String(next));
   }
-  function regenerate() { setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength)); }
-  return <><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2533538512095765" crossOrigin="anonymous" /><main className="site-shell" lang={copy.locale}>
+  function generateResult() {
+    setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength));
+    previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
+    setHasGenerated(true);
+  }
+  return <main className="site-shell" lang={copy.locale}>
     <div className={locale === "it" ? "page-content italian-experience-page" : "page-content"}>
       {locale === "it" && <ItalianExperienceHeader active="classic" copy={copy} />}
       <section className="main-section" aria-labelledby="page-title">{locale !== "it" && <div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div>}<div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
@@ -285,16 +291,16 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
             <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
             <div className="option-cell"><span className="field-label">{copy.generator.options}</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label><div className="sentence-length-control"><span className="sentence-length-label">{copy.generator.sentenceLength}</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? copy.generator.short : value === "mixed" ? copy.generator.mixed : copy.generator.long}</button>)}</div></div></div></div>
           </div>
-          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div></div>
-          <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={regenerate}><RefreshCw aria-hidden="true" /> {copy.generator.regenerate}</Button></div></div>
+          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result ? result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>) : <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div></div>
+          <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
         </div>
       </section>
       <section className="designer-section" aria-label={copy.fit.aria}><FitTool copy={copy} /></section>
       <section className="remaining-tools" aria-label={copy.sections.remainingTools}><div className="tool-grid"><MatchTool copy={copy} /><ExpansionTool copy={copy} /></div></section>
-      <section className="about-section" aria-labelledby="about-title"><div><span className="eyebrow">{copy.sections.aboutEyebrow}</span><h2 id="about-title">{copy.sections.aboutTitle}</h2></div><div className="about-copy"><p>{copy.sections.aboutOne}</p><p>{copy.sections.aboutTwo}</p></div></section>
-      <section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
-      <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section>
+      <section className="about-section" aria-labelledby="about-title"><div><span className="eyebrow">{copy.sections.aboutEyebrow}</span><h2 id="about-title">{copy.sections.aboutTitle}</h2></div><div className="about-copy"><p>{copy.sections.aboutOne}</p>{copy.sections.aboutTwo && <p>{copy.sections.aboutTwo}</p>}</div></section>
+      {copy.sections.editorial ? copy.sections.editorial.map(({ heading, paragraphs }, index) => <section className="about-section" aria-labelledby={`editorial-title-${index}`} key={heading}><div><h2 id={`editorial-title-${index}`}>{heading}</h2></div><div className="about-copy">{paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></section>) : <><section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
+      <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section></>}
       <FaqSection copy={copy} />
     </div><HomepageFooter copy={copy} />
-  </main></>;
+  </main>;
 }

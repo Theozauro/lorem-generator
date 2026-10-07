@@ -25,6 +25,8 @@ export type HomepageCopy = {
     long: string;
     output: string;
     outputAria: string;
+    emptyState: string;
+    generate: string;
     words: string;
     paragraphs: string;
     stats: { words: string; characters: string; withoutSpaces: string; sentences: string; paragraphs: string };
@@ -54,6 +56,7 @@ export type HomepageCopy = {
     aboutEyebrow: string; aboutTitle: string; aboutOne: string; aboutTwo: string;
     seoEyebrow: string; seoTitle: string; seoOneTitle: string; seoOneA: string; seoOneB: string; seoTwoTitle: string; seoTwoA: string; seoTwoB: string;
     guideEyebrow: string; guideTitle: string; guide: Array<[string, string]>;
+    editorial?: Array<{ heading: string; paragraphs: string[] }>;
   };
   faq: { eyebrow: string; title: string; intro: string; items: Array<[string, string]> };
   footer: { featuredOn: string; aria: string; privacy: string; cookies: string; manage: string; privacyHref: string; cookiesHref: string };

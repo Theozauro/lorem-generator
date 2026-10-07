@@ -37,6 +37,8 @@ export const huHomepageCopy: HomepageCopy = {
     "long": "Hosszú",
     "output": "Eredmény",
     "outputAria": "Generált Lorem Ipsum",
+    "emptyState": "Válaszd ki a beállításokat, majd generálj Lorem Ipsum szöveget.",
+    "generate": "Generálás",
     "words": "Szavak",
     "paragraphs": "Bekezdések",
     "stats": {
@@ -103,8 +105,8 @@ export const huHomepageCopy: HomepageCopy = {
     "remainingTools": "További tervezői eszközök",
     "aboutEyebrow": "A HELYKITÖLTŐ SZÖVEGRŐL",
     "aboutTitle": "Helykitöltő szöveg makettekhez és prototípusokhoz",
-    "aboutOne": "Készíts helykitöltő szöveget elrendezésekhez, makettekhez és felülettesztekhez pontos szó-, bekezdés-, mondat- vagy karakterszámmal. A Lorem Ipsum klasszikus latinból származó ismert helykitöltő szöveg. A tervezők a hierarchia, a ritmus, a sorhossz és a térközök ellenőrzésére használják.",
-    "aboutTwo": "Állítsd be együtt a szavakat és bekezdéseket az elrendezés sűrűségéhez, vagy válts karakterekre és mondatokra, ha pontos hosszra van szükség.",
+    "aboutOne": "Készíts helykitöltő szöveget elrendezésekhez, makettekhez és felülettesztekhez pontos szó-, bekezdés-, mondat- vagy karakterszámmal.",
+    "aboutTwo": "",
     "seoEyebrow": "VALÓDI ELRENDEZÉSEKHEZ KÉSZÜLT",
     "seoTitle": "Lorem Ipsum generátor tervezőknek és fejlesztőknek.",
     "seoOneTitle": "Maradjon hiteles az elrendezés.",
@@ -132,7 +134,37 @@ export const huHomepageCopy: HomepageCopy = {
         "Mikor cseréld le?",
         "A helykitöltő szöveget a webhely, dokumentum vagy nyomtatott projekt véglegesítése előtt le kell cserélni. A valódi tartalom szükséges a hangnem, a hozzáférhetőség, a jelentés, a keresőbeli láthatóság és a tényleges olvasási élmény értékeléséhez."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Mikor érdemes Lorem Ipsumot használni",
+        "paragraphs": [
+          "A Lorem Ipsum akkor hasznos, amikor a végleges tartalom még nem áll rendelkezésre, de egy oldal vizuális szerkezetét már értékelni kell. Tervezők és fejlesztők weboldalakon, alkalmazásokban, prezentációkban, makettekben, drótvázakban és prototípusokban használhatnak helykitöltő szöveget a térközök, a hierarchia, az oszlopszélesség és a komponensek működésének vizsgálatára.",
+          "Mivel nem közvetít összefüggő üzenetet, a figyelem a kompozíción marad, nem az ideiglenes szavak jelentésén. A projekt korai szakaszában segít felmérni, mennyi helyet foglalnak el a címek, bekezdések, kártyák és hosszabb szövegblokkok. Közzététel előtt valódi tartalomra kell cserélni.",
+        ]
+      },
+      {
+        "heading": "Miért működik a Lorem Ipsum az elrendezésekben",
+        "paragraphs": [
+          "Ugyanannak a szónak az ismételgetése nem adja vissza a valódi szöveg vizuális ritmusát. A Lorem Ipsum különböző hosszúságú szavakat kapcsol össze és szabálytalan sorokat hoz létre, ezért alkalmasabb a tipográfia, a sorköz, a sűrűség és a szövegeloszlás értékelésére.",
+          "Ezzel a generátorral pontos mennyiségű helykitöltő szöveg készíthető egy adott tervezési feladathoz: rövid blokk egy kártyához, több bekezdés egy szerkesztőségi oldalhoz, meghatározott számú mondat vagy karakterkorlátos minta egy kötött felülethez. Így a helykitöltő szöveg gyakorlati layouttesztelő eszközzé válik, nem puszta kitöltéssé. Több változatot is készíthet ugyanahhoz a komponenshez, hogy összevesse, miként változtatják meg az arányait a rövidebb és hosszabb tartalmak. Ez a valódi szöveg elkészülte előtt is megalapozottabb tervezési döntéseket tesz lehetővé.",
+        ]
+      },
+      {
+        "heading": "Honnan származik a Lorem Ipsum",
+        "paragraphs": [
+          "A Lorem Ipsum a De finibus bonorum et malorum módosított részleteiből ered, abból a filozófiai műből, amelyet Cicero Kr. e. 45-ben írt. A mai helykitöltő szöveg nem a klasszikus latin egy összefüggő részlete. A szavakat megváltoztatták és átrendezték, hogy a szöveg természetesnek hasson, de ne közvetítsen folyamatos jelentést.",
+          "Modern elterjedése a nyomdai szedéshez és a huszadik századi Letraset-anyagokban használt helykitöltő szöveghez kötődik. Később az asztali kiadványszerkesztő szoftverekben és a digitális tervezési munkafolyamatokban is elterjedt; ma is makettekhez, sablonokhoz és elrendezéstesztekhez használják.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum a webdesignban és a prototípusokban",
+        "paragraphs": [
+          "A digitális tervezésben a helykitöltő szöveg segít megvizsgálni, hogyan viselkedik egy felület, mielőtt elkészül a végleges tartalom. Feltárhatja a túlcsorduló szöveget, a túl kicsi kártyákat, az aránytalan oszlopokat, a túl hosszú címeket és a különböző képernyőméreteken jelentkező reszponzív problémákat.",
+          "A termék tervezésekor különböző tartalomsűrűségek gyors összehasonlítására is alkalmas. Használata azonban ideiglenes. Amikor rendelkezésre áll a valódi szöveg, az elrendezést újra tesztelni kell, hogy értékelhető legyen a hangnem, a sortörés és a tényleges szöveghossz, amelyet a terméknek kezelnie kell.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "VÁLASZOK TERVEZŐKNEK",

@@ -37,6 +37,8 @@ export const ptbrHomepageCopy: HomepageCopy = {
     "long": "Longas",
     "output": "Resultado",
     "outputAria": "Lorem Ipsum gerado",
+    "emptyState": "Escolha as configurações e gere texto Lorem Ipsum.",
+    "generate": "Gerar",
     "words": "Palavras",
     "paragraphs": "Parágrafos",
     "stats": {
@@ -103,8 +105,8 @@ export const ptbrHomepageCopy: HomepageCopy = {
     "remainingTools": "Mais ferramentas para designers",
     "aboutEyebrow": "UMA NOTA SOBRE TEXTO DE ESPAÇO RESERVADO",
     "aboutTitle": "Gerador de texto de preenchimento para layouts e protótipos",
-    "aboutOne": "Crie texto de preenchimento para mockups, interfaces e testes de layout com controle preciso de tamanho e formato. Lorem Ipsum é um conhecido texto de espaço reservado derivado do latim clássico. Designers o utilizam para avaliar hierarquia, ritmo, comprimento das linhas e espaçamento antes que o conteúdo final esteja pronto.",
-    "aboutTwo": "Defina palavras e parágrafos ao mesmo tempo para ajustar a densidade e o ritmo de um layout, ou use caracteres ou frases quando precisar de um comprimento preciso.",
+    "aboutOne": "Crie texto de preenchimento para mockups, interfaces e testes de layout com controle preciso de tamanho e formato.",
+    "aboutTwo": "",
     "seoEyebrow": "CRIADO PARA LAYOUTS REAIS",
     "seoTitle": "Um gerador de Lorem Ipsum para designers e desenvolvedores.",
     "seoOneTitle": "Mantenha o layout fiel à realidade.",
@@ -132,7 +134,37 @@ export const ptbrHomepageCopy: HomepageCopy = {
         "Quando substituir",
         "O texto de espaço reservado deve ser substituído antes da finalização de um site, documento ou projeto impresso. O conteúdo real é necessário para avaliar tom, acessibilidade, significado, visibilidade nos mecanismos de busca e a experiência real de leitura."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Quando usar Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum é útil quando o conteúdo final ainda não está pronto, mas a estrutura visual de uma página já precisa ser avaliada. Designers e desenvolvedores podem usar texto de preenchimento em sites, aplicativos, apresentações, mockups, wireframes e protótipos para testar espaçamentos, hierarquia, largura de colunas e o comportamento dos componentes.",
+          "Como não transmite uma mensagem contínua, ele permite observar a composição sem desviar a atenção para o significado das palavras. Nas primeiras etapas de um projeto, ajuda a estimar o espaço ocupado por títulos, parágrafos, cards e blocos de texto maiores. Antes da publicação, deve ser substituído pelo conteúdo real.",
+        ]
+      },
+      {
+        "heading": "Por que o Lorem Ipsum funciona em layouts",
+        "paragraphs": [
+          "Repetir a mesma palavra muitas vezes não reproduz o ritmo visual de um texto real. Lorem Ipsum reúne palavras de comprimentos variados e forma linhas irregulares, o que o torna mais útil para avaliar tipografia, entrelinha, densidade e distribuição de conteúdo.",
+          "Com este gerador, é possível criar uma quantidade exata de texto para um problema específico de design: um bloco curto para um card, vários parágrafos para uma página editorial, um número definido de frases ou uma amostra limitada por caracteres. Assim, o texto de preenchimento vira uma ferramenta prática de teste de layout, e não apenas um recurso provisório.",
+        ]
+      },
+      {
+        "heading": "De onde vem o Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum deriva de fragmentos alterados de De finibus bonorum et malorum, obra filosófica escrita por Cícero em 45 a.C. O texto moderno não é uma passagem coerente do latim clássico. Suas palavras foram modificadas e reorganizadas para que o resultado pareça visualmente natural sem comunicar uma ideia contínua.",
+          "Sua popularidade moderna está ligada à composição tipográfica e ao uso de texto de preenchimento em materiais Letraset durante o século XX. Depois, tornou-se comum em programas de editoração eletrônica e nos fluxos de design digital, sendo usado em mockups, modelos e testes de layout.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum em web design e prototipagem",
+        "paragraphs": [
+          "No design digital, o texto de preenchimento ajuda a revelar como uma interface se comporta antes que o conteúdo final esteja disponível. Ele pode expor textos estourados, cards pequenos demais, colunas desequilibradas, títulos longos e problemas de responsividade em diferentes tamanhos de tela.",
+          "Também é útil para comparar densidades de conteúdo enquanto um produto está sendo projetado. Seu uso, porém, deve ser temporário. Quando o texto real estiver disponível, o layout precisa ser testado novamente para avaliar tom, quebras de linha e comprimentos que o produto terá de acomodar.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "RESPOSTAS PARA DESIGNERS",

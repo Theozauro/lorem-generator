@@ -37,6 +37,8 @@ export const enHomepageCopy: HomepageCopy = {
     "long": "Long",
     "output": "Output",
     "outputAria": "Generated Lorem Ipsum",
+    "emptyState": "Choose your settings and generate Lorem Ipsum text.",
+    "generate": "Generate",
     "words": "Words",
     "paragraphs": "Paragraphs",
     "stats": {
@@ -103,8 +105,8 @@ export const enHomepageCopy: HomepageCopy = {
     "remainingTools": "More Designer Tools",
     "aboutEyebrow": "A NOTE ON PLACEHOLDER TEXT",
     "aboutTitle": "Placeholder text generator for layouts and prototypes",
-    "aboutOne": "Generate filler text for mockups, wireframes and interface tests with precise control over words, paragraphs, sentences and characters. Lorem Ipsum is familiar placeholder text derived from classical Latin. Designers use it to judge hierarchy, rhythm, line length, and spacing before final copy is ready.",
-    "aboutTwo": "Set words and paragraphs together to match a layout's density and rhythm, or switch to characters or sentences when a precise length matters.",
+    "aboutOne": "Generate filler text for mockups, wireframes and interface tests with precise control over words, paragraphs, sentences and characters.",
+    "aboutTwo": "",
     "seoEyebrow": "BUILT FOR REAL LAYOUTS",
     "seoTitle": "A Lorem Ipsum Generator for designers and developers.",
     "seoOneTitle": "Keep the layout honest.",
@@ -132,7 +134,37 @@ export const enHomepageCopy: HomepageCopy = {
         "When to replace it",
         "Placeholder copy should disappear before a website, document, or printed project is final. Real content is needed to review tone, accessibility, meaning, search visibility, and the actual reading experience."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "When to use Lorem Ipsum",
+        "paragraphs": [
+          "Lorem Ipsum is useful when final copy is not ready but the structure of a page still needs to be evaluated. Designers and developers can use placeholder text in websites, apps, presentations, brochures, wireframes and prototypes to test spacing, hierarchy, column width and the behavior of content components.",
+          "Because the words are not meant to carry a coherent message, attention stays on the visual system rather than the temporary copy. This makes Lorem Ipsum particularly useful during early design stages, when teams need to estimate how headings, paragraphs, cards and longer text blocks will occupy a layout. Placeholder text should be replaced with real content before publication.",
+        ]
+      },
+      {
+        "heading": "Why Lorem Ipsum works in layouts",
+        "paragraphs": [
+          "Repeating the same word over and over does not reproduce the visual rhythm of real text. Lorem Ipsum creates lines with varied word lengths and irregular shapes, which makes it more useful for evaluating typography, line height, density and text distribution.",
+          "This generator lets you create a precise amount of placeholder content for a specific design problem: a short block for a card, several paragraphs for an editorial layout, an exact number of sentences, or a character-limited sample for a constrained interface. Used this way, placeholder text becomes a practical layout-testing tool rather than simple filler.",
+        ]
+      },
+      {
+        "heading": "Where Lorem Ipsum comes from",
+        "paragraphs": [
+          "Lorem Ipsum is derived from altered fragments of De finibus bonorum et malorum, a philosophical work written by Cicero in 45 BC. The modern placeholder is not a coherent passage of classical Latin. Its words have been rearranged and modified so that the result resembles natural text visually without communicating a continuous meaning.",
+          "Its modern popularity is closely associated with typesetting and the use of placeholder copy in Letraset materials during the twentieth century. Lorem Ipsum later became common in desktop-publishing software and digital design workflows, where it continues to be used for mockups, templates and layout testing.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum in web design and prototyping",
+        "paragraphs": [
+          "In digital design, placeholder text helps reveal how an interface behaves before final content is available. It can expose overflowing text, undersized cards, unbalanced columns, overly long headings and responsive-layout problems across different viewport sizes.",
+          "It is also useful for comparing different content densities while a product is being designed. Lorem Ipsum should remain temporary, however. Once real copy is available, the layout should be tested again with the final content so that hierarchy, tone, wrapping and real-world text lengths can be evaluated accurately.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "ANSWERS FOR DESIGNERS",

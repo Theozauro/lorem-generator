@@ -37,6 +37,8 @@ export const deHomepageCopy: HomepageCopy = {
     "long": "Lang",
     "output": "Ergebnis",
     "outputAria": "Generierter Lorem Ipsum",
+    "emptyState": "Wähle deine Einstellungen und erzeuge Lorem-Ipsum-Text.",
+    "generate": "Generieren",
     "words": "Wörter",
     "paragraphs": "Absätze",
     "stats": {
@@ -103,8 +105,8 @@ export const deHomepageCopy: HomepageCopy = {
     "remainingTools": "Weitere Werkzeuge für Designer",
     "aboutEyebrow": "EIN HINWEIS ZU BLINDTEXT",
     "aboutTitle": "Blindtextgenerator für Layouts und Prototypen",
-    "aboutOne": "Erzeuge Blindtext und Platzhaltertext für Mockups, Wireframes und UI-Tests mit genau der gewünschten Länge. Lorem Ipsum ist ein bekannter Blindtext, der auf klassischem Latein basiert. Designer nutzen ihn, um Hierarchie, Rhythmus, Zeilenlänge und Abstände zu beurteilen, bevor der endgültige Inhalt vorliegt.",
-    "aboutTwo": "Lege Wörter und Absätze gleichzeitig fest, um Dichte und Rhythmus eines Layouts anzupassen, oder wechsle zu Zeichen oder Sätzen, wenn eine präzise Länge wichtig ist.",
+    "aboutOne": "Erzeuge Blindtext und Platzhaltertext für Mockups, Wireframes und UI-Tests mit genau der gewünschten Länge.",
+    "aboutTwo": "",
     "seoEyebrow": "FÜR REALE LAYOUTS ENTWICKELT",
     "seoTitle": "Ein Lorem-Ipsum-Generator für Designer und Entwickler.",
     "seoOneTitle": "Halte dein Layout realistisch.",
@@ -132,7 +134,37 @@ export const deHomepageCopy: HomepageCopy = {
         "Wann du es ersetzen solltest",
         "Blindtext sollte ersetzt werden, bevor eine Website, ein Dokument oder ein Printprojekt fertiggestellt wird. Erst mit realen Inhalten lassen sich Tonalität, Barrierefreiheit, Bedeutung, Sichtbarkeit in Suchmaschinen und die tatsächliche Leseerfahrung zuverlässig beurteilen."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Wann Lorem Ipsum sinnvoll ist",
+        "paragraphs": [
+          "Lorem Ipsum ist hilfreich, wenn der endgültige Inhalt noch fehlt, die visuelle Struktur einer Seite aber bereits geprüft werden soll. Designer und Entwickler nutzen Blindtext für Websites, Apps, Präsentationen, Mockups, Wireframes und Prototypen, um Abstände, Hierarchien, Spaltenbreiten und das Verhalten von Komponenten zu beurteilen.",
+          "Da der Text keine zusammenhängende Aussage transportiert, bleibt der Blick auf dem Layout statt auf dem Inhalt. Gerade in frühen Projektphasen lässt sich damit abschätzen, wie viel Raum Überschriften, Absätze, Karten und längere Textblöcke einnehmen. Vor der Veröffentlichung sollte Platzhaltertext immer durch echten Inhalt ersetzt werden.",
+        ]
+      },
+      {
+        "heading": "Warum Lorem Ipsum in Layouts funktioniert",
+        "paragraphs": [
+          "Die ständige Wiederholung eines einzelnen Wortes bildet den visuellen Rhythmus echten Textes nicht nach. Lorem Ipsum verbindet Wörter unterschiedlicher Länge und erzeugt unregelmäßige Zeilen. Dadurch eignet es sich besser, um Typografie, Zeilenabstand, Dichte und die Verteilung von Text im Layout zu prüfen.",
+          "Mit diesem Generator lässt sich eine genaue Textmenge für eine konkrete Gestaltungsaufgabe erstellen: ein kurzer Block für eine Karte, mehrere Absätze für eine redaktionelle Seite, eine festgelegte Zahl von Sätzen oder ein Zeichenlimit für eine begrenzte Oberfläche. So wird Blindtext zu einem praktischen Werkzeug für Layouttests statt zu bloßem Füllmaterial.",
+        ]
+      },
+      {
+        "heading": "Woher Lorem Ipsum stammt",
+        "paragraphs": [
+          "Lorem Ipsum geht auf veränderte Fragmente aus De finibus bonorum et malorum zurück, einem philosophischen Werk, das Cicero 45 v. Chr. schrieb. Der heutige Platzhaltertext ist kein zusammenhängender Abschnitt des klassischen Lateins. Wörter wurden verändert und neu angeordnet, damit der Text natürlich wirkt, ohne eine fortlaufende Bedeutung zu vermitteln.",
+          "Seine moderne Verbreitung hängt mit dem Schriftsatz und dem Einsatz von Platzhaltertext in Letraset-Materialien des 20. Jahrhunderts zusammen. Später wurde Lorem Ipsum in Desktop-Publishing-Programme und digitale Designabläufe übernommen und wird weiterhin für Mockups, Vorlagen und Layouttests verwendet.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum im Webdesign und bei Prototypen",
+        "paragraphs": [
+          "Im digitalen Design hilft Platzhaltertext dabei, das Verhalten einer Oberfläche zu prüfen, bevor der finale Inhalt vorliegt. Er kann überlaufenden Text, zu kleine Karten, unausgewogene Spalten, zu lange Überschriften und Probleme in responsiven Ansichten auf unterschiedlichen Bildschirmgrößen sichtbar machen.",
+          "Außerdem lassen sich verschiedene Inhaltsdichten während der Produktgestaltung schnell vergleichen. Blindtext sollte jedoch nur vorübergehend eingesetzt werden. Sobald echter Text verfügbar ist, muss das Layout erneut damit getestet werden, damit Tonalität, Zeilenumbrüche und reale Textlängen zuverlässig bewertet werden können.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "ANTWORTEN FÜR DESIGNER",

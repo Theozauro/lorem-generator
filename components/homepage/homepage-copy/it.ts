@@ -37,6 +37,8 @@ export const itHomepageCopy: HomepageCopy = {
     "long": "lunghe",
     "output": "Risultato",
     "outputAria": "Testo Lorem Ipsum generato",
+    "emptyState": "Scegli le impostazioni e genera il testo Lorem Ipsum.",
+    "generate": "Genera",
     "words": "Parole",
     "paragraphs": "Paragrafi",
     "stats": {
@@ -103,8 +105,8 @@ export const itHomepageCopy: HomepageCopy = {
     "remainingTools": "Altri strumenti",
     "aboutEyebrow": "UNA NOTA SUL TESTO SEGNAPOSTO",
     "aboutTitle": "Generatore di testo finto e segnaposto",
-    "aboutOne": "Crea testo di riempimento per layout, mockup e prototipi, scegliendo con precisione parole, paragrafi, frasi o caratteri. Lorem Ipsum è un testo segnaposto derivato dal latino classico. I designer lo usano per valutare gerarchia, ritmo, lunghezza delle righe e spaziatura prima che il testo finale sia pronto.",
-    "aboutTwo": "Imposta insieme parole e paragrafi per controllare densità e ritmo del layout, oppure passa a caratteri o frasi quando serve una lunghezza precisa.",
+    "aboutOne": "Crea testo di riempimento per layout, mockup e prototipi, scegliendo con precisione parole, paragrafi, frasi o caratteri.",
+    "aboutTwo": "",
     "seoEyebrow": "PENSATO PER LAYOUT REALI",
     "seoTitle": "Un generatore Lorem Ipsum per designer e sviluppatori.",
     "seoOneTitle": "Mantieni fedele il layout.",
@@ -132,7 +134,37 @@ export const itHomepageCopy: HomepageCopy = {
         "Quando sostituirlo",
         "Il testo segnaposto va rimosso prima della pubblicazione di un sito, di un documento o di un progetto stampato. Il contenuto reale serve per verificare tono, accessibilità, significato, visibilità sui motori di ricerca e reale esperienza di lettura."
       ]
-    ]
+    ],
+    "editorial": [
+      {
+        "heading": "Come e quando usare Lorem Ipsum",
+        "paragraphs": [
+          "Il Lorem Ipsum è utile quando il contenuto definitivo non è ancora disponibile ma serve valutare la struttura visiva di una pagina. Designer e sviluppatori possono usarlo in siti web, app, presentazioni, brochure, wireframe e prototipi per verificare spaziature, gerarchie, larghezza delle colonne e comportamento dei componenti.",
+          "Un testo segnaposto permette di osservare il layout senza concentrare l’attenzione sul significato delle parole. È particolarmente utile nelle prime fasi di progettazione, quando occorre capire quanto spazio occuperanno titoli, paragrafi, card e altri elementi testuali. Prima della pubblicazione, il Lorem Ipsum dovrebbe essere sostituito con i contenuti reali.",
+        ]
+      },
+      {
+        "heading": "Perché il Lorem Ipsum funziona nei layout",
+        "paragraphs": [
+          "Una semplice ripetizione di parole identiche non riproduce bene il ritmo visivo di un testo reale. Il Lorem Ipsum combina parole di lunghezze diverse e crea righe irregolari, rendendo più semplice valutare densità, interlinea, tipografia e distribuzione del contenuto.",
+          "Con questo generatore puoi produrre una quantità precisa di testo per testare componenti specifici: una card da poche parole, più paragrafi per una pagina editoriale, un numero definito di frasi oppure un blocco con una lunghezza esatta in caratteri. In questo modo il testo segnaposto diventa uno strumento pratico per verificare il design, non soltanto un riempitivo.",
+        ]
+      },
+      {
+        "heading": "Da dove viene Lorem Ipsum",
+        "paragraphs": [
+          "Il Lorem Ipsum deriva da frammenti modificati del De finibus bonorum et malorum, opera filosofica di Cicerone scritta nel 45 a.C. Il testo usato oggi non corrisponde però a un normale brano latino: nel tempo le parole sono state alterate, riordinate e combinate fino a formare un testo che appare plausibile dal punto di vista visivo ma non comunica un messaggio coerente.",
+          "La sua diffusione moderna è legata alla composizione tipografica e, in particolare, all’uso del testo segnaposto nei materiali Letraset del Novecento. Successivamente il Lorem Ipsum è entrato nei software di desktop publishing e nei flussi di lavoro digitali, diventando uno standard pratico per mockup e impaginazioni.",
+        ]
+      },
+      {
+        "heading": "Lorem Ipsum nel web design e nei prototipi",
+        "paragraphs": [
+          "Nel design digitale il testo segnaposto aiuta a verificare il comportamento di un’interfaccia prima che il copy definitivo sia pronto. Può evidenziare problemi di overflow, card troppo piccole, colonne sbilanciate, titoli eccessivamente lunghi o differenze tra viewport desktop e mobile.",
+          "È utile anche per confrontare rapidamente diverse quantità di contenuto durante la progettazione. Il risultato va però considerato provvisorio: quando il progetto entra nella fase finale, testare il layout con il copy reale permette di controllare tono, gerarchie e lunghezze effettive che il prodotto dovrà gestire.",
+        ]
+      },
+    ],
   },
   "faq": {
     "eyebrow": "RISPOSTE PER DESIGNER",

@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
-import { ItalianExperienceHeader } from "./italian-experience-header";
+import { ExperienceHeader } from "./italian-experience-header";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -188,6 +188,7 @@ function FitTool({ copy }: { copy: HomepageCopy }) {
 export default function Home({ locale, copy }: { locale: HomepageLocale; copy: HomepageCopy }) {
   const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : locale === "pl" ? "/pl/" : locale === "hu" ? "/hu/" : "/";
   const currentLocaleLabel = localeOptions.find(([, , path]) => path === localePath)?.[1] ?? "English";
+  const experienceLocale = locale === "en" || locale === "it" ? locale : null;
   useEffect(() => {
     document.documentElement.lang = locale === "nl-NL" ? "nl" : locale;
     return () => { document.documentElement.lang = "en"; };
@@ -273,9 +274,9 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     setHasGenerated(true);
   }
   return <main className="site-shell" lang={copy.locale}>
-    <div className={locale === "it" ? "page-content italian-experience-page" : "page-content"}>
-      {locale === "it" && <ItalianExperienceHeader active="classic" copy={copy} />}
-      <section className="main-section" aria-labelledby="page-title">{locale !== "it" && <div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div>}<div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
+    <div className={experienceLocale ? "page-content italian-experience-page" : "page-content"}>
+      {experienceLocale && <ExperienceHeader locale={experienceLocale} active="classic" copy={copy} />}
+      <section className="main-section" aria-labelledby="page-title">{!experienceLocale && <div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div>}<div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
         <p className="seo-intro">{copy.intro}</p>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
           { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },

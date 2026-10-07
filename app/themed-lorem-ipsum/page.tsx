@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import ItalianThemedPage from "@/components/homepage/italian-themed-page";
+import { ThemedIpsumPage } from "@/components/homepage/themed-ipsum-page";
+import { englishThemedPageConfig } from "@/components/homepage/themed-copy";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com";
-const path = "/it/lorem-ipsum-a-tema/";
-const title = "Generatore Lorem Ipsum a tema — Corporate, Tech, AI, Design e Fashion";
-const description = "Genera testo segnaposto a tema Corporate, Tech, AI, Design, Fashion e Zombie, in italiano o inglese, per mockup, layout e prototipi.";
+const path = "/themed-lorem-ipsum/";
+const title = "Themed Lorem Ipsum Generator — Corporate, Tech, AI, Design, Fashion & Zombie";
+const description = "Generate themed placeholder text for Corporate, Tech, AI, Design, Fashion and Zombie mockups, layouts and prototypes.";
 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: path, languages: { en: "/themed-lorem-ipsum/", it: path, "x-default": "/themed-lorem-ipsum/" } },
+  alternates: { canonical: path, languages: { en: path, it: "/it/lorem-ipsum-a-tema/", "x-default": path } },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${siteUrl}${path}`,
-    locale: "it_IT",
+    locale: "en_US",
     title,
     description,
     siteName: "lorem-generator.com",
@@ -31,29 +32,30 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Generatore di Ipsum tematico",
+  name: "Themed Lorem Ipsum Generator",
   url: `${siteUrl}${path}`,
-  inLanguage: "it",
+  inLanguage: "en",
   applicationCategory: "DesignApplication",
   operatingSystem: "Any",
   description,
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: 0 },
   featureList: [
-    "generazione Corporate Ipsum",
+    "Corporate Ipsum",
     "Tech Ipsum",
     "AI Ipsum",
     "Design Ipsum",
     "Fashion Ipsum",
     "Zombie Ipsum",
-    "contenuti in italiano e inglese",
-    "generazione per parole, paragrafi, frasi e caratteri",
+    "words and paragraphs mode",
+    "sentence mode",
+    "character mode",
   ],
 };
 
-export default function ItalianThemedLoremPage() {
+export default function ThemedLoremIpsumPage() {
   return <>
-    <ItalianThemedPage />
+    <ThemedIpsumPage config={englishThemedPageConfig} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
   </>;
 }

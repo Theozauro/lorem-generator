@@ -8,14 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { generateLayout, generateLorem, resizeLorem, stats, type SentenceLength, type Unit } from "@/lib/lorem";
+import { generateLayout, generateLorem, resizeLorem, stats, type Unit } from "@/lib/lorem";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
 const modes: MainMode[] = ["layout", "characters", "sentences"];
-const presets: Record<MainMode, number[]> = { layout: [50, 100, 250, 500], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
+const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500, 1000], sentences: [2, 5, 10, 20] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
 const localeOptions = [
@@ -86,7 +86,7 @@ function ActionCopyHtml({ text, copy }: { text: string; copy: HomepageCopy }) {
 }
 function StatStrip({ text, copy }: { text: string; copy: HomepageCopy }) {
   const s = stats(text);
-  return <dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{formatCount(s.words, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{formatCount(s.characters, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{formatCount(s.charactersNoSpaces, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{formatCount(s.sentences, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.paragraphs}</dt><dd>{formatCount(s.paragraphs, copy.numberLocale)}</dd></div></dl>;
+  return <dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{formatCount(s.words, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{formatCount(s.characters, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{formatCount(s.charactersNoSpaces, copy.numberLocale)}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{formatCount(s.sentences, copy.numberLocale)}</dd></div></dl>;
 }
 function ToolHead({ title, note }: { title: string; note: string }) {
   return <div className="tool-head"><div><h2>{title}</h2><p>{note}</p></div></div>;
@@ -137,7 +137,7 @@ function MatchTool({ copy }: { copy: HomepageCopy }) {
   function match(unit: Unit) { if (source.trim()) setResult(generateLorem(unit, unit === "characters" ? s.characters : unit === "words" ? s.words : s.paragraphs, false)); }
   return <article className="tool-card"><ToolHead title={copy.match.title} note={copy.match.note} />
     <label className="field-label" htmlFor="match-source">{copy.match.source}</label><Textarea id="match-source" className="tool-textarea" placeholder={copy.match.placeholder} value={source} onChange={e => setSource(e.target.value)} />
-    <div className="mini-stats"><span>{s.words} {copy.generator.stats.words}</span><span>{s.characters} {copy.generator.stats.characters}</span><span>{s.paragraphs} {copy.generator.stats.paragraphs}</span></div>
+    <div className="mini-stats"><span>{s.words} {copy.generator.stats.words}</span><span>{s.characters} {copy.generator.stats.characters}</span></div>
     <div className="tool-actions"><Button variant="outline" disabled={!source.trim()} onClick={() => match("characters")}>{copy.match.characters}</Button><Button variant="outline" disabled={!source.trim()} onClick={() => match("words")}>{copy.match.words}</Button><Button variant="outline" disabled={!source.trim()} onClick={() => match("paragraphs")}>{copy.match.paragraphs}</Button></div>
     {result && <div className="tool-output"><div className="output-top"><span>{copy.match.matched}</span><ActionCopy text={result} copy={copy} compact /></div><p>{result}</p></div>}
   </article>;
@@ -200,7 +200,6 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const [paragraphsInput, setParagraphsInput] = useState("3");
   const [amount, setAmount] = useState(300);
   const [startClassic, setStartClassic] = useState(true);
-  const [sentenceLength, setSentenceLength] = useState<SentenceLength>("mixed");
   const [result, setResult] = useState("");
   const [hasGenerated, setHasGenerated] = useState(false);
   const [themeChoice, setThemeChoice] = useState<ThemeChoice | null>(null);
@@ -230,17 +229,17 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     try { window.localStorage.setItem("lorem-theme", next); } catch {}
   }
   const activeTheme = themeChoice ?? (systemIsDark ? "dark" : "light");
-  const previousSettings = useRef({ mode, words, paragraphs, amount, startClassic, sentenceLength });
+  const previousSettings = useRef({ mode, words, paragraphs, amount, startClassic });
   useEffect(() => {
     if (!hasGenerated) return;
     const previous = previousSettings.current;
-    if (previous.mode === mode && previous.words === words && previous.paragraphs === paragraphs && previous.amount === amount && previous.startClassic === startClassic && previous.sentenceLength === sentenceLength) return;
-    setResult(current => mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength)
-      : previous.mode === mode && previous.startClassic === startClassic && previous.sentenceLength === sentenceLength
-        ? resizeLorem(current, mode, previous.amount, amount, startClassic, sentenceLength)
-        : generateLorem(mode, amount, startClassic, sentenceLength));
-    previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
-  }, [hasGenerated, mode, words, paragraphs, amount, startClassic, sentenceLength]);
+    if (previous.mode === mode && previous.words === words && previous.paragraphs === paragraphs && previous.amount === amount && previous.startClassic === startClassic) return;
+    setResult(current => mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random)
+      : previous.mode === mode && previous.startClassic === startClassic
+        ? resizeLorem(current, mode, previous.amount, amount, startClassic)
+        : generateLorem(mode, amount, startClassic));
+    previousSettings.current = { mode, words, paragraphs, amount, startClassic };
+  }, [hasGenerated, mode, words, paragraphs, amount, startClassic]);
   function selectMode(next: MainMode) { setMode(next); if (next !== "layout") setAmount(defaults[next]); }
   function updateWords(value: string) {
     setWordsInput(value);
@@ -269,8 +268,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     setWords(next); setWordsInput(String(next));
   }
   function generateResult() {
-    setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random, sentenceLength) : generateLorem(mode, amount, startClassic, sentenceLength));
-    previousSettings.current = { mode, words, paragraphs, amount, startClassic, sentenceLength };
+    setResult(mode === "layout" ? generateLayout(words, paragraphs, startClassic, Math.random) : generateLorem(mode, amount, startClassic));
+    previousSettings.current = { mode, words, paragraphs, amount, startClassic };
     setHasGenerated(true);
   }
   return <main className="site-shell" lang={copy.locale}>
@@ -283,15 +282,15 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
           { "@type": "WebApplication", name: "Lorem Ipsum Generator", url: `https://lorem-generator.com${localePath}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, offers: { "@type": "Offer", price: 0 }, featureList: copy.schema.featureList }
         ] }) }} />
         <div className="generator-panel generator-module">
-          <div className={`controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
+          <div className={`controls-grid classic-controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
             <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList>{modes.map(item => <TabsContent key={item} value={item} hidden aria-hidden="true" />)}</Tabs></div>
             {mode === "layout" ? <div className="layout-amounts">
               <div className="amount-control words-control"><label className="field-label" htmlFor="word-amount">{copy.generator.words}</label><Input id="word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={e => updateWords(e.target.value)} onBlur={commitWords} /></div>
               <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="paragraph-amount">{copy.generator.paragraphs}</label><Input id="paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={e => updateParagraphs(e.target.value)} onBlur={commitParagraphs} /></div>
             </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="amount">{mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label><Input id="amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={e => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(e.target.value) || 1)))} /></div>}
             <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
-            <div className="option-cell"><span className="field-label">{copy.generator.options}</span><div className="option-content"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label><div className="sentence-length-control"><span className="sentence-length-label">{copy.generator.sentenceLength}</span><div className="sentence-length-options">{(["short", "mixed", "long"] as const).map(value => <button key={value} type="button" className={sentenceLength === value ? "is-active" : ""} aria-pressed={sentenceLength === value} onClick={() => setSentenceLength(value)}>{value === "short" ? copy.generator.short : value === "mixed" ? copy.generator.mixed : copy.generator.long}</button>)}</div></div></div></div>
           </div>
+          <div className="start-control-row"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => setStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label></div>
           <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result ? result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>) : <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div></div>
           <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
         </div>

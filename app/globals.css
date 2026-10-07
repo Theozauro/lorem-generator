@@ -277,6 +277,8 @@ button:disabled { cursor: not-allowed; }
 }
 .controls-grid > * { min-width: 0; padding: 15px 17px 16px; }
 .controls-grid > * + * { border-left: 1px solid var(--grid); }
+.controls-grid.classic-controls-grid { grid-template-columns: minmax(300px, 1.4fr) minmax(220px, 1fr) minmax(170px, .85fr); border-bottom: 0; }
+.start-control-row { border-top: 1px solid var(--grid); border-bottom: 1px solid var(--grid); padding: 10px 17px 11px; }
 .layout-amounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .layout-amounts .field-label { white-space: nowrap; }
 .unit-tabs {
@@ -328,6 +330,7 @@ button:disabled { cursor: not-allowed; }
   font-variant-numeric: tabular-nums;
 }
 .preset-buttons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.controls-grid.classic-controls-grid .preset-buttons, .controls-grid.themed-controls-grid .preset-buttons:has(> :nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .preset-button {
   min-width: 0;
   height: 39px;
@@ -340,18 +343,8 @@ button:disabled { cursor: not-allowed; }
   font: 700 12px/1 var(--font-mono);
 }
 .preset-button[aria-pressed=true] { background: var(--active-bg) !important; color: var(--active-text); box-shadow: inset 0 -3px var(--active-edge); }
-.option-cell { display: grid; grid-column: 1 / -1; grid-template-columns: 100px minmax(0, 1fr); align-items: center; border-top: 1px solid var(--grid); border-left: 0 !important; padding-block: 11px !important; }
-.option-cell .field-label { margin: 0; }
-.option-content { display: flex; align-items: center; justify-content: flex-start; gap: 32px; min-width: 0; }
 .check-option { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; }
 .classic-option { min-height: 39px; color: var(--ink); font-size: 13px; line-height: 1.3; }
-.sentence-length-control { display: flex; align-items: center; gap: 13px; flex: none; border-left: 1px solid var(--grid); padding-left: 28px; }
-.sentence-length-label { color: var(--quiet); font: 700 9px/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
-.sentence-length-options { display: flex; gap: 7px; }
-.sentence-length-options button { border: 0; border-bottom: 2px solid transparent; border-radius: 0; padding: 7px 3px 6px; background: transparent; color: var(--quiet); font: 700 10px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
-.sentence-length-options button:hover { color: var(--ink); }
-.sentence-length-options button:focus-visible { color: var(--ink); outline: 2px solid var(--orange); outline-offset: 2px; }
-.sentence-length-options button.is-active { border-bottom-color: var(--orange); color: var(--ink); font-weight: 800; }
 .check-option [data-slot=checkbox] {
   width: 16px;
   height: 16px;
@@ -624,9 +617,6 @@ button:disabled { cursor: not-allowed; }
 @media (max-width: 1150px) {
   .controls-grid { grid-template-columns: minmax(320px, .9fr) minmax(210px, .55fr) minmax(170px, .45fr); }
   .unit-tab { letter-spacing: 0; }
-  .option-cell { grid-column: 1 / -1; padding-block: 10px !important; }
-  .classic-option { min-height: 25px; }
-  .option-content { width: 100%; }
   .module-footer { grid-template-columns: 1fr; }
   .result-actions { border-top: 1px solid var(--grid); border-left: 0; }
   .result-actions .action-button { flex: 1; }
@@ -646,6 +636,12 @@ button:disabled { cursor: not-allowed; }
   .themed-controls-grid-no-language > .layout-amounts, .themed-controls-grid-no-language > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0; }
   .themed-controls-grid-no-language > .presets { grid-column: 2; grid-row: 2; }
 }
+@media (max-width: 1050px) {
+  .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr) minmax(190px, 220px); }
+  .classic-controls-grid > .unit-control { grid-column: 1 / -1; grid-row: 1; border-left: 0; }
+  .classic-controls-grid > .layout-amounts, .classic-controls-grid > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0 !important; }
+  .classic-controls-grid > .presets { grid-column: 2; grid-row: 2; }
+}
 @media (max-width: 800px) {
   .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr) minmax(116px, 220px); }
   .themed-controls-grid > .themed-language-selector { grid-column: 1 / -1; grid-row: 1; border-left: 0; }
@@ -661,10 +657,10 @@ button:disabled { cursor: not-allowed; }
   .italian-experience-nav { gap: 14px; }
   .themed-explore-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .controls-grid { grid-template-columns: minmax(0, 1fr) minmax(116px, 220px); }
+  .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr) minmax(116px, 220px); }
   .unit-control { grid-column: 1 / -1; border-bottom: 1px solid var(--grid); }
   .layout-amounts, .precision-amount { grid-column: 1 / 2; grid-row: 2; border-left: 0 !important; }
   .presets { grid-column: 2 / 3; grid-row: 2; border-left: 1px solid var(--grid) !important; }
-  .option-cell { grid-row: 3; grid-template-columns: 1fr; gap: 10px; }
   .tool-grid { grid-template-columns: 1fr; column-gap: 14px; }
   .fit-fields { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .fit-range { grid-column: span 3; }
@@ -711,6 +707,7 @@ button:disabled { cursor: not-allowed; }
   .header-actions { width: 100%; align-items: center; justify-content: flex-end; }
   .generator-panel { border-radius: 9px; }
   .controls-grid { grid-template-columns: minmax(0, 1fr) 165px; }
+  .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr) 165px; }
   .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr) 165px; }
   .controls-grid > * { padding: 13px 12px; }
   .controls-grid.themed-controls-grid > * { padding-block: 11px; }
@@ -718,10 +715,6 @@ button:disabled { cursor: not-allowed; }
   .themed-controls-grid > .themed-language-selector > .field-label { margin-bottom: 0; }
   .themed-language-list { width: 122px; height: 35px; flex: none; }
   .themed-language-button { height: 33px; }
-  .option-content { align-items: flex-start; flex-direction: column; gap: 10px; }
-  .option-content { width: 100%; }
-  .sentence-length-control { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; justify-content: initial; border-left: 0; border-top: 1px solid var(--grid); padding: 10px 0 0; }
-  .sentence-length-options { justify-content: flex-end; }
   .layout-amounts { gap: 8px; }
   .unit-tab { font-size: 9px !important; letter-spacing: 0; }
   .preset-buttons { gap: 4px; }

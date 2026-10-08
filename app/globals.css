@@ -635,7 +635,7 @@ button:disabled { cursor: not-allowed; }
   .themed-controls-grid-no-language > .layout-amounts, .themed-controls-grid-no-language > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0; }
   .themed-controls-grid-no-language > .presets { grid-column: 2; grid-row: 2; }
 }
-@media (max-width: 1050px) {
+@media (max-width: 999px) {
   .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr) minmax(190px, 220px); }
   .classic-controls-grid > .unit-control { grid-column: 1 / -1; grid-row: 1; border-left: 0; border-bottom: 1px solid var(--grid); }
   .classic-controls-grid > .layout-amounts, .classic-controls-grid > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0 !important; }

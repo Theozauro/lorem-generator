@@ -548,8 +548,16 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
       const cost = separator + component.length;
       return cost <= remaining;
     });
-    const candidatesWithoutRepeat = availableComponents.filter(component => comparableToken(component.split(/\s+/)[0]) !== lastToken);
-    const fresh = freshCandidates(candidatesWithoutRepeat.length > 0 ? candidatesWithoutRepeat : availableComponents, recentComponents);
+    // Leave only a clean endpoint: one character is reserved for a period, while
+    // a two-character remainder cannot be completed as a word plus punctuation.
+    // Avoid selecting a component that strands those two characters, and don't
+    // append another period when a component already supplies terminal punctuation.
+    const safeComponents = availableComponents.filter(component => {
+      const remainder = remaining - separator - component.length;
+      return remainder !== 2 && !(remainder === 1 && /[.!?;:,]$/.test(component));
+    });
+    const candidatesWithoutRepeat = safeComponents.filter(component => comparableToken(component.split(/\s+/)[0]) !== lastToken);
+    const fresh = freshCandidates(candidatesWithoutRepeat.length > 0 ? candidatesWithoutRepeat : safeComponents, recentComponents);
     const withoutRelatedPhrases = fresh.filter(component => {
       const normalized = component.toLocaleLowerCase();
       return !normalized.includes(" ") || !recentComponents.some(recent =>
@@ -559,7 +567,12 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
     const candidates = withoutRelatedPhrases.length > 0 ? withoutRelatedPhrases : fresh;
 
     if (candidates.length === 0) {
-      return `${text}${".".repeat(remaining)}`;
+      if (safeComponents.length === 0) throw new Error("Unable to complete exact character output without malformed punctuation");
+      const fallback = pick(safeComponents, random);
+      const remainder = remaining - separator - fallback.length;
+      text += `${text ? " " : ""}${fallback}`;
+      if (remainder === 1) return `${text}.`;
+      continue;
     }
 
     const thematicCandidates = candidates.filter(component => !connectors.includes(component));

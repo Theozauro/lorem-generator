@@ -42,9 +42,9 @@ export const italianThemedPageConfig: ThemedPageConfig = {
   exploreTitle: "Esplora i temi",
   cards: [
     { id: "corporate", title: "Corporate Ipsum", description: "Testo segnaposto con terminologia business, strategia, KPI, stakeholder e processi aziendali.", action: "Genera Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Placeholder text ispirato a software, cloud, API, infrastrutture e sviluppo.", action: "Genera Tech Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Testo segnaposto ispirato a software, cloud, API, infrastrutture e sviluppo.", action: "Genera Tech Ipsum" },
     { id: "ai", title: "AI Ipsum", description: "Testo a tema intelligenza artificiale con modelli, prompt, dataset, token e machine learning.", action: "Genera AI Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Placeholder text per mockup e progetti creativi, con termini di UI, tipografia, layout e branding.", action: "Genera Design Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Testo segnaposto per mockup e progetti creativi, con termini di UI, tipografia, layout e branding.", action: "Genera Design Ipsum" },
     { id: "fashion", title: "Fashion Ipsum", description: "Testo segnaposto ispirato a collezioni, tessuti, silhouette, styling ed editoria fashion.", action: "Genera Fashion Ipsum" },
     { id: "zombie", title: "Zombie Ipsum", description: "Testo segnaposto apocalittico con zombie, orde, rifugi, città abbandonate e sopravvivenza.", action: "Genera Zombie Ipsum" },
   ],

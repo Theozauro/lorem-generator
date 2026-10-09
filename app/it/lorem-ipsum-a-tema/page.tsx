@@ -3,7 +3,7 @@ import ItalianThemedPage from "@/components/homepage/italian-themed-page";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lorem-generator.com";
 const path = "/it/lorem-ipsum-a-tema/";
-const title = "Generatore Lorem Ipsum a tema — Corporate, Tech, AI, Design e Fashion";
+const title = "Generatore Lorem Ipsum a tema — Corporate, Tech, AI, Design, Fashion e Zombie";
 const description = "Genera testo segnaposto a tema Corporate, Tech, AI, Design, Fashion e Zombie, in italiano o inglese, per mockup, layout e prototipi.";
 
 export const metadata: Metadata = {

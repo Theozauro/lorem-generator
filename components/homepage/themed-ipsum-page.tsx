@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BrainCircuit, Briefcase, Check, Code2, Copy, Cpu, Handbag, Palette, RefreshCw, Skull, type LucideIcon } from "lucide-react";
+import { BrainCircuit, Briefcase, Check, Code2, Copy, Cpu, Handbag, Palette, RefreshCw, Shirt, Skull, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -107,19 +107,22 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   function exploreTopic(next: ThemedTopic) {
     setTopic(next);
     setVariation(current => current + 1);
-    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    window.requestAnimationFrame(() => {
+      if (config.locale === "fr") document.getElementById("themed-generator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
   return <main className="site-shell themed-site-shell" lang={config.locale}>
     <div className="page-content italian-experience-page">
       <ExperienceHeader locale={config.locale} active="themed" copy={copy} />
       <section className="main-section themed-main-section" aria-labelledby="themed-page-title">
-        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}<span className="title-period">.</span></h1></div></div>
+        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}{config.locale !== "fr" && <span className="title-period">.</span>}</h1></div></div>
         <p className="seo-intro">{config.intro}</p>
 
         <div className="themed-topic-selector" aria-labelledby="themed-topic-label">
           <span className="field-label" id="themed-topic-label">{config.topicLabel}</span>
-          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon: Icon }) => <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{config.themeLabels[id] ?? label}</span></button>)}</div></div>
+          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon }) => { const Icon = id === "fashion" && config.locale === "fr" ? Shirt : icon; return <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{config.themeLabels[id] ?? label}</span></button>; })}</div></div>
         </div>
 
         <div className="generator-panel generator-module themed-generator-panel" id="themed-generator">
@@ -127,7 +130,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
             {config.showContentLanguageSelector && <div className="themed-language-selector" aria-labelledby="themed-language-label">
               <span className="field-label" id="themed-language-label">{config.contentLanguageLabel}</span>
               <div className="themed-language-list" role="group" aria-label={config.contentLanguageLabel}>
-                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : "EN"}</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : config.locale === "fr" ? "FR" : "EN"}</button>
                 <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.secondary} aria-pressed={contentLanguage !== config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage === "en" ? "it" : "en")}>EN</button>
               </div>
             </div>}
@@ -144,7 +147,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
       </section>
       <section className="themed-explore-section" aria-labelledby="themed-explore-title">
         <h2 id="themed-explore-title">{config.exploreTitle}</h2>
-        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const Icon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; return <article className="themed-explore-card" key={id}><Icon aria-hidden="true" /><h3>{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
+        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const topicIcon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; const Icon = id === "fashion" && config.locale === "fr" ? Shirt : topicIcon; return <article className="themed-explore-card" key={id}><Icon aria-hidden="true" /><h3>{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
       </section>
     </div><HomepageFooter copy={copy} />
   </main>;

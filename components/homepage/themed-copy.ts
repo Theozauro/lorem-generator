@@ -2,9 +2,10 @@ import type { HomepageCopy } from "./homepage-copy";
 import { enHomepageCopy } from "./homepage-copy/en";
 import { itHomepageCopy } from "./homepage-copy/it";
 import { deHomepageCopy } from "./homepage-copy/de";
+import { frHomepageCopy } from "./homepage-copy/fr";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -26,6 +27,40 @@ export type ThemedPageConfig = {
   contentLanguageNames: { primary: string; secondary: string };
   exploreTitle: string;
   cards: ThemeCard[];
+};
+
+export const frenchThemedPageConfig: ThemedPageConfig = {
+  locale: "fr",
+  copy: {
+    ...frHomepageCopy,
+    generator: {
+      ...frHomepageCopy.generator,
+      layout: "MOTS + PARAGRAPHES",
+      characters: "CARACTÈRES",
+      sentences: "PHRASES",
+      quickWords: "VALEURS RAPIDES",
+      words: "MOTS",
+      paragraphs: "PARAGRAPHES",
+      generate: "Générer",
+    },
+  },
+  defaultContentLanguage: "fr",
+  showContentLanguageSelector: true,
+  title: "Générateur de Lorem Ipsum thématique",
+  intro: "Générez du texte de substitution inspiré de secteurs et de contextes spécifiques tout en gardant un contrôle précis sur la quantité et le format du contenu.",
+  topicLabel: "Thèmes",
+  themeLabels: { corporate: "Corporate", tech: "Tech", ai: "IA", design: "Design", fashion: "Mode", zombie: "Zombie" },
+  contentLanguageLabel: "LANGUE DU TEXTE",
+  contentLanguageNames: { primary: "Français", secondary: "English" },
+  exploreTitle: "EXPLOREZ LES THÈMES",
+  cards: [
+    { id: "corporate", title: "Corporate Ipsum", description: "Texte de substitution professionnel pour l’entreprise, la stratégie, les opérations et la communication corporate.", action: "Générer Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Texte de substitution inspiré des produits numériques, plateformes, systèmes, infrastructures et du développement.", action: "Générer Tech Ipsum" },
+    { id: "ai", title: "IA Ipsum", description: "Texte de substitution autour de l’intelligence artificielle, des modèles, des données, des agents, de l’automatisation et du machine learning.", action: "Générer IA Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Texte de substitution pour la typographie, les mises en page, les composants, les grilles et les processus créatifs.", action: "Générer Design Ipsum" },
+    { id: "fashion", title: "Ipsum Mode", description: "Texte de substitution pour les collections, matières, silhouettes, styles et concepts éditoriaux.", action: "Générer un Ipsum Mode" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Texte de substitution apocalyptique avec zombies, hordes, refuges, villes abandonnées et survie.", action: "Générer Zombie Ipsum" },
+  ],
 };
 
 export const italianThemedPageConfig: ThemedPageConfig = {

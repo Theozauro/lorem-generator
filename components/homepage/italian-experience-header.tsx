@@ -74,6 +74,19 @@ const experience = {
     lightLabel: "Helles Design aktivieren",
     darkLabel: "Dunkles Design aktivieren",
   },
+  fr: {
+    homePath: "/fr/",
+    themedPath: "/fr/lorem-ipsum-thematique/",
+    languageName: "Français",
+    classicLabel: "Générateur de Lorem Ipsum",
+    themedLabel: "Ipsum thématique",
+    navLabel: "Outils Lorem Ipsum",
+    mobileNavLabel: "Navigation française",
+    openMenuLabel: "Ouvrir la navigation",
+    closeMenuLabel: "Fermer la navigation",
+    lightLabel: "Passer au thème clair",
+    darkLabel: "Passer au thème sombre",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -126,6 +139,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (code === "it") return experience.it.themedPath;
     if (code === "es") return experience.es.themedPath;
     if (code === "de") return experience.de.themedPath;
+    if (code === "fr") return experience.fr.themedPath;
     return classicHref;
   }
 

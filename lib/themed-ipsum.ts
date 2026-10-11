@@ -18,6 +18,8 @@ const englishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Executive teams align strategic priorities with operational efficiency to unlock sustainable growth and measurable business outcomes.",
       "Enterprise leaders benchmark market opportunities, streamline governance, and accelerate value creation across every workstream.",
       "Agile leadership connects long-term strategy, scalable execution, and performance-driven decision-making across the portfolio.",
+      "Finance and product leads compare forecasts, delivery milestones, and investment priorities before the next planning cycle.",
+      "Regional teams map customer demand against staffing, budgets, and launch dates to keep the portfolio on track.",
     ],
     vocabulary: terms("actionable, agile, alignment, benchmark, benchmarking, bandwidth, blueprint, business, buy-in, capability, competencies, cross-functional, deliverable, deliverables, deep-dive, disruptive, ecosystem, efficiency, enablement, enterprise, executive, execution, framework, frictionless, governance, growth, holistic, impact, initiative, integration, KPI, leadership, leverage, market, milestone, monetization, objective, omnichannel, operations, optimization, outcome, paradigm, performance, pipeline, pivot, portfolio, priority, process, quarterly, roadmap, ROI, scalability, scalable, stakeholder, strategy, strategic, streamline, synergy, target, touchpoint, transformation, value, value-add, vertical, workflow, workstream, best-practice, business-model, core-competency, decision-making, go-to-market, high-level, long-term, market-share, operating-model, performance-driven, revenue-stream, risk-management, strategic-growth, value-creation"),
     phrases: terms("cross-functional stakeholders, strategic alignment, quarterly performance, scalable deliverables, operational efficiency, long-term value, business outcomes, market opportunities, revenue growth, enterprise transformation"),
@@ -29,6 +31,8 @@ const englishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Cloud-native teams orchestrate event-driven systems through scalable infrastructure, zero-trust security, and high-availability clusters.",
       "Distributed platforms integrate APIs, service meshes, and automated deployment pipelines to maximize throughput and resilience.",
       "Engineering teams provision containerized services across multi-region infrastructure with reliable telemetry, replication, and fault tolerance.",
+      "Application services exchange events through versioned APIs while teams monitor latency, error rates, and service health.",
+      "Deployment pipelines package container images, run integration checks, and roll back safely when a release fails.",
     ],
     vocabulary: terms("API, authentication, backend, bandwidth, bytecode, cache, CI/CD, cloud, cluster, compiler, container, database, deployment, distributed, Docker, endpoint, event-driven, framework, frontend, gateway, GitOps, GraphQL, infrastructure, integration, interface, Kafka, Kubernetes, latency, load-balancer, logging, microservices, middleware, network, node, OAuth, observability, orchestration, pipeline, Postgres, protocol, pubsub, queue, Redis, replica, REST, runtime, scalability, schema, security, server, serverless, service, sharding, socket, storage, stream, telemetry, token, virtualization, websocket, zero-trust, autoscaling, containerization, datacenter, fault-tolerance, high-availability, multi-region, rate-limit, replication, service-mesh, throughput, versioning, webhook, edge-computing, distributed-system, cloud-native, event-stream, in-memory, network-layer, request-response"),
     phrases: terms("distributed microservices, multi-region infrastructure, automated deployment, cloud-native architecture, event-driven systems, observability telemetry, scalable infrastructure, zero-trust security, service orchestration, high-availability clusters"),
@@ -40,6 +44,8 @@ const englishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "AI teams fine-tune foundation models with curated training datasets, reinforcement learning, and rigorous model evaluation.",
       "Multimodal models combine retrieval augmented generation, vector search, and contextual reasoning across complex knowledge bases.",
       "GPU clusters train transformer architectures through gradient descent, checkpoint evaluation, and carefully tuned hyperparameters.",
+      "Evaluation runs compare model responses against held-out examples, safety criteria, and task-specific quality measures.",
+      "Retrieval pipelines rank relevant documents before a model combines them with the current prompt.",
     ],
     vocabulary: terms("agent, alignment, attention, backpropagation, benchmark, checkpoint, classification, context, context-window, dataset, diffusion, embedding, embeddings, epoch, evaluation, few-shot, fine-tuning, foundation-model, generation, generative, GPU, GPU-cluster, gradient, gradient-descent, hallucination, hyperparameter, inference, instruction-tuning, intelligence, latent-space, LLM, loss, loss-function, machine-learning, model, multimodal, neural-network, optimization, parameter, parameters, pretraining, prompt, prompt-engineering, quantization, RAG, reasoning, reinforcement-learning, RLHF, sampling, semantic, supervised, synthetic-data, token, tokenization, training, transformer, unsupervised, vector, vector-database, weights, zero-shot, agentic, attention-head, contextual, decoder, encoder, fine-tuned, knowledge-base, language-model, model-evaluation, model-training, neural, retrieval, reward-model, sequence, temperature, training-data, vision-model"),
     phrases: terms("large language models, multi-head attention, contextual embeddings, retrieval augmented generation, reinforcement learning, vector search, model inference, training datasets, neural architectures, multimodal models"),
@@ -51,6 +57,8 @@ const englishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Design systems align reusable components, accessible interaction patterns, and responsive grids across every screen.",
       "Creative teams refine visual identity through balanced layouts, modular typography, and purposeful whitespace.",
       "Interface designers connect user flows, component states, and visual rhythm through a shared design language.",
+      "Design reviews compare interaction states, content density, and contrast before components move into production.",
+      "Prototypes connect navigation, feedback, and reusable patterns so teams can test a flow before implementation.",
     ],
     vocabulary: terms("alignment, art-direction, asset, baseline, brand, brand-system, breakpoint, canvas, component, component-library, composition, concept, consistency, contrast, creative, design-system, design-token, editorial, flow, font, grid, hierarchy, identity, illustration, interaction, interface, iteration, layout, margin, mockup, modular, navigation, palette, pattern, prototype, proportion, responsive, rhythm, spacing, styleguide, symbol, template, typography, UI, UX, visual, visual-identity, visual-language, whitespace, wireframe, accessibility, affordance, balance, color-system, content-hierarchy, design-language, design-process, iconography, interaction-design, interface-design, layout-system, modularity, pixel, responsive-grid, scale, screen, spacing-system, type-scale, user-flow, visual-system, visual-weight, component-state, microinteraction, information-architecture, design-pattern, creative-direction, grid-system, visual-rhythm, brand-guideline"),
     phrases: terms("visual hierarchy, responsive grid, modular components, typographic system, design language, visual identity, interaction pattern, component library, creative direction, consistent interface"),
@@ -62,6 +70,8 @@ const englishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Editorial teams combine modern proportions, textural contrast, and contemporary tailoring across each seasonal look.",
       "The atelier reinterprets heritage craftsmanship through layered materials, structured volume, and a refined monochrome palette.",
       "Runway collections balance draped silhouettes, artisanal construction, and expressive styling for a distinctive wardrobe.",
+      "Studio fittings adjust seam placement, fabric weight, and proportion as a collection moves from sketch to sample.",
+      "Buyers and stylists coordinate seasonal palettes, garment details, and accessories for each editorial story.",
     ],
     vocabulary: terms("accessory, atelier, bespoke, campaign, capsule, collection, contemporary, craftsmanship, cut, detail, drape, draping, editorial, embroidery, fabric, finish, garment, heritage, knit, knitwear, layering, leather, look, lookbook, material, minimal, outerwear, palette, pattern, proportion, ready-to-wear, runway, season, seasonal, silhouette, styling, tailoring, textile, texture, wardrobe, weave, wool, couture, denim, draped, fit, footwear, form, handcrafted, luxury, monochrome, motif, organic, oversized, refined, satin, sheer, structured, suede, tailored, tonal, volume, accessories, artisan, construction, detailing, fashion-house, finishing, garment-dye, layered, materiality, pleating, seasonality, soft-tailoring, statement, studio, textural, translucent, woven"),
     phrases: terms("seasonal collection, refined silhouette, tactile materials, contemporary tailoring, editorial styling, capsule collection, crafted details, textural contrast, modern proportions, runway collection"),
@@ -89,6 +99,8 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "La leadership collega roadmap, governance e workflow operativi per sostenere una crescita scalabile e un valore duraturo.",
       "Le organizzazioni definiscono processi trasversali, benchmark di mercato e deliverable chiari lungo ogni iniziativa.",
       "Strategia, execution e collaborazione tra funzioni guidano decisioni rapide, ROI verificabile e continuità operativa.",
+      "Le responsabili di funzione confrontano previsioni, scadenze e investimenti prima del nuovo ciclo di pianificazione.",
+      "Le squadre commerciali mettono in relazione domanda, budget e capacità operative per definire priorità sostenibili.",
     ],
     vocabulary: terms("azione, agile, allineamento, analisi, benchmark, business, capacità, competenze, collaborazione, decisione, deliverable, direzione, ecosistema, efficienza, esecuzione, framework, governance, crescita, impatto, iniziativa, integrazione, KPI, leadership, leva, mercato, milestone, monetizzazione, obiettivo, omnicanale, operatività, ottimizzazione, outcome, paradigma, performance, pipeline, portafoglio, priorità, processo, progetto, trimestre, roadmap, ROI, scalabilità, scalabile, stakeholder, strategia, strategico, target, trasformazione, valore, verticale, workflow, coordinamento, pianificazione, risultato, investimento, risorsa, ricavi, responsabilità, posizionamento, opportunità, sostenibilità, misurazione, fattibilità, go-to-market"),
     phrases: terms("stakeholder cross-funzionali, allineamento strategico, performance trimestrale, deliverable scalabili, efficienza operativa, valore nel lungo periodo, outcome di business, opportunità di mercato, crescita dei ricavi, trasformazione enterprise"),
@@ -100,6 +112,8 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Le piattaforme cloud-native integrano API, backend e servizi event-driven per garantire scalabilità, sicurezza e disponibilità.",
       "Architetture distribuite coordinano container, database e sistemi di caching attraverso deployment automatizzati e monitoraggio continuo.",
       "I prodotti software collegano frontend, infrastruttura e workflow di sviluppo con endpoint affidabili e integrazioni verificabili.",
+      "I servizi applicativi scambiano eventi tramite API versionate e monitorano latenza, errori e disponibilità.",
+      "Le pipeline di rilascio verificano container e integrazioni, poi ripristinano la versione stabile quando serve.",
     ],
     vocabulary: terms("API, autenticazione, backend, banda, bytecode, cache, CI/CD, cloud, cluster, compilatore, container, database, deployment, distribuito, Docker, endpoint, event-driven, framework, frontend, gateway, GitOps, GraphQL, infrastruttura, integrazione, interfaccia, Kafka, Kubernetes, latenza, load-balancer, logging, microservizi, middleware, network, nodo, OAuth, osservabilità, orchestrazione, pipeline, Postgres, protocollo, pubsub, queue, Redis, replica, REST, runtime, scalabilità, schema, sicurezza, server, serverless, servizio, sharding, socket, storage, stream, telemetria, token, virtualizzazione, websocket, zero-trust, autoscaling, containerizzazione, datacenter, fault-tolerance, high-availability, multi-region, rate-limit, replication, service-mesh, throughput, versioning, webhook, edge-computing, distributed-system, cloud-native, event-stream, in-memory, network-layer, request-response"),
     phrases: terms("microservizi distribuiti, infrastruttura multi-region, deployment automatizzato, architettura cloud-native, sistemi event-driven, telemetria di osservabilità, infrastruttura scalabile, sicurezza zero-trust, orchestrazione dei servizi, cluster ad alta disponibilità"),
@@ -111,6 +125,8 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "I team AI ottimizzano foundation model con dataset curati, fine-tuning, reinforcement learning e valutazioni rigorose.",
       "I modelli multimodali combinano RAG, vector search e ragionamento contestuale su basi di conoscenza complesse.",
       "Cluster GPU addestrano architetture transformer con gradient descent, checkpoint e hyperparameter calibrati.",
+      "I test confrontano le risposte del modello con esempi verificati, criteri di sicurezza e obiettivi di qualità.",
+      "I sistemi di retrieval ordinano i documenti pertinenti prima che il modello li usi per rispondere al prompt.",
     ],
     vocabulary: terms("agente, alignment, attenzione, backpropagation, benchmark, checkpoint, classificazione, contesto, context-window, dataset, diffusione, embedding, epoca, valutazione, few-shot, fine-tuning, foundation-model, generazione, generativo, GPU, GPU-cluster, gradiente, gradient-descent, hallucination, hyperparameter, inferenza, instruction-tuning, intelligenza, latent-space, LLM, loss, loss-function, machine-learning, modello, multimodale, neural-network, ottimizzazione, parametro, pretraining, prompt, prompt-engineering, quantizzazione, RAG, ragionamento, reinforcement-learning, RLHF, sampling, semantico, supervisionato, synthetic-data, token, tokenizzazione, training, transformer, non supervisionato, vector, vector-database, pesi, zero-shot, agentic, attention-head, contestuale, decoder, encoder, fine-tuned, knowledge-base, language-model, model-evaluation, model-training, neural, retrieval, reward-model, sequenza, temperatura, training-data, vision-model"),
     phrases: terms("modelli linguistici di grandi dimensioni, attenzione multi-head, embedding contestuali, retrieval augmented generation, reinforcement learning, vector search, inferenza del modello, dataset di training, architetture neurali, modelli multimodali"),
@@ -122,6 +138,8 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "I design system allineano componenti riutilizzabili, pattern di interazione accessibili e griglie responsive su ogni schermata.",
       "Le direzioni creative affinano identità visiva, layout bilanciati e tipografia modulare attraverso spaziature intenzionali.",
       "I designer collegano user flow, stati dei componenti e ritmo visivo con un linguaggio di design condiviso.",
+      "Le revisioni confrontano stati dell’interfaccia, densità dei contenuti e contrasto prima del rilascio dei componenti.",
+      "I prototipi collegano navigazione e feedback per verificare un flusso prima di portarlo nello sviluppo.",
     ],
     vocabulary: terms("allineamento, asset, baseline, brand, breakpoint, canvas, componente, composizione, concetto, coerenza, contrasto, creativo, design-system, design-token, editoriale, flow, font, griglia, gerarchia, identità, illustrazione, interazione, interfaccia, iterazione, layout, margine, mockup, modulare, navigazione, palette, pattern, prototipo, proporzione, responsive, ritmo, spaziatura, styleguide, simbolo, template, tipografia, UI, UX, visuale, wireframe, accessibilità, affordance, equilibrio, iconografia, modularità, pixel, scala, schermo, microinterazione, struttura, colore, leggibilità, componente, interfaccia, direzione, linguaggio, sistema, accessibile, usabilità, user-flow, grid, design-system, struttura, proporzione"),
     phrases: terms("gerarchia visiva, griglia responsive, componenti modulari, sistema tipografico, linguaggio di design, identità visiva, pattern di interazione, libreria di componenti, direzione creativa, interfaccia coerente"),
@@ -133,6 +151,8 @@ const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "I team editoriali combinano proporzioni moderne, contrasti materici e tailoring contemporaneo in ogni look di stagione.",
       "L’atelier reinterpreta l’artigianalità attraverso tessuti stratificati, volumi strutturati e una palette monocromatica raffinata.",
       "Le collezioni runway bilanciano silhouette drappeggiate, costruzione artigianale e styling espressivo per un guardaroba distintivo.",
+      "Le prove in atelier regolano cuciture, peso dei tessuti e proporzioni prima della realizzazione dei campioni.",
+      "Stylist e buyer coordinano palette, dettagli e accessori per dare coerenza a ogni storia editoriale.",
     ],
     vocabulary: terms("accessorio, atelier, bespoke, campagna, capsule, collezione, contemporaneo, artigianalità, taglio, dettaglio, drappeggio, editoriale, ricamo, tessuto, finitura, capo, heritage, maglia, knitwear, layering, pelle, look, lookbook, materiale, minimale, outerwear, palette, pattern, proporzione, ready-to-wear, runway, stagione, stagionale, silhouette, styling, tailoring, texture, guardaroba, trama, lana, couture, denim, drappeggiato, vestibilità, calzatura, forma, artigianale, lusso, monocromatico, motivo, organico, oversize, raffinato, raso, velato, strutturato, camoscio, volume, artigiano, costruzione, finiture, materialità, plissé, studio, traslucido, intreccio, sartoria, accessori, tonalità, collezione, linea, stampa"),
     phrases: terms("collezione stagionale, silhouette raffinata, materiali tattili, tailoring contemporaneo, styling editoriale, capsule collection, dettagli curati, contrasto materico, proporzioni moderne, collezione runway"),
@@ -160,6 +180,8 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "La dirección conecta roadmap, gobernanza y workflow operativos para sostener un crecimiento escalable y un valor duradero.",
       "Las organizaciones comparan oportunidades de mercado, simplifican procesos y aceleran la creación de valor en cada iniciativa.",
       "La estrategia, la ejecución y la colaboración transversal impulsan decisiones rápidas, ROI verificable y continuidad operativa.",
+      "Los equipos de finanzas y producto revisan previsiones, entregas e inversiones antes de cerrar el siguiente plan.",
+      "Las áreas comerciales comparan la demanda con el presupuesto y la capacidad disponible para fijar prioridades.",
     ],
     vocabulary: terms("acción, agile, alineación, análisis, benchmark, business, capacidad, competencias, colaboración, decisión, deliverable, dirección, ecosistema, eficiencia, ejecución, framework, gobernanza, crecimiento, impacto, iniciativa, integración, KPI, liderazgo, mercado, milestone, monetización, objetivo, omnicanal, operaciones, optimización, outcome, paradigma, performance, pipeline, prioridades, proceso, proyecto, trimestre, roadmap, ROI, escalabilidad, stakeholder, estrategia, target, transformación, valor, workflow, planificación, resultado, inversión, recursos, posicionamiento, oportunidades, sostenibilidad, medición, go-to-market"),
     phrases: terms("stakeholders transversales, alineación estratégica, rendimiento trimestral, deliverables escalables, eficiencia operativa, valor a largo plazo, resultados de negocio, oportunidades de mercado, crecimiento de ingresos, transformación empresarial"),
@@ -171,6 +193,8 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Las plataformas cloud-native integran API, backend y servicios event-driven para garantizar escalabilidad, seguridad y disponibilidad.",
       "Las arquitecturas distribuidas coordinan contenedores, bases de datos y sistemas de caché mediante deployments automatizados y monitorización continua.",
       "Los productos de software conectan frontend, infraestructura y workflows de desarrollo con endpoints fiables e integraciones verificables.",
+      "Los servicios intercambian eventos mediante API versionadas mientras los equipos vigilan latencia, errores y disponibilidad.",
+      "Las cadenas de despliegue validan las imágenes de contenedor y restauran una versión estable si falla una actualización.",
     ],
     vocabulary: terms("API, autenticación, backend, ancho-de-banda, bytecode, cache, CI/CD, cloud, cluster, compilador, contenedor, database, deployment, distribuido, Docker, endpoint, event-driven, framework, frontend, gateway, GitOps, GraphQL, infraestructura, integración, interfaz, Kafka, Kubernetes, latencia, load-balancer, logging, microservicios, middleware, network, nodo, OAuth, observabilidad, orquestación, pipeline, Postgres, protocolo, pubsub, queue, Redis, réplica, REST, runtime, escalabilidad, schema, seguridad, server, serverless, servicio, sharding, socket, storage, stream, telemetría, token, virtualización, websocket, zero-trust, autoscaling, datacenter, fault-tolerance, high-availability, multi-region, replication, service-mesh, throughput, versioning, webhook, edge-computing, cloud-native"),
     phrases: terms("microservicios distribuidos, infraestructura multi-región, deployment automatizado, arquitectura cloud-native, sistemas event-driven, telemetría de observabilidad, infraestructura escalable, seguridad zero-trust, orquestación de servicios, clusters de alta disponibilidad"),
@@ -182,6 +206,8 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Los equipos de IA optimizan foundation models con datasets seleccionados, fine-tuning, reinforcement learning y evaluaciones rigurosas.",
       "Los modelos multimodales combinan RAG, vector search y razonamiento contextual sobre bases de conocimiento complejas.",
       "Los clusters GPU entrenan arquitecturas transformer con gradient descent, checkpoints e hiperparámetros calibrados.",
+      "Las pruebas comparan las respuestas del modelo con ejemplos revisados, criterios de seguridad y medidas de calidad.",
+      "Los sistemas de recuperación ordenan documentos relevantes antes de incorporarlos al contexto de la consulta.",
     ],
     vocabulary: terms("agente, alignment, atención, backpropagation, benchmark, checkpoint, clasificación, contexto, context-window, dataset, difusión, embedding, evaluación, few-shot, fine-tuning, foundation-model, generación, generativo, GPU, gradiente, gradient-descent, hallucination, hyperparameter, inferencia, instruction-tuning, inteligencia, latent-space, LLM, loss, machine-learning, modelo, multimodal, neural-network, optimización, parámetro, pretraining, prompt, prompt-engineering, cuantización, RAG, razonamiento, reinforcement-learning, RLHF, sampling, semántica, supervisado, synthetic-data, token, tokenización, training, transformer, vector, vector-database, pesos, zero-shot, agentic, decoder, encoder, knowledge-base, language-model, model-evaluation, retrieval, reward-model, secuencia, temperatura, vision-model"),
     phrases: terms("modelos de lenguaje de gran tamaño, atención multi-head, embeddings contextuales, retrieval augmented generation, reinforcement learning, vector search, inferencia del modelo, datasets de entrenamiento, arquitecturas neuronales, modelos multimodales"),
@@ -193,6 +219,8 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Los design systems alinean componentes reutilizables, patrones de interacción accesibles y retículas responsive en cada pantalla.",
       "Las direcciones creativas refinan la identidad visual mediante layouts equilibrados, tipografía modular y espacios intencionados.",
       "Los diseñadores conectan user flows, estados de componentes y ritmo visual con un lenguaje de diseño compartido.",
+      "Las revisiones comparan estados de interacción, densidad de contenido y contraste antes de publicar los componentes.",
+      "Los prototipos enlazan navegación y feedback para probar un recorrido antes de llevarlo a desarrollo.",
     ],
     vocabulary: terms("alineación, asset, baseline, marca, breakpoint, canvas, componente, composición, concepto, coherencia, contraste, creativo, design-system, design-token, editorial, flow, font, grid, jerarquía, identidad, ilustración, interacción, interfaz, iteración, layout, margen, mockup, modular, navegación, paleta, patrón, prototipo, proporción, responsive, ritmo, espaciado, styleguide, símbolo, template, tipografía, UI, UX, wireframe, accesibilidad, equilibrio, iconografía, pixel, escala, pantalla, microinteracción, estructura, legibilidad, usabilidad, user-flow, color-system, visual-system"),
     phrases: terms("jerarquía visual, retícula responsive, componentes modulares, sistema tipográfico, lenguaje de diseño, identidad visual, patrón de interacción, librería de componentes, dirección creativa, interfaz coherente"),
@@ -204,6 +232,8 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Los equipos editoriales combinan proporciones modernas, contrastes de textura y tailoring contemporáneo en cada look de temporada.",
       "El atelier reinterpreta la artesanía mediante tejidos superpuestos, volúmenes estructurados y una paleta monocromática refinada.",
       "Las colecciones runway equilibran siluetas drapeadas, construcción artesanal y styling expresivo para un armario distintivo.",
+      "Las pruebas en el taller ajustan costuras, peso del tejido y proporciones antes de preparar cada muestra.",
+      "Estilistas y compradores coordinan paletas, acabados y accesorios para cada historia editorial.",
     ],
     vocabulary: terms("accesorio, atelier, bespoke, campaña, capsule, colección, contemporáneo, artesanía, corte, detalle, drapeado, editorial, bordado, tejido, acabado, prenda, heritage, punto, knitwear, layering, piel, look, lookbook, material, minimalista, outerwear, paleta, pattern, proporción, ready-to-wear, runway, temporada, silueta, styling, tailoring, textura, armario, trama, lana, couture, denim, calzado, forma, lujo, monocromático, motivo, orgánico, oversize, refinado, satén, estructurado, ante, volumen, construcción, plisado, estudio, translúcido, tejido, sastrería, tonalidad, línea, estampado"),
     phrases: terms("colección de temporada, silueta refinada, materiales táctiles, tailoring contemporáneo, styling editorial, colección capsule, detalles cuidados, contraste de texturas, proporciones modernas, colección runway"),
@@ -231,6 +261,8 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Unternehmen entwickeln belastbare Roadmaps und beschleunigen die Wertschöpfung über alle Geschäftsbereiche.",
       "Stakeholder stimmen Prioritäten, Governance und Prozesse für skalierbares Wachstum aufeinander ab.",
       "Agile Führung verbindet langfristige Strategie, verlässliche Umsetzung und datenbasierte Entscheidungen.",
+      "Bereichsleitungen prüfen Prognosen, Liefertermine und Investitionen, bevor sie den nächsten Planungszyklus festlegen.",
+      "Vertrieb und Betrieb gleichen Nachfrage, Budget und verfügbare Kapazitäten für neue Ziele ab.",
     ],
     vocabulary: terms("Ausrichtung, Benchmark, Bandbreite, Blueprint, Business, Buy-in, Fähigkeit, Kompetenz, bereichsübergreifend, Lieferumfang, Deliverable, Disruption, Ökosystem, Effizienz, Enablement, Enterprise, Führung, Framework, Governance, Wachstum, Wirkung, Initiative, Integration, KPI, Leadership, Markt, Meilenstein, Monetarisierung, Ziel, Omnichannel, Betrieb, Optimierung, Ergebnis, Performance, Pipeline, Portfolio, Priorität, Prozess, Quartal, Roadmap, ROI, Skalierbarkeit, Stakeholder, Strategie, strategisch, Synergie, Zielwert, Kontaktpunkt, Transformation, Wert, Workflow, Workstream, Best Practice, Geschäftsmodell, Kernkompetenz, Entscheidungsfindung, Go-to-Market, langfristig, Marktanteil, Betriebsmodell, Umsatzstrom, Risikomanagement, Wertschöpfung"),
     phrases: terms("bereichsübergreifende Stakeholder, strategische Ausrichtung, quartalsweise Performance, skalierbare Deliverables, operative Effizienz, langfristiger Wert, Geschäftsergebnisse, Marktchancen, Umsatzwachstum, Unternehmenstransformation"),
@@ -242,6 +274,8 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Cloud-native Plattformen orchestrieren ereignisgesteuerte Systeme durch skalierbare Infrastruktur und hohe Verfügbarkeit.",
       "Verteilte Systeme verbinden APIs, Service Meshes und automatisierte Deployments für Durchsatz und Ausfallsicherheit.",
       "Entwicklungsteams provisionieren containerisierte Services mit Telemetrie, Replikation und belastbarer Fehlertoleranz.",
+      "Anwendungsdienste tauschen Ereignisse über versionierte APIs aus, während Teams Latenz, Fehler und Verfügbarkeit überwachen.",
+      "Deployment-Pipelines prüfen Container und Integrationen und rollen bei einem Fehler auf eine stabile Version zurück.",
     ],
     vocabulary: terms("API, Authentifizierung, Backend, Bandbreite, Bytecode, Cache, CI/CD, Cloud, Cluster, Compiler, Container, Datenbank, Deployment, verteilt, Docker, Endpunkt, ereignisgesteuert, Framework, Frontend, Gateway, GitOps, GraphQL, Infrastruktur, Integration, Interface, Kafka, Kubernetes, Latenz, Load Balancer, Logging, Microservices, Middleware, Netzwerk, Node, OAuth, Observability, Orchestrierung, Pipeline, Postgres, Protokoll, Queue, Redis, Replikat, REST, Laufzeit, Skalierbarkeit, Schema, Sicherheit, Server, Serverless, Service, Sharding, Socket, Speicher, Stream, Telemetrie, Token, Virtualisierung, WebSocket, Zero Trust, Autoscaling, Containerisierung, Rechenzentrum, Fehlertoleranz, Hochverfügbarkeit, Multi-Region, Rate Limit, Replikation, Service Mesh, Durchsatz, Versionierung, Webhook, Edge Computing, Cloud-native, Event Stream, In-Memory, Request-Response"),
     phrases: terms("verteilte Microservices, Multi-Region-Infrastruktur, automatisiertes Deployment, Cloud-native-Architektur, ereignisgesteuerte Systeme, Observability-Telemetrie, skalierbare Infrastruktur, Zero-Trust-Sicherheit, Service-Orchestrierung, hochverfügbare Cluster"),
@@ -253,6 +287,8 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "KI-Teams optimieren Foundation Models mit kuratierten Trainingsdaten, Fine-Tuning und sorgfältiger Modellevaluierung.",
       "Multimodale Modelle verbinden Retrieval Augmented Generation, Vektorsuche und kontextbezogenes Schlussfolgern.",
       "GPU-Cluster trainieren Transformer-Architekturen mit Gradient Descent, Checkpoints und abgestimmten Hyperparametern.",
+      "Evaluationen vergleichen Modellantworten mit geprüften Beispielen, Sicherheitskriterien und aufgabenspezifischen Qualitätswerten.",
+      "Retrieval-Systeme ordnen relevante Dokumente, bevor das Modell sie in den Antwortkontext einbezieht.",
     ],
     vocabulary: terms("Agent, Alignment, Attention, Backpropagation, Benchmark, Checkpoint, Klassifikation, Kontext, Context Window, Datensatz, Diffusion, Embedding, Epoche, Evaluierung, Few-shot, Fine-Tuning, Foundation Model, Generierung, generativ, GPU, GPU-Cluster, Gradient, Gradient Descent, Halluzination, Hyperparameter, Inferenz, Instruction Tuning, Intelligenz, Latent Space, LLM, Loss, Loss Function, Machine Learning, Modell, multimodal, neuronales Netz, Optimierung, Parameter, Pretraining, Prompt, Prompt Engineering, Quantisierung, RAG, Schlussfolgern, Reinforcement Learning, RLHF, Sampling, semantisch, überwacht, synthetische Daten, Token, Tokenisierung, Training, Transformer, unüberwacht, Vektor, Vektordatenbank, Gewichte, Zero-shot, agentisch, Attention Head, kontextuell, Decoder, Encoder, Knowledge Base, Language Model, Model Evaluation, Model Training, Retrieval, Reward Model, Sequenz, Temperatur, Trainingsdaten, Vision Model"),
     phrases: terms("Large Language Models, Multi-Head-Attention, kontextbezogene Embeddings, Retrieval Augmented Generation, Reinforcement Learning, Vektorsuche, Modellinferenz, Trainingsdatensätze, neuronale Architekturen, multimodale Modelle"),
@@ -264,6 +300,8 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Designsysteme verbinden wiederverwendbare Komponenten, zugängliche Interaktionsmuster und responsive Raster über alle Bildschirme.",
       "Kreativteams verfeinern visuelle Identität durch ausgewogene Layouts, modulare Typografie und gezielten Weißraum.",
       "Interface-Designer verbinden User Flows, Komponentenstatus und visuellen Rhythmus durch eine gemeinsame Designsprache.",
+      "Designreviews prüfen Interaktionszustände, Inhaltsdichte und Kontrast, bevor Komponenten veröffentlicht werden.",
+      "Prototypen verbinden Navigation und Rückmeldung, damit Teams Abläufe vor der Umsetzung testen können.",
     ],
     vocabulary: terms("Ausrichtung, Art Direction, Asset, Grundlinie, Marke, Brand System, Breakpoint, Canvas, Komponente, Komponentenbibliothek, Komposition, Konzept, Konsistenz, Kontrast, kreativ, Designsystem, Designtoken, Editorial, Flow, Schrift, Raster, Hierarchie, Identität, Illustration, Interaktion, Interface, Iteration, Layout, Rand, Mockup, modular, Navigation, Palette, Muster, Prototyp, Proportion, responsive, Rhythmus, Abstand, Styleguide, Symbol, Vorlage, Typografie, UI, UX, visuell, visuelle Identität, visuelle Sprache, Weißraum, Wireframe, Barrierefreiheit, Affordance, Balance, Farbsystem, Inhaltsstruktur, Designprozess, Iconografie, Interface Design, Layoutsystem, Modularität, Pixel, responsives Raster, Maßstab, Bildschirm, Interaktionsdesign, User Flow, visuelles System, Mikrointeraktion, Informationsarchitektur, Designmuster, kreative Richtung, Rasterdesign"),
     phrases: terms("visuelle Hierarchie, responsives Raster, modulare Komponenten, typografisches System, Designsprache, visuelle Identität, Interaktionsmuster, Komponentenbibliothek, kreative Leitung, konsistentes Interface"),
@@ -275,6 +313,8 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
       "Redaktionelle Teams verbinden moderne Proportionen, texturalen Kontrast und zeitgemäßes Tailoring in jedem Look.",
       "Das Atelier interpretiert traditionelle Handwerkskunst mit geschichteten Materialien, strukturiertem Volumen und einer monochromen Palette neu.",
       "Runway-Kollektionen balancieren drapierte Silhouetten, handwerkliche Konstruktion und ausdrucksstarkes Styling.",
+      "Bei der Anprobe werden Nahtführung, Stoffgewicht und Proportion angepasst, bevor ein Entwurf als Muster entsteht.",
+      "Stylisten und Einkäufer stimmen Farbpaletten, Details und Accessoires auf die jeweilige Bildgeschichte ab.",
     ],
     vocabulary: terms("Accessoire, Atelier, Bespoke, Kampagne, Capsule, Kollektion, zeitgenössisch, Handwerk, Schnitt, Detail, Drapierung, Editorial, Stickerei, Stoff, Finish, Kleidungsstück, Heritage, Strick, Knitwear, Layering, Leder, Look, Lookbook, Material, minimal, Outerwear, Palette, Muster, Proportion, Ready-to-wear, Runway, Saison, saisonal, Silhouette, Styling, Tailoring, Textil, Textur, Garderobe, Webart, Wolle, Couture, Denim, Schuhwerk, Form, handgefertigt, Luxus, monochrom, Motiv, organisch, Oversize, raffiniert, Satin, transparent, strukturiert, Wildleder, Volumen, Accessoires, Konstruktion, Faltenwurf, Studio, transluzent, Webstoff, Schneiderkunst, Tonalität, Linie, Print"),
     phrases: terms("saisonale Kollektion, raffinierte Silhouette, haptische Materialien, zeitgemäßes Tailoring, redaktionelles Styling, Capsule-Kollektion, sorgfältige Details, texturaler Kontrast, moderne Proportionen, Runway-Kollektion"),
@@ -351,10 +391,23 @@ function lastComparableToken(value: string) {
 }
 
 const recentComponentLimit = 12;
+const recentPhraseLimit = 10;
+
+const structuralConnectors: Record<ThemedLanguage, string[]> = {
+  en: ["and"],
+  it: ["con"],
+  es: ["con"],
+  de: ["sowie"],
+};
 
 function rememberComponent(recentComponents: string[], component: string) {
   recentComponents.push(component.toLocaleLowerCase());
   if (recentComponents.length > recentComponentLimit) recentComponents.shift();
+}
+
+function rememberPhrase(recentPhrases: string[], phrase: string) {
+  recentPhrases.push(phrase.toLocaleLowerCase());
+  if (recentPhrases.length > recentPhraseLimit) recentPhrases.shift();
 }
 
 function freshCandidates(candidates: string[], recentComponents: string[]) {
@@ -362,7 +415,7 @@ function freshCandidates(candidates: string[], recentComponents: string[]) {
   return fresh.length > 0 ? fresh : candidates;
 }
 
-function rememberOpenerTerms(data: ThemeData, opener: string, recentComponents: string[]) {
+function rememberOpenerTerms(data: ThemeData, opener: string, recentComponents: string[], recentPhrases: string[]) {
   const words = opener.toLocaleLowerCase().match(/[\p{L}\p{N}][\p{L}\p{N}/-]*/gu) ?? [];
   const matches: Array<{ end: number; term: string }> = [];
   for (const term of [...data.phrases, ...data.vocabulary, ...data.verbs]) {
@@ -374,7 +427,10 @@ function rememberOpenerTerms(data: ThemeData, opener: string, recentComponents: 
     }
   }
   matches.sort((a, b) => a.end - b.end);
-  for (const match of matches.slice(-recentComponentLimit)) rememberComponent(recentComponents, match.term);
+  for (const match of matches.slice(-recentComponentLimit)) {
+    rememberComponent(recentComponents, match.term);
+    if (data.phrases.some(phrase => phrase.toLocaleLowerCase() === match.term.toLocaleLowerCase())) rememberPhrase(recentPhrases, match.term);
+  }
 }
 
 function knownPhraseBoundaries(phrases: string[]) {
@@ -395,7 +451,7 @@ function splitsKnownPhrase(before: string[], after: string[], boundaries: Return
   );
 }
 
-function denseSentence(data: ThemeData, targetWords: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], includeStandaloneVerbs = true) {
+function denseSentence(data: ThemeData, targetWords: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true) {
   const components: string[] = [];
   const sentencePhrases = new Set<string>();
   const phraseBoundaries = knownPhraseBoundaries(data.phrases);
@@ -412,21 +468,41 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
     const freshPhrases = phraseCandidates.filter(phrase => {
       const normalized = phrase.toLocaleLowerCase();
       return !sentencePhrases.has(normalized)
+        && !recentPhrases.includes(normalized)
         && !recentComponents.some(recent => recent.includes(" ") && (normalized === recent || normalized.includes(recent) || recent.includes(normalized)));
     });
-    const usePhrase = remaining > 1 && freshPhrases.length > 0 && random() < .36;
+    const phrasePool = freshPhrases;
+    const previousComponent = components[components.length - 1];
+    const previousWasVerb = previousComponent ? data.verbs.some(verb => verb.toLocaleLowerCase() === previousComponent.toLocaleLowerCase()) : false;
+    const bridgePhrasePool = freshPhrases.filter(phrase => wordCount(phrase) + 1 <= remaining);
+    const useBridgePhrase = remaining > 2
+      && components.length > 0
+      && !previousComponent?.includes(" ")
+      && bridges.length > 0
+      && bridgePhrasePool.length > 0
+      && random() < .2;
+    const usePhrase = !useBridgePhrase && remaining > 1 && phrasePool.length > 0 && !previousComponent?.includes(" ") && random() < .48;
     let component: string;
-    if (usePhrase) {
-      component = pick(freshPhrases, random);
-      sentencePhrases.add(component.toLocaleLowerCase());
+    let selectedPhrase = "";
+    if (useBridgePhrase) {
+      selectedPhrase = pick(bridgePhrasePool, random);
+      component = `${pick(bridges, random)} ${selectedPhrase}`;
+    }
+    else if (usePhrase) {
+      selectedPhrase = pick(phrasePool, random);
+      component = selectedPhrase;
     }
     else {
-      const singleWords = [...data.vocabulary, ...(includeStandaloneVerbs ? data.verbs : [])].filter(term =>
+      const singleWords = [...data.vocabulary, ...(includeStandaloneVerbs && !previousWasVerb ? data.verbs : [])].filter(term =>
         !term.includes(" ")
         && comparableToken(term) !== lastToken
         && !splitsKnownPhrase(beforeWords, [term.toLocaleLowerCase()], phraseBoundaries)
       );
       component = pick(freshCandidates(singleWords, recentComponents), random);
+    }
+    if (selectedPhrase) {
+      sentencePhrases.add(selectedPhrase.toLocaleLowerCase());
+      rememberPhrase(recentPhrases, selectedPhrase);
     }
     components.push(component);
     usedWords += wordCount(component);
@@ -474,7 +550,7 @@ function sentenceBudgets(total: number, random: () => number) {
   return distribute(total, count, Math.floor(random() * count));
 }
 
-function paragraphForBudget(data: ThemeData, budget: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentOpeners: string[] = [], includeStandaloneVerbs = true) {
+function paragraphForBudget(data: ThemeData, budget: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], recentOpeners: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true) {
   const sentences: string[] = [];
   const fittingOpeners = data.openers.filter(opener => {
     const remaining = budget - wordCount(opener);
@@ -484,46 +560,48 @@ function paragraphForBudget(data: ThemeData, budget: number, random: () => numbe
   let lastToken = avoidStartToken;
   if (fittingOpeners.length > 0) {
     const openersWithoutRecentPhrases = fittingOpeners.filter(opener => !data.phrases.some(phrase =>
-      recentComponents.includes(phrase.toLocaleLowerCase()) && opener.toLocaleLowerCase().includes(phrase.toLocaleLowerCase())
+      recentPhrases.includes(phrase.toLocaleLowerCase()) && opener.toLocaleLowerCase().includes(phrase.toLocaleLowerCase())
     ));
     const opener = pick(freshCandidates(openersWithoutRecentPhrases.length > 0 ? openersWithoutRecentPhrases : fittingOpeners, recentOpeners), random);
     sentences.push(opener);
     rememberComponent(recentOpeners, opener);
-    rememberOpenerTerms(data, opener, recentComponents);
+    rememberOpenerTerms(data, opener, recentComponents, recentPhrases);
     remaining -= wordCount(opener);
     lastToken = lastComparableToken(opener);
   }
   for (const sentenceBudget of sentenceBudgets(remaining, random)) {
-    const sentence = denseSentence(data, sentenceBudget, random, lastToken, recentComponents, includeStandaloneVerbs);
+    const sentence = denseSentence(data, sentenceBudget, random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs);
     sentences.push(sentence);
     lastToken = lastComparableToken(sentence);
   }
   return sentences.join(" ");
 }
 
-function generateLayout(data: ThemeData, words: number, paragraphs: number, random: () => number, includeStandaloneVerbs: boolean) {
+function generateLayout(data: ThemeData, words: number, paragraphs: number, random: () => number, bridges: string[], includeStandaloneVerbs: boolean) {
   const paragraphCount = Math.max(1, Math.min(paragraphs, words));
   const budgets = distribute(words, paragraphCount, Math.floor(random() * paragraphCount));
   const generated: string[] = [];
   const recentComponents: string[] = [];
+  const recentPhrases: string[] = [];
   const recentOpeners: string[] = [];
   let lastToken = "";
   for (const budget of budgets) {
-    const paragraph = paragraphForBudget(data, budget, random, lastToken, recentComponents, recentOpeners, includeStandaloneVerbs);
+    const paragraph = paragraphForBudget(data, budget, random, lastToken, recentComponents, recentPhrases, recentOpeners, bridges, includeStandaloneVerbs);
     generated.push(paragraph);
     lastToken = lastComparableToken(paragraph);
   }
   return generated.join("\n\n");
 }
 
-function generateSentences(data: ThemeData, amount: number, random: () => number, includeStandaloneVerbs: boolean) {
+function generateSentences(data: ThemeData, amount: number, random: () => number, bridges: string[], includeStandaloneVerbs: boolean) {
   const generated: string[] = [];
   const recentComponents: string[] = [];
+  const recentPhrases: string[] = [];
   let lastToken = "";
   for (let index = 0; index < amount; index += 1) {
-    const sentence = index === 0 ? pick(data.openers, random) : denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, recentComponents, includeStandaloneVerbs);
+    const sentence = index === 0 ? pick(data.openers, random) : denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs);
     generated.push(sentence);
-    if (index === 0) rememberOpenerTerms(data, sentence, recentComponents);
+    if (index === 0) rememberOpenerTerms(data, sentence, recentComponents, recentPhrases);
     lastToken = lastComparableToken(sentence);
   }
   return generated.join(" ");
@@ -536,7 +614,7 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   de: ["an", "auf", "aus", "bei", "durch", "für", "in", "mit", "nach", "oder", "und", "von", "zu", "ein", "eine", "der", "die", "das", "den", "dem"],
 };
 
-function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], includeStandaloneVerbs = true) {
+function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], includeStandaloneVerbs = true) {
   const thematicComponents = [...data.phrases, ...data.vocabulary, ...(includeStandaloneVerbs ? data.verbs : [])];
   let text = "";
   let lastToken = avoidStartToken;
@@ -553,6 +631,7 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
     // Avoid selecting a component that strands those two characters, and don't
     // append another period when a component already supplies terminal punctuation.
     const safeComponents = availableComponents.filter(component => {
+      if (data.phrases.some(phrase => phrase.toLocaleLowerCase() === component.toLocaleLowerCase()) && recentPhrases.includes(component.toLocaleLowerCase())) return false;
       const remainder = remaining - separator - component.length;
       return remainder !== 2 && !(remainder === 1 && /[.!?;:,]$/.test(component));
     });
@@ -571,6 +650,7 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
       const fallback = pick(safeComponents, random);
       const remainder = remaining - separator - fallback.length;
       text += `${text ? " " : ""}${fallback}`;
+      if (data.phrases.some(phrase => phrase.toLocaleLowerCase() === fallback.toLocaleLowerCase())) rememberPhrase(recentPhrases, fallback);
       if (remainder === 1) return `${text}.`;
       continue;
     }
@@ -582,6 +662,7 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
     const spaceAfter = remaining - separator - component.length;
 
     text += `${text ? " " : ""}${component}`;
+    if (data.phrases.some(phrase => phrase.toLocaleLowerCase() === component.toLocaleLowerCase())) rememberPhrase(recentPhrases, component);
     lastToken = lastComparableToken(component);
     rememberComponent(recentComponents, component);
     if (spaceAfter === 1) return `${text}.`;
@@ -590,17 +671,18 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
   return text;
 }
 
-function generateCharacters(data: ThemeData, connectors: string[], amount: number, random: () => number, includeStandaloneVerbs: boolean) {
+function generateCharacters(data: ThemeData, connectors: string[], amount: number, random: () => number, bridges: string[], includeStandaloneVerbs: boolean) {
   let text = "";
   let lastToken = "";
   const recentComponents: string[] = [];
+  const recentPhrases: string[] = [];
 
   while (true) {
     const sentenceHistory = [...recentComponents];
     const sentence = text
-      ? denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, sentenceHistory, includeStandaloneVerbs)
+      ? denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, sentenceHistory, recentPhrases, bridges, includeStandaloneVerbs)
       : pick(data.openers, random);
-    if (!text) rememberOpenerTerms(data, sentence, sentenceHistory);
+    if (!text) rememberOpenerTerms(data, sentence, sentenceHistory, recentPhrases);
     const separator = text ? 1 : 0;
     const remaining = amount - text.length - separator - sentence.length;
     if (remaining < 0 || remaining === 1 || (remaining > 0 && remaining < 32)) break;
@@ -611,16 +693,17 @@ function generateCharacters(data: ThemeData, connectors: string[], amount: numbe
   }
 
   const tailLength = amount - text.length - (text ? 1 : 0);
-  const tail = exactCharacterTail(data, connectors, tailLength, random, lastToken, recentComponents, includeStandaloneVerbs);
+  const tail = exactCharacterTail(data, connectors, tailLength, random, lastToken, recentComponents, recentPhrases, includeStandaloneVerbs);
   return `${text}${text ? " " : ""}${tail}`;
 }
 
 export function generateThemedIpsum({ theme, language = "en", mode, words, paragraphs, amount, variation }: GeneratorOptions) {
   const data = themedIpsumData[language][theme];
   const includeStandaloneVerbs = language !== "it";
+  const bridges = structuralConnectors[language];
   const seed = hashSeed(`${language}:${theme}:${mode}:${words}:${paragraphs}:${amount}:${variation}`);
   const random = randomFromSeed(seed);
-  if (mode === "layout") return generateLayout(data, words, paragraphs, random, includeStandaloneVerbs);
-  if (mode === "sentences") return generateSentences(data, amount, random, includeStandaloneVerbs);
-  return generateCharacters(data, characterConnectors[language], amount, random, includeStandaloneVerbs);
+  if (mode === "layout") return generateLayout(data, words, paragraphs, random, bridges, includeStandaloneVerbs);
+  if (mode === "sentences") return generateSentences(data, amount, random, bridges, includeStandaloneVerbs);
+  return generateCharacters(data, characterConnectors[language], amount, random, bridges, includeStandaloneVerbs);
 }

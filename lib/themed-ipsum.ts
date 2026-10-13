@@ -1,6 +1,6 @@
 export type ThemedTheme = "corporate" | "tech" | "ai" | "design" | "fashion" | "zombie";
 export type ThemedMode = "layout" | "characters" | "sentences";
-export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr";
+export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr" | "pt-BR";
 
 type ThemeData = {
   openers: string[];
@@ -10,6 +10,8 @@ type ThemeData = {
   clauses?: string[];
   sentenceWords?: string[];
   phraseHeavy?: boolean;
+  attachSingleWordToPrevious?: boolean;
+  avoidRepeatedClauses?: boolean;
 };
 
 const terms = (value: string) => value.split(",").map(term => term.trim()).filter(Boolean);
@@ -449,12 +451,136 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+const brazilianPortugueseThemedIpsumData: Record<ThemedTheme, ThemeData> = {
+  corporate: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("regularmente, gradualmente, claramente, diretamente, cuidadosamente, consistentemente, continuamente, proporcionalmente"),
+    clauses: terms("a equipe compara os resultados, as lideranças acompanham as metas, a área prepara o orçamento, cada projeto avança conforme o cronograma, os times compartilham prioridades, a diretoria revisa as previsões, os parceiros definem um plano em conjunto, os clientes avaliam o novo serviço, o comitê ajusta as próximas etapas, as equipes distribuem os recursos, o relatório apresenta os resultados, a estratégia apoia o crescimento, os times avançam juntos, o orçamento segue sob controle, os prazos são cumpridos, as vendas crescem regularmente, a equipe avança, o orçamento fecha, as vendas crescem, tudo progride, o fluxo de caixa orienta decisões de investimento, as metas trimestrais refletem prioridades da diretoria, o time comercial registra oportunidades no sistema, a análise compara custos antes da aprovação, cada área revisa os riscos do projeto, o relatório consolida os resultados do período, parceiros alinham prazos antes da próxima entrega, novas demandas entram na pauta de planejamento, o atendimento registra dúvidas dos clientes, a equipe financeira acompanha despesas e receitas, um cronograma claro facilita a coordenação entre áreas, o conselho aprova recursos para a próxima fase, as lideranças avaliam indicadores ao fim do trimestre, as equipes ajustam prioridades diante do mercado, o plano reúne responsabilidades e prazos de cada área, o produto recebe melhorias a partir do retorno dos clientes, o orçamento contempla custos operacionais e novas iniciativas, a revisão reduz decisões tomadas às pressas, as metas orientam a distribuição de recursos, a diretoria compara cenários antes de confirmar o investimento, o projeto avança conforme as entregas são concluídas, as áreas compartilham informações durante a execução, o desempenho é acompanhado por indicadores objetivos, o planejamento considera a capacidade de cada equipe"),
+    openers: [
+      "As equipes de liderança conectam prioridades estratégicas a resultados concretos e às necessidades do negócio.",
+      "A diretoria distribui recursos entre os projetos para cumprir as metas do trimestre.",
+      "As equipes comerciais acompanham os pedidos dos clientes e ajustam o plano de ação.",
+      "Um orçamento compartilhado ajuda as lideranças a comparar custos, prazos e prioridades.",
+      "As áreas coordenam decisões para avançar os projetos sem criar etapas desnecessárias.",
+      "A revisão trimestral compara resultados, despesas e compromissos assumidos por cada equipe.",
+      "As lideranças definem um cronograma realista antes de iniciar a transformação.",
+      "Cada equipe apresenta seus avanços e aponta os temas que precisam de uma decisão.",
+    ],
+    vocabulary: terms("atividade, acordo, ação, análise, avaliação, balanço, orçamento, calendário, capacidade, cliente, colaboração, comitê, comunicação, concorrente, conselho, crescimento, decisão, demanda, prazo, diretoria, empresa, equipe, estudo, experiência, evolução, roteiro, financiamento, gestão, governança, indicador, iniciativa, investimento, entrega, mercado, margem, medida, meta, oferta, operação, organização, parceiro, desempenho, portfólio, prioridade, procedimento, processo, produto, projeto, qualidade, relatório, resultado, risco, serviço, estratégia, acompanhamento, tarefa, trimestre, valor, venda, previsão, recurso, rentabilidade, faturamento, plano de ação, regularmente, gradualmente"),
+    phrases: terms("prioridades estratégicas, resultados mensuráveis, plano de ação conjunto, revisão trimestral, metas de crescimento, acompanhamento de indicadores, roteiro do projeto, relacionamento com clientes, eficiência operacional, gestão de riscos, orçamento previsto, criação de valor, a equipe compara os resultados, as lideranças acompanham as metas, a área prepara o orçamento, cada projeto avança conforme o cronograma, os times compartilham prioridades, a diretoria revisa as previsões, os parceiros definem um plano em conjunto, os clientes avaliam o novo serviço, o comitê ajusta as próximas etapas, as equipes distribuem os recursos, o relatório apresenta os resultados, a estratégia apoia o crescimento"),
+    verbs: terms("acompanhar, ajustar, analisar, aprovar, avaliar, colaborar, comparar, coordenar, definir, desenvolver, elaborar, entregar, gerir, investir, medir, negociar, organizar, planejar, priorizar, produzir, revisar, transformar"),
+  },
+  tech: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("rapidamente, regularmente, automaticamente, gradualmente, corretamente, continuamente, remotamente, seguramente"),
+    clauses: terms("a equipe publica uma nova versão, os serviços trocam eventos, o sistema valida cada requisição, a equipe de desenvolvimento corrige o componente, a plataforma distribui a carga, os testes cobrem os principais fluxos, o servidor envia os dados, os registros apontam uma falha, os contêineres isolam as aplicações, a esteira prepara a entrega, o cache reduz chamadas repetidas, os times monitoram a disponibilidade, os dados passam pela API, o serviço responde a cada requisição, os erros ficam registrados, os alertas avisam a equipe, o serviço responde, o sistema funciona, os dados circulam, tudo opera, o pipeline executa testes antes de publicar a versão, a equipe revisa o código enviado ao repositório, os serviços registram eventos para análise posterior, o balanceador distribui requisições entre servidores, a API valida os dados recebidos, o cache guarda respostas usadas com frequência, a esteira automatiza as etapas da implantação, os alertas indicam aumento no tempo de resposta, a equipe consulta os logs durante a investigação, o banco de dados replica informações entre regiões, a autenticação protege o acesso aos serviços internos, o contêiner reúne dependências da aplicação, a plataforma monitora recursos de cada serviço, as atualizações passam por uma revisão técnica, o sistema recupera tarefas após uma falha, a documentação descreve os endpoints disponíveis, o time acompanha métricas após cada implantação, os testes verificam os principais casos de uso, o servidor limita requisições fora do padrão, a integração mantém os dados sincronizados, o processo de deploy inclui uma etapa de validação, os microsserviços compartilham contratos bem definidos, a equipe identifica gargalos nos painéis, a infraestrutura suporta picos de acesso, o serviço registra cada alteração de configuração"),
+    openers: [
+      "As equipes de tecnologia conectam os serviços da plataforma por meio de APIs documentadas e verificações automáticas.",
+      "Uma arquitetura em cloud distribui a carga entre regiões e monitora a disponibilidade de cada serviço.",
+      "A equipe de desenvolvimento isola componentes em contêineres antes de publicar uma nova versão.",
+      "A esteira de integração verifica o código, executa testes e prepara uma entrega que pode ser revertida.",
+      "Registros e alertas ajudam o time a notar o aumento da latência antes que afete quem usa o produto.",
+      "Um sistema de cache reduz requisições repetidas sem ignorar o prazo de validade dos dados.",
+      "Os serviços trocam eventos para processar tarefas sem bloquear a interface.",
+      "Os painéis reúnem o estado dos servidores, as falhas e o tempo de resposta.",
+    ],
+    vocabulary: terms("API, acesso, aplicação, arquitetura, autenticação, automação, base, banco de dados, cache, capacidade, cloud, código, componente, configuração, contêiner, controle, dado, implantação, desenvolvedor, desenvolvimento, documentação, disponibilidade, endpoint, falha, evento, execução, arquivo, framework, interface, registro, latência, software, máquina, memória, microsserviço, módulo, nó, observabilidade, orquestração, pacote, plataforma, processo, protocolo, rede, requisição, recurso, recuperação, resposta, segurança, servidor, serviço, armazenamento, sistema, tarefa, telemetria, teste, processamento, versão, escalabilidade, alta disponibilidade, integração contínua, fluxo de trabalho, atualização, rapidamente, automaticamente"),
+    phrases: terms("API documentada, serviços distribuídos, plataforma em cloud, esteira de integração, implantação automatizada, verificação de segurança, registro de eventos, sistema de cache, banco de dados, interface do usuário, tempo de resposta, escalabilidade da plataforma, recuperação após falha, monitoramento dos serviços, a equipe publica uma nova versão, os serviços trocam eventos, o sistema valida cada requisição, as pessoas desenvolvedoras corrigem o componente, a plataforma distribui a carga, os testes cobrem os principais fluxos, o servidor envia os dados, os registros apontam uma falha, os contêineres isolam as aplicações, a esteira prepara a entrega, o cache reduz chamadas repetidas, os times monitoram a disponibilidade"),
+    verbs: terms("analisar, automatizar, configurar, conectar, controlar, desenvolver, documentar, integrar, medir, monitorar, orquestrar, publicar, recuperar, revisar, distribuir, proteger, testar, processar, validar"),
+  },
+  ai: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("precisamente, gradualmente, automaticamente, claramente, consistentemente, corretamente, continuamente, diretamente"),
+    clauses: terms("a equipe avalia diferentes modelos, o sistema encontra documentos úteis, os dados são verificados antes do treino, a equipe de pesquisa compara respostas, o modelo segue as instruções, os agentes dividem tarefas, os testes medem a qualidade, o conjunto reúne exemplos diversos, o mecanismo classifica resultados, cada solicitação inclui contexto, as avaliações revelam diferenças, o modelo gera uma resposta, as fontes entram no contexto, o agente encaminha o pedido, os resultados são revisados antes da publicação, a pesquisa melhora a resposta, o modelo responde, o agente aprende, os resultados convergem, tudo converge, o conjunto de avaliação reúne exemplos de vários contextos, a equipe documenta critérios para comparar respostas, os dados passam por uma etapa de deduplicação, o modelo recebe instruções junto ao contexto relevante, a busca recupera trechos ligados à pergunta, cada avaliação registra acertos e limitações, o agente consulta ferramentas quando precisa, os pesquisadores analisam respostas fora do padrão, o treinamento considera exemplos revisados pela equipe, o sistema identifica fontes com informação útil, os parâmetros são ajustados para cada tarefa, a equipe testa o modelo com novos prompts, o índice organiza documentos para recuperação, as respostas são verificadas antes da publicação, os dados de treino passam por uma revisão, o modelo resume fontes sem perder os pontos principais, a avaliação mede consistência em diferentes cenários, os agentes registram o resultado de cada etapa, o filtro remove conteúdo duplicado do conjunto, o sistema envia contexto relevante para inferência, a equipe compara qualidade e latência dos modelos, a revisão humana identifica respostas imprecisas, a busca semântica aproxima documentos relacionados, o fluxo separa recuperação e geração, os exemplos cobrem diferentes formas de fazer a mesma pergunta"),
+    openers: [
+      "Modelos de linguagem aprendem com conjuntos de dados preparados e são avaliados em exemplos representativos.",
+      "A equipe compara diferentes modelos antes de escolher o que atende melhor às necessidades do produto.",
+      "O sistema encontra documentos relevantes e os inclui no contexto enviado ao modelo.",
+      "Os conjuntos de dados são verificados para reduzir duplicações e proteger informações sensíveis.",
+      "As avaliações medem a qualidade das respostas, a coerência e o respeito às instruções.",
+      "Um agente distribui algumas tarefas entre ferramentas e mantém o registro das decisões.",
+      "Os parâmetros de inferência equilibram precisão, latência e custo de processamento.",
+      "As equipes revisam as respostas do modelo antes de incluí-las em um fluxo de trabalho.",
+    ],
+    vocabulary: terms("agente, algoritmo, aprendizado, atenção, automação, base de conhecimento, viés, classificação, conjunto, contexto, dado, decodificador, amostra, avaliação, geração, GPU, alucinação, inferência, inteligência artificial, conjunto de dados, token, linguagem, modelo, modelo de linguagem, modelo fundacional, multimodal, neural, otimização, parâmetro, previsão, pré-treinamento, prompt, quantização, RAG, raciocínio, busca, recompensa, rede, rede neural, resposta, segurança, sequência, fonte, síntese, tarefa, temperatura, teste, tokenização, treinamento, transformador, vetor, vetorização, verificação, aprendizado de máquina, janela de contexto, ajuste fino, recuperação de informação, conjunto de avaliação, frequentemente, precisamente, gradualmente"),
+    phrases: terms("modelo de linguagem, aprendizado de máquina, conjunto de dados, janela de contexto, busca de documentos, geração com recuperação de informações, avaliação do modelo, resposta do sistema, rede neural, ajuste fino, dados de treinamento, inteligência artificial, controle de vieses, a equipe avalia diferentes modelos, o sistema encontra documentos úteis, os dados são verificados antes do treino, a equipe de pesquisa compara respostas, o modelo segue as instruções, os agentes dividem tarefas, os testes medem a qualidade, o conjunto reúne exemplos diversos, o mecanismo classifica resultados, cada solicitação inclui contexto, as avaliações revelam diferenças"),
+    verbs: terms("analisar, aprender, classificar, comparar, treinar, avaliar, gerar, indexar, inferir, interpretar, medir, otimizar, prever, recuperar, testar, transformar, verificar"),
+  },
+  design: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("claramente, cuidadosamente, gradualmente, intuitivamente, consistentemente, coerentemente, rapidamente, discretamente"),
+    clauses: terms("a equipe testa diferentes fluxos, os componentes mantêm proporções coerentes, o protótipo mostra as interações, a equipe de design ajusta os espaços, a grade organiza o conteúdo, os retornos revelam um problema, cada tela respeita o contraste, o layout apresenta os estados úteis, o sistema reúne regras comuns, os títulos orientam a leitura, a biblioteca facilita atualizações, os textos continuam legíveis, o menu acompanha a navegação, as cores indicam as ações, os times aprovam o protótipo, o fluxo fica mais claro, a grade funciona, o texto cabe, o visual evolui, tudo se alinha, o protótipo facilita a comparação entre duas soluções, a navegação indica onde cada ação leva, os componentes compartilham as mesmas regras visuais, a equipe revisa estados de foco e seleção, a hierarquia destaca as informações mais importantes, os títulos ajudam a localizar cada seção, a versão móvel reorganiza os elementos da página, a paleta mantém contraste entre texto e fundo, o conteúdo se adapta a diferentes larguras de tela, a biblioteca documenta padrões para os próximos projetos, os testes mostram onde a navegação causa dúvida, o espaçamento separa grupos sem fragmentar a página, os ícones reforçam o significado dos controles, a equipe compara alternativas antes de fechar o layout, os estados vazios orientam a próxima ação, a tipografia mantém leitura confortável em telas pequenas, o protótipo reúne comentários de quem testa o produto, o menu preserva acesso às áreas principais, as imagens acompanham a hierarquia do conteúdo, os componentes respondem a diferentes entradas, a grade equilibra texto e elementos visuais, a revisão confere acessibilidade antes da entrega, a interface mostra o retorno depois de cada ação, o fluxo conecta as etapas sem atalhos confusos"),
+    openers: [
+      "As equipes de produto organizam a interface com uma hierarquia visual clara e componentes reutilizáveis.",
+      "Um design system reúne as cores, os espaçamentos e as regras tipográficas do produto.",
+      "Protótipos ajudam a comparar diferentes fluxos antes de definir as interações.",
+      "A grade relaciona colunas, margens e blocos de conteúdo em cada tela.",
+      "As pessoas designers conferem contraste e legibilidade antes de entregar novos componentes.",
+      "Um layout editorial equilibra títulos, imagens e parágrafos de acordo com o formato.",
+      "Os testes revelam quais estados ainda faltam no fluxo de navegação.",
+      "A biblioteca de componentes ajuda os times a manter a interface coerente em diferentes telas.",
+    ],
+    vocabulary: terms("acessibilidade, alinhamento, animação, aparência, oficina, eixo, biblioteca, botão, enquadramento, tela de trabalho, caractere, cartão, componente, contraste, cor, criação, criatividade, detalhe, design, design system, espaço, espaçamento, estado, tela, exportação, forma, grade, ícone, identidade, ilustração, interação, interface, linha, legibilidade, mockup, margem, menu, navegação, opacidade, paleta, fluxo, pictograma, pixel, painel, fonte, protótipo, regra, responsivo, ritmo, seção, sinal, estilo, superfície, sistema, tamanho, tonalidade, teste, tema, tipografia, UI, UX, usuário, visual, wireframe, layout, guia de estilo, hierarquia visual, sistema tipográfico"),
+    phrases: terms("hierarquia visual, design system, componentes reutilizáveis, grade de layout, fluxo de uso, biblioteca de componentes, contraste acessível, mockup interativo, identidade visual, regras tipográficas, estados da interface, ritmo editorial, a equipe testa diferentes fluxos, os componentes mantêm proporções coerentes, o protótipo mostra as interações, a equipe de design ajusta os espaços, a grade organiza o conteúdo, os retornos revelam um problema, cada tela respeita o contraste, o layout apresenta os estados úteis, o sistema reúne regras comuns, os títulos orientam a leitura, a biblioteca facilita atualizações"),
+    verbs: terms("adaptar, alinhar, animar, associar, equilibrar, conceber, criar, desdobrar, desenhar, espaçar, ilustrar, organizar, prototipar, simplificar, testar, estruturar, estilizar, verificar"),
+  },
+  fashion: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("harmoniosamente, cuidadosamente, gradualmente, elegantemente, discretamente, uniformemente, perfeitamente, delicadamente"),
+    clauses: terms("o ateliê prepara as peças, os estilistas escolhem os tecidos, cada corte segue o molde, a coleção reúne formas simples, as provas corrigem as proporções, os times conferem os acabamentos, a marca apresenta sua nova linha, o tecido tem caimento leve, os acessórios completam a silhueta, as peças são produzidas em série, as cores permanecem harmônicas, a costura destaca os detalhes, os modelos acompanham a estação, o corte define o volume, os tecidos resistem ao uso, o estúdio prepara as imagens, a peça valoriza a silhueta, o tecido se move, o estilo muda, tudo combina, as costureiras conferem o acabamento antes da entrega, a equipe separa referências para a próxima coleção, o molde orienta o corte de cada peça, a prova ajusta o caimento no corpo, a paleta aproxima tecidos de diferentes texturas, a coleção combina peças leves e estruturadas, o estúdio registra os detalhes do bordado, a modelagem preserva conforto durante o movimento, os materiais são escolhidos conforme o uso previsto, a equipe organiza os looks para o editorial, a barra recebe o acabamento indicado na ficha, os acessórios completam a proposta sem pesar, a marca apresenta opções para diferentes ocasiões, o linho ganha espaço na coleção de verão, a lã reforça as peças dos dias frios, os estilistas comparam versões antes da aprovação, o ateliê ajusta a peça depois da prova, cada tecido reage de um jeito à luz, a costura mantém o caimento definido no molde, o desenho da estampa acompanha a modelagem, as etiquetas informam composição e cuidados, a produção confere medidas antes de finalizar, o guarda-roupa reúne peças fáceis de combinar"),
+    openers: [
+      "Os ateliês preparam a coleção da estação e escolhem tecidos e acabamentos para cada peça.",
+      "A silhueta combina volumes leves, corte preciso e uma paleta discreta.",
+      "Os estilistas montam um guarda-roupa com peças versáteis e detalhes bem resolvidos.",
+      "As provas ajudam a ajustar as proporções antes da produção das peças finais.",
+      "O estúdio editorial reúne acessórios, tecidos e imagens para apresentar uma mesma coleção.",
+      "A marca prioriza materiais duráveis e um processo atento ao trabalho do ateliê.",
+      "As coleções misturam peças atemporais e alguns detalhes mais ousados.",
+      "As equipes conferem cores e texturas antes de apresentar a coleção da estação.",
+    ],
+    vocabulary: terms("acessório, ateliê, bordado, campanha, cápsula, coleção, cor, costura, corte, criação, detalhe, edição, tecido, prova, etiqueta, confecção, acabamento, forma, estampa, material, modelo, motivo, nuance, barra, paleta, molde, peça, dobra, bolso, apresentação, prêt-à-porter, proporção, qualidade, ajuste, editorial, vestido, estação, série, silhueta, estilo, estilista, estúdio, superfície, alfaiataria, tendência, textura, tonalidade, roupa, guarda-roupa, volume, lã, linho, seda, couro, malha, corte estruturado, coleção da estação, linha editorial, fibra natural, caimento, modelagem"),
+    phrases: terms("coleção da estação, silhueta equilibrada, tecidos naturais, corte estruturado, acabamentos bem feitos, guarda-roupa contemporâneo, apresentação editorial, paleta de cores, prova no ateliê, peças de prêt-à-porter, detalhe bordado, textura do tecido, o ateliê prepara as peças, os estilistas escolhem os tecidos, cada corte segue o molde, a coleção reúne formas simples, as provas corrigem as proporções, os times conferem os acabamentos, a marca apresenta sua nova linha, o tecido tem caimento leve, os acessórios completam a silhueta, as peças são produzidas em série"),
+    verbs: terms("combinar, bordar, escolher, costurar, criar, cortar, drapear, ajustar, modelar, finalizar, apresentar, reformar, selecionar, tingir, tecer, transformar"),
+  },
+  zombie: {
+    phraseHeavy: true,
+    attachSingleWordToPrevious: true,
+    avoidRepeatedClauses: true,
+    sentenceWords: terms("rapidamente, silenciosamente, gradualmente, discretamente, cautelosamente, lentamente, imediatamente, cuidadosamente"),
+    clauses: terms("os sobreviventes reforçam o abrigo, a patrulha alcança a caravana, as sentinelas observam as ruas, um alerta toca perto do bunker, o grupo procura medicamentos, os infectados avançam até o posto, o veículo leva as últimas provisões, o rádio responde ao chamado, o portão protege o grupo, a equipe deixa a área contaminada, os mortos-vivos cercam o depósito, a sirene anuncia a evacuação, a caravana atravessa a barreira, os sobreviventes procuram abrigo, a equipe fecha o perímetro, o rádio transmite uma nova ordem, a horda se aproxima, eles avançam, a sirene toca, tudo recomeça, o grupo divide as provisões entre os abrigos, a patrulha marca uma rota segura no mapa, as sentinelas trocam de posto antes do amanhecer, a equipe recolhe água perto da estação, uma barricada bloqueia a entrada do mercado, o rádio confirma que a ponte está livre, os moradores deixam sinais nas janelas, o veículo retorna com combustível e remédios, a torre identifica movimento na estrada, o portão só abre após o sinal combinado, a equipe verifica cada quarto do abrigo, os sobreviventes guardam ferramentas junto à saída, a fumaça cobre a rua principal, o grupo evita áreas sem iluminação, os infectados seguem o barulho até a praça, a patrulha leva baterias para o transmissor, o mapa mostra um desvio pelo bairro antigo, uma equipe reforça as janelas do posto, a caravana aguarda do outro lado da barreira, o vigia comunica mudanças pelo rádio, as provisões são contadas antes da partida, os sobreviventes deixam marcas no caminho de volta, o gerador mantém as luzes do bunker acesas, o abrigo recebe quem chega da zona contaminada"),
+    openers: [
+      "Os sobreviventes reforçam o abrigo enquanto uma horda de zumbis avança pelas ruas vazias.",
+      "Uma mensagem de rádio indica o ponto de encontro atrás do antigo posto de controle.",
+      "Ao anoitecer, a patrulha volta ao refúgio antes que o perímetro seja fechado.",
+      "Do telhado, as sentinelas observam os infectados se aproximarem da área de quarentena.",
+      "A sirene inicia a evacuação enquanto a caravana leva as últimas provisões.",
+      "Uma equipe de resgate procura medicamentos e pilhas no depósito abandonado.",
+      "A porta do bunker cede quando o grupo termina de carregar o veículo.",
+      "Um pedido de socorro atravessa as ruínas e atrai os mortos-vivos até a estação.",
+    ],
+    vocabulary: terms("abrigo, alerta, apocalíptico, barricada, bunker, cemitério, contaminação, caravana, crise, escombros, epidemia, evacuação, fuga, horda, infectado, infecção, isolamento, lanterna, medicamento, mordida, noite, patrulha, perímetro, posto, quarentena, rádio, ração, refúgio, suprimento, ruína, sirene, sobrevivente, sobrevivência, telhado, torre, transmissão, veículo, cidade, zona, zona morta, morto-vivo, ponto de controle, pedido de socorro, reserva de emergência, posto de resgate, rua vazia, abrigo fortificado, zumbi"),
+    phrases: terms("cidade abandonada, ruas vazias, área de quarentena, ponto de controle, horda de zumbis, refúgio fortificado, pedido de socorro, reserva de emergência, última caravana, patrulha noturna, posto de resgate, grupo isolado, perímetro de segurança, ruínas do bairro, os sobreviventes reforçam o abrigo, a patrulha alcança a caravana, as sentinelas observam as ruas, um alerta toca perto do bunker, o grupo procura medicamentos, os infectados avançam até o posto, o veículo leva as últimas provisões, o rádio responde ao chamado, o portão protege o grupo, a equipe deixa a área contaminada, os mortos-vivos cercam o depósito"),
+    verbs: terms("avançar, barricar, conter, defender, evacuar, fugir, vasculhar, infectar, isolar, patrulhar, recuperar, alcançar, reforçar, abastecer, resgatar, sobreviver, trancar"),
+  },
+};
+
 export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeData>> = {
   en: englishThemedIpsumData,
   it: italianThemedIpsumData,
   es: spanishThemedIpsumData,
   de: germanThemedIpsumData,
   fr: frenchThemedIpsumData,
+  "pt-BR": brazilianPortugueseThemedIpsumData,
 };
 
 type GeneratorOptions = {
@@ -515,6 +641,7 @@ const structuralConnectors: Record<ThemedLanguage, string[]> = {
   es: ["con"],
   de: ["sowie"],
   fr: ["et"],
+  "pt-BR": ["e", "com"],
 };
 
 function rememberComponent(recentComponents: string[], component: string) {
@@ -568,7 +695,7 @@ function splitsKnownPhrase(before: string[], after: string[], boundaries: Return
   );
 }
 
-function denseSentence(data: ThemeData, targetWords: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true) {
+function denseSentence(data: ThemeData, targetWords: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true, usedClauses: Set<string> = new Set()) {
   const components: string[] = [];
   const sentencePhrases = new Set<string>();
   const sentencePhrasePool = data.clauses ?? data.phrases;
@@ -581,6 +708,7 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
     const phraseCandidates = sentencePhrasePool.filter(phrase =>
       wordCount(phrase) <= remaining
       && comparableToken(phrase.split(/\s+/)[0]) !== lastToken
+      && (!data.avoidRepeatedClauses || !usedClauses.has(phrase.toLocaleLowerCase()))
       && !splitsKnownPhrase(beforeWords, phrase.toLocaleLowerCase().split(/\s+/), phraseBoundaries)
     );
     const freshPhrases = phraseCandidates.filter(phrase => {
@@ -599,7 +727,7 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
       && bridges.length > 0
       && bridgePhrasePool.length > 0
       && random() < .2;
-    const usePhrase = !useBridgePhrase && remaining > 1 && phrasePool.length > 0 && (!previousComponent?.includes(" ") || data.phraseHeavy) && random() < (data.phraseHeavy ? .95 : .48);
+    const usePhrase = !useBridgePhrase && remaining > 1 && phrasePool.length > 0 && (!previousComponent?.includes(" ") || data.phraseHeavy) && random() < (data.attachSingleWordToPrevious ? 1 : data.phraseHeavy ? .95 : .48);
     let component: string;
     let selectedPhrase = "";
     if (useBridgePhrase) {
@@ -617,9 +745,18 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
         && !splitsKnownPhrase(beforeWords, [term.toLocaleLowerCase()], phraseBoundaries)
       );
       component = pick(freshCandidates(singleWords, recentComponents), random);
+      if (data.attachSingleWordToPrevious && components.length > 0) {
+        const previousIndex = components.length - 1;
+        components[previousIndex] = `${components[previousIndex].replace(/[,:;.!?]+$/u, "")} ${component}`;
+        usedWords += wordCount(component);
+        lastToken = lastComparableToken(component);
+        rememberComponent(recentComponents, component);
+        continue;
+      }
     }
     if (selectedPhrase) {
       sentencePhrases.add(selectedPhrase.toLocaleLowerCase());
+      if (data.avoidRepeatedClauses) usedClauses.add(selectedPhrase.toLocaleLowerCase());
       rememberPhrase(recentPhrases, selectedPhrase);
     }
     components.push(component);
@@ -668,7 +805,7 @@ function sentenceBudgets(total: number, random: () => number) {
   return distribute(total, count, Math.floor(random() * count));
 }
 
-function paragraphForBudget(data: ThemeData, budget: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], recentOpeners: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true) {
+function paragraphForBudget(data: ThemeData, budget: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], recentOpeners: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true, usedClauses: Set<string> = new Set()) {
   const sentences: string[] = [];
   const fittingOpeners = data.openers.filter(opener => {
     const remaining = budget - wordCount(opener);
@@ -688,7 +825,7 @@ function paragraphForBudget(data: ThemeData, budget: number, random: () => numbe
     lastToken = lastComparableToken(opener);
   }
   for (const sentenceBudget of sentenceBudgets(remaining, random)) {
-    const sentence = denseSentence(data, sentenceBudget, random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs);
+    const sentence = denseSentence(data, sentenceBudget, random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs, usedClauses);
     sentences.push(sentence);
     lastToken = lastComparableToken(sentence);
   }
@@ -702,9 +839,10 @@ function generateLayout(data: ThemeData, words: number, paragraphs: number, rand
   const recentComponents: string[] = [];
   const recentPhrases: string[] = [];
   const recentOpeners: string[] = [];
+  const usedClauses = new Set<string>();
   let lastToken = "";
   for (const budget of budgets) {
-    const paragraph = paragraphForBudget(data, budget, random, lastToken, recentComponents, recentPhrases, recentOpeners, bridges, includeStandaloneVerbs);
+    const paragraph = paragraphForBudget(data, budget, random, lastToken, recentComponents, recentPhrases, recentOpeners, bridges, includeStandaloneVerbs, usedClauses);
     generated.push(paragraph);
     lastToken = lastComparableToken(paragraph);
   }
@@ -715,9 +853,10 @@ function generateSentences(data: ThemeData, amount: number, random: () => number
   const generated: string[] = [];
   const recentComponents: string[] = [];
   const recentPhrases: string[] = [];
+  const usedClauses = new Set<string>();
   let lastToken = "";
   for (let index = 0; index < amount; index += 1) {
-    const generatedSentence = index === 0 ? pick(data.openers, random) : denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs);
+    const generatedSentence = index === 0 ? pick(data.openers, random) : denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, recentComponents, recentPhrases, bridges, includeStandaloneVerbs, usedClauses);
     const sentence = data.phraseHeavy
       ? generatedSentence.replace(/\. (\p{L})/gu, (_, initial: string) => `; ${initial.toLocaleLowerCase("fr-FR")}`)
       : generatedSentence;
@@ -734,6 +873,7 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   es: ["a", "y", "o", "de", "del", "en", "por", "para", "con", "entre", "un", "una", "el", "la", "los", "las"],
   de: ["an", "auf", "aus", "bei", "durch", "für", "in", "mit", "nach", "oder", "und", "von", "zu", "ein", "eine", "der", "die", "das", "den", "dem"],
   fr: ["à", "au", "aux", "avec", "dans", "de", "des", "du", "en", "et", "la", "le", "les", "ou", "par", "pour", "sur", "un", "une"],
+  "pt-BR": ["a", "à", "às", "ao", "aos", "com", "da", "das", "de", "do", "dos", "e", "em", "entre", "na", "nas", "no", "nos", "o", "os", "ou", "para", "pela", "pelas", "pelo", "pelos", "por", "sem", "sobre", "um", "uma"],
 };
 
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], includeStandaloneVerbs = true) {
@@ -800,11 +940,12 @@ function generateCharacters(data: ThemeData, connectors: string[], amount: numbe
   let lastToken = "";
   const recentComponents: string[] = [];
   const recentPhrases: string[] = [];
+  const usedClauses = new Set<string>();
 
   while (true) {
     const sentenceHistory = [...recentComponents];
     const sentence = text
-      ? denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, sentenceHistory, recentPhrases, bridges, includeStandaloneVerbs)
+      ? denseSentence(data, 8 + Math.floor(random() * 11), random, lastToken, sentenceHistory, recentPhrases, bridges, includeStandaloneVerbs, usedClauses)
       : pick(data.openers, random);
     if (!text) rememberOpenerTerms(data, sentence, sentenceHistory, recentPhrases);
     const separator = text ? 1 : 0;
@@ -823,7 +964,7 @@ function generateCharacters(data: ThemeData, connectors: string[], amount: numbe
 
 export function generateThemedIpsum({ theme, language = "en", mode, words, paragraphs, amount, variation }: GeneratorOptions) {
   const data = themedIpsumData[language][theme];
-  const includeStandaloneVerbs = language !== "it" && language !== "fr";
+  const includeStandaloneVerbs = language !== "it" && language !== "fr" && language !== "pt-BR";
   const bridges = structuralConnectors[language];
   const seed = hashSeed(`${language}:${theme}:${mode}:${words}:${paragraphs}:${amount}:${variation}`);
   const random = randomFromSeed(seed);

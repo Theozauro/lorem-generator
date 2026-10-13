@@ -3,9 +3,10 @@ import { enHomepageCopy } from "./homepage-copy/en";
 import { itHomepageCopy } from "./homepage-copy/it";
 import { deHomepageCopy } from "./homepage-copy/de";
 import { frHomepageCopy } from "./homepage-copy/fr";
+import { ptbrHomepageCopy } from "./homepage-copy/pt-br";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -60,6 +61,43 @@ export const frenchThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Design Ipsum", description: "Texte de substitution pour la typographie, les mises en page, les composants, les grilles et les processus créatifs.", action: "Générer Design Ipsum" },
     { id: "fashion", title: "Ipsum Mode", description: "Texte de substitution pour les collections, matières, silhouettes, styles et concepts éditoriaux.", action: "Générer un Ipsum Mode" },
     { id: "zombie", title: "Zombie Ipsum", description: "Texte de substitution apocalyptique avec zombies, hordes, refuges, villes abandonnées et survie.", action: "Générer Zombie Ipsum" },
+  ],
+};
+
+export const brazilianPortugueseThemedPageConfig: ThemedPageConfig = {
+  locale: "pt-BR",
+  copy: {
+    ...ptbrHomepageCopy,
+    generator: {
+      ...ptbrHomepageCopy.generator,
+      mode: "MODO",
+      modeLabel: "Modo de geração",
+      layout: "PALAVRAS + PARÁGRAFOS",
+      characters: "CARACTERES",
+      sentences: "FRASES",
+      quickWords: "VALORES RÁPIDOS",
+      presets: "VALORES RÁPIDOS",
+      words: "PALAVRAS",
+      paragraphs: "PARÁGRAFOS",
+      generate: "Gerar",
+    },
+  },
+  defaultContentLanguage: "pt-BR",
+  showContentLanguageSelector: true,
+  title: "Gerador de Lorem Ipsum temático",
+  intro: "Gere texto de preenchimento inspirado em setores e contextos específicos, mantendo controle preciso sobre a quantidade e o formato do conteúdo.",
+  topicLabel: "Temas",
+  themeLabels: { corporate: "Corporate", tech: "Tech", ai: "IA", design: "Design", fashion: "Moda", zombie: "Zombie" },
+  contentLanguageLabel: "IDIOMA DO TEXTO",
+  contentLanguageNames: { primary: "Português do Brasil", secondary: "English" },
+  exploreTitle: "EXPLORE OS TEMAS",
+  cards: [
+    { id: "corporate", title: "Corporate Ipsum", description: "Texto de preenchimento profissional para empresas, estratégia, operações e comunicação corporativa.", action: "Gerar Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Texto de preenchimento inspirado em produtos digitais, plataformas, sistemas, infraestrutura e desenvolvimento.", action: "Gerar Tech Ipsum" },
+    { id: "ai", title: "IA Ipsum", description: "Texto de preenchimento sobre inteligência artificial, modelos, dados, agentes, automação e aprendizado de máquina.", action: "Gerar IA Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Texto de preenchimento para tipografia, layouts, componentes, grids e processos criativos.", action: "Gerar Design Ipsum" },
+    { id: "fashion", title: "Ipsum de Moda", description: "Texto de preenchimento para coleções, tecidos, silhuetas, styling e conceitos editoriais.", action: "Gerar Ipsum de Moda" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Texto de preenchimento apocalíptico com zumbis, hordas, abrigos, cidades abandonadas e sobrevivência.", action: "Gerar Zombie Ipsum" },
   ],
 };
 

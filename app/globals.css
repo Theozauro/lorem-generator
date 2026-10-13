@@ -764,4 +764,7 @@ button:disabled { cursor: not-allowed; }
 @media (max-width: 350px) {
   .unit-tab { font-size: 7.5px !important; }
   .layout-amounts .field-label { font-size: 9px; }
+  .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr); }
+  .themed-controls-grid > .layout-amounts, .themed-controls-grid > .precision-amount { grid-column: 1 / -1; grid-row: 3; }
+  .themed-controls-grid > .presets { grid-column: 1 / -1; grid-row: 4; }
 }

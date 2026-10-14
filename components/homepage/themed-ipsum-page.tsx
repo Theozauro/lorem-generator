@@ -11,6 +11,7 @@ import type { HomepageCopy } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
 import type { ThemedPageConfig } from "./themed-copy";
 import { HomepageFooter } from "./home-page";
+import { ItalianThemedEditorial } from "./italian-editorial";
 
 type MainMode = ThemedMode;
 type ThemedTopic = ThemedTheme;
@@ -147,8 +148,9 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
       </section>
       <section className="themed-explore-section" aria-labelledby="themed-explore-title">
         <h2 id="themed-explore-title">{config.exploreTitle}</h2>
-        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const topicIcon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl") ? Shirt : topicIcon; return <article className="themed-explore-card" key={id}><Icon aria-hidden="true" /><h3>{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
+        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const topicIcon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl") ? Shirt : topicIcon; return <article className="themed-explore-card" key={id}>{config.locale !== "it" && <Icon aria-hidden="true" />}<h3>{config.locale === "it" && <Icon aria-hidden="true" />}{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
       </section>
+      {config.locale === "it" && <ItalianThemedEditorial />}
     </div><HomepageFooter copy={copy} />
   </main>;
 }

@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { generateLayout, generateLorem, resizeLorem, stats, type Unit } from "@/lib/lorem";
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
+import { ItalianHomepageEditorial, italianHomepageFaqItems } from "./italian-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -92,8 +93,8 @@ function StatStrip({ text, copy }: { text: string; copy: HomepageCopy }) {
 function ToolHead({ title, note }: { title: string; note: string }) {
   return <div className="tool-head"><div><h2>{title}</h2><p>{note}</p></div></div>;
 }
-function FaqSection({ copy }: { copy: HomepageCopy }) {
-  return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{copy.faq.items.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: copy.faq.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
+function FaqSection({ copy, additionalItems = [] }: { copy: HomepageCopy; additionalItems?: [string, string][] }) {
+  return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{[...copy.faq.items, ...additionalItems].map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: copy.faq.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
 }
 function ConsentBanner({ copy }: { copy: HomepageCopy }) {
   const [visible, setVisible] = useState(false);
@@ -343,7 +344,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
           </div>
           <div className="start-control-row"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => toggleStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label></div>
           <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result ? result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>) : <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div></div>
-          <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className="action-button secondary-action" onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
+          <div className="module-footer"><StatStrip text={result} copy={copy} /><div className="result-actions"><ActionCopy text={result} copy={copy} /><ActionCopyHtml text={result} copy={copy} /><Button type="button" variant="outline" className={`action-button secondary-action${locale === "it" && !hasGenerated ? " initial-generate" : ""}`} onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
         </div>
       </section>
       <section className="designer-section" aria-label={copy.fit.aria}><FitTool copy={copy} /></section>
@@ -351,7 +352,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       <section className="about-section" aria-labelledby="about-title"><div><span className="eyebrow">{copy.sections.aboutEyebrow}</span><h2 id="about-title">{copy.sections.aboutTitle}</h2></div><div className="about-copy"><p>{copy.sections.aboutOne}</p>{copy.sections.aboutTwo && <p>{copy.sections.aboutTwo}</p>}</div></section>
       {copy.sections.editorial ? copy.sections.editorial.map(({ heading, paragraphs }, index) => <section className="about-section" aria-labelledby={`editorial-title-${index}`} key={heading}><div><h2 id={`editorial-title-${index}`}>{heading}</h2></div><div className="about-copy">{paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></section>) : <><section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section></>}
-      <FaqSection copy={copy} />
+      {locale === "it" && <ItalianHomepageEditorial />}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

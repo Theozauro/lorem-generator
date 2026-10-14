@@ -152,12 +152,12 @@ export const italianThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Italiano", secondary: "English" },
   exploreTitle: "Esplora i temi",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Testo segnaposto con terminologia business, strategia, KPI, stakeholder e processi aziendali.", action: "Genera Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Testo segnaposto ispirato a software, cloud, API, infrastrutture e sviluppo.", action: "Genera Tech Ipsum" },
-    { id: "ai", title: "AI Ipsum", description: "Testo a tema intelligenza artificiale con modelli, prompt, dataset, token e machine learning.", action: "Genera AI Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Testo segnaposto per mockup e progetti creativi, con termini di UI, tipografia, layout e branding.", action: "Genera Design Ipsum" },
-    { id: "fashion", title: "Fashion Ipsum", description: "Testo segnaposto ispirato a collezioni, tessuti, silhouette, styling ed editoria fashion.", action: "Genera Fashion Ipsum" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Testo segnaposto apocalittico con zombie, orde, rifugi, città abbandonate e sopravvivenza.", action: "Genera Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Testo segnaposto con terminologia business per dashboard, report, presentazioni e prodotti B2B. Include concetti legati a strategia, KPI, stakeholder, processi, crescita e operazioni aziendali.", action: "Genera Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Testo segnaposto per software, prodotti digitali e interfacce tecniche. Usa termini legati a cloud, API, infrastrutture, sviluppo, deployment, sistemi e architetture.", action: "Genera Tech Ipsum" },
+    { id: "ai", title: "AI Ipsum", description: "Testo segnaposto dedicato a intelligenza artificiale e machine learning. Include modelli, prompt, dataset, agenti, automazione, training, inferenza e flussi basati sui dati.", action: "Genera AI Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Testo segnaposto per mockup, portfolio e progetti creativi. Usa termini di UI, tipografia, layout, componenti, design system, branding e processi creativi.", action: "Genera Design Ipsum" },
+    { id: "fashion", title: "Fashion Ipsum", description: "Testo segnaposto per lookbook, e-commerce e contenuti editoriali moda. Include collezioni, tessuti, silhouette, styling, materiali, campagne e direzione creativa.", action: "Genera Fashion Ipsum" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Testo segnaposto per videogiochi, concept e progetti post-apocalittici. Tra zombie, orde, rifugi, città abbandonate, sopravvivenza e risorse, rende i mockup più immersivi.", action: "Genera Zombie Ipsum" },
   ],
 };
 

@@ -100,6 +100,19 @@ const experience = {
     lightLabel: "Ativar tema claro",
     darkLabel: "Ativar tema escuro",
   },
+  nl: {
+    homePath: "/nl/",
+    themedPath: "/nl/lorem-ipsum-op-thema/",
+    languageName: "Nederlands",
+    classicLabel: "Lorem Ipsum-generator",
+    themedLabel: "Ipsum op thema",
+    navLabel: "Lorem Ipsum-tools",
+    mobileNavLabel: "Nederlandse navigatie",
+    openMenuLabel: "Navigatie openen",
+    closeMenuLabel: "Navigatie sluiten",
+    lightLabel: "Licht thema inschakelen",
+    darkLabel: "Donker thema inschakelen",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -154,6 +167,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (code === "de") return experience.de.themedPath;
     if (code === "fr") return experience.fr.themedPath;
     if (code === "pt-BR") return experience["pt-BR"].themedPath;
+    if (code === "nl") return experience.nl.themedPath;
     return classicHref;
   }
 

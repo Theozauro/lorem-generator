@@ -4,9 +4,10 @@ import { itHomepageCopy } from "./homepage-copy/it";
 import { deHomepageCopy } from "./homepage-copy/de";
 import { frHomepageCopy } from "./homepage-copy/fr";
 import { ptbrHomepageCopy } from "./homepage-copy/pt-br";
+import { nlHomepageCopy } from "./homepage-copy/nl";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -98,6 +99,43 @@ export const brazilianPortugueseThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Design Ipsum", description: "Texto de preenchimento para tipografia, layouts, componentes, grids e processos criativos.", action: "Gerar Design Ipsum" },
     { id: "fashion", title: "Ipsum de Moda", description: "Texto de preenchimento para coleções, tecidos, silhuetas, styling e conceitos editoriais.", action: "Gerar Ipsum de Moda" },
     { id: "zombie", title: "Zombie Ipsum", description: "Texto de preenchimento apocalíptico com zumbis, hordas, abrigos, cidades abandonadas e sobrevivência.", action: "Gerar Zombie Ipsum" },
+  ],
+};
+
+export const dutchThemedPageConfig: ThemedPageConfig = {
+  locale: "nl",
+  copy: {
+    ...nlHomepageCopy,
+    generator: {
+      ...nlHomepageCopy.generator,
+      mode: "MODUS",
+      modeLabel: "Generatiemodus",
+      layout: "WOORDEN + ALINEA'S",
+      characters: "TEKENS",
+      sentences: "ZINNEN",
+      quickWords: "SNELLE WAARDEN",
+      presets: "SNELLE WAARDEN",
+      words: "WOORDEN",
+      paragraphs: "ALINEA'S",
+      generate: "Genereren",
+    },
+  },
+  defaultContentLanguage: "nl",
+  showContentLanguageSelector: true,
+  title: "Lorem Ipsum-generator op thema",
+  intro: "Genereer opvultekst die is geïnspireerd op specifieke sectoren en contexten, met nauwkeurige controle over de hoeveelheid en het formaat van de inhoud.",
+  topicLabel: "Thema's",
+  themeLabels: { corporate: "Corporate", tech: "Tech", ai: "AI", design: "Design", fashion: "Mode", zombie: "Zombie" },
+  contentLanguageLabel: "TEKSTTAAL",
+  contentLanguageNames: { primary: "Nederlands", secondary: "English" },
+  exploreTitle: "ONTDEK DE THEMA'S",
+  cards: [
+    { id: "corporate", title: "Corporate Ipsum", description: "Opvultekst voor bedrijven, strategie, processen en zakelijke communicatie.", action: "Genereer Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Opvultekst geïnspireerd op digitale producten, platforms, systemen, infrastructuur en ontwikkeling.", action: "Genereer Tech Ipsum" },
+    { id: "ai", title: "AI Ipsum", description: "Opvultekst over kunstmatige intelligentie, modellen, data, agents, automatisering en machine learning.", action: "Genereer AI Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Opvultekst voor typografie, layouts, componenten, grids en creatieve processen.", action: "Genereer Design Ipsum" },
+    { id: "fashion", title: "Mode Ipsum", description: "Opvultekst voor collecties, materialen, silhouetten, styling en redactionele concepten.", action: "Genereer Mode Ipsum" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Apocalyptische opvultekst met zombies, hordes, schuilplaatsen, verlaten steden en overleving.", action: "Genereer Zombie Ipsum" },
   ],
 };
 

@@ -4,10 +4,11 @@ import { itHomepageCopy } from "./homepage-copy/it";
 import { deHomepageCopy } from "./homepage-copy/de";
 import { frHomepageCopy } from "./homepage-copy/fr";
 import { ptbrHomepageCopy } from "./homepage-copy/pt-br";
+import { plHomepageCopy } from "./homepage-copy/pl";
 import { nlHomepageCopy } from "./homepage-copy/nl";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -158,6 +159,29 @@ export const italianThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Design Ipsum", description: "Testo segnaposto per mockup, portfolio e progetti creativi. Usa termini di UI, tipografia, layout, componenti, design system, branding e processi creativi.", action: "Genera Design Ipsum" },
     { id: "fashion", title: "Fashion Ipsum", description: "Testo segnaposto per lookbook, e-commerce e contenuti editoriali moda. Include collezioni, tessuti, silhouette, styling, materiali, campagne e direzione creativa.", action: "Genera Fashion Ipsum" },
     { id: "zombie", title: "Zombie Ipsum", description: "Testo segnaposto per videogiochi, concept e progetti post-apocalittici. Tra zombie, orde, rifugi, città abbandonate, sopravvivenza e risorse, rende i mockup più immersivi.", action: "Genera Zombie Ipsum" },
+  ],
+};
+
+export const polishThemedPageConfig: ThemedPageConfig = {
+  locale: "pl",
+  copy: { ...plHomepageCopy, generator: { ...plHomepageCopy.generator,
+    layout: "SŁOWA + AKAPITY", characters: "ZNAKI", sentences: "ZDANIA",
+    words: "SŁOWA", paragraphs: "AKAPITY", quickWords: "SZYBKIE WARTOŚCI", presets: "SZYBKIE WARTOŚCI",
+  } },
+  defaultContentLanguage: "pl", showContentLanguageSelector: true,
+  title: "Generator tematycznego Lorem Ipsum",
+  intro: "Generuj tekst zastępczy inspirowany konkretnymi branżami i kontekstami, zachowując pełną kontrolę nad ilością i formatem treści.",
+  topicLabel: "Ipsum tematyczny",
+  themeLabels: { corporate: "Corporate", tech: "Tech", ai: "AI", design: "Design", fashion: "Moda", zombie: "Zombie" },
+  contentLanguageLabel: "JĘZYK TEKSTU", contentLanguageNames: { primary: "Polski", secondary: "English" },
+  exploreTitle: "ODKRYJ TEMATY",
+  cards: [
+    { id: "corporate", title: "Corporate Ipsum", description: "Tekst zastępczy z terminologią biznesową do dashboardów, raportów, prezentacji i produktów B2B. Obejmuje pojęcia związane ze strategią, KPI, interesariuszami, procesami, wzrostem i operacjami biznesowymi.", action: "Generuj Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Tekst zastępczy dla oprogramowania, produktów cyfrowych i interfejsów technicznych. Wykorzystuje terminy związane z chmurą, API, infrastrukturą, rozwojem, wdrożeniami, systemami i architekturą.", action: "Generuj Tech Ipsum" },
+    { id: "ai", title: "AI Ipsum", description: "Tekst zastępczy poświęcony sztucznej inteligencji i machine learning. Obejmuje modele, prompty, zbiory danych, agentów, automatyzację, trenowanie, inferencję i przepływy oparte na danych.", action: "Generuj AI Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Tekst zastępczy do makiet, portfolio i projektów kreatywnych. Wykorzystuje pojęcia związane z UI, typografią, layoutem, komponentami, design systemami, brandingiem i procesem projektowym.", action: "Generuj Design Ipsum" },
+    { id: "fashion", title: "Moda Ipsum", description: "Tekst zastępczy do lookbooków, e-commerce i treści redakcyjnych związanych z modą. Obejmuje kolekcje, tkaniny, sylwetki, styling, materiały, kampanie i kierunek kreatywny.", action: "Generuj Moda Ipsum" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Tekst zastępczy do gier, konceptów i projektów postapokaliptycznych. Zombie, hordy, schronienia, opuszczone miasta, przetrwanie i zasoby pomagają tworzyć bardziej immersyjne makiety.", action: "Generuj Zombie Ipsum" },
   ],
 };
 

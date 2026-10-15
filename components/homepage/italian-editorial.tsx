@@ -6,14 +6,14 @@ export const italianHomepageFaqItems: [string, string][] = [
   ["Qual è la differenza tra Lorem Ipsum, dummy text e placeholder text?", "Dummy text e placeholder text sono termini generici per indicare testo temporaneo usato in un layout. Lorem Ipsum è uno dei tipi di testo segnaposto più diffusi."],
 ];
 
-function EditorialSection({ id, eyebrow, title, children, split = false }: { id: string; eyebrow: string; title: string; children: ReactNode; split?: boolean }) {
+export function EditorialSection({ id, eyebrow, title, children, split = false }: { id: string; eyebrow: string; title: string; children: ReactNode; split?: boolean }) {
   return <section className={`${split ? "about-section" : "seo-content"} ${styles.section}`} aria-labelledby={id}>
     <div className={split ? undefined : "seo-content-heading"}><span className="eyebrow">{eyebrow}</span><h2 id={id}>{title}</h2></div>
     <div className={`about-copy${split ? "" : ` ${styles.content}`}`}>{children}</div>
   </section>;
 }
 
-function EditorialTable({ label, headers, rows, compact = false }: { label: string; headers: string[]; rows: string[][]; compact?: boolean }) {
+export function EditorialTable({ label, headers, rows, compact = false }: { label: string; headers: string[]; rows: string[][]; compact?: boolean }) {
   return <div className={styles.tableScroll} role="region" aria-label={label} tabIndex={0}>
     <table className={`${styles.table}${compact ? ` ${styles.compactTable}` : ""}`}>
       <caption className="sr-only">{label}</caption>

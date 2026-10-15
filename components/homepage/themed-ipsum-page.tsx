@@ -11,6 +11,7 @@ import type { HomepageCopy } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
 import type { ThemedPageConfig } from "./themed-copy";
 import { HomepageFooter } from "./home-page";
+import { PolishThemedEditorial } from "./polish-themed-editorial";
 import { ItalianThemedEditorial } from "./italian-editorial";
 
 type MainMode = ThemedMode;
@@ -57,6 +58,7 @@ function ThemedCopyActions({ text, onRegenerate, copy }: { text: string; onRegen
 
 export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   const copy = config.copy;
+  const editorialStandard = config.locale === "it" || config.locale === "pl";
   const [topic, setTopic] = useState<ThemedTopic>("corporate");
   const [contentLanguage, setContentLanguage] = useState<ThemedLanguage>(config.defaultContentLanguage);
   const [mode, setMode] = useState<MainMode>("layout");
@@ -114,16 +116,16 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
     });
   }
 
-  return <main className="site-shell themed-site-shell" lang={config.locale}>
+  return <main className={`site-shell themed-site-shell${editorialStandard ? " themed-editorial-standard" : ""}`} lang={config.locale}>
     <div className="page-content italian-experience-page">
       <ExperienceHeader locale={config.locale} active="themed" copy={copy} />
       <section className="main-section themed-main-section" aria-labelledby="themed-page-title">
-        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}{config.locale !== "fr" && config.locale !== "pt-BR" && <span className="title-period">.</span>}</h1></div></div>
+        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}{config.locale !== "fr" && config.locale !== "pt-BR" && config.locale !== "pl" && <span className="title-period">.</span>}</h1></div></div>
         <p className="seo-intro">{config.intro}</p>
 
         <div className="themed-topic-selector" aria-labelledby="themed-topic-label">
           <span className="field-label" id="themed-topic-label">{config.topicLabel}</span>
-          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon }) => { const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl") ? Shirt : icon; return <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{config.themeLabels[id] ?? label}</span></button>; })}</div></div>
+          <div className="themed-topic-scroll"><div className="themed-topic-list">{themedTopics.map(({ id, label, icon }) => { const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl") ? Shirt : icon; return <button key={id} type="button" className="themed-topic-button" aria-pressed={topic === id} onClick={() => setTopic(id)}><Icon aria-hidden="true" /><span>{config.themeLabels[id] ?? label}</span></button>; })}</div></div>
         </div>
 
         <div className="generator-panel generator-module themed-generator-panel" id="themed-generator">
@@ -131,7 +133,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
             {config.showContentLanguageSelector && <div className="themed-language-selector" aria-labelledby="themed-language-label">
               <span className="field-label" id="themed-language-label">{config.contentLanguageLabel}</span>
               <div className="themed-language-list" role="group" aria-label={config.contentLanguageLabel}>
-                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : config.locale === "fr" ? "FR" : config.locale === "pt-BR" ? "PT-BR" : config.locale === "nl" ? "NL" : "EN"}</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : config.locale === "fr" ? "FR" : config.locale === "pt-BR" ? "PT-BR" : config.locale === "nl" ? "NL" : config.locale === "pl" ? "PL" : "EN"}</button>
                 <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.secondary} aria-pressed={contentLanguage !== config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage === "en" ? "it" : "en")}>EN</button>
               </div>
             </div>}
@@ -148,9 +150,10 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
       </section>
       <section className="themed-explore-section" aria-labelledby="themed-explore-title">
         <h2 id="themed-explore-title">{config.exploreTitle}</h2>
-        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const topicIcon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl") ? Shirt : topicIcon; return <article className="themed-explore-card" key={id}>{config.locale !== "it" && <Icon aria-hidden="true" />}<h3>{config.locale === "it" && <Icon aria-hidden="true" />}{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
+        <div className="themed-explore-grid">{config.cards.map(({ id, title, description, action }) => { const topicIcon = themedTopics.find(topicItem => topicItem.id === id)?.icon ?? Briefcase; const Icon = id === "fashion" && (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl") ? Shirt : topicIcon; return <article className="themed-explore-card" key={id}>{!editorialStandard && <Icon aria-hidden="true" />}<h3>{editorialStandard && <Icon aria-hidden="true" />}{title}</h3><p>{description}</p><Button type="button" variant="outline" className="themed-explore-action" onClick={() => exploreTopic(id)}>{action}</Button></article>; })}</div>
       </section>
       {config.locale === "it" && <ItalianThemedEditorial />}
+      {config.locale === "pl" && <PolishThemedEditorial />}
     </div><HomepageFooter copy={copy} />
   </main>;
 }

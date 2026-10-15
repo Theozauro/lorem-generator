@@ -1,6 +1,6 @@
 export type ThemedTheme = "corporate" | "tech" | "ai" | "design" | "fashion" | "zombie";
 export type ThemedMode = "layout" | "characters" | "sentences";
-export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl";
+export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl";
 
 type ThemeData = {
   openers: string[];
@@ -12,6 +12,7 @@ type ThemeData = {
   phraseHeavy?: boolean;
   attachSingleWordToPrevious?: boolean;
   avoidRepeatedClauses?: boolean;
+  completeClauses?: boolean;
 };
 
 const terms = (value: string) => value.split(",").map(term => term.trim()).filter(Boolean);
@@ -613,6 +614,137 @@ const brazilianPortugueseThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+// Polish clauses are already inflected. Short adverbial completions preserve
+// word budgets without splicing arbitrary infinitives into a finished clause.
+const polishSentenceWords = terms("dziś, teraz, razem, sprawnie, uważnie, regularnie, dokładnie, stopniowo, wspólnie, świadomie, ponownie, systematycznie");
+const polishExtraClauses: Record<ThemedTheme, string[]> = {
+  corporate: terms("Decyzja wymaga uzasadnienia., Rynek wyznacza kierunek., Zespół ustala terminy., Raport wyjaśnia rozbieżności., Plan porządkuje współpracę., Budżet określa możliwości., Wskaźniki potwierdzają poprawę., Analiza ujawnia oszczędności., Zarząd ocenia perspektywy., Firma wspiera partnerów., Negocjacje przynoszą porozumienie., Prognoza wymaga aktualizacji., Oferta trafia do odbiorców., Klienci porównują warunki współpracy., Działy uzgadniają zasady raportowania., Menedżerowie rozdzielają dostępne zasoby., Priorytety wynikają z potrzeb rynku., Zespół weryfikuje założenia projektu., Strategia opiera się na danych., Firma analizuje opinie klientów., Partnerzy omawiają zakres usług., Spotkania pomagają wyjaśnić wątpliwości., Koszty pozostają pod kontrolą., Raport wskazuje obszary rozwoju., Współpraca wzmacnia pozycję przedsiębiorstwa., Dział sprzedaży przygotowuje prognozę., Inwestorzy pytają o wyniki., Kierownictwo ocenia skuteczność zmian., Pracownicy proponują usprawnienia procesu., Organizacja rozwija nowe kompetencje., Audyt sprawdza zgodność dokumentacji., Budżet obejmuje potrzeby oddziałów., Zarząd przedstawia plan działania., Analiza porównuje różne warianty., Projekt wymaga koordynacji działań., Decyzje uwzględniają perspektywę pracowników., Klient otrzymuje harmonogram dostaw., Zespół rozlicza zakończony etap., Przychody pozwalają finansować inwestycje., Partnerzy aktualizują warunki umowy."),
+  tech: terms("Test sprawdza konfigurację., Usługa potwierdza odbiór., System wykrywa przeciążenie., Serwer przyjmuje połączenie., Zespół poprawia dokumentację., Skrypt weryfikuje uprawnienia., Log wskazuje awarię., Kontener uruchamia aplikację., Pipeline przygotowuje paczkę., Cache ogranicza obciążenie., Baza indeksuje rekordy., Klaster zwiększa dostępność., Wersja przechodzi kontrolę jakości., Serwer odrzuca nieprawidłowe żądania., Zespół porównuje czasy odpowiedzi., Przegląd kodu poprzedza wdrożenie., System odzyskuje utracone połączenie., Dokumentacja obejmuje przykłady integracji., Aplikacja zapisuje stan zadania., Alert informuje o błędzie., Proces zwalnia nieużywane zasoby., Moduły wymieniają uporządkowane komunikaty., Testy sprawdzają obsługę wyjątków., Narzędzie analizuje wykorzystanie pamięci., Programiści odtwarzają zgłoszony problem., Repozytorium zawiera konfigurację środowiska., Aktualizacja obejmuje poprawki zabezpieczeń., Sieć łączy odizolowane środowiska., Baza przechowuje historię operacji., Usługa wysyła potwierdzenie wykonania., Harmonogram uruchamia zadania cykliczne., Interfejs zachowuje zgodność wersji., Skrypt sprawdza integralność plików., Monitoring porównuje metryki wydajności., Mechanizm kolejkowania obsługuje zadania., Backend kontroluje dostęp do danych., Programiści przygotowują scenariusz przywracania., System rozpoznaje powtórzone zdarzenia., Zespół bada przyczynę awarii., Wdrożenie wymaga aktualnej kopii."),
+  ai: terms("Model przetwarza kontekst., Agent wybiera narzędzie., Badacze opisują eksperyment., Test ocenia precyzję., Korpus zawiera przykłady., Prompt określa zadanie., Filtr sprawdza dane., Ocena pokazuje ograniczenia., Wyszukiwarka dobiera źródła., Zespół weryfikuje odpowiedź., Indeks przyspiesza wyszukiwanie., Walidacja porównuje rezultaty., Model sprawdza dostępne przesłanki., Eksperyment wymaga powtarzalnych warunków., Zespół bada jakość klasyfikacji., Agenci współdzielą informacje o zadaniu., Instrukcje ograniczają zakres odpowiedzi., Dane odzwierciedlają różne konteksty., Analitycy wskazują błędne przewidywania., System mierzy czas inferencji., Zbiór testowy pozostaje oddzielony., Badacze przeglądają nietrafne odpowiedzi., Proces usuwa wrażliwe informacje., Wektory pomagają znaleźć podobne dokumenty., Ocena jakości obejmuje język polski., Model rozpoznaje zależności w tekście., Wyniki wymagają interpretacji ekspertów., Zespół porównuje koszty obliczeń., Agenci zapisują wykonane czynności., Dokumentacja opisuje znane ograniczenia., Przykłady pomagają doprecyzować instrukcję., Kontrola jakości obejmuje nowe źródła., Badacze analizują wpływ parametrów., Dane zawierają różne warianty pytań., Eksperyment porównuje ustawienia generowania., System wskazuje dokumenty źródłowe., Model rozdziela fakty od założeń., Test obejmuje dłuższe konteksty., Narzędzie porządkuje odnalezione fragmenty., Analiza ujawnia różnice między modelami."),
+  design: terms("Siatka organizuje treść., Komponent zachowuje spójność., Prototyp wyjaśnia działanie., Paleta podkreśla hierarchię., Ikona opisuje funkcję., Projekt uwzględnia dostępność., Etykieta wskazuje cel., Typografia ułatwia czytanie., Zespół dopracowuje szczegóły., Makieta porządkuje informacje., Formularz sygnalizuje błąd., Menu pokazuje kategorie., Obraz wzmacnia przekaz., Kolor zaznacza aktualny wybór., Odstępy pomagają rozróżnić sekcje., Warianty pokazują różne stany., Badanie obejmuje nowych użytkowników., System określa dopuszczalne proporcje., Projektanci porównują czytelność etykiet., Układ zachowuje równy rytm., Interfejs pokazuje skutki zmian., Struktura odzwierciedla potrzeby odbiorców., Tekst wyjaśnia kolejne kroki., Prototyp umożliwia zebranie komentarzy., Przegląd uwzględnia rozmiar przycisków., Komponent otrzymuje czytelny opis., Nagłówki dzielą treść na sekcje., Ikonografia pozostaje konsekwentna stylistycznie., Biblioteka obejmuje wzorce formularzy., Projektanci dokumentują zasady użycia., Margines oddziela treść od krawędzi., Testy uwzględniają długie nazwy., Widok prezentuje informacje bez zakłóceń., Układ pomaga porównać dostępne opcje., Zespół analizuje zgłoszone trudności., Badacze obserwują sposób nawigacji., Projektanci weryfikują hierarchię nagłówków., Ekran pokazuje aktualny etap., Makieta przedstawia kontekst użycia., Rytm pomaga uporządkować kompozycję."),
+  fashion: terms("Fason zachowuje lekkość., Pracownia sprawdza wymiary., Splot podkreśla fakturę., Haft wyróżnia detal., Sylwetka nabiera wyrazistości., Kolekcja obejmuje dodatki., Styling łączy proporcje., Projektanci wybierają tkaniny., Marka rozwija kolekcję., Sesja pokazuje detale., Wykończenie wzmacnia krawędzie., Paleta porządkuje zestawy., Próba potwierdza jakość szwu., Dodatki wprowadzają akcent kolorystyczny., Krojenie wymaga starannego przygotowania., Zespół dobiera światło do zdjęć., Materiały pochodzą ze sprawdzonych źródeł., Garderoba łączy klasyczne fasony., Lookbook prezentuje różne zestawienia., Pracownia analizuje uwagi po przymiarce., Konstrukcja pozwala swobodnie się poruszać., Projektanci testują nowe proporcje., Warstwy tworzą przestrzenną kompozycję., Tkanina reaguje na sposób ułożenia., Sylwetki nawiązują do motywu sezonu., Sesja uwzględnia charakter materiałów., Szkice dokumentują rozwój koncepcji., Kolekcja otrzymuje wspólną paletę., Rzemieślnicy pracują nad wykończeniem., Przymiarka pomaga dopracować długość., Zespół planuje kolejność zdjęć., Ubrania pozwalają tworzyć wszechstronne stylizacje., Materiał zachowuje kształt po praniu., Projekt łączy funkcjonalność z detalem., Płaszcz podkreśla proporcje całej sylwetki., Styliści przygotowują propozycje zestawów., Pracownia sprawdza sposób wszycia podszewki., Kolor uzupełnia strukturę tkaniny., Linia rozwija charakterystyczne fasony., Projektanci dbają o komfort noszenia."),
+  zombie: terms("Patrol zabezpiecza przejście., Horda otacza magazyn., Radio przekazuje ostrzeżenie., Konwój przewozi zapasy., Grupa szuka schronienia., Strażnicy chronią bramę., Ocalali sprawdzają mapę., Latarka wskazuje drogę., Syrena ogłasza zagrożenie., Barykada zatrzymuje intruzów., Ratownicy patrolują dzielnicę., Pojazd opuszcza strefę., Ogień oświetla drogę odwrotu., Grupa przygotowuje zapasowe baterie., Dym zasłania widok na ulicę., Radio potwierdza obecność patrolu., Ocalali zamykają przejście do piwnicy., Konwój czeka na powrót zwiadowców., Zagrożenie wymusza zmianę planu., Ratownicy oznaczają sprawdzone budynki., Strażnicy kontrolują stan barykady., Grupa dzieli wodę między rannych., Nocny patrol przynosi nowe informacje., Pojazd przewozi sprzęt medyczny., Magazyn pozostaje pod stałą obserwacją., Zwiadowcy wracają przed świtem., Ocalali ustalają kolejność wart., Horda reaguje na dźwięk silnika., Radio milknie po ostatnim komunikacie., Grupa zabiera najpotrzebniejsze narzędzia., Strażnik otwiera boczną furtkę., Ratownicy organizują bezpieczny punkt zbiórki., Konwój jedzie przez opustoszałą dzielnicę., Patrol unika otwartych przestrzeni., Grupa umacnia wejście do bunkra., Deszcz tłumi odgłosy kroków., Ślady prowadzą w stronę stacji., Mapa pomaga zaplanować odwrót., Ocalali porównują dostępne trasy., Alarm zmusza wszystkich do odwrotu."),
+};
+const polishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
+  corporate: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Zarząd porównuje wyniki z planem i ustala priorytety na kolejny kwartał.",
+      "Zespoły łączą wiedzę o klientach z analizą kosztów i możliwości rozwoju firmy.",
+      "Przejrzysty podział odpowiedzialności pomaga prowadzić projekty zgodnie z przyjętym harmonogramem.",
+      "Dział finansowy sprawdza prognozy przed zatwierdzeniem nowych wydatków i inwestycji.",
+      "Regularne spotkania pozwalają uzgodnić cele sprzedażowe z dostępnymi zasobami.",
+      "Partnerzy omawiają warunki współpracy i ustalają sposób mierzenia wspólnych wyników.",
+      "Raport kwartalny pokazuje postępy inicjatyw oraz ryzyka wymagające decyzji kierownictwa.",
+      "Firma rozwija ofertę na podstawie rozmów z klientami i obserwacji rynku.",
+    ],
+    vocabulary: terms("analiza, budżet, cel, decyzja, dział, firma, harmonogram, inwestycja, jakość, klient, kontrakt, koszt, kwartał, lider, marża, oferta, organizacja, partner, plan, priorytet, proces, prognoza, projekt, przychód, raport, rentowność, rezultat, rynek, ryzyko, sprzedaż, strategia, współpraca, wskaźnik, wynik, wzrost, zasób, zespół, zarząd, odpowiedzialność, rentowność, efektywność, komunikacja, przedsiębiorstwo, wdrożenie, finansowanie, negocjacje, planowanie, przewaga, rozwój, nadzór, portfel, bilans, popyt, podaż, KPI, ROI, SaaS, B2B"),
+    phrases: terms("Plan działa., Zespół uzgadnia cele., Zarząd ocenia ryzyko., Raport wspiera decyzje., Klienci oceniają ofertę., Budżet uwzględnia rezerwy., Firma rozwija współpracę., Partnerzy dzielą zadania., Wyniki wskazują kierunek., Sprzedaż przynosi przychody., Strategia porządkuje priorytety., Analiza wyjaśnia koszty., Inwestycja wspiera rozwój., Rozmowy budują zaufanie., Harmonogram określa terminy., Prognozy wymagają aktualizacji."),
+    clauses: terms("Zespół porównuje wyniki sprzedaży., Zarząd zatwierdza budżet projektu., Raport pokazuje postępy prac., Klienci zgłaszają nowe potrzeby., Partnerzy uzgadniają wspólny harmonogram., Dział finansowy analizuje koszty., Kierownictwo wyznacza kolejne priorytety., Firma bada nowe rynki., Sprzedaż wspiera rozwój oferty., Analiza uwzględnia sezonowe wahania., Plan określa zakres odpowiedzialności., Prognoza pokazuje możliwe scenariusze., Organizacja usprawnia obieg informacji., Zespoły dzielą się doświadczeniem., Wskaźniki pomagają ocenić postęp., Spotkanie kończy się podziałem zadań., Negocjacje obejmują warunki płatności., Nowa oferta odpowiada na zapytania., Projekt otrzymuje dodatkowe finansowanie., Ryzyko wymaga regularnego przeglądu., Każdy dział przedstawia swoje potrzeby., Partnerstwo ułatwia dostęp do rynku., Harmonogram uwzględnia dostępność zasobów., Wyniki wpływają na kolejne decyzje., Zestawienie porządkuje dane finansowe., Budżet pozostawia miejsce na rezerwy., Kierownicy sprawdzają realizację założeń., Inwestycje wspierają rozwój przedsiębiorstwa., Klient otrzymuje czytelną propozycję., Zmiana procesu skraca czas obsługi., Wspólne cele ułatwiają koordynację., Raportowanie obejmuje wszystkie oddziały., Nowe kontrakty zwiększają przychody., Firma monitoruje poziom rentowności., Zespół bada przyczyny opóźnień., Planowanie łączy potrzeby różnych działów., Strategia wymaga mierzalnych celów., Zarząd omawia perspektywy wzrostu., Przegląd obejmuje najważniejsze inicjatywy., Doświadczenia klientów pomagają poprawić usługę."),
+    verbs: terms("analizować, porównywać, planować, mierzyć, uzgadniać, wdrażać, rozwijać, wspierać, oceniać, zarządzać, negocjować, raportować, usprawniać, finansować, koordynować, zatwierdzać"),
+  },
+  tech: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Zespół programistyczny wdraża nową wersję aplikacji po zakończeniu testów integracyjnych.",
+      "Usługi wymieniają zdarzenia przez udokumentowane API i rejestrują najważniejsze operacje.",
+      "Infrastruktura chmurowa rozdziela ruch między serwerami i reaguje na zmiany obciążenia.",
+      "Monitoring pomaga wykrywać błędy, zanim odczują je użytkownicy produktu.",
+      "Kontenery zapewniają spójne środowisko od lokalnego prototypu po wdrożenie produkcyjne.",
+      "Programiści przeglądają zmiany w kodzie i omawiają wpływ nowych zależności.",
+      "Automatyczna kopia zapasowa chroni dane przed skutkami awarii i pomyłek.",
+      "Architektura systemu oddziela obsługę zapytań od długotrwałych zadań w tle.",
+    ],
+    vocabulary: terms("API, aplikacja, architektura, backend, baza, bufor, cache, chmura, CI/CD, cloud, Docker, dostęp, endpoint, frontend, indeks, infrastruktura, integracja, interfejs, klaster, kod, kolejka, konfiguracja, kontener, Kubernetes, log, logowanie, moduł, monitoring, narzędzie, obciążenie, operacja, pakiet, pipeline, platforma, procesor, protokół, repozytorium, serwer, sesja, sieć, skrypt, system, test, token, usługa, wersja, webhook, wdrożenie, workflow, wydajność, zapytanie, zdarzenie, zasób, kompilacja, szyfrowanie, diagnostyka, autoryzacja, uwierzytelnianie"),
+    phrases: terms("Kod działa., Testy wykrywają błędy., Serwer obsługuje ruch., API zwraca dane., Logi ułatwiają diagnostykę., Kolejka porządkuje zadania., Monitoring wskazuje przeciążenie., Cache skraca oczekiwanie., Kontener izoluje aplikację., Wersja przechodzi przegląd., Kopia chroni dane., Sieć przenosi pakiety., Repozytorium przechowuje historię., Token potwierdza dostęp., Skrypt automatyzuje wdrożenie., Dokumentacja opisuje interfejs."),
+    clauses: terms("Serwer przetwarza nowe zapytania., Testy obejmują podstawowe scenariusze., Programiści przeglądają kod aplikacji., Pipeline uruchamia testy integracyjne., API sprawdza przesłane dane., Cache przechowuje najczęstsze odpowiedzi., Kontenery izolują zależności aplikacji., Kolejka rozdziela zadania między procesy., Monitoring sygnalizuje wzrost opóźnień., Baza replikuje dane między regionami., Zespół aktualizuje dokumentację techniczną., Uwierzytelnianie chroni dostęp do usług., Logi wskazują źródło problemu., Nowa wersja usuwa wykryte błędy., Konfiguracja opisuje wymagane zasoby., System ponawia przerwane operacje., Kopie zapasowe powstają automatycznie., Programiści ograniczają zbędne zależności., Usługa publikuje zdarzenia w kolejce., Serwery dzielą między siebie ruch., Przegląd obejmuje uprawnienia użytkowników., Kompilacja przygotowuje pakiet produkcyjny., Token wygasa po określonym czasie., Interfejs udostępnia potrzebne funkcje., Test wydajności symuluje duże obciążenie., Repozytorium zachowuje historię zmian., Zespół przywraca poprzednią wersję., Diagnostyka wymaga porównania metryk., Aplikacja korzysta z szyfrowanego połączenia., Proces działa w odizolowanym środowisku., Wdrożenie obejmuje etap weryfikacji., Narzędzia wykrywają niezgodności konfiguracji., Serwis ogranicza liczbę zapytań., Skrypt sprawdza dostępność usług., Architektura ułatwia niezależne aktualizacje., Zmiana wymaga przeglądu bezpieczeństwa., Biblioteka obsługuje ponawianie połączeń., Endpoint zwraca czytelny komunikat., Klaster dostosowuje liczbę instancji., Zespół śledzi zachowanie systemu."),
+    verbs: terms("wdrażać, testować, kompilować, konfigurować, monitorować, uruchamiać, izolować, integrować, szyfrować, przetwarzać, replikować, diagnozować, aktualizować, weryfikować, przywracać, automatyzować"),
+  },
+  ai: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Badacze porównują odpowiedzi modeli na podstawie sprawdzonych przykładów i jasno określonych kryteriów.",
+      "Zbiór treningowy przechodzi przegląd jakości przed rozpoczęciem kolejnego eksperymentu.",
+      "Wyszukiwanie semantyczne dostarcza kontekst potrzebny do przygotowania trafnej odpowiedzi.",
+      "Agenci korzystają z narzędzi i zapisują wyniki poszczególnych etapów zadania.",
+      "Ocena modelu uwzględnia poprawność odpowiedzi oraz zgodność z instrukcjami użytkownika.",
+      "Zespół dobiera ustawienia inferencji do wymagań dotyczących jakości i czasu odpowiedzi.",
+      "Dane z różnych źródeł wymagają spójnego opisu oraz usunięcia duplikatów.",
+      "Testy pokazują, jak model reaguje na niejednoznaczne pytania i brakujące informacje.",
+    ],
+    vocabulary: terms("agent, algorytm, analiza, benchmark, bezpieczeństwo, klasyfikacja, kontekst, korpus, kryterium, dane, dataset, dekoder, dokument, embedding, enkoder, eksperyment, ewaluacja, filtr, generowanie, GPU, inferencja, instrukcja, jakość, klasyfikator, LLM, model, multimodalność, nauka, ocena, odpowiedź, optymalizacja, parametr, predykcja, prompt, przykład, RAG, rozumowanie, sampling, semantyka, sieć, token, tokenizacja, transformer, trening, uwaga, walidacja, wektor, wiedza, wynik, wyszukiwanie, zadanie, zbiór, źródło, machine learning, uczenie maszynowe, zbiory danych, baza wektorowa, sztuczna inteligencja"),
+    phrases: terms("Model odpowiada., Agent planuje zadanie., Dane wymagają przeglądu., Ocena uwzględnia kontekst., Wektor opisuje znaczenie., Filtr usuwa duplikaty., Test porównuje odpowiedzi., Prompt zawiera instrukcję., Badacze sprawdzają wyniki., Źródła uzupełniają wiedzę., Trening aktualizuje parametry., Inferencja wykorzystuje model., Walidacja wykrywa rozbieżności., Token reprezentuje fragment., Dokument dostarcza kontekst., Ewaluacja wspiera wybór."),
+    clauses: terms("Model porównuje dostępne informacje., Agent dzieli zadanie na etapy., Badacze oceniają jakość odpowiedzi., Wyszukiwarka dobiera odpowiednie dokumenty., Filtr usuwa powtarzające się przykłady., Zespół dokumentuje ograniczenia modelu., Ewaluacja obejmuje różne scenariusze., Prompt określa oczekiwany format., Dane treningowe przechodzą kontrolę., Parametry wpływają na wynik inferencji., Model wskazuje brakujące informacje., Ocena uwzględnia zgodność z instrukcją., Agent sprawdza wynik działania narzędzia., Zbiór zawiera zróżnicowane przykłady., Wyszukiwanie dostarcza potrzebny kontekst., Odpowiedzi wymagają weryfikacji źródeł., Badacze śledzą przebieg eksperymentu., Walidacja ujawnia nietypowe błędy., System ogranicza ujawnianie danych., Indeks porządkuje reprezentacje dokumentów., Test sprawdza odporność na zakłócenia., Instrukcja wyjaśnia cel zadania., Zespół analizuje błędne klasyfikacje., Model uwzględnia historię rozmowy., Wektory przybliżają podobieństwo znaczeń., Trening wymaga reprezentatywnych danych., Pipeline oddziela wyszukiwanie od generowania., Narzędzie zwraca uporządkowane wyniki., Eksperci przeglądają trudne przypadki., Badanie porównuje kilka metod., Agent uzasadnia wybór źródeł., Ocena łączy pomiary z przeglądem., Przykłady pokazują oczekiwany styl., Zespół dostosowuje ustawienia inferencji., Źródła pomagają sprawdzić odpowiedź., Korpus wymaga regularnej aktualizacji., Tokenizacja przygotowuje tekst wejściowy., Model otrzymuje dodatkowe instrukcje., System rejestruje czas przetwarzania., Testy ujawniają granice rozumowania."),
+    verbs: terms("analizować, klasyfikować, oceniać, generować, przewidywać, trenować, porównywać, wyszukiwać, weryfikować, optymalizować, filtrować, tokenizować, uzasadniać, wnioskować, dokumentować, walidować"),
+  },
+  design: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Projektanci porównują układy treści i sprawdzają, czy hierarchia ułatwia znalezienie najważniejszych informacji.",
+      "System projektowy łączy wspólne komponenty z zasadami typografii i dostępności.",
+      "Prototyp pokazuje przebieg interakcji, zanim zespół rozpocznie implementację produktu.",
+      "Przemyślane odstępy pomagają oddzielić grupy treści bez nadmiernego rozbijania strony.",
+      "Testy użyteczności ujawniają miejsca, w których nawigacja wymaga lepszego objaśnienia.",
+      "Spójna paleta i czytelne etykiety wspierają rozpoznawanie działań w interfejsie.",
+      "Projekt mobilny dostosowuje kolejność elementów do potrzeb osób korzystających z małego ekranu.",
+      "Zespół omawia makiety na podstawie rzeczywistych scenariuszy i zebranych uwag.",
+    ],
+    vocabulary: terms("akcent, animacja, barwa, biblioteka, branding, detal, dostępność, ekran, element, etykieta, fokus, font, formularz, hierarchia, ikona, ilustracja, interakcja, interfejs, karta, kolor, komponent, kompozycja, kontrast, krój, layout, makieta, margines, menu, moduł, nawigacja, odstęp, paleta, portfolio, proporcja, prototyp, przycisk, rytm, siatka, skala, stan, struktura, symbol, szablon, typografia, UI, UX, użyteczność, wariant, warstwa, widok, wireframe, wzorzec, wyrównanie, design system, system projektowy, hierarchia wizualna, stany komponentów"),
+    phrases: terms("Układ porządkuje treść., Siatka wyznacza rytm., Kolor wyróżnia akcję., Kontrast wspiera czytelność., Prototyp pokazuje interakcje., Typografia buduje hierarchię., Ikona uzupełnia etykietę., Menu ułatwia nawigację., Odstępy rozdzielają grupy., Komponent zachowuje proporcje., Makieta zbiera uwagi., Wzorzec zapewnia spójność., Przycisk sygnalizuje działanie., Test ujawnia trudności., Paleta określa kolory., Fokus wskazuje wybór."),
+    clauses: terms("Projektanci sprawdzają kontrast tekstu., Siatka utrzymuje równowagę kompozycji., Komponenty korzystają ze wspólnych zasad., Nawigacja wskazuje aktualne położenie., Prototyp pokazuje możliwe interakcje., Zespół porównuje warianty układu., Typografia podkreśla hierarchię treści., Ikony wzmacniają znaczenie etykiet., Przycisk pokazuje stan aktywny., Makieta uwzględnia dłuższe nagłówki., Testy ujawniają problemy nawigacyjne., Formularz wyjaśnia sposób poprawienia błędu., Biblioteka dokumentuje stany komponentów., Odstępy oddzielają powiązane grupy., Paleta zapewnia odpowiedni kontrast., Projekt dostosowuje się do ekranu., Etykiety opisują skutki działania., Fokus pozostaje wyraźnie widoczny., Animacja objaśnia zmianę stanu., Ilustracja wspiera przekaz strony., Treść wyznacza rytm kompozycji., Projektanci upraszczają drogę do celu., Makieta obejmuje również puste stany., Wzorce pomagają zachować spójność., Interfejs reaguje na wybór użytkownika., Karty pokazują najważniejsze informacje., Nagłówek otwiera nową sekcję., Marginesy zapewniają przestrzeń wokół tekstu., Przegląd obejmuje obsługę klawiaturą., System projektowy porządkuje warianty., Wersja mobilna zachowuje hierarchię., Kompozycja łączy tekst z obrazem., Badanie pozwala zebrać uwagi., Projektanci dopracowują szczegóły interakcji., Kolory sygnalizują ważne zmiany., Skala typograficzna wspiera czytanie., Menu zachowuje dostęp do narzędzi., Układ uwzględnia różne długości treści., Testy obejmują rzeczywiste zadania., Zespół omawia kolejne iteracje."),
+    verbs: terms("projektować, wyrównywać, testować, porządkować, komponować, prototypować, dopasowywać, upraszczać, skalować, sprawdzać, objaśniać, wyróżniać, dokumentować, porównywać, organizować, dopracowywać"),
+  },
+  fashion: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Pracownia dobiera tkaniny i proporcje tak, aby kolekcja zachowała spójny charakter.",
+      "Styliści łączą warstwy i dodatki wokół opowieści przygotowanej dla nowego sezonu.",
+      "Przymiarki pozwalają dopracować fason i sprawdzić swobodę ruchu przed zatwierdzeniem wzoru.",
+      "Lookbook przedstawia sylwetki w świetle podkreślającym fakturę materiałów i detale wykończenia.",
+      "Projektanci zestawiają miękkie tkaniny z wyraźną konstrukcją wybranych elementów garderoby.",
+      "Zespół przygotowuje sesję zdjęciową na podstawie palety i kierunku kreatywnego kolekcji.",
+      "Krój i sposób układania się materiału decydują o ostatecznych proporcjach sylwetki.",
+      "Marka rozwija serię ubrań, które można łączyć w zestawy na różne okazje.",
+    ],
+    vocabulary: terms("atelier, bawełna, detal, dodatek, drapowanie, dzianina, fason, faktura, forma, garderoba, haft, jedwab, kampania, kapsuła, kolekcja, kolor, konstrukcja, kontrast, krój, kurtka, len, linia, lookbook, marka, materiał, moda, odcień, okrycie, paleta, płaszcz, podszewka, proporcja, przędza, przymiarka, rękaw, rzemiosło, satyna, sezon, sesja, skóra, splot, spódnica, styl, styling, sukienka, sylwetka, szew, szkic, tkanina, ubiór, warstwa, wełna, wybieg, wykończenie, wzór, zamsz, zestaw, kierunek kreatywny, sesja zdjęciowa, kolekcja kapsułowa"),
+    phrases: terms("Krój buduje sylwetkę., Tkanina zachowuje miękkość., Szew podkreśla detal., Haft uzupełnia kompozycję., Przymiarka sprawdza fason., Paleta łączy odcienie., Stylizacja nabiera lekkości., Kolekcja opowiada historię., Len zapewnia przewiewność., Wełna zatrzymuje ciepło., Podszewka poprawia komfort., Pracownia dobiera materiały., Dodatki uzupełniają zestaw., Lookbook przedstawia kolekcję., Konstrukcja utrzymuje formę., Detale tworzą charakter."),
+    clauses: terms("Pracownia dopracowuje proporcje fasonu., Styliści zestawiają różne faktury., Tkanina miękko układa się w ruchu., Projektanci porównują warianty kroju., Szew wzmacnia konstrukcję ubrania., Dodatki dopełniają całą sylwetkę., Kolekcja łączy lekkie warstwy., Przymiarka ujawnia potrzebne poprawki., Paleta podkreśla charakter sezonu., Haft nadaje tkaninie wyrazistość., Krawcowe sprawdzają jakość wykończenia., Marka prezentuje nową linię., Lookbook pokazuje gotowe zestawy., Materiał przechodzi próbę wytrzymałości., Rękaw zapewnia swobodę ruchu., Podszewka poprawia komfort noszenia., Pracownia przygotowuje próbny model., Sesja wydobywa fakturę tkaniny., Detale nawiązują do rzemiosła., Kolekcja zachowuje spójne proporcje., Styliści wybierają dodatki do zdjęć., Projekt uwzględnia właściwości materiału., Szkic wyznacza kierunek poszukiwań., Zespół omawia koncepcję kampanii., Krój podkreśla linię ramion., Dzianina wnosi miękkość do zestawu., Kolory zmieniają się wraz ze światłem., Metka opisuje skład tkaniny., Garderoba obejmuje uniwersalne elementy., Len pojawia się w letniej kolekcji., Wełna wzbogaca zimowe okrycia., Forma wynika z konstrukcji szwów., Pracownia testuje nowe sposoby drapowania., Zestaw łączy wygodę z wyrazistością., Sesja przedstawia charakterystyczne sylwetki., Projektanci dobierają grubość materiału., Wzór powtarza motyw kolekcji., Wykończenie chroni krawędzie tkaniny., Przymiarki poprzedzają zatwierdzenie modelu., Rzemiosło pozostaje ważną częścią projektu."),
+    verbs: terms("szyć, kroić, drapować, tkać, haftować, dopasowywać, projektować, łączyć, wykańczać, dobierać, przymierzać, prezentować, szkicować, modelować, sprawdzać, zestawiać"),
+  },
+  zombie: {
+    phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true, sentenceWords: polishSentenceWords,
+    openers: [
+      "Ocalali wzmacniają schronienie, zanim kolejna horda dotrze do opuszczonych ulic.",
+      "Patrol sprawdza drogę do magazynu i zaznacza na mapie bezpieczne przejścia.",
+      "Sygnał radiowy prowadzi konwój w stronę mostu poza strefą kwarantanny.",
+      "Po zmroku strażnicy obserwują ruch między ruinami i zamkniętymi sklepami.",
+      "Grupa dzieli zapasy wody i lekarstw przed kolejną wyprawą po zaopatrzenie.",
+      "Syrena przerywa ciszę, gdy zarażeni zbliżają się do prowizorycznej barykady.",
+      "Ratownicy szukają ocalałych w budynkach odciętych od głównej drogi ewakuacji.",
+      "Z wieży obserwacyjnej widać światła pojazdu wracającego z opuszczonej dzielnicy.",
+    ],
+    vocabulary: terms("alarm, apokalipsa, barykada, bateria, brama, bunkier, chaos, ciemność, droga, epidemia, ewakuacja, grupa, horda, infekcja, konwój, korytarz, kwarantanna, latarka, lekarstwo, magazyn, mapa, miasto, most, noc, ocalali, ogrodzenie, patrol, perymetr, piwnica, pojazd, prowizorium, przetrwanie, radio, ratunek, ruina, schron, schronienie, skażenie, stacja, strażnik, strefa, sygnał, syrena, ślad, ucieczka, ulica, wieża, woda, wyprawa, zapas, zarażeni, zombie, żywność, nieumarli, punkt kontrolny, droga ewakuacji, wieża obserwacyjna, zapasy wody, strefa kwarantanny"),
+    phrases: terms("Patrol wraca., Horda nadchodzi., Radio nadaje sygnał., Brama chroni schronienie., Konwój czeka na rozkaz., Strażnicy obserwują ulicę., Ocalali zbierają zapasy., Syrena ogłasza alarm., Latarka rozświetla korytarz., Mapa wskazuje objazd., Ratownicy szukają ocalałych., Grupa zabezpiecza wejście., Barykada zatrzymuje zarażonych., Woda wymaga oczyszczenia., Wieża pozostaje obsadzona., Magazyn kryje zaopatrzenie."),
+    clauses: terms("Patrol sprawdza opuszczone mieszkania., Ocalali wzmacniają drzwi schronienia., Konwój zatrzymuje się przed mostem., Radio przekazuje umówiony sygnał., Strażnicy obserwują główną ulicę., Grupa rozdziela ostatnie zapasy., Zarażeni podążają za hałasem., Syrena ogłasza konieczność ewakuacji., Barykada blokuje wejście do sklepu., Ratownicy przeszukują kolejne piętra., Mapa wskazuje drogę przez osiedle., Pojazd wraca z paliwem i wodą., Wieża wysyła ostrzeżenie do patrolu., Schronienie pozostaje zamknięte do świtu., Latarki oświetlają wąski korytarz., Zespół sprawdza stan ogrodzenia., Konwój omija skażony fragment drogi., Grupa szuka lekarstw w magazynie., Horda zbliża się od strony stacji., Strażnik liczy powracające osoby., Ocalali zostawiają znaki na murach., Bunkier mieści prowizoryczny punkt pomocy., Radio działa na zapasowej baterii., Patrol wyznacza nową trasę., Ratownicy przenoszą rannych do pojazdu., Brama otwiera się po sygnale., Miasto pogrąża się w ciemności., Grupa zabezpiecza okna magazynu., Zarażeni krążą wokół opuszczonego placu., Ocalali gromadzą wodę przed wymarszem., Noc utrudnia obserwację odległych ulic., Mapa pokazuje przejście przez piwnicę., Wieża potwierdza ruch na drodze., Patrole wymieniają informacje o zagrożeniach., Barykada wymaga dodatkowego wzmocnienia., Konwój zabiera narzędzia i lekarstwa., Strażnicy zmieniają się przed świtem., Grupa unika nieoświetlonych przejść., Schron zapewnia chwilę odpoczynku., Ratownicy sprawdzają sygnały z dachów."),
+    verbs: terms("przetrwać, uciekać, chronić, wzmacniać, patrolować, szukać, ratować, ostrzegać, barykadować, ewakuować, zabezpieczać, przenosić, obserwować, gromadzić, omijać, ukrywać"),
+  },
+};
+
+const polishShortClauses: Record<ThemedTheme, string[]> = {
+  corporate: terms("Zarząd ustala priorytety., Zespół analizuje koszty., Partnerzy omawiają ofertę., Firma rozwija sprzedaż., Klient potwierdza zamówienie., Kierownik przydziela zadania., Działy porównują prognozy., Raport przedstawia wskaźniki., Współpraca przynosi rezultaty., Plan uwzględnia ryzyko., Oferta obejmuje wsparcie., Projekt osiąga cele., Budżet finansuje rozwój., Spotkanie porządkuje ustalenia., Pracownicy dzielą doświadczenia., Organizacja monitoruje jakość., Analitycy wyjaśniają trendy., Negocjatorzy doprecyzowują warunki., Menedżerowie oceniają postęp., Firma zdobywa zaufanie., Zespół przygotowuje prezentację., Rynek wymaga elastyczności., Strategia wyznacza zadania., Audyt potwierdza zgodność., Inwestycja zwiększa możliwości., Zarząd rozpatruje wnioski., Koordynator zbiera informacje., Wyniki potwierdzają założenia., Klienci doceniają jakość., Partnerzy planują spotkanie."),
+  tech: terms("Aplikacja zapisuje dane., Serwer zwraca odpowiedź., Zespół sprawdza logi., Programiści aktualizują zależności., Kontenery współdzielą konfigurację., Pipeline sprawdza zmiany., Baza odtwarza indeks., Monitor wykrywa opóźnienie., Gateway filtruje ruch., Moduł udostępnia funkcje., Usługa rejestruje zdarzenie., Skrypt tworzy kopię., Repozytorium zawiera instrukcje., Test wykrywa niezgodność., Cache przechowuje odpowiedzi., Klaster rozdziela obciążenie., Proces odbiera komunikaty., Sieć zapewnia połączenie., Architektura wspiera skalowanie., Konfiguracja określa uprawnienia., Zespół odtwarza problem., Programista analizuje wyjątek., Aplikacja odświeża token., Serwis aktualizuje rekord., Narzędzie porównuje wersje., Backend przetwarza żądanie., Frontend prezentuje wynik., Kompilator sprawdza typy., Kontroler obsługuje formularz., Dokumentacja objaśnia protokół."),
+  ai: terms("Agent sprawdza źródła., Model analizuje pytanie., Zespół porównuje wyniki., Badacze przygotowują dane., Eksperci oceniają trafność., System dobiera kontekst., Test mierzy dokładność., Walidacja ujawnia błędy., Wektory kodują znaczenie., Korpus odzwierciedla język., Instrukcja precyzuje format., Prompt wyznacza cel., Ewaluacja obejmuje rozumowanie., Indeks zawiera dokumenty., Filtr chroni prywatność., Agent uzgadnia plan., Model generuje podsumowanie., Analiza wspiera interpretację., Zbiór wymaga oczyszczenia., Parametry określają zachowanie., Trening wykorzystuje przykłady., Zespół opisuje ograniczenia., Odpowiedź wskazuje przesłanki., Narzędzie odnajduje fragmenty., System porządkuje informacje., Badanie wyjaśnia rozbieżności., Eksperyment weryfikuje hipotezę., Agent potwierdza wykonanie., Tokenizacja dzieli tekst., Testy obejmują parafrazy."),
+  design: terms("Projektanci dobierają odstępy., Interfejs wskazuje wybór., Makieta przedstawia strukturę., Przycisk zachowuje kontrast., Etykieta wyjaśnia akcję., Nagłówek porządkuje sekcję., Paleta określa akcenty., Biblioteka zawiera wzorce., Zespół porównuje makiety., Menu ujawnia hierarchię., Siatka utrzymuje proporcje., Komponent sygnalizuje zmianę., Animacja podkreśla przejście., Fokus pozostaje widoczny., Formularz wymaga uproszczenia., Badacze obserwują interakcje., Prototyp zbiera komentarze., Ilustracja dopełnia treść., Projekt uwzględnia kontekst., Typografia różnicuje nagłówki., Układ rozdziela informacje., Rytm wspiera kompozycję., Kontrast wzmacnia czytelność., Wariant pokazuje alternatywę., Ikona upraszcza rozpoznanie., Testy wskazują trudności., Projektanci weryfikują proporcje., System dokumentuje warianty., Treść wymaga hierarchii., Nawigacja pokazuje kierunek."),
+  fashion: terms("Projektanci dopracowują fason., Styliści łączą dodatki., Pracownia przygotowuje próbkę., Materiał podkreśla proporcje., Haft nadaje charakter., Splot tworzy strukturę., Wełna zapewnia ciepło., Len zachowuje przewiewność., Kolor wzmacnia kompozycję., Modelka prezentuje sylwetkę., Kolekcja rozwija motyw., Krój zapewnia wygodę., Szew wzmacnia konstrukcję., Podszewka chroni tkaninę., Styling akcentuje detale., Zespół wybiera akcesoria., Projekt uwzględnia ruch., Tkanina zachowuje elastyczność., Przymiarka ujawnia niedoskonałości., Garderoba zyskuje spójność., Sesja oddaje atmosferę., Marka prezentuje inspiracje., Lookbook opowiada historię., Warstwy budują objętość., Materiały wymagają pielęgnacji., Krawcowa sprawdza rękaw., Kampania przedstawia kolekcję., Rzemiosło podkreśla jakość., Wykrój wyznacza kształt., Paleta eksponuje faktury."),
+  zombie: terms("Ocalali budują barykadę., Patrol sprawdza okolicę., Strażnik nasłuchuje sygnału., Konwój zmienia trasę., Horda blokuje ulicę., Grupa gromadzi żywność., Ratownicy przenoszą zapasy., Pojazd pokonuje przeszkodę., Brama wymaga naprawy., Radio odbiera komunikat., Latarka oświetla schody., Wieża potwierdza zagrożenie., Mapa wskazuje przejście., Ocalali dzielą zadania., Strażnicy obsadzają posterunki., Patrol odnajduje schron., Konwój osłania rannych., Grupa przygotowuje odwrót., Zarażeni otaczają stację., Bunkier zapewnia osłonę., Syrena ostrzega mieszkańców., Ratownicy wzywają wsparcie., Zapas wymaga uzupełnienia., Noc sprzyja zwiadowcom., Horda zmienia kierunek., Grupa opuszcza magazyn., Patrol potwierdza przejazd., Strażnik zamyka furtkę., Ocalali sprawdzają sprzęt., Pojazd przewozi rannych."),
+};
+
+for (const theme of Object.keys(polishThemedIpsumData) as ThemedTheme[]) {
+  const data = polishThemedIpsumData[theme];
+  data.clauses = [...(data.clauses ?? []), ...polishExtraClauses[theme], ...polishShortClauses[theme]];
+  data.completeClauses = true;
+}
+
 export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeData>> = {
   en: englishThemedIpsumData,
   it: italianThemedIpsumData,
@@ -621,6 +753,7 @@ export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeDa
   fr: frenchThemedIpsumData,
   "pt-BR": brazilianPortugueseThemedIpsumData,
   nl: dutchThemedIpsumData,
+  pl: polishThemedIpsumData,
 };
 
 type GeneratorOptions = {
@@ -683,6 +816,7 @@ const structuralConnectors: Record<ThemedLanguage, string[]> = {
   fr: ["et"],
   "pt-BR": ["e", "com"],
   nl: ["en", "met"],
+  pl: ["i", "oraz"],
 };
 
 function rememberComponent(recentComponents: string[], component: string) {
@@ -737,6 +871,39 @@ function splitsKnownPhrase(before: string[], after: string[], boundaries: Return
 }
 
 function denseSentence(data: ThemeData, targetWords: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true, usedClauses: Set<string> = new Set()) {
+  if (data.completeClauses && data.clauses) {
+    // Fit inflected clauses as whole units instead of filling short remainders
+    // with arbitrary words. Other datasets retain their existing path.
+    const candidates = data.clauses.filter(clause => comparableToken(clause.split(/\s+/)[0]) !== avoidStartToken);
+    const ordered = candidates.map(clause => ({ clause, order: random() })).sort((a, b) => wordCount(b.clause) - wordCount(a.clause) || a.order - b.order).map(item => item.clause);
+    function fit(pool: string[], target: number): string[] | null {
+      const exhausted = new Set<string>();
+      function search(remaining: number, start: number): string[] | null {
+        if (remaining === 0) return [];
+        const key = `${remaining}:${start}`;
+        if (exhausted.has(key)) return null;
+        for (let index = start; index < pool.length; index += 1) {
+          const cost = wordCount(pool[index]);
+          if (cost > remaining) continue;
+          const rest = search(remaining - cost, index + 1);
+          if (rest) return [pool[index], ...rest];
+        }
+        exhausted.add(key);
+        return null;
+      }
+      return search(target, 0);
+    }
+    const fresh = ordered.filter(clause => !usedClauses.has(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()));
+    const fitted = fit(fresh, targetWords) ?? fit(ordered.filter(clause => !recentPhrases.includes(clause.toLocaleLowerCase())), targetWords);
+    if (fitted) {
+      for (const clause of fitted) {
+        usedClauses.add(clause.toLocaleLowerCase());
+        rememberPhrase(recentPhrases, clause);
+        rememberComponent(recentComponents, clause);
+      }
+      return fitted.map(clause => `${capitalizeFirst(clause, true).replace(/[,:;.!?]+$/u, "")}.`).join(" ");
+    }
+  }
   const components: string[] = [];
   const sentencePhrases = new Set<string>();
   const sentencePhrasePool = data.clauses ?? data.phrases;
@@ -748,6 +915,7 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
     const beforeWords = components.length > 0 ? components.join(" ").toLocaleLowerCase().split(/\s+/) : [];
     const phraseCandidates = sentencePhrasePool.filter(phrase =>
       wordCount(phrase) <= remaining
+      && (!data.completeClauses || remaining - wordCount(phrase) === 0 || remaining - wordCount(phrase) >= 3)
       && comparableToken(phrase.split(/\s+/)[0]) !== lastToken
       && (!data.avoidRepeatedClauses || !usedClauses.has(phrase.toLocaleLowerCase()))
       && !splitsKnownPhrase(beforeWords, phrase.toLocaleLowerCase().split(/\s+/), phraseBoundaries)
@@ -768,7 +936,7 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
       && bridges.length > 0
       && bridgePhrasePool.length > 0
       && random() < .2;
-    const usePhrase = !useBridgePhrase && remaining > 1 && phrasePool.length > 0 && (!previousComponent?.includes(" ") || data.phraseHeavy) && random() < (data.attachSingleWordToPrevious ? 1 : data.phraseHeavy ? .95 : .48);
+    const usePhrase = !useBridgePhrase && remaining > 1 && phrasePool.length > 0 && (!previousComponent?.includes(" ") || data.phraseHeavy) && random() < (data.completeClauses || data.attachSingleWordToPrevious ? 1 : data.phraseHeavy ? .95 : .48);
     let component: string;
     let selectedPhrase = "";
     if (useBridgePhrase) {
@@ -916,9 +1084,33 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   fr: ["à", "au", "aux", "avec", "dans", "de", "des", "du", "en", "et", "la", "le", "les", "ou", "par", "pour", "sur", "un", "une"],
   "pt-BR": ["a", "à", "às", "ao", "aos", "com", "da", "das", "de", "do", "dos", "e", "em", "entre", "na", "nas", "no", "nos", "o", "os", "ou", "para", "pela", "pelas", "pelo", "pelos", "por", "sem", "sobre", "um", "uma"],
   nl: ["aan", "als", "bij", "door", "en", "in", "met", "naar", "of", "om", "op", "voor", "van", "uit", "een", "de", "het"],
+  pl: ["a", "i", "o", "u", "w", "z", "do", "na", "od", "po", "za", "bez", "dla", "lub", "oraz", "przez", "przy"],
 };
 
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], includeStandaloneVerbs = true) {
+  if (data.completeClauses) {
+    const candidates = [...data.phrases, ...(data.clauses ?? [])]
+      .filter(clause => !recentComponents.includes(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()))
+      .map(clause => ({ clause, order: random() }))
+      .sort((a, b) => b.clause.length - a.clause.length || a.order - b.order).map(item => item.clause);
+    const exhausted = new Set<string>();
+    function fit(remaining: number, start: number): string[] | null {
+      if (remaining === 0) return [];
+      const key = `${remaining}:${start}`;
+      if (exhausted.has(key)) return null;
+      for (let index = start; index < candidates.length; index += 1) {
+        const clause = candidates[index];
+        if (clause.length === remaining) return [clause];
+        if (clause.length >= remaining) continue;
+        const rest = fit(remaining - clause.length - 1, index + 1);
+        if (rest?.length) return [clause, ...rest];
+      }
+      exhausted.add(key);
+      return null;
+    }
+    const fitted = fit(amount, 0);
+    if (fitted) return fitted.join(" ");
+  }
   const thematicComponents = [...data.phrases, ...(data.clauses ?? []), ...data.vocabulary, ...(includeStandaloneVerbs ? data.verbs : [])];
   let text = "";
   let lastToken = avoidStartToken;
@@ -1006,7 +1198,7 @@ function generateCharacters(data: ThemeData, connectors: string[], amount: numbe
 
 export function generateThemedIpsum({ theme, language = "en", mode, words, paragraphs, amount, variation }: GeneratorOptions) {
   const data = themedIpsumData[language][theme];
-  const includeStandaloneVerbs = language !== "it" && language !== "fr" && language !== "pt-BR";
+  const includeStandaloneVerbs = language !== "it" && language !== "fr" && language !== "pt-BR" && language !== "pl";
   const bridges = structuralConnectors[language];
   const seed = hashSeed(`${language}:${theme}:${mode}:${words}:${paragraphs}:${amount}:${variation}`);
   const random = randomFromSeed(seed);

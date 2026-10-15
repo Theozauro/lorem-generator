@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       fr: "/fr/lorem-ipsum-thematique/",
       "pt-BR": "/pt-br/lorem-ipsum-tematico/",
       nl: path,
-      pl: "/pl/lorem-ipsum-tematyczny/", "x-default": "/themed-lorem-ipsum/",
+      pl: "/pl/lorem-ipsum-tematyczny/", tr: "/tr/tematik-lorem-ipsum/", "x-default": "/themed-lorem-ipsum/",
     },
   },
   robots: { index: true, follow: true },

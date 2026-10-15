@@ -7,8 +7,9 @@ import { ptbrHomepageCopy } from "./homepage-copy/pt-br";
 import { plHomepageCopy } from "./homepage-copy/pl";
 import { nlHomepageCopy } from "./homepage-copy/nl";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
+import { trHomepageCopy } from "./homepage-copy/tr";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl" | "tr";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -182,6 +183,32 @@ export const polishThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Design Ipsum", description: "Tekst zastępczy do makiet, portfolio i projektów kreatywnych. Wykorzystuje pojęcia związane z UI, typografią, layoutem, komponentami, design systemami, brandingiem i procesem projektowym.", action: "Generuj Design Ipsum" },
     { id: "fashion", title: "Moda Ipsum", description: "Tekst zastępczy do lookbooków, e-commerce i treści redakcyjnych związanych z modą. Obejmuje kolekcje, tkaniny, sylwetki, styling, materiały, kampanie i kierunek kreatywny.", action: "Generuj Moda Ipsum" },
     { id: "zombie", title: "Zombie Ipsum", description: "Tekst zastępczy do gier, konceptów i projektów postapokaliptycznych. Zombie, hordy, schronienia, opuszczone miasta, przetrwanie i zasoby pomagają tworzyć bardziej immersyjne makiety.", action: "Generuj Zombie Ipsum" },
+  ],
+};
+
+export const turkishThemedPageConfig: ThemedPageConfig = {
+  locale: "tr",
+  copy: { ...trHomepageCopy, generator: { ...trHomepageCopy.generator,
+    mode: "MOD", modeLabel: "Oluşturma modu", layout: "KELİMELER + PARAGRAFLAR",
+    characters: "KARAKTERLER", sentences: "CÜMLELER", words: "KELİMELER",
+    paragraphs: "PARAGRAFLAR", quickWords: "HIZLI DEĞERLER", presets: "HIZLI DEĞERLER",
+    stats: { ...trHomepageCopy.generator.stats, words: "kelime", characters: "karakter", withoutSpaces: "boşluksuz", sentences: "cümle", paragraphs: "paragraf" },
+    copyHtml: "HTML'yi Kopyala", regenerate: "Yeniden Oluştur", generate: "Oluştur",
+  } },
+  defaultContentLanguage: "tr", showContentLanguageSelector: true,
+  title: "Tematik Lorem Ipsum Oluşturucu",
+  intro: "Belirli sektörlerden ve bağlamlardan ilham alan yer tutucu metinler oluşturun; içerik miktarı ve biçimi üzerinde tam kontrol sağlayın.",
+  topicLabel: "TEMATİK IPSUM",
+  themeLabels: { corporate: "Kurumsal", tech: "Teknoloji", ai: "Yapay Zekâ", design: "Tasarım", fashion: "Moda", zombie: "Zombi" },
+  contentLanguageLabel: "METİN DİLİ", contentLanguageNames: { primary: "Türkçe", secondary: "English" },
+  exploreTitle: "TEMALARI KEŞFET",
+  cards: [
+    { id: "corporate", title: "Kurumsal Ipsum", description: "Dashboardlar, raporlar, sunumlar ve B2B ürünler için iş dünyası terminolojisi içeren yer tutucu metinler. Strateji, KPI, paydaşlar, süreçler, büyüme ve operasyonlarla ilgili kavramları kapsar.", action: "Kurumsal Ipsum Oluştur" },
+    { id: "tech", title: "Teknoloji Ipsum", description: "Yazılım, dijital ürünler ve teknik arayüzler için yer tutucu metinler. Bulut, API, altyapı, geliştirme, dağıtım, sistemler ve mimariyle ilgili terimler kullanır.", action: "Teknoloji Ipsum Oluştur" },
+    { id: "ai", title: "Yapay Zekâ Ipsum", description: "Yapay zekâ ve makine öğrenmesine odaklanan yer tutucu metinler. Modeller, promptlar, veri kümeleri, ajanlar, otomasyon, eğitim, çıkarım ve veri odaklı iş akışlarını içerir.", action: "Yapay Zekâ Ipsum Oluştur" },
+    { id: "design", title: "Tasarım Ipsum", description: "Mockup, portfolyo ve yaratıcı projeler için yer tutucu metinler. UI, tipografi, düzen, bileşenler, design system, marka kimliği ve tasarım süreçleriyle ilgili kavramlar kullanır.", action: "Tasarım Ipsum Oluştur" },
+    { id: "fashion", title: "Moda Ipsum", description: "Lookbook, e-ticaret ve moda editoryal içerikleri için yer tutucu metinler. Koleksiyonlar, kumaşlar, silüetler, styling, malzemeler, kampanyalar ve yaratıcı yön kavramlarını içerir.", action: "Moda Ipsum Oluştur" },
+    { id: "zombie", title: "Zombi Ipsum", description: "Oyunlar, konseptler ve kıyamet sonrası projeler için yer tutucu metinler. Zombiler, sürüler, sığınaklar, terk edilmiş şehirler, hayatta kalma ve kaynaklar mockupları daha sürükleyici hâle getirir.", action: "Zombi Ipsum Oluştur" },
   ],
 };
 

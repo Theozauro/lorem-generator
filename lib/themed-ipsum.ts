@@ -1,6 +1,6 @@
 export type ThemedTheme = "corporate" | "tech" | "ai" | "design" | "fashion" | "zombie";
 export type ThemedMode = "layout" | "characters" | "sentences";
-export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl";
+export type ThemedLanguage = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl" | "tr";
 
 type ThemeData = {
   openers: string[];
@@ -13,6 +13,10 @@ type ThemeData = {
   attachSingleWordToPrevious?: boolean;
   avoidRepeatedClauses?: boolean;
   completeClauses?: boolean;
+  sentenceAtomic?: boolean;
+  punctuateTailPhrases?: boolean;
+  strictClauseCooldown?: boolean;
+  joinCompleteClauses?: boolean;
 };
 
 const terms = (value: string) => value.split(",").map(term => term.trim()).filter(Boolean);
@@ -730,6 +734,76 @@ const polishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+const turkishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
+  corporate: {
+    openers: ["Şirket, büyüme hedeflerini bütçe planlaması ve operasyonel verilerle birlikte değerlendiriyor.", "Yönetim ekibi, yeni dönem önceliklerini müşteri ihtiyaçları ve pazar koşullarına göre belirliyor.", "Birimler, ortak takvim üzerinden sorumlulukları ve teslim tarihlerini netleştiriyor.", "Çeyrek dönem raporu, satış performansını ve yatırım sonuçlarını bir arada gösteriyor.", "Strateji toplantısında ekipler, kaynakları ölçülebilir hedeflerle eşleştiriyor.", "Paydaşlar, hizmet kalitesini korurken sürdürülebilir büyüme fırsatlarını inceliyor.", "Finans ve ürün ekipleri, tahminleri gerçekleşen sonuçlarla karşılaştırıyor.", "Kurumsal planlama, farklı ekiplerin verilerini ortak bir görünümde topluyor."],
+    vocabulary: terms("şirket, yönetim, ekip, birim, paydaş, müşteri, iş ortağı, bütçe, gelir, gider, yatırım, büyüme, strateji, hedef, öncelik, süreç, operasyon, performans, verimlilik, rapor, tahmin, sonuç, pazar, satış, hizmet, ürün, portföy, risk, fırsat, kaynak, takvim, sorumluluk, karar, iş planı, iş modeli, değer önerisi, müşteri deneyimi, kurumsal iletişim, çeyrek dönem, KPI, ROI, B2B, SaaS, nakit akışı, kârlılık, talep, tedarik, iş birliği, ölçüm, gösterge, kapasite, yatırım planı, satış kanalı, büyüme hedefi, operasyon planı, pazar payı, gelir modeli, karar süreci"),
+    phrases: terms("büyüme hedefleri, bütçe planlaması, operasyonel veriler, müşteri ihtiyaçları, pazar koşulları, ölçülebilir hedefler, çeyrek dönem raporu, satış performansı, yatırım sonuçları, kaynak planlaması, müşteri deneyimi, iş birliği modeli, kurumsal strateji, hizmet kalitesi, sürdürülebilir büyüme"),
+    clauses: terms("Ekip hedefleri gözden geçiriyor., Yönetim bütçeyi onaylıyor., Rapor sonuçları karşılaştırıyor., Birimler takvimi güncelliyor., Şirket yeni pazarlara açılıyor., Satış ekibi talepleri inceliyor., Müşteriler hizmeti değerlendiriyor., İş ortakları koşulları görüşüyor., Finans ekibi tahminleri yeniliyor., Plan kaynakları dengeli dağıtıyor., Yatırım büyümeyi destekliyor., Göstergeler ilerlemeyi görünür kılıyor., Yönetim riskleri düzenli izliyor., Ekipler sorumlulukları paylaşıyor., Toplantı kararları netleştiriyor., Ürün ekibi geri bildirim topluyor., Operasyon süreci hızlandırıyor., Raporlama verileri bir araya getiriyor., Yeni hizmet talebi karşılıyor., İş planı öncelikleri belirliyor., Müşteri memnuniyeti yükseliyor., Bütçe dönemsel değişimleri kapsıyor., Bölümler ortak hedefe ilerliyor., Şirket maliyetleri yakından takip ediyor., Pazar araştırması yeni fırsatları gösteriyor., Ekip sonuçları paydaşlarla paylaşıyor., Satış kanalları geniş kitlelere ulaşıyor., Yönetim kaynak ihtiyacını değerlendiriyor., Tahminler planlamaya yön veriyor., İş birliği süreçleri kolaylaştırıyor., Kârlılık göstergeleri düzenli ölçülüyor., Tedarik planı talebe göre hazırlanıyor., Kurumsal iletişim bilgi akışını sağlıyor., Portföy incelemesi yeni yatırımları belirliyor., Her birim ilerleme raporu hazırlıyor., Kararlar verilerle destekleniyor., Büyüme planı aşamalı uygulanıyor., Hizmet ekipleri taleplere yanıt veriyor., Müşteri görüşleri ürüne katkı sağlıyor., Dönem kapanışı sonuçları özetliyor."),
+    verbs: terms("değerlendirmek, belirlemek, planlamak, ölçmek, karşılaştırmak, yönetmek, geliştirmek, izlemek, onaylamak, paylaşmak, uygulamak, büyütmek, desteklemek, güncellemek, iyileştirmek"), completeClauses: true,
+  },
+  tech: {
+    openers: ["Yazılım ekibi, bütünleşme testleri tamamlandıktan sonra yeni sürümü dağıtıma alıyor.", "Bulut altyapısı, artan trafik sırasında servislerin kararlı biçimde çalışmasını sağlıyor.", "Geliştiriciler, API üzerinden aktarılan verileri izleme araçlarıyla takip ediyor.", "Dağıtım hattı, değişiklikleri test ortamında doğruladıktan sonra yayına taşıyor.", "Teknik ekip, sistem mimarisini güvenlik ve ölçeklenebilirlik gereksinimlerine göre düzenliyor.", "Uygulama, oturum bilgilerini güvenli biçimde saklayıp isteklere hızlı yanıt veriyor.", "Veritabanı, yoğun sorguları önbellek ve indekslerle verimli biçimde yönetiyor.", "Gözlemlenebilirlik paneli, servis durumunu ve gecikmeleri tek ekranda gösteriyor."],
+    vocabulary: terms("yazılım, uygulama, servis, sistem, altyapı, bulut, API, arayüz, sunucu, veritabanı, dağıtım, geliştirme, sürüm, ağ, güvenlik, kimlik doğrulama, yetkilendirme, önbellek, indeks, sorgu, istek, yanıt, günlük kaydı, izleme, gecikme, işlem, kuyruk, kapsayıcı, küme, mimari, ölçeklenebilirlik, yedeklilik, hata, test, bütünleşme, otomasyon, iş akışı, uç nokta, depolama, veri hattı, CI/CD, Kubernetes, Docker, GitOps, webhook, bulut tabanlı, mikroservis, olay akışı, sürümleme, performans, ağ geçidi, protokol, dağıtık sistem, erişim anahtarı, yük dengeleme, yüksek erişilebilirlik"),
+    phrases: terms("bulut altyapısı, dağıtım hattı, sistem mimarisi, güvenlik gereksinimleri, gözlemlenebilirlik paneli, bütünleşme testleri, API üzerinden, veritabanı sorguları, yüksek erişilebilirlik, dağıtık servisler, otomatik dağıtım, ölçeklenebilir sistem, günlük kayıtları, veri akışı, kimlik doğrulama"),
+    clauses: terms("Ekip sürümü test ediyor., Uygulama isteği yanıtlıyor., Sunucu kayıtları saklıyor., Veritabanı sorguyu tamamlıyor., Servis olayları iletiyor., Sistem trafiği dengeliyor., Test hatayı ortaya çıkarıyor., Geliştirici kodu inceliyor., API veriyi güvenle aktarıyor., Önbellek yanıtı hızlandırıyor., İzleme paneli gecikmeyi gösteriyor., Dağıtım hattı değişiklikleri doğruluyor., Bulut kapasiteyi ihtiyaca göre artırıyor., Mimari yeni bileşenleri destekliyor., Ağ geçidi erişimi denetliyor., Yedek sunucu hizmeti sürdürüyor., Günlük kayıtları sorunu açıklıyor., Otomasyon tekrarlı işleri azaltıyor., Kapsayıcı ortamı tutarlı biçimde kuruyor., Küme yükü düğümler arasında paylaştırıyor., Güvenlik katmanı erişimi sınırlandırıyor., İndeks aramayı hızlandırıyor., Ekip yeni uç noktayı belgeliyor., Sistem kaynak kullanımını izliyor., Webhook olay sonrasında çalışıyor., Veri hattı kayıtları dönüştürüyor., Uygulama yeni sürümü indiriyor., Test ortamı değişiklikleri karşılaştırıyor., Depolama alanı yedekleri koruyor., Servis durumu düzenli ölçülüyor., İstek kuyruğu yoğunluğu dengeliyor., Geliştiriciler dağıtım planını gözden geçiriyor., Altyapı kesintilere karşı hazırlanıyor., Protokol veri aktarımını düzenliyor., Yetkilendirme katmanı izinleri kontrol ediyor., Sürümleme uyumluluğu koruyor., Sistem hatalı isteği reddediyor., Ekip performans ölçümlerini paylaşıyor., Yeni mimari bakım yükünü azaltıyor., Dağıtık servisler ortak olayları işliyor."),
+    verbs: terms("dağıtmak, geliştirmek, doğrulamak, izlemek, ölçeklemek, önbelleğe almak, yönlendirmek, kaydetmek, güvenceye almak, bütünleştirmek, yedeklemek, sürümlemek, çalıştırmak, yapılandırmak"), completeClauses: true,
+  },
+  ai: {
+    openers: ["Araştırma ekibi, model yanıtlarını farklı veri kümeleri ve değerlendirme ölçütleriyle karşılaştırıyor.", "Yapay zekâ sistemi, istemdeki bağlamı kullanarak ilgili kaynakları buluyor.", "Eğitim süreci, örnekleri temizleyip modelin öğrenme adımlarını düzenli olarak ölçüyor.", "Ajanlar, görevleri araçlara dağıtırken her aşamanın sonucunu kaydediyor.", "Çıkarım katmanı, yanıt kalitesi ile işlem süresi arasında denge kuruyor.", "Model değerlendirmesi, doğruluk ve güvenlik ölçütlerini birlikte ele alıyor.", "Vektör araması, soruyla ilişkili belgeleri bilgi tabanından getiriyor.", "Uzmanlar, otomasyon akışındaki model çıktılarının tutarlılığını inceliyor."],
+    vocabulary: terms("yapay zekâ, makine öğrenmesi, model, ajan, istem, prompt, veri kümesi, eğitim, çıkarım, değerlendirme, yanıt, bağlam, token, gömme, vektör, bilgi tabanı, arama, kaynak, örnek, sınıflandırma, üretim, tahmin, doğruluk, güvenlik, kalite, parametre, ağırlık, dikkat katmanı, dönüştürücü, sinir ağı, fine-tuning, RAG, embedding, LLM, makine öğrenimi, sentetik veri, denetimli öğrenme, denetimsiz öğrenme, geri bildirim, otomasyon, iş akışı, model kartı, ölçüt, çıkarım süresi, eğitim verisi, talimat, ince ayar, anlamsal arama, veri temizliği, çok kipli model, ödül modeli, önyargı, gizlilik, açıklanabilirlik, bağlam penceresi, vektör veritabanı"),
+    phrases: terms("değerlendirme ölçütleri, model yanıtları, eğitim verisi, anlamsal arama, vektör veritabanı, bağlam penceresi, yapay zekâ ajanları, çıkarım katmanı, veri odaklı iş akışı, model güvenliği, örnek veri kümesi, insan geri bildirimi, otomatik değerlendirme, bilgi tabanı, çok kipli modeller"),
+    clauses: terms("Model yanıtı değerlendiriyor., Ekip veriyi temizliyor., Ajan görevi tamamlıyor., İstem bağlamı belirliyor., Test doğruluğu ölçüyor., Uzman çıktıyı inceliyor., Arama ilgili belgeyi buluyor., Eğitim hattı örnekleri karşılaştırıyor., Sistem kaynakları sıralıyor., Filtre hassas veriyi koruyor., Değerlendirme tutarlılığı ölçüyor., Parametreler sonucu etkiliyor., Model yeni örneklerden öğreniyor., Vektörler anlamı temsil ediyor., Bilgi tabanı belgeleri içeriyor., Geri bildirim akışı iyileştiriyor., Çıkarım süresi raporlanıyor., Ajan araçları sırayla çağırıyor., Veri kümesi kapsamı genişletiyor., Örnekler önyargıları görünür kılıyor., Güvenlik testi riskleri belirliyor., Sistem yanıtı kaynakla destekliyor., Uzmanlar ölçütleri güncelliyor., Eğitim hattı sürümleri kaydediyor., Arama katmanı bağlam sağlıyor., Model bir özet hazırlıyor., İnsan denetimi kaliteyi artırıyor., Otomasyon görevleri hızlandırıyor., Günlükler her adımı izliyor., Deney farklı istemleri karşılaştırıyor., Sınıflandırıcı içeriği etiketliyor., Bağlam penceresi ek bilgiyi taşıyor., Üretim katmanı yanıtı biçimlendiriyor., Veri hazırlığı tekrarları azaltıyor., Tahminler yeni iş akışlarını destekliyor., Ajanlar görev durumunu paylaşıyor., Model kartı sınırları açıklıyor., Test seti gerçek senaryoları kapsıyor., Gizlilik kontrolleri erişimi sınırlandırıyor., Çıktılar düzenli olarak denetleniyor."),
+    verbs: terms("eğitmek, değerlendirmek, sınıflandırmak, üretmek, tahmin etmek, sıralamak, aramak, ince ayar yapmak, doğrulamak, karşılaştırmak, denetlemek, otomatikleştirmek, açıklamak"), completeClauses: true,
+  },
+  design: {
+    openers: ["Tasarım ekibi, bileşenleri tutarlı aralıklar ve okunaklı bir tipografi sistemi etrafında birleştiriyor.", "Arayüz tasarımı, görsel hiyerarşiyi ve kullanıcı akışını aynı sistem içinde ele alıyor.", "Tasarım sistemi, farklı ekranlarda yeniden kullanılabilen bileşenleri belgeliyor.", "Prototip, gezinme adımlarını ve etkileşim durumlarını geliştirme öncesinde gösteriyor.", "Yaratıcı ekip, marka kimliğini renk paleti ve düzen kararlarıyla görünür kılıyor.", "Tasarım incelemesi, erişilebilirlik ve kontrast ölçütlerini birlikte değerlendiriyor.", "Arayüzdeki boşluklar, içerik yoğunluğunu ve görsel ritmi dengeliyor.", "Bileşen kütüphanesi, ekiplerin tutarlı ekranlar oluşturmasına yardımcı oluyor."],
+    vocabulary: terms("tasarım, arayüz, kullanıcı, akış, bileşen, düzen, tipografi, yazı tipi, hiyerarşi, kontrast, renk paleti, marka kimliği, tasarım sistemi, design system, UI, UX, mockup, prototip, wireframe, ızgara, boşluk, hizalama, etkileşim, gezinme, erişilebilirlik, ikon, görsel dil, ekran, varyant, durum, bileşen kütüphanesi, tasarım belirteci, kullanıcı testi, içerik yoğunluğu, görsel ritim, yaratıcı yön, sayfa şablonu, bilgi mimarisi, odak göstergesi, responsive düzen, renk sistemi, marka rehberi, ikonografi, boşluk sistemi, metin stili, mobil arayüz, düzen ilkesi, etkileşim deseni, kullanılabilirlik, tasarım akışı, görsel denge, kenar boşluğu, okunabilirlik, tasarım incelemesi, içerik hiyerarşisi"),
+    phrases: terms("görsel hiyerarşi, kullanıcı akışı, tasarım sistemi, bileşen kütüphanesi, renk paleti, tipografi sistemi, etkileşim durumu, marka kimliği, responsive düzen, erişilebilir arayüz, görsel ritim, içerik yoğunluğu, etkileşim deseni, sayfa şablonu, tasarım incelemesi"),
+    clauses: terms("Ekip boşlukları dengeliyor., Bileşen arayüz durumunu gösteriyor., Prototip kullanıcı akışını gösteriyor., Tasarım sistemi örüntüleri saklıyor., Renk paleti markayı yansıtıyor., Tipografi okumayı kolaylaştırıyor., Izgara sütunları hizalıyor., Kontrast metni belirginleştiriyor., Kullanıcı testi sorunları ortaya çıkarıyor., Menü gezinmeyi sadeleştiriyor., Tasarımcı varyantları karşılaştırıyor., İkon eylemi anlaşılır kılıyor., Boşluklar içeriği dengeliyor., Ekran küçük boyuta uyum sağlıyor., Odak göstergesi görünür kalıyor., Bileşen kütüphanesi tutarlılık sağlıyor., Düzen içerik sırasını açıklıyor., Görsel dil markayla örtüşüyor., Prototip geri bildirim topluyor., Ekip erişilebilirliği denetliyor., Başlık hiyerarşiyi belirliyor., Renk sistemi durumları ayırt ediyor., Sayfa şablonu bölümleri düzenliyor., Etkileşim deseni davranışı tanımlıyor., Kenar boşluğu metni rahatlatıyor., Marka rehberi kullanımı açıklıyor., Yeni varyant mobil görünümü destekliyor., Kullanılabilirlik çalışması akışı doğruluyor., İçerik yoğunluğu dengeli dağılıyor., Tasarım incelemesi kararları kaydediyor., Yazı tipi tonu destekliyor., Ekran okuyucu etiketleri algılıyor., Bilgi mimarisi gezinmeye yön veriyor., Görsel denge odağı güçlendiriyor., Buton durumu eylemi bildiriyor., Bileşenler ortak kuralları izliyor., Tasarım akışı tekrarları azaltıyor., Arayüz geri bildirimi anında gösteriyor., Şablon yeni sayfaları hızlandırıyor., Düzen farklı ekranlarda korunuyor."),
+    verbs: terms("tasarlamak, düzenlemek, hizalamak, prototiplemek, uyarlamak, sadeleştirmek, dengelemek, iyileştirmek, belirginleştirmek, belgelemek, karşılaştırmak, doğrulamak"), completeClauses: true,
+  },
+  fashion: {
+    openers: ["Tasarım ekibi, sezon koleksiyonunu kumaş dokuları ve dengeli silüetler etrafında şekillendiriyor.", "Lookbook çekimi, yeni koleksiyonun renk paletini ve yaratıcı yönünü öne çıkarıyor.", "Atölye ekibi, numune üretiminden önce kalıp ve dikiş ayrıntılarını kontrol ediyor.", "Editoryal çalışma, farklı kumaşları ve katmanlı kombinleri bir araya getiriyor.", "Styling kararları, koleksiyonun malzeme ve biçim özelliklerini görünür kılıyor.", "Moda markası, kampanya metnini ürün seçkisi ve sezon temasıyla uyumlu hazırlıyor.", "Kreatif direktör, aksesuarları silüetin oranlarına göre seçiyor.", "Kumaş seçimi, giysinin hareketini ve koleksiyonun genel havasını belirliyor."],
+    vocabulary: terms("koleksiyon, kumaş, silüet, styling, stil, malzeme, doku, kalıp, dikiş, aksesuar, lookbook, e-ticaret, moda editoryali, kampanya, kreatif yön, renk paleti, sezon, numune, atölye, prova, kesim, astar, örgü, nakış, desen, koleksiyon parçası, hazır giyim, tasarımcı, stilist, ürün seçkisi, moda çekimi, kumaş ağırlığı, katman, oran, gardırop, işçilik, bitiş, dokuma, yün, pamuk, keten, deri, denim, dış giyim, silüet dengesi, yaratıcı direktör, sezon teması, kapsül koleksiyon, ürün sayfası, görsel hikâye, doku kontrastı, kalıp çalışması, moda markası, ürün açıklaması, koleksiyon lansmanı, sürdürülebilir malzeme"),
+    phrases: terms("sezon koleksiyonu, kumaş dokuları, dengeli silüetler, yaratıcı yön, ürün seçkisi, renk paleti, numune üretimi, katmanlı kombinler, koleksiyon parçası, moda editoryali, kapsül koleksiyon, doku kontrastı, kampanya metni, işçilik ayrıntısı, ürün sayfası"),
+    clauses: terms("Tasarımcı kumaşı seçiyor., Stilist aksesuarları eşleştiriyor., Atölye numune hazırlıyor., Koleksiyon sezonu yansıtıyor., Kalıp oranları belirliyor., Doku görünümü zenginleştiriyor., Kampanya ürünü tanıtıyor., Lookbook görsel hikâye anlatıyor., Ekip renkleri karşılaştırıyor., Dikiş giysiyi sağlamlaştırıyor., Astar formu koruyor., Prova kesimi iyileştiriyor., Kumaş hareketi destekliyor., Marka seçkiyi sunuyor., Styling ayrıntıları öne çıkarıyor., Nakış tasarıma karakter katıyor., Ürün sayfası malzemeyi açıklıyor., Sezon teması çekime yön veriyor., Katmanlar silüeti tamamlıyor., Aksesuar görünümü dengeliyor., İşçilik kaliteyi gösteriyor., Kreatif ekip konsepti geliştiriyor., Numuneler üretim öncesinde inceleniyor., Renk paleti koleksiyonla uyum sağlıyor., Editoryal ekip çekimi planlıyor., Dış giyim formu koruyor., Dokuma yüzeyde doku oluşturuyor., Kalıp çalışması rahatlığı artırıyor., Kampanya farklı kombinleri sergiliyor., Gardırop parçaları birbiriyle eşleşiyor., Ürün seçkisi sezonu temsil ediyor., Stil danışmanı kombinleri düzenliyor., Sürdürülebilir malzeme tercih ediliyor., Tasarım çizgisi tutarlılık sağlıyor., Fotoğrafçı kumaş ayrıntılarını yakalıyor., Koleksiyon lansmanı yeni parçaları tanıtıyor., Kesim hareket alanı bırakıyor., Marka ürün bilgisini güncelliyor., Silüet dengesi görünümü tamamlıyor., Atölye teslim tarihini planlıyor."),
+    verbs: terms("tasarlamak, biçimlendirmek, dikmek, dokumak, eşleştirmek, sergilemek, geliştirmek, seçmek, tanıtmak, tamamlamak, düzenlemek, uyarlamak"), completeClauses: true,
+  },
+  zombie: {
+    openers: ["Hayatta kalanlar, terk edilmiş istasyonun çevresinde yeni bir sığınak kurmak için kaynakları paylaşıyor.", "Gece devriyesi, boş sokaklarda yaklaşan sürünün izlerini ve güvenli geçişleri arıyor.", "Radyo ekibi, tahliye konvoyuna kullanılabilir bir güzergâh bildirmek için sinyal gönderiyor.", "Kıyamet sonrası yerleşim, erzakı korumak için giriş kapılarını gün batımından önce kapatıyor.", "Gözcüler, terk edilmiş şehrin çatılarından hareket eden zombileri izliyor.", "Kurtarma ekibi, karantina bölgesindeki binada ilaç ve temiz su arıyor.", "Barınak sakinleri, jeneratörü çalıştırmadan önce çevredeki tehlikeyi kontrol ediyor.", "Bir uyarı sireni, hayatta kalanları güvenli bölgeye dönmeleri için çağırıyor."],
+    vocabulary: terms("zombi, sürü, hayatta kalan, sığınak, barınak, terk edilmiş şehir, kıyamet, salgın, enfeksiyon, karantina, tahliye, devriye, erzak, kaynak, yiyecek, temiz su, ilaç, telsiz, sinyal, siren, jeneratör, barikat, kapı, gözcü, güvenli bölge, kontrol noktası, konvoy, kurtarma ekibi, bodrum, depo, sokak, gece, iz, harita, rota, kaçış, korunma, baskın, çatı, araç, pil, ışık, tehlike, kuşatma, sığınma alanı, acil durum, nöbet, tıbbi malzeme, terk edilmiş istasyon, karantina bölgesi, salgın bölgesi, hayatta kalma, savunma hattı, su deposu, tahliye güzergâhı"),
+    phrases: terms("terk edilmiş şehir, güvenli bölge, tahliye konvoyu, karantina bölgesi, gece devriyesi, hayatta kalanlar, temiz su kaynağı, acil durum sinyali, savunma hattı, yiyecek ve ilaç, terk edilmiş istasyon, salgın bölgesi, sığınak kapısı, kurtarma ekibi, kaçış rotası"),
+    clauses: terms("Devriye sokağı kontrol ediyor., Sürü kuzeye ilerliyor., Radyo sinyal gönderiyor., Sığınak kapısı kapanıyor., Gözcü hareketi bildiriyor., Konvoy rotayı değiştiriyor., Ekip erzak topluyor., Siren tehlikeyi duyuruyor., Barikat girişi koruyor., Hayatta kalanlar görev paylaşıyor., Araç yakıt taşıyor., Jeneratör ışıkları çalıştırıyor., Harita kaçış yolunu gösteriyor., Kurtarma ekibi ilaç arıyor., Nöbetçiler çevreyi izliyor., Temiz su depoda korunuyor., Gece görüşü zorlaştırıyor., Zombiler sesin peşine düşüyor., Kontrol noktası geçişi kaydediyor., Sığınak sakinleri malzemeleri sayıyor., Konvoy köprüden geçiyor., Ekip yaralıları güvenli alana götürüyor., Telsiz ekibi yanıt bekliyor., Tahliye planı güncelleniyor., Depo kapısı içeriden kilitleniyor., Gözcüler çatıda nöbet tutuyor., Erzak listesi ihtiyaçları gösteriyor., Araçlar gün doğmadan hareket ediyor., Barınak yeni gelenleri karşılıyor., Devriye dönüş saatini bildiriyor., Ekip pilleri değiştiriyor., Sokak lambaları karanlıkta sönüyor., Savunma hattı güçlendiriliyor., Kurtarma ekibi işaret bırakıyor., Sakinler suyu paylaşıyor., Sürü terk edilmiş pazara yöneliyor., Konvoy güvenli güzergâhı izliyor., Acil sinyal uzaktaki ekibe ulaşıyor., Kapılar gün batımında kapanıyor., Hayatta kalanlar bir sonraki adımı planlıyor."),
+    verbs: terms("korumak, tahliye etmek, saklanmak, aramak, izlemek, kurtarmak, güçlendirmek, uyarmak, paylaşmak, yön değiştirmek, sığınmak, savunmak"), completeClauses: true,
+  },
+};
+
+const turkishExtraClauses: Record<ThemedTheme, string[]> = {
+  corporate: terms("Yönetim gelecek dönemi planlıyor., Ekip bütçe talebini sunuyor., Müşteri desteği memnuniyeti artırıyor., Yeni ortaklık pazarı genişletiyor., Satış verileri eğilimleri gösteriyor., Şirket süreçleri sadeleştiriyor., Ürün yöneticisi teslim tarihini açıklıyor., Finans planı nakit akışını koruyor., İş birimi hedefleri ölçüyor., Danışmanlar çözüm seçeneklerini karşılaştırıyor., Kurum hizmet kapsamını güncelliyor., Operasyon ekibi kapasiteyi artırıyor., Pazarlama kampanyası yeni talepler getiriyor., Raporlama dönemi zamanında kapanıyor., Ekipler iş yükünü dengeli paylaşıyor., Bölge yöneticisi saha verilerini inceliyor., Yatırım komitesi başvuruları değerlendiriyor., Tedarik zinciri teslimatları izliyor., Şirket yeni ürünü tanıtıyor., Müşteri ekibi görüşme notlarını aktarıyor., Planlama birimi maliyetleri hesaplıyor., Yönetici karar gerekçelerini paylaşıyor., Hizmet modeli büyümeyi kolaylaştırıyor., İş hedefleri dönem sonunda ölçülüyor., Paydaş toplantısı yeni adımları belirliyor., Şirket verimlilik fırsatlarını araştırıyor., Bütçe raporu sapmaları açıklıyor., Ürün portföyü yeniden değerlendiriliyor., Ekip önerileri uygulamaya alıyor., İş ortaklığı müşteri erişimini artırıyor."),
+  tech: terms("Servis isteği güvenli biçimde doğruluyor., Ekip API belgelerini güncelliyor., Sunucu yükü eşit olarak paylaştırıyor., Yazılım testi uyumluluğu denetliyor., Sistem yedekleri düzenli saklıyor., Ağ trafiği gecikme ölçümleriyle izleniyor., Uygulama yeni kayıt oluşturuyor., Veritabanı yedekleri şifreliyor., Geliştirici uç noktayı test ediyor., Günlük sistemi hataları sınıflandırıyor., Otomatik işlem dağıtımı başlatıyor., Küme yeni düğümü devreye alıyor., Güvenlik kontrolü erişim anahtarını yeniliyor., Servis olayları kuyruğa ekliyor., Kod incelemesi değişiklikleri belgeliyor., Altyapı ölçümleri kapasite ihtiyacını gösteriyor., İzleme aracı uyarıyı ekibe iletiyor., Uygulama yanıt süresini kısaltıyor., Kimlik doğrulama oturumları koruyor., Paket yöneticisi bağımlılıkları çözüyor., Ekip geri alma planını hazırlıyor., Protokol bağlantıyı yeniden kuruyor., Test ortamı gerçekçi yük oluşturuyor., Depolama sistemi eski kayıtları arşivliyor., Dağıtık işlem sonuçları birleştiriyor., Yazılım sürümü hata düzeltmeleri içeriyor., Ağ geçidi istekleri uygun servise iletiyor., Ekip erişim izinlerini gözden geçiriyor., Sistem durumu bakım ekranında görünüyor., Geliştirme hattı kalite kontrolü çalıştırıyor."),
+  ai: terms("Uzmanlar model sınırlarını belgeliyor., Eğitim verisi kaynaklara göre ayrılıyor., Ajan planını adımlara bölüyor., İstem yanıt biçimini tarif ediyor., Model güvenlik kurallarını uyguluyor., Test ekibi hata örneklerini inceliyor., Veri hazırlama adımı etiketleri doğruluyor., Arama sistemi benzer kayıtları buluyor., Değerlendirme raporu kalite değişimini gösteriyor., İnsan incelemesi riskli yanıtları işaretliyor., Model sürümü deney ortamında deneniyor., Sistem kişisel bilgileri maskeleyerek saklıyor., Bağlam belgelerden seçiliyor., Otomasyon başarısız adımı yeniden deniyor., Ekip kullanım ölçütlerini tanımlıyor., Sınıflandırma modeli konu etiketliyor., Ödül modeli tercihleri puanlıyor., Araştırmacılar eğitim sonuçlarını karşılaştırıyor., Bilgi erişimi kaynak bağlantılarını koruyor., Çıktı filtresi yanıtı denetliyor., Model değerlendirme setini tamamlıyor., İstem şablonu değişkenleri açıklıyor., Vektör indeksi belgeleri eşliyor., Günlük sistemi karar adımlarını kaydediyor., Veri kümesi izin koşullarına göre seçiliyor., Deney ekibi değişkenleri sabit tutuyor., Ajan sonucu kayıt sistemine iletiyor., Doğrulama adımı yanıt kaynaklarını kontrol ediyor., Eğitim süreci model kartını güncelliyor., Uzman geri bildirimi yeni testler öneriyor."),
+  design: terms("Tasarımcı arayüz varyantlarını çiziyor., Başlık boyutu içerik sırasını vurguluyor., Bileşen kütüphanesi yeni örnek içeriyor., Düzen sütunları farklı genişliklere uyuyor., Renk kontrastı okunabilirliği destekliyor., Prototip etkileşimi adım adım gösteriyor., Ekip mobil görünümü inceliyor., Kullanıcı akışı gereksiz adımları azaltıyor., Tasarım belirteçleri ortak değerleri tanımlıyor., İkon seti eylemleri ayırt ediyor., Arayüz hata durumunu açıkça bildiriyor., Form alanları yönergeleri gösteriyor., Boşluk sistemi ekranlar arasında tutarlılık sağlıyor., Marka kimliği tasarım kararlarına yön veriyor., Ekran okuyucu başlıkları doğru sırada algılıyor., Renk varyantı durum bilgisini iletiyor., Tasarım ekibi yorumları belgeliyor., Navigasyon menüsü bölümleri grupluyor., İçerik kartları esnek sütunlara yerleşiyor., Sayfa şablonu düzenli boşluklar kullanıyor., Tasarım incelemesi kontrast sorunlarını belirliyor., Buton etiketi eylemi açıkça anlatıyor., Kullanıcı testi etiketleri doğruluyor., Izgara sistemi bileşenleri hizalıyor., Prototip ekip kararlarını hızlandırıyor., Yazı tipi farklı ağırlıklarla hiyerarşi kuruyor., Bileşen durumu klavyeyle seçilebiliyor., Görsel yönergeler ortak bir dil oluşturuyor., Arayüz küçük ekranlarda yeniden akıyor., Ekip içerik sırasını test ediyor."),
+  fashion: terms("Tasarımcı koleksiyon temasını geliştiriyor., Stilist sezon renklerini bir araya getiriyor., Atölye dikiş örneğini inceliyor., Kumaş numunesi ışık altında karşılaştırılıyor., Kampanya metni yeni parçaları anlatıyor., Lookbook çekimi kombinleri sıralıyor., Ürün açıklaması bakım bilgisini içeriyor., Kalıp ekibi ölçüleri kontrol ediyor., Koleksiyon farklı malzemeleri dengeliyor., Kreatif ekip çekim planını hazırlıyor., Aksesuar seçimi silüeti tamamlıyor., Nakış deseni kumaşa işleniyor., Marka sezon hikâyesini paylaşıyor., E-ticaret sayfası ürün ayrıntılarını gösteriyor., Giysi provada yeniden düzenleniyor., Stil danışmanı renk uyumunu denetliyor., Dış giyim tasarımı hareket özgürlüğü sağlıyor., Üretim ekibi teslim planını güncelliyor., Model seçkisi kampanya temasına uyuyor., Kumaş dokusu fotoğrafta belirginleşiyor., Koleksiyon parçaları birlikte kombinleniyor., Tasarım çizgisi sezon boyunca korunuyor., Ürün ekibi beden tablosunu hazırlıyor., Atölye malzeme tüketimini hesaplıyor., Stil çalışması farklı katmanları deniyor., Sürdürülebilir kumaş koleksiyona ekleniyor., Kampanya görselleri ürün sayfasına taşınıyor., Dikiş ayrıntısı yakından inceleniyor., Editoryal ekip başlıkları son hâline getiriyor., Lansman planı mağazalarla paylaşılıyor."),
+  zombie: terms("Gözcü kuzey yolunda hareket görüyor., Kurtarma ekibi güvenli geçiş işaretliyor., Barınak kapısı nöbet değişiminde açılıyor., Telsiz operatörü kısa bir mesaj iletiyor., Ekip depodaki erzakı yeniden sayıyor., Konvoy yakıt istasyonunda duruyor., Harita kapalı yolları işaretliyor., Sığınak sakinleri su filtresini değiştiriyor., Devriye araç izlerini takip ediyor., Jeneratör yedek yakıtla çalışıyor., Kontrol ekibi çevre çitini inceliyor., Tıbbi malzeme listesi güncelleniyor., Ekip sessizce bodruma ilerliyor., Siren ek tahliye çağrısı yapıyor., Gözcüler görüş alanını paylaşıyor., Konvoy güvenli köprüye ulaşıyor., Barikat güçlendirme ekibi malzeme taşıyor., Karanlıkta işaret lambası yanıyor., Sığınak yeni bir mesaj alıyor., Kurtarma planı hava durumunu hesaba katıyor., Devriye ekibi dönüş rotasını seçiyor., Ekip yaralılar için alan hazırlıyor., Depo sorumlusu pil stokunu koruyor., Nöbet çizelgesi sabah için yenileniyor., Hayatta kalanlar sessizce ilerliyor., Tahliye alanı ekibi bekliyor., Gözcü telsizden konumu bildiriyor., Araç kervanı duvarın arkasında bekliyor., Ekip geçiş noktasını güvene alıyor., Barınak çevresinde nöbet sürüyor."),
+};
+
+const turkishShortClauses: Record<ThemedTheme, string[]> = {
+  corporate: terms("Plan hazır., Ekip büyüyor., Satış arttı., Hedef netleşti., Rapor tamamlandı., Bütçe güncellendi., Karar kesinleşti., Takvim yenilendi., Ekip ilerliyor., Plan bugün güncellendi., Rapor yeniden hazırlandı., Satış hedefi güncellendi."),
+  tech: terms("Sistem hazır., Servis çalışıyor., Test tamamlandı., Sürüm yayınlandı., Ağ yenilendi., Veri aktarıldı., İstek tamamlandı., Kayıt saklandı., Yedek alındı., Servis yeniden başladı., Test başarıyla tamamlandı., Veri güvenle aktarıldı."),
+  ai: terms("Model hazır., Ajan çalışıyor., Örnek değerlendirildi., Veri temizlendi., Yanıt incelendi., Test tamamlandı., Ölçüt güncellendi., Kaynak bulundu., Eğitim başladı., Yanıt kaynakla desteklendi., Örnek yeniden incelendi., Model dikkatle değerlendirildi."),
+  design: terms("Düzen hazır., Arayüz yenilendi., Prototip tamamlandı., Renkler uyumlu., Tipografi dengeli., Izgara hizalandı., Bileşen eklendi., Başlık güncellendi., Akış doğrulandı., Kontrast yeterince güçlü., Prototip yeniden düzenlendi., Arayüz kullanıcıyla test edildi."),
+  fashion: terms("Koleksiyon tamamlandı., Kumaş seçildi., Stil yenilendi., Numune hazırlandı., Kalıp güncellendi., Renkler eşleşti., Dikiş güçlendirildi., Kombin tamamlandı., Atölye çalışıyor., Kumaş yeniden incelendi., Dikiş sağlam görünüyor., Koleksiyon bugün tanıtıldı."),
+  zombie: terms("Sığınak güvenli., Konvoy ilerliyor., Kapı kapandı., Siren çaldı., Ekip hazır., Erzak bulundu., Devriye döndü., Işık söndü., Bariyer güçlendi., Konvoy yola çıktı., Kapı yeniden kapandı., Siren yeniden çaldı."),
+};
+
+for (const theme of Object.keys(turkishThemedIpsumData) as ThemedTheme[]) {
+  const data = turkishThemedIpsumData[theme];
+  data.clauses = [...(data.clauses ?? []), ...turkishExtraClauses[theme], ...turkishShortClauses[theme]];
+  data.avoidRepeatedClauses = true;
+  data.strictClauseCooldown = true;
+}
+
 const polishShortClauses: Record<ThemedTheme, string[]> = {
   corporate: terms("Zarząd ustala priorytety., Zespół analizuje koszty., Partnerzy omawiają ofertę., Firma rozwija sprzedaż., Klient potwierdza zamówienie., Kierownik przydziela zadania., Działy porównują prognozy., Raport przedstawia wskaźniki., Współpraca przynosi rezultaty., Plan uwzględnia ryzyko., Oferta obejmuje wsparcie., Projekt osiąga cele., Budżet finansuje rozwój., Spotkanie porządkuje ustalenia., Pracownicy dzielą doświadczenia., Organizacja monitoruje jakość., Analitycy wyjaśniają trendy., Negocjatorzy doprecyzowują warunki., Menedżerowie oceniają postęp., Firma zdobywa zaufanie., Zespół przygotowuje prezentację., Rynek wymaga elastyczności., Strategia wyznacza zadania., Audyt potwierdza zgodność., Inwestycja zwiększa możliwości., Zarząd rozpatruje wnioski., Koordynator zbiera informacje., Wyniki potwierdzają założenia., Klienci doceniają jakość., Partnerzy planują spotkanie."),
   tech: terms("Aplikacja zapisuje dane., Serwer zwraca odpowiedź., Zespół sprawdza logi., Programiści aktualizują zależności., Kontenery współdzielą konfigurację., Pipeline sprawdza zmiany., Baza odtwarza indeks., Monitor wykrywa opóźnienie., Gateway filtruje ruch., Moduł udostępnia funkcje., Usługa rejestruje zdarzenie., Skrypt tworzy kopię., Repozytorium zawiera instrukcje., Test wykrywa niezgodność., Cache przechowuje odpowiedzi., Klaster rozdziela obciążenie., Proces odbiera komunikaty., Sieć zapewnia połączenie., Architektura wspiera skalowanie., Konfiguracja określa uprawnienia., Zespół odtwarza problem., Programista analizuje wyjątek., Aplikacja odświeża token., Serwis aktualizuje rekord., Narzędzie porównuje wersje., Backend przetwarza żądanie., Frontend prezentuje wynik., Kompilator sprawdza typy., Kontroler obsługuje formularz., Dokumentacja objaśnia protokół."),
@@ -745,6 +819,20 @@ for (const theme of Object.keys(polishThemedIpsumData) as ThemedTheme[]) {
   data.completeClauses = true;
 }
 
+turkishThemedIpsumData.tech.clauses = turkishThemedIpsumData.tech.clauses?.map(clause =>
+  clause === "Dağıtım hattı değişiklikleri doğruluyor." ? "Yayın ekibi değişiklikleri doğruluyor." : clause
+);
+turkishThemedIpsumData.fashion.clauses = turkishThemedIpsumData.fashion.clauses?.map(clause =>
+  clause === "Stilist sezon renklerini bir araya getiriyor." ? "Stilist sezon renklerini seçiyor." : clause
+);
+
+for (const data of Object.values(turkishThemedIpsumData)) {
+  data.completeClauses = true;
+  data.sentenceAtomic = true;
+  data.punctuateTailPhrases = true;
+  data.joinCompleteClauses = true;
+}
+
 export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeData>> = {
   en: englishThemedIpsumData,
   it: italianThemedIpsumData,
@@ -754,6 +842,7 @@ export const themedIpsumData: Record<ThemedLanguage, Record<ThemedTheme, ThemeDa
   "pt-BR": brazilianPortugueseThemedIpsumData,
   nl: dutchThemedIpsumData,
   pl: polishThemedIpsumData,
+  tr: turkishThemedIpsumData,
 };
 
 type GeneratorOptions = {
@@ -817,6 +906,7 @@ const structuralConnectors: Record<ThemedLanguage, string[]> = {
   "pt-BR": ["e", "com"],
   nl: ["en", "met"],
   pl: ["i", "oraz"],
+  tr: ["ve", "ile"],
 };
 
 function rememberComponent(recentComponents: string[], component: string) {
@@ -894,12 +984,20 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
       return search(target, 0);
     }
     const fresh = ordered.filter(clause => !usedClauses.has(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()));
-    const fitted = fit(fresh, targetWords) ?? fit(ordered.filter(clause => !recentPhrases.includes(clause.toLocaleLowerCase())), targetWords);
+    const fallbackClauses = ordered.filter(clause => !recentPhrases.includes(clause.toLocaleLowerCase()) && (!data.strictClauseCooldown || !usedClauses.has(clause.toLocaleLowerCase())));
+    const fitted = fit(fresh, targetWords) ?? fit(fallbackClauses, targetWords);
     if (fitted) {
       for (const clause of fitted) {
         usedClauses.add(clause.toLocaleLowerCase());
         rememberPhrase(recentPhrases, clause);
         rememberComponent(recentComponents, clause);
+      }
+      if (data.joinCompleteClauses) {
+        const clauses = fitted.map((clause, index) => {
+          const clean = clause.replace(/[,:;.!?]+$/u, "");
+          return index === 0 ? capitalizeFirst(clean) : clean.replace(/^\p{Lu}/u, character => character.toLocaleLowerCase("tr-TR"));
+        });
+        return `${clauses.join("; ")}.`;
       }
       return fitted.map(clause => `${capitalizeFirst(clause, true).replace(/[,:;.!?]+$/u, "")}.`).join(" ");
     }
@@ -1059,6 +1157,18 @@ function generateLayout(data: ThemeData, words: number, paragraphs: number, rand
 }
 
 function generateSentences(data: ThemeData, amount: number, random: () => number, bridges: string[], includeStandaloneVerbs: boolean) {
+  if (data.sentenceAtomic && data.clauses?.length) {
+    const generated = [pick(data.openers, random)];
+    const used = new Set(generated.map(sentence => sentence.toLocaleLowerCase("tr-TR")));
+    const clauses = [...data.clauses];
+    for (let index = 1; index < amount; index += 1) {
+      const available = clauses.filter(clause => !used.has(clause.toLocaleLowerCase("tr-TR")));
+      const sentence = pick(available.length ? available : clauses, random);
+      used.add(sentence.toLocaleLowerCase("tr-TR"));
+      generated.push(sentence);
+    }
+    return generated.join(" ");
+  }
   const generated: string[] = [];
   const recentComponents: string[] = [];
   const recentPhrases: string[] = [];
@@ -1085,11 +1195,12 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   "pt-BR": ["a", "à", "às", "ao", "aos", "com", "da", "das", "de", "do", "dos", "e", "em", "entre", "na", "nas", "no", "nos", "o", "os", "ou", "para", "pela", "pelas", "pelo", "pelos", "por", "sem", "sobre", "um", "uma"],
   nl: ["aan", "als", "bij", "door", "en", "in", "met", "naar", "of", "om", "op", "voor", "van", "uit", "een", "de", "het"],
   pl: ["a", "i", "o", "u", "w", "z", "do", "na", "od", "po", "za", "bez", "dla", "lub", "oraz", "przez", "przy"],
+  tr: ["ve", "ile", "için", "gibi", "göre", "arasında", "üzerinde", "sonra", "önce", "bir", "bu", "da", "de"],
 };
 
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], includeStandaloneVerbs = true) {
   if (data.completeClauses) {
-    const candidates = [...data.phrases, ...(data.clauses ?? [])]
+    const candidates = [...(data.punctuateTailPhrases ? [] : data.phrases.map(phrase => /[.!?]$/u.test(phrase) ? phrase : `${phrase}.`)), ...(data.clauses ?? [])]
       .filter(clause => !recentComponents.includes(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()))
       .map(clause => ({ clause, order: random() }))
       .sort((a, b) => b.clause.length - a.clause.length || a.order - b.order).map(item => item.clause);
@@ -1198,7 +1309,7 @@ function generateCharacters(data: ThemeData, connectors: string[], amount: numbe
 
 export function generateThemedIpsum({ theme, language = "en", mode, words, paragraphs, amount, variation }: GeneratorOptions) {
   const data = themedIpsumData[language][theme];
-  const includeStandaloneVerbs = language !== "it" && language !== "fr" && language !== "pt-BR" && language !== "pl";
+  const includeStandaloneVerbs = language !== "it" && language !== "fr" && language !== "pt-BR" && language !== "pl" && language !== "tr";
   const bridges = structuralConnectors[language];
   const seed = hashSeed(`${language}:${theme}:${mode}:${words}:${paragraphs}:${amount}:${variation}`);
   const random = randomFromSeed(seed);

@@ -126,6 +126,19 @@ const experience = {
     lightLabel: "Licht thema inschakelen",
     darkLabel: "Donker thema inschakelen",
   },
+  tr: {
+    homePath: "/tr/",
+    themedPath: "/tr/tematik-lorem-ipsum/",
+    languageName: "Türkçe",
+    classicLabel: "Lorem Ipsum Oluşturucu",
+    themedLabel: "Tematik Ipsum",
+    navLabel: "Lorem Ipsum araçları",
+    mobileNavLabel: "Türkçe gezinme",
+    openMenuLabel: "Gezinmeyi aç",
+    closeMenuLabel: "Gezinmeyi kapat",
+    lightLabel: "Açık temaya geç",
+    darkLabel: "Koyu temaya geç",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -182,6 +195,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (code === "pt-BR") return experience["pt-BR"].themedPath;
     if (code === "pl") return experience.pl.themedPath;
     if (code === "nl") return experience.nl.themedPath;
+    if (code === "tr") return experience.tr.themedPath;
     return classicHref;
   }
 

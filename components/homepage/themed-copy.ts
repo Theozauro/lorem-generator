@@ -8,8 +8,9 @@ import { plHomepageCopy } from "./homepage-copy/pl";
 import { nlHomepageCopy } from "./homepage-copy/nl";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 import { trHomepageCopy } from "./homepage-copy/tr";
+import { huHomepageCopy } from "./homepage-copy/hu";
 
-export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl" | "tr";
+export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl" | "tr" | "hu";
 
 type ThemeCard = {
   id: ThemedTheme;
@@ -209,6 +210,32 @@ export const turkishThemedPageConfig: ThemedPageConfig = {
     { id: "design", title: "Tasarım Ipsum", description: "Mockup, portfolyo ve yaratıcı projeler için yer tutucu metinler. UI, tipografi, düzen, bileşenler, design system, marka kimliği ve tasarım süreçleriyle ilgili kavramlar kullanır.", action: "Tasarım Ipsum Oluştur" },
     { id: "fashion", title: "Moda Ipsum", description: "Lookbook, e-ticaret ve moda editoryal içerikleri için yer tutucu metinler. Koleksiyonlar, kumaşlar, silüetler, styling, malzemeler, kampanyalar ve yaratıcı yön kavramlarını içerir.", action: "Moda Ipsum Oluştur" },
     { id: "zombie", title: "Zombi Ipsum", description: "Oyunlar, konseptler ve kıyamet sonrası projeler için yer tutucu metinler. Zombiler, sürüler, sığınaklar, terk edilmiş şehirler, hayatta kalma ve kaynaklar mockupları daha sürükleyici hâle getirir.", action: "Zombi Ipsum Oluştur" },
+  ],
+};
+
+export const hungarianThemedPageConfig: ThemedPageConfig = {
+  locale: "hu",
+  copy: { ...huHomepageCopy, generator: { ...huHomepageCopy.generator,
+    mode: "MÓD", modeLabel: "Generálási mód", layout: "SZAVAK + BEKEZDÉSEK",
+    characters: "KARAKTEREK", sentences: "MONDATOK", words: "SZAVAK",
+    paragraphs: "BEKEZDÉSEK", quickWords: "GYORS ÉRTÉKEK", presets: "GYORS ÉRTÉKEK",
+    generate: "Generálás", regenerate: "Újragenerálás", copy: "Másolás", copyHtml: "HTML másolása",
+    stats: { ...huHomepageCopy.generator.stats, words: "szó", characters: "karakter", withoutSpaces: "szóközök nélkül", sentences: "mondat", paragraphs: "bekezdés" },
+  } },
+  defaultContentLanguage: "hu", showContentLanguageSelector: true,
+  title: "Tematikus Lorem Ipsum generátor",
+  intro: "Hozz létre meghatározott iparágak és témák által inspirált helykitöltő szöveget, miközben pontosan szabályozhatod a tartalom mennyiségét és formátumát.",
+  topicLabel: "TEMATIKUS IPSUM",
+  themeLabels: { corporate: "Üzleti", tech: "Tech", ai: "AI", design: "Design", fashion: "Divat", zombie: "Zombi" },
+  contentLanguageLabel: "SZÖVEG NYELVE", contentLanguageNames: { primary: "Magyar", secondary: "English" },
+  exploreTitle: "FEDEZD FEL A TÉMÁKAT",
+  cards: [
+    { id: "corporate", title: "Üzleti Ipsum", description: "Üzleti terminológiát használó helykitöltő szöveg dashboardokhoz, jelentésekhez, prezentációkhoz és B2B termékekhez. Stratégiai célokhoz, KPI-khez, érintettekhez, folyamatokhoz, növekedéshez és működéshez kapcsolódó fogalmakat tartalmaz.", action: "Üzleti Ipsum generálása" },
+    { id: "tech", title: "Tech Ipsum", description: "Helykitöltő szöveg szoftverekhez, digitális termékekhez és technikai felületekhez. Felhővel, API-kkal, infrastruktúrával, fejlesztéssel, deploymenttel, rendszerekkel és architektúrával kapcsolatos kifejezéseket használ.", action: "Tech Ipsum generálása" },
+    { id: "ai", title: "AI Ipsum", description: "Mesterséges intelligenciára és gépi tanulásra épülő helykitöltő szöveg. Modellekhez, promptokhoz, adatkészletekhez, ügynökökhöz, automatizáláshoz, tanításhoz, inferenciához és adatvezérelt folyamatokhoz kapcsolódó fogalmakat tartalmaz.", action: "AI Ipsum generálása" },
+    { id: "design", title: "Design Ipsum", description: "Helykitöltő szöveg mockupokhoz, portfóliókhoz és kreatív projektekhez. UI-val, tipográfiával, layouttal, komponensekkel, design systemekkel, brandinggel és tervezési folyamatokkal kapcsolatos kifejezéseket használ.", action: "Design Ipsum generálása" },
+    { id: "fashion", title: "Divat Ipsum", description: "Helykitöltő szöveg lookbookokhoz, webáruházakhoz és divatmagazinok szerkesztőségi tartalmaihoz. Kollekciókhoz, textilekhez, sziluettekhez, stylinghoz, anyagokhoz, kampányokhoz és kreatív irányhoz kapcsolódó fogalmakat tartalmaz.", action: "Divat Ipsum generálása" },
+    { id: "zombie", title: "Zombi Ipsum", description: "Helykitöltő szöveg játékokhoz, koncepciókhoz és posztapokaliptikus projektekhez. Zombik, hordák, menedékek, elhagyott városok, túlélés és erőforrások segítenek hangulatosabb mockupokat készíteni.", action: "Zombi Ipsum generálása" },
   ],
 };
 

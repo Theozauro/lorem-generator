@@ -14,6 +14,7 @@ import { HomepageFooter } from "./home-page";
 import { PolishThemedEditorial } from "./polish-themed-editorial";
 import { ItalianThemedEditorial } from "./italian-editorial";
 import { TurkishThemedEditorial } from "./turkish-themed-editorial";
+import { HungarianThemedEditorial } from "./hungarian-themed-editorial";
 
 type MainMode = ThemedMode;
 type ThemedTopic = ThemedTheme;
@@ -59,7 +60,7 @@ function ThemedCopyActions({ text, onRegenerate, copy }: { text: string; onRegen
 
 export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   const copy = config.copy;
-  const editorialStandard = config.locale === "it" || config.locale === "pl" || config.locale === "tr";
+  const editorialStandard = config.locale === "it" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu";
   const [topic, setTopic] = useState<ThemedTopic>("corporate");
   const [contentLanguage, setContentLanguage] = useState<ThemedLanguage>(config.defaultContentLanguage);
   const [mode, setMode] = useState<MainMode>("layout");
@@ -112,7 +113,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
     setTopic(next);
     setVariation(current => current + 1);
     window.requestAnimationFrame(() => {
-      if (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "tr") document.getElementById("themed-generator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "tr" || config.locale === "hu") document.getElementById("themed-generator")?.scrollIntoView({ behavior: "smooth", block: "start" });
       else window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
@@ -121,7 +122,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
     <div className="page-content italian-experience-page">
       <ExperienceHeader locale={config.locale} active="themed" copy={copy} />
       <section className="main-section themed-main-section" aria-labelledby="themed-page-title">
-        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}{config.locale !== "fr" && config.locale !== "pt-BR" && config.locale !== "pl" && config.locale !== "tr" && <span className="title-period">.</span>}</h1></div></div>
+        <div className="title-row"><div className="brand-lockup"><h1 id="themed-page-title">{config.title}{config.locale !== "fr" && config.locale !== "pt-BR" && config.locale !== "pl" && config.locale !== "tr" && config.locale !== "hu" && <span className="title-period">.</span>}</h1></div></div>
         <p className="seo-intro">{config.intro}</p>
 
         <div className="themed-topic-selector" aria-labelledby="themed-topic-label">
@@ -134,7 +135,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
             {config.showContentLanguageSelector && <div className="themed-language-selector" aria-labelledby="themed-language-label">
               <span className="field-label" id="themed-language-label">{config.contentLanguageLabel}</span>
               <div className="themed-language-list" role="group" aria-label={config.contentLanguageLabel}>
-                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : config.locale === "fr" ? "FR" : config.locale === "pt-BR" ? "PT-BR" : config.locale === "nl" ? "NL" : config.locale === "pl" ? "PL" : config.locale === "tr" ? "TR" : "EN"}</button>
+                <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.primary} aria-pressed={contentLanguage === config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage)}>{config.locale === "it" ? "IT" : config.locale === "es" ? "ES" : config.locale === "de" ? "DE" : config.locale === "fr" ? "FR" : config.locale === "pt-BR" ? "PT-BR" : config.locale === "nl" ? "NL" : config.locale === "pl" ? "PL" : config.locale === "tr" ? "TR" : config.locale === "hu" ? "HU" : "EN"}</button>
                 <button type="button" className="themed-language-button" aria-label={config.contentLanguageNames.secondary} aria-pressed={contentLanguage !== config.defaultContentLanguage} onClick={() => setContentLanguage(config.defaultContentLanguage === "en" ? "it" : "en")}>EN</button>
               </div>
             </div>}
@@ -156,6 +157,7 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
       {config.locale === "it" && <ItalianThemedEditorial />}
       {config.locale === "pl" && <PolishThemedEditorial />}
       {config.locale === "tr" && <TurkishThemedEditorial />}
+      {config.locale === "hu" && <HungarianThemedEditorial />}
     </div><HomepageFooter copy={copy} />
   </main>;
 }

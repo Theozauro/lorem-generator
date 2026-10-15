@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     en: "/themed-lorem-ipsum/", it: "/it/lorem-ipsum-a-tema/", es: "/es/lorem-ipsum-tematico/",
     de: "/de/lorem-ipsum-nach-themen/", fr: "/fr/lorem-ipsum-thematique/",
     "pt-BR": "/pt-br/lorem-ipsum-tematico/", nl: "/nl/lorem-ipsum-op-thema/",
-    pl: "/pl/lorem-ipsum-tematyczny/", tr: path, "x-default": "/themed-lorem-ipsum/",
+    pl: "/pl/lorem-ipsum-tematyczny/", tr: path, hu: "/hu/tematikus-lorem-ipsum/", "x-default": "/themed-lorem-ipsum/",
   } },
   robots: { index: true, follow: true },
   openGraph: { type: "website", url: `${siteUrl}${path}`, locale: "tr_TR", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },

@@ -139,6 +139,19 @@ const experience = {
     lightLabel: "Açık temaya geç",
     darkLabel: "Koyu temaya geç",
   },
+  hu: {
+    homePath: "/hu/",
+    themedPath: "/hu/tematikus-lorem-ipsum/",
+    languageName: "Magyar",
+    classicLabel: "Lorem Ipsum generátor",
+    themedLabel: "Tematikus Ipsum",
+    navLabel: "Lorem Ipsum-eszközök",
+    mobileNavLabel: "Magyar navigáció",
+    openMenuLabel: "Navigáció megnyitása",
+    closeMenuLabel: "Navigáció bezárása",
+    lightLabel: "Világos téma bekapcsolása",
+    darkLabel: "Sötét téma bekapcsolása",
+  },
 } as const;
 
 export function ExperienceHeader({ active, copy, locale }: { active: ExperienceSection; copy: HomepageCopy; locale: ThemedPageLocale }) {
@@ -196,6 +209,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
     if (code === "pl") return experience.pl.themedPath;
     if (code === "nl") return experience.nl.themedPath;
     if (code === "tr") return experience.tr.themedPath;
+    if (code === "hu") return experience.hu.themedPath;
     return classicHref;
   }
 

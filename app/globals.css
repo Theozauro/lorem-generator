@@ -782,8 +782,12 @@ button:disabled { cursor: not-allowed; }
   .consent-actions button:last-child { order: 3; }
 }
 @media (max-width: 350px) {
-  .unit-tab { font-size: 7.5px !important; }
+  .site-shell[lang="en"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .layout-amounts .field-label { font-size: 9px; }
+  .site-shell[lang="en"] .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr); }
+  .site-shell[lang="en"] .classic-controls-grid > .layout-amounts,
+  .site-shell[lang="en"] .classic-controls-grid > .precision-amount { grid-column: 1; grid-row: 2; border-bottom: 1px solid var(--grid); }
+  .site-shell[lang="en"] .classic-controls-grid > .presets { grid-column: 1; grid-row: 3; border-left: 0 !important; }
   .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr); }
   .themed-controls-grid > .layout-amounts, .themed-controls-grid > .precision-amount { grid-column: 1 / -1; grid-row: 3; }
   .themed-controls-grid > .presets { grid-column: 1 / -1; grid-row: 4; }

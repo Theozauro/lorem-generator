@@ -12,6 +12,7 @@ import { generateLayout, generateLorem, resizeLorem, stats, type Unit } from "@/
 import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
 import { ItalianHomepageEditorial, italianHomepageFaqItems } from "./italian-editorial";
+import { EnglishHomepageEditorial, englishHomepageFaqItems } from "./english-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -353,7 +354,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       {copy.sections.editorial ? copy.sections.editorial.map(({ heading, paragraphs }, index) => <section className="about-section" aria-labelledby={`editorial-title-${index}`} key={heading}><div><h2 id={`editorial-title-${index}`}>{heading}</h2></div><div className="about-copy">{paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></section>) : <><section className="seo-content" aria-labelledby="why-title"><div className="seo-content-heading"><span className="eyebrow">{copy.sections.seoEyebrow}</span><h2 id="why-title">{copy.sections.seoTitle}</h2></div><div className="seo-content-grid"><article><h3>{copy.sections.seoOneTitle}</h3><p>{copy.sections.seoOneA}</p><p>{copy.sections.seoOneB}</p></article><article><h3>{copy.sections.seoTwoTitle}</h3><p>{copy.sections.seoTwoA}</p><p>{copy.sections.seoTwoB}</p></article></div></section>
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section></>}
       {locale === "it" && <ItalianHomepageEditorial />}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : undefined} />
+      {locale === "en" && <EnglishHomepageEditorial />}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

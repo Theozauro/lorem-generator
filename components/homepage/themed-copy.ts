@@ -252,12 +252,12 @@ export const englishThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "English", secondary: "Italiano" },
   exploreTitle: "Explore themes",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Professional placeholder text for business, strategy, operations and corporate communication.", action: "Generate Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Technology-focused placeholder text for products, platforms, systems, infrastructure and development.", action: "Generate Tech Ipsum" },
-    { id: "ai", title: "AI Ipsum", description: "AI-themed placeholder text for models, data, agents, automation and machine learning.", action: "Generate AI Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Design-focused placeholder text for typography, layouts, components, grids and creative workflows.", action: "Generate Design Ipsum" },
-    { id: "fashion", title: "Fashion Ipsum", description: "Fashion placeholder text for collections, fabrics, silhouettes, styling and editorial concepts.", action: "Generate Fashion Ipsum" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Apocalyptic placeholder text with zombies, hordes, shelters, abandoned cities and survival.", action: "Generate Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Business-focused placeholder text for dashboards, reports, presentations and B2B products. Includes concepts related to strategy, KPIs, stakeholders, processes, growth and business operations.", action: "Generate Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Placeholder text for software, digital products and technical interfaces. Uses terminology related to cloud, APIs, infrastructure, development, deployment, systems and architecture.", action: "Generate Tech Ipsum" },
+    { id: "ai", title: "AI Ipsum", description: "Placeholder text focused on artificial intelligence and machine learning. Includes models, prompts, datasets, agents, automation, training, inference and data-driven workflows.", action: "Generate AI Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Placeholder text for mockups, portfolios and creative projects. Uses terminology related to UI, typography, layout, components, design systems, branding and creative processes.", action: "Generate Design Ipsum" },
+    { id: "fashion", title: "Fashion Ipsum", description: "Placeholder text for lookbooks, fashion e-commerce and editorial content. Includes collections, fabrics, silhouettes, styling, materials, campaigns and creative direction.", action: "Generate Fashion Ipsum" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Placeholder text for games, concepts and post-apocalyptic projects. Zombies, hordes, shelters, abandoned cities, survival and resources make mockups feel more immersive.", action: "Generate Zombie Ipsum" },
   ],
 };
 

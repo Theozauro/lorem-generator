@@ -782,6 +782,8 @@ button:disabled { cursor: not-allowed; }
   .consent-actions button:last-child { order: 3; }
 }
 @media (max-width: 350px) {
+  .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button { gap: 2px; padding-inline: 2px; }
+  .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button:last-child { flex: 1.1; }
   .site-shell:is([lang="nl"], [lang="nl-NL"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell[lang="en"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell[lang="es"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
@@ -797,6 +799,19 @@ button:disabled { cursor: not-allowed; }
   .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr); }
   .themed-controls-grid > .layout-amounts, .themed-controls-grid > .precision-amount { grid-column: 1 / -1; grid-row: 3; }
   .themed-controls-grid > .presets { grid-column: 1 / -1; grid-row: 4; }
+}
+@media (max-width: 400px) {
+  .site-shell:is([lang="tr"], [lang="hu"]) .unit-tabs { height: 44px !important; }
+  .site-shell:is([lang="tr"], [lang="hu"]) .unit-tab:first-child { height: 42px !important; overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.15; }
+  .site-shell:is([lang="tr"], [lang="hu"]) .classic-controls-grid { grid-template-columns: minmax(0, 1fr); }
+  .site-shell:is([lang="tr"], [lang="hu"]) .classic-controls-grid > .unit-control { grid-column: 1; grid-row: 1; }
+  .site-shell:is([lang="tr"], [lang="hu"]) .classic-controls-grid > .layout-amounts,
+  .site-shell:is([lang="tr"], [lang="hu"]) .classic-controls-grid > .precision-amount { grid-column: 1; grid-row: 2; border-left: 0 !important; border-bottom: 1px solid var(--grid); }
+  .site-shell:is([lang="tr"], [lang="hu"]) .classic-controls-grid > .presets { grid-column: 1; grid-row: 3; border-left: 0 !important; }
+}
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .site-shell:is([lang="tr"], [lang="hu"]) .unit-tabs { height: 44px !important; }
+  .site-shell:is([lang="tr"], [lang="hu"]) .unit-tab:first-child { height: 42px !important; overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.15; }
 }
 @media (min-width: 351px) and (max-width: 400px) {
   .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab { font-size: 8.5px !important; padding-inline: 2px !important; height: 44px !important; }

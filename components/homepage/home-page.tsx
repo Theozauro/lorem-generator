@@ -16,6 +16,7 @@ import { EnglishHomepageEditorial, englishHomepageFaqItems } from "./english-edi
 import { GermanHomepageEditorial, germanHomepageFaqItems, SpanishHomepageEditorial, spanishHomepageFaqItems } from "./spanish-german-editorial";
 import { BrazilianPortugueseHomepageEditorial, brazilianPortugueseHomepageFaqItems, FrenchHomepageEditorial, frenchHomepageFaqItems } from "./french-portuguese-editorial";
 import { DutchHomepageEditorial, PolishHomepageEditorial, dutchHomepageFaqItems, polishHomepageFaqItems } from "./dutch-polish-editorial";
+import { HungarianHomepageEditorial, TurkishHomepageEditorial, hungarianHomepageFaqItems, turkishHomepageFaqItems } from "./turkish-hungarian-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -361,7 +362,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       {(locale === "es" || locale === "de") && (locale === "es" ? <SpanishHomepageEditorial /> : <GermanHomepageEditorial />)}
       {(locale === "fr" || locale === "pt-BR") && (locale === "fr" ? <FrenchHomepageEditorial /> : <BrazilianPortugueseHomepageEditorial />)}
       {(locale === "nl-NL" || locale === "pl") && (locale === "nl-NL" ? <DutchHomepageEditorial /> : <PolishHomepageEditorial />)}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : locale === "nl-NL" ? dutchHomepageFaqItems : locale === "pl" ? polishHomepageFaqItems : undefined} />
+      {(locale === "tr" || locale === "hu") && (locale === "tr" ? <TurkishHomepageEditorial /> : <HungarianHomepageEditorial />)}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : locale === "nl-NL" ? dutchHomepageFaqItems : locale === "pl" ? polishHomepageFaqItems : locale === "tr" ? turkishHomepageFaqItems : locale === "hu" ? hungarianHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

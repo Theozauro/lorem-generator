@@ -782,6 +782,7 @@ button:disabled { cursor: not-allowed; }
   .consent-actions button:last-child { order: 3; }
 }
 @media (max-width: 350px) {
+  .site-shell:is([lang="nl"], [lang="nl-NL"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell[lang="en"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell[lang="es"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }

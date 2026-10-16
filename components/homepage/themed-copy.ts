@@ -133,12 +133,12 @@ export const dutchThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Nederlands", secondary: "English" },
   exploreTitle: "ONTDEK DE THEMA'S",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Opvultekst voor bedrijven, strategie, processen en zakelijke communicatie.", action: "Genereer Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Opvultekst geïnspireerd op digitale producten, platforms, systemen, infrastructuur en ontwikkeling.", action: "Genereer Tech Ipsum" },
-    { id: "ai", title: "AI Ipsum", description: "Opvultekst over kunstmatige intelligentie, modellen, data, agents, automatisering en machine learning.", action: "Genereer AI Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Opvultekst voor typografie, layouts, componenten, grids en creatieve processen.", action: "Genereer Design Ipsum" },
-    { id: "fashion", title: "Mode Ipsum", description: "Opvultekst voor collecties, materialen, silhouetten, styling en redactionele concepten.", action: "Genereer Mode Ipsum" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Apocalyptische opvultekst met zombies, hordes, schuilplaatsen, verlaten steden en overleving.", action: "Genereer Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Placeholdertekst met zakelijke terminologie voor dashboards, rapporten, presentaties en B2B-producten. Bevat begrippen rond strategie, KPI’s, stakeholders, processen, groei en bedrijfsvoering.", action: "Genereer Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Placeholdertekst voor software, digitale producten en technische interfaces. Gebruikt termen rond cloud, API’s, infrastructuur, ontwikkeling, deployment, systemen en architectuur.", action: "Genereer Tech Ipsum" },
+    { id: "ai", title: "AI Ipsum", description: "Placeholdertekst rond kunstmatige intelligentie en machine learning. Bevat modellen, prompts, datasets, agents, automatisering, training, inferentie en datagedreven workflows.", action: "Genereer AI Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Placeholdertekst voor mockups, portfolio’s en creatieve projecten. Gebruikt termen rond UI, typografie, layout, componenten, design systems, branding en creatieve processen.", action: "Genereer Design Ipsum" },
+    { id: "fashion", title: "Mode Ipsum", description: "Placeholdertekst voor lookbooks, fashion e-commerce en redactionele content. Bevat collecties, stoffen, silhouetten, styling, materialen, campagnes en creative direction.", action: "Genereer Mode Ipsum" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Placeholdertekst voor games, concepten en post-apocalyptische projecten. Zombies, hordes, schuilplaatsen, verlaten steden, overleving en middelen maken mockups meeslepender.", action: "Genereer Zombie Ipsum" },
   ],
 };
 

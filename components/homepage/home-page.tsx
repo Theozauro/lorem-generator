@@ -15,6 +15,7 @@ import { ItalianHomepageEditorial, italianHomepageFaqItems } from "./italian-edi
 import { EnglishHomepageEditorial, englishHomepageFaqItems } from "./english-editorial";
 import { GermanHomepageEditorial, germanHomepageFaqItems, SpanishHomepageEditorial, spanishHomepageFaqItems } from "./spanish-german-editorial";
 import { BrazilianPortugueseHomepageEditorial, brazilianPortugueseHomepageFaqItems, FrenchHomepageEditorial, frenchHomepageFaqItems } from "./french-portuguese-editorial";
+import { DutchHomepageEditorial, PolishHomepageEditorial, dutchHomepageFaqItems, polishHomepageFaqItems } from "./dutch-polish-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -359,7 +360,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       {locale === "en" && <EnglishHomepageEditorial />}
       {(locale === "es" || locale === "de") && (locale === "es" ? <SpanishHomepageEditorial /> : <GermanHomepageEditorial />)}
       {(locale === "fr" || locale === "pt-BR") && (locale === "fr" ? <FrenchHomepageEditorial /> : <BrazilianPortugueseHomepageEditorial />)}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : undefined} />
+      {(locale === "nl-NL" || locale === "pl") && (locale === "nl-NL" ? <DutchHomepageEditorial /> : <PolishHomepageEditorial />)}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : locale === "nl-NL" ? dutchHomepageFaqItems : locale === "pl" ? polishHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

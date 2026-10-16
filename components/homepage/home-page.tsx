@@ -13,6 +13,7 @@ import type { HomepageCopy, HomepageLocale } from "./homepage-copy";
 import { ExperienceHeader } from "./italian-experience-header";
 import { ItalianHomepageEditorial, italianHomepageFaqItems } from "./italian-editorial";
 import { EnglishHomepageEditorial, englishHomepageFaqItems } from "./english-editorial";
+import { GermanHomepageEditorial, germanHomepageFaqItems, SpanishHomepageEditorial, spanishHomepageFaqItems } from "./spanish-german-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -355,7 +356,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       <section className="guide-section" aria-labelledby="guide-title"><div className="guide-heading"><span className="eyebrow">{copy.sections.guideEyebrow}</span><h2 id="guide-title">{copy.sections.guideTitle}</h2></div><div className="guide-grid">{copy.sections.guide.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div></section></>}
       {locale === "it" && <ItalianHomepageEditorial />}
       {locale === "en" && <EnglishHomepageEditorial />}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : undefined} />
+      {(locale === "es" || locale === "de") && (locale === "es" ? <SpanishHomepageEditorial /> : <GermanHomepageEditorial />)}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

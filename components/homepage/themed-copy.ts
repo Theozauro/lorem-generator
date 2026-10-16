@@ -301,12 +301,12 @@ export const spanishThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Español", secondary: "English" },
   exploreTitle: "Explora los temas",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Texto de prueba profesional para empresa, estrategia, operaciones y comunicación corporativa.", action: "Generar Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Texto de prueba tecnológico para productos, plataformas, sistemas, infraestructura y desarrollo.", action: "Generar Tech Ipsum" },
-    { id: "ai", title: "IA Ipsum", description: "Texto de prueba sobre inteligencia artificial, modelos, datos, agentes, automatización y aprendizaje automático.", action: "Generar IA Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Texto de prueba para tipografía, layouts, componentes, retículas y procesos creativos.", action: "Generar Ipsum de diseño" },
-    { id: "fashion", title: "Fashion Ipsum", description: "Texto de prueba para colecciones, tejidos, siluetas, estilismo y conceptos editoriales.", action: "Generar Ipsum de moda" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Texto de prueba apocalíptico con zombis, hordas, refugios, ciudades abandonadas y supervivencia.", action: "Generar Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Texto de prueba con terminología empresarial para dashboards, informes, presentaciones y productos B2B. Incluye conceptos relacionados con estrategia, KPI, stakeholders, procesos, crecimiento y operaciones.", action: "Generar Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Texto de prueba para software, productos digitales e interfaces técnicas. Utiliza términos relacionados con cloud, API, infraestructura, desarrollo, despliegue, sistemas y arquitectura.", action: "Generar Tech Ipsum" },
+    { id: "ai", title: "IA Ipsum", description: "Texto de prueba centrado en inteligencia artificial y machine learning. Incluye modelos, prompts, datasets, agentes, automatización, entrenamiento, inferencia y flujos basados en datos.", action: "Generar IA Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Texto de prueba para mockups, portfolios y proyectos creativos. Utiliza términos relacionados con UI, tipografía, layout, componentes, design systems, branding y procesos creativos.", action: "Generar Ipsum de diseño" },
+    { id: "fashion", title: "Fashion Ipsum", description: "Texto de prueba para lookbooks, e-commerce de moda y contenido editorial. Incluye colecciones, tejidos, siluetas, styling, materiales, campañas y dirección creativa.", action: "Generar Ipsum de moda" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Texto de prueba para videojuegos, conceptos y proyectos postapocalípticos. Zombies, hordas, refugios, ciudades abandonadas, supervivencia y recursos ayudan a crear mockups más inmersivos.", action: "Generar Zombie Ipsum" },
   ],
 };
 
@@ -323,11 +323,11 @@ export const germanThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Deutsch", secondary: "English" },
   exploreTitle: "Themen entdecken",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Professioneller Blindtext für Unternehmen, Strategie, Prozesse und Unternehmenskommunikation.", action: "Corporate Ipsum generieren" },
-    { id: "tech", title: "Tech Ipsum", description: "Technischer Blindtext für Produkte, Plattformen, Systeme, Infrastruktur und Entwicklung.", action: "Tech Ipsum generieren" },
-    { id: "ai", title: "KI Ipsum", description: "Blindtext rund um künstliche Intelligenz, Modelle, Daten, Agenten, Automatisierung und maschinelles Lernen.", action: "KI Ipsum generieren" },
-    { id: "design", title: "Design Ipsum", description: "Blindtext für Typografie, Layouts, Komponenten, Rastersysteme und kreative Prozesse.", action: "Design Ipsum generieren" },
-    { id: "fashion", title: "Fashion Ipsum", description: "Blindtext für Kollektionen, Stoffe, Silhouetten, Styling und redaktionelle Konzepte.", action: "Fashion Ipsum generieren" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Apokalyptischer Blindtext mit Zombies, Horden, Zufluchtsorten, verlassenen Städten und Überleben.", action: "Zombie Ipsum generieren" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Blindtext mit Business-Terminologie für Dashboards, Reports, Präsentationen und B2B-Produkte. Enthält Begriffe rund um Strategie, KPIs, Stakeholder, Prozesse, Wachstum und operative Abläufe.", action: "Corporate Ipsum generieren" },
+    { id: "tech", title: "Tech Ipsum", description: "Blindtext für Software, digitale Produkte und technische Interfaces. Verwendet Begriffe zu Cloud, APIs, Infrastruktur, Entwicklung, Deployment, Systemen und Architektur.", action: "Tech Ipsum generieren" },
+    { id: "ai", title: "KI Ipsum", description: "Blindtext rund um künstliche Intelligenz und Machine Learning. Enthält Modelle, Prompts, Datensätze, Agents, Automatisierung, Training, Inferenz und datengetriebene Workflows.", action: "KI Ipsum generieren" },
+    { id: "design", title: "Design Ipsum", description: "Blindtext für Mockups, Portfolios und kreative Projekte. Verwendet Begriffe zu UI, Typografie, Layout, Komponenten, Designsystemen, Branding und kreativen Prozessen.", action: "Design Ipsum generieren" },
+    { id: "fashion", title: "Fashion Ipsum", description: "Blindtext für Lookbooks, Fashion-E-Commerce und redaktionelle Inhalte. Enthält Kollektionen, Stoffe, Silhouetten, Styling, Materialien, Kampagnen und Creative Direction.", action: "Fashion Ipsum generieren" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Blindtext für Games, Konzepte und postapokalyptische Projekte. Zombies, Horden, Schutzräume, verlassene Städte, Überleben und Ressourcen machen Mockups atmosphärischer und realistischer.", action: "Zombie Ipsum generieren" },
   ],
 };

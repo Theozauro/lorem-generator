@@ -59,12 +59,12 @@ export const frenchThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Français", secondary: "English" },
   exploreTitle: "EXPLOREZ LES THÈMES",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Texte de substitution professionnel pour l’entreprise, la stratégie, les opérations et la communication corporate.", action: "Générer Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Texte de substitution inspiré des produits numériques, plateformes, systèmes, infrastructures et du développement.", action: "Générer Tech Ipsum" },
-    { id: "ai", title: "IA Ipsum", description: "Texte de substitution autour de l’intelligence artificielle, des modèles, des données, des agents, de l’automatisation et du machine learning.", action: "Générer IA Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Texte de substitution pour la typographie, les mises en page, les composants, les grilles et les processus créatifs.", action: "Générer Design Ipsum" },
-    { id: "fashion", title: "Ipsum Mode", description: "Texte de substitution pour les collections, matières, silhouettes, styles et concepts éditoriaux.", action: "Générer un Ipsum Mode" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Texte de substitution apocalyptique avec zombies, hordes, refuges, villes abandonnées et survie.", action: "Générer Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Texte de substitution avec une terminologie business pour dashboards, rapports, présentations et produits B2B. Inclut des notions liées à la stratégie, aux KPI, aux parties prenantes, aux processus, à la croissance et aux opérations.", action: "Générer Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Texte de substitution pour logiciels, produits numériques et interfaces techniques. Utilise des termes liés au cloud, aux API, à l’infrastructure, au développement, au déploiement, aux systèmes et à l’architecture.", action: "Générer Tech Ipsum" },
+    { id: "ai", title: "IA Ipsum", description: "Texte de substitution consacré à l’intelligence artificielle et au machine learning. Inclut modèles, prompts, jeux de données, agents, automatisation, entraînement, inférence et workflows pilotés par les données.", action: "Générer IA Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Texte de substitution pour mockups, portfolios et projets créatifs. Utilise des termes liés à l’UI, à la typographie, à la mise en page, aux composants, aux design systems, au branding et aux processus créatifs.", action: "Générer Design Ipsum" },
+    { id: "fashion", title: "Ipsum Mode", description: "Texte de substitution pour lookbooks, e-commerce mode et contenus éditoriaux. Inclut collections, tissus, silhouettes, styling, matières, campagnes et direction créative.", action: "Générer un Ipsum Mode" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Texte de substitution pour jeux, concepts et projets post-apocalyptiques. Zombies, hordes, refuges, villes abandonnées, survie et ressources rendent les mockups plus immersifs.", action: "Générer Zombie Ipsum" },
   ],
 };
 
@@ -96,12 +96,12 @@ export const brazilianPortugueseThemedPageConfig: ThemedPageConfig = {
   contentLanguageNames: { primary: "Português do Brasil", secondary: "English" },
   exploreTitle: "EXPLORE OS TEMAS",
   cards: [
-    { id: "corporate", title: "Corporate Ipsum", description: "Texto de preenchimento profissional para empresas, estratégia, operações e comunicação corporativa.", action: "Gerar Corporate Ipsum" },
-    { id: "tech", title: "Tech Ipsum", description: "Texto de preenchimento inspirado em produtos digitais, plataformas, sistemas, infraestrutura e desenvolvimento.", action: "Gerar Tech Ipsum" },
-    { id: "ai", title: "IA Ipsum", description: "Texto de preenchimento sobre inteligência artificial, modelos, dados, agentes, automação e aprendizado de máquina.", action: "Gerar IA Ipsum" },
-    { id: "design", title: "Design Ipsum", description: "Texto de preenchimento para tipografia, layouts, componentes, grids e processos criativos.", action: "Gerar Design Ipsum" },
-    { id: "fashion", title: "Ipsum de Moda", description: "Texto de preenchimento para coleções, tecidos, silhuetas, styling e conceitos editoriais.", action: "Gerar Ipsum de Moda" },
-    { id: "zombie", title: "Zombie Ipsum", description: "Texto de preenchimento apocalíptico com zumbis, hordas, abrigos, cidades abandonadas e sobrevivência.", action: "Gerar Zombie Ipsum" },
+    { id: "corporate", title: "Corporate Ipsum", description: "Texto de preenchimento com terminologia de negócios para dashboards, relatórios, apresentações e produtos B2B. Inclui conceitos relacionados a estratégia, KPI, stakeholders, processos, crescimento e operações.", action: "Gerar Corporate Ipsum" },
+    { id: "tech", title: "Tech Ipsum", description: "Texto de preenchimento para software, produtos digitais e interfaces técnicas. Usa termos ligados a cloud, API, infraestrutura, desenvolvimento, deploy, sistemas e arquitetura.", action: "Gerar Tech Ipsum" },
+    { id: "ai", title: "IA Ipsum", description: "Texto de preenchimento focado em inteligência artificial e machine learning. Inclui modelos, prompts, datasets, agentes, automação, treinamento, inferência e fluxos orientados por dados.", action: "Gerar IA Ipsum" },
+    { id: "design", title: "Design Ipsum", description: "Texto de preenchimento para mockups, portfólios e projetos criativos. Usa termos relacionados a UI, tipografia, layout, componentes, design systems, branding e processos criativos.", action: "Gerar Design Ipsum" },
+    { id: "fashion", title: "Ipsum de Moda", description: "Texto de preenchimento para lookbooks, e-commerce de moda e conteúdo editorial. Inclui coleções, tecidos, silhuetas, styling, materiais, campanhas e direção criativa.", action: "Gerar Ipsum de Moda" },
+    { id: "zombie", title: "Zombie Ipsum", description: "Texto de preenchimento para jogos, conceitos e projetos pós-apocalípticos. Zumbis, hordas, abrigos, cidades abandonadas, sobrevivência e recursos ajudam a criar mockups mais imersivos.", action: "Gerar Zombie Ipsum" },
   ],
 };
 

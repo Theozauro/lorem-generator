@@ -784,6 +784,10 @@ button:disabled { cursor: not-allowed; }
 @media (max-width: 350px) {
   .site-shell[lang="en"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
   .site-shell[lang="es"] .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tabs { grid-template-columns: 1.7fr 1.2fr 1fr; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab { height: 44px !important; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab:first-child { overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.15; }
   .layout-amounts .field-label { font-size: 9px; }
   .site-shell[lang="en"] .controls-grid.classic-controls-grid { grid-template-columns: minmax(0, 1fr); }
   .site-shell[lang="en"] .classic-controls-grid > .layout-amounts,
@@ -792,4 +796,9 @@ button:disabled { cursor: not-allowed; }
   .controls-grid.themed-controls-grid { grid-template-columns: minmax(0, 1fr); }
   .themed-controls-grid > .layout-amounts, .themed-controls-grid > .precision-amount { grid-column: 1 / -1; grid-row: 3; }
   .themed-controls-grid > .presets { grid-column: 1 / -1; grid-row: 4; }
+}
+@media (min-width: 351px) and (max-width: 400px) {
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab { font-size: 8.5px !important; padding-inline: 2px !important; height: 44px !important; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tabs { grid-template-columns: 1.7fr 1.2fr 1fr; }
+  .site-shell:is([lang="fr"], [lang="pt-BR"]) .unit-tab:first-child { overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.15; }
 }

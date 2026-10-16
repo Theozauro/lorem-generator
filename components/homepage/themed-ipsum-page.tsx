@@ -17,6 +17,7 @@ import { TurkishThemedEditorial } from "./turkish-themed-editorial";
 import { HungarianThemedEditorial } from "./hungarian-themed-editorial";
 import { EnglishThemedEditorial } from "./english-editorial";
 import { GermanThemedEditorial, SpanishThemedEditorial } from "./spanish-german-editorial";
+import { BrazilianPortugueseThemedEditorial, FrenchThemedEditorial } from "./french-portuguese-editorial";
 
 type MainMode = ThemedMode;
 type ThemedTopic = ThemedTheme;
@@ -62,7 +63,7 @@ function ThemedCopyActions({ text, onRegenerate, copy }: { text: string; onRegen
 
 export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   const copy = config.copy;
-  const editorialStandard = config.locale === "en" || config.locale === "it" || config.locale === "es" || config.locale === "de" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu";
+  const editorialStandard = config.locale === "en" || config.locale === "it" || config.locale === "es" || config.locale === "de" || config.locale === "fr" || config.locale === "pt-BR" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu";
   const [topic, setTopic] = useState<ThemedTopic>("corporate");
   const [contentLanguage, setContentLanguage] = useState<ThemedLanguage>(config.defaultContentLanguage);
   const [mode, setMode] = useState<MainMode>("layout");
@@ -163,6 +164,8 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
       {config.locale === "en" && <EnglishThemedEditorial />}
       {config.locale === "es" && <SpanishThemedEditorial />}
       {config.locale === "de" && <GermanThemedEditorial />}
+      {config.locale === "fr" && <FrenchThemedEditorial />}
+      {config.locale === "pt-BR" && <BrazilianPortugueseThemedEditorial />}
     </div><HomepageFooter copy={copy} />
   </main>;
 }

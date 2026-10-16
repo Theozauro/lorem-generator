@@ -14,6 +14,7 @@ import { ExperienceHeader } from "./italian-experience-header";
 import { ItalianHomepageEditorial, italianHomepageFaqItems } from "./italian-editorial";
 import { EnglishHomepageEditorial, englishHomepageFaqItems } from "./english-editorial";
 import { GermanHomepageEditorial, germanHomepageFaqItems, SpanishHomepageEditorial, spanishHomepageFaqItems } from "./spanish-german-editorial";
+import { BrazilianPortugueseHomepageEditorial, brazilianPortugueseHomepageFaqItems, FrenchHomepageEditorial, frenchHomepageFaqItems } from "./french-portuguese-editorial";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -357,7 +358,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       {locale === "it" && <ItalianHomepageEditorial />}
       {locale === "en" && <EnglishHomepageEditorial />}
       {(locale === "es" || locale === "de") && (locale === "es" ? <SpanishHomepageEditorial /> : <GermanHomepageEditorial />)}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : undefined} />
+      {(locale === "fr" || locale === "pt-BR") && (locale === "fr" ? <FrenchHomepageEditorial /> : <BrazilianPortugueseHomepageEditorial />)}
+      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

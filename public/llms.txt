@@ -1,0 +1,18 @@
+# Lorem Ipsum Generator
+
+> Browser-based placeholder-text tools for design mockups, layouts, and prototypes.
+
+Classic Lorem Ipsum generates neutral pseudo-Latin text. Themed Ipsum uses topic-specific vocabulary from six themes: Corporate, Tech, AI, Design, Fashion, and Zombie.
+
+Both generators support exact counts for words and paragraphs, sentences, or characters. Results can be copied as plain text or HTML paragraphs. Text generation runs locally in the browser.
+
+The interface and usage guides are available in English, Italian, Spanish, German, French, Brazilian Portuguese, Dutch, Polish, Turkish, and Hungarian. Themed text can be generated in these ten languages.
+
+## Tools
+
+- [Classic Lorem Ipsum](https://lorem-generator.com/): Neutral pseudo-Latin generator, sizing tools, and usage guides.
+- [Themed Ipsum](https://lorem-generator.com/themed-lorem-ipsum/): Topic-based generator, theme cards, a Classic vs Themed comparison, quantity guidance, and FAQ.
+
+## Optional
+
+- [Sitemap](https://lorem-generator.com/sitemap.xml): Index of the ten classic and ten themed language variants.

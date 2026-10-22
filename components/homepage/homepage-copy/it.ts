@@ -24,7 +24,7 @@ export const itHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Modalità",
     "modeLabel": "Modalità di generazione",
-    "layout": "Parole + paragrafi",
+    "layout": "Parole",
     "characters": "Caratteri",
     "sentences": "Frasi",
     "quickWords": "PRESET",
@@ -56,7 +56,7 @@ export const itHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Avviso su privacy e cookie",
     "title": "Preferenze sulla privacy",
-    "intro": "Usiamo la memoria locale del browser solo per le preferenze essenziali. Analytics resta disattivato finché non lo abiliti.",
+    "intro": "Utilizziamo solo gli strumenti tecnici necessari al funzionamento del sito. Le statistiche di utilizzo vengono raccolte esclusivamente con il tuo consenso. Puoi accettare o rifiutare il tracciamento facoltativo.",
     "necessary": "Necessari",
     "necessaryNote": "Tema e preferenze del consenso.",
     "analytics": "Analytics",

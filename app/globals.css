@@ -120,6 +120,15 @@ button:disabled { cursor: not-allowed; }
 .site-shell[lang="it"] .tool-card button[aria-pressed="true"] { border-color: var(--grid) !important; }
 .site-shell[lang="it"] .action-button.initial-generate { background: var(--orange) !important; color: #fff !important; }
 .site-shell[lang="it"] .action-button.initial-generate:hover { background: var(--muted) !important; color: var(--ink) !important; }
+.site-shell[lang="it"] .unit-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.site-shell[lang="it"] .unit-tab { text-align: center; }
+.site-shell[lang="it"] .italian-copy-label { display: inline-grid; white-space: nowrap; }
+.site-shell[lang="it"] .italian-copy-label > span { grid-area: 1 / 1; }
+.site-shell[lang="it"] .italian-copy-text-label { min-width: 7ch; }
+.site-shell[lang="it"] .italian-copy-html-label { min-width: 12ch; }
+.site-shell[lang="it"] .italian-copy-success { background: #242424 !important; color: #fff !important; }
+.site-shell[lang="it"] .italian-copy-html-success { background: var(--muted) !important; color: var(--ink) !important; }
+.site-shell[lang="it"] .italian-generation-error { margin: 0; border-left: 3px solid var(--orange); padding: 9px 12px; color: var(--ink); font-size: 13px; line-height: 1.5; }
 .page-content, .site-footer { width: min(100% - 96px, 1200px); margin-inline: auto; }
 .eyebrow, .field-label {
   font: 700 11px/1.25 var(--font-mono);
@@ -283,6 +292,10 @@ button:disabled { cursor: not-allowed; }
   border: 2px solid var(--grid);
   border-radius: 11px;
   background: var(--paper);
+}
+:root[data-theme="dark"] .site-shell[lang="it"] .generator-panel { --paper: var(--background); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .site-shell[lang="it"] .generator-panel { --paper: var(--background); }
 }
 .controls-grid {
   display: grid;
@@ -715,6 +728,9 @@ button:disabled { cursor: not-allowed; }
   .themed-topic-button { min-height: 52px; }
   .themed-topic-button { scroll-snap-align: start; }
   .themed-generator-panel .reading-area { min-height: 190px; }
+  .site-shell[lang="it"] .result-actions .action-button { min-width: 0; gap: 5px; padding-inline: 6px; }
+  .site-shell[lang="it"] .result-actions .action-button:nth-child(2) { flex: 1.4; }
+  .site-shell[lang="it"] .result-actions .action-button:last-child { flex: 1.2; }
   .themed-explore-section { padding-bottom: 52px; }
   .themed-explore-grid { grid-template-columns: 1fr; }
   .themed-explore-card { min-height: 0; padding: 20px; }
@@ -783,6 +799,8 @@ button:disabled { cursor: not-allowed; }
   .consent-actions button:last-child { order: 3; }
 }
 @media (max-width: 350px) {
+  .site-shell[lang="it"] .result-actions .action-button { gap: 3px; padding-inline: 3px; font-size: 9px; }
+  .site-shell[lang="it"] .italian-copy-html-label { min-width: 11ch; }
   .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button { gap: 2px; padding-inline: 2px; }
   .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button:last-child { flex: 1.1; }
   .site-shell:is([lang="nl"], [lang="nl-NL"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }

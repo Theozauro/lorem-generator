@@ -12,7 +12,8 @@ The interface and usage guides are available in English, Italian, Spanish, Germa
 
 - [Classic Lorem Ipsum](https://lorem-generator.com/): Neutral pseudo-Latin generator, sizing tools, and usage guides.
 - [Themed Ipsum](https://lorem-generator.com/themed-lorem-ipsum/): Topic-based generator, theme cards, a Classic vs Themed comparison, quantity guidance, and FAQ.
+- [Asian Languages Text Generator](https://lorem-generator.com/it/testo-segnaposto-lingue/): Exact-count placeholder text in Japanese, Simplified and Traditional Chinese, and Korean.
 
 ## Optional
 
-- [Sitemap](https://lorem-generator.com/sitemap.xml): Index of the ten classic and ten themed language variants.
+- [Sitemap](https://lorem-generator.com/sitemap.xml): Index of the public Classic, Themed, and Italian Asian Languages pages.

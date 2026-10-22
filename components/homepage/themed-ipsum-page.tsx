@@ -19,6 +19,7 @@ import { HungarianThemedEditorial } from "./hungarian-themed-editorial";
 import { EnglishThemedEditorial } from "./english-editorial";
 import { GermanThemedEditorial, SpanishThemedEditorial } from "./spanish-german-editorial";
 import { BrazilianPortugueseThemedEditorial, FrenchThemedEditorial } from "./french-portuguese-editorial";
+import { generateItalianThemedIpsum, italianParagraphLimit } from "./italian-generator-paragraphs";
 
 type MainMode = ThemedMode;
 type ThemedTopic = ThemedTheme;
@@ -36,28 +37,48 @@ const themedTopics: Array<{ id: ThemedTopic; label: string; icon: LucideIcon }> 
   { id: "zombie", label: "Zombie", icon: Skull },
 ];
 
-function htmlForCopy(text: string) {
+function htmlForCopy(text: string, language?: string) {
   const escape = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] ?? character);
-  return text.split(/\n\n+/).filter(Boolean).map(paragraph => `<p>${escape(paragraph).replace(/\n/g, "<br />")}</p>`).join("\n");
+  const lang = language ? ` lang="${language}"` : "";
+  return text.split(/\n\n+/).filter(Boolean).map(paragraph => `<p${lang}>${escape(paragraph).replace(/\n/g, "<br />")}</p>`).join("\n");
 }
 
-function ThemedCopyActions({ text, onRegenerate, copy }: { text: string; onRegenerate: () => void; copy: HomepageCopy }) {
+function ThemedCopyActions({ text, onRegenerate, copy, italianFeedback = false, contentLanguage = "en" }: { text: string; onRegenerate: () => void; copy: HomepageCopy; italianFeedback?: boolean; contentLanguage?: string }) {
   const [copied, setCopied] = useState<"text" | "html" | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
-
   async function copyValue(kind: "text" | "html") {
-    const value = kind === "text" ? text : htmlForCopy(text);
-    try { await navigator.clipboard.writeText(value); }
-    catch { const field = document.createElement("textarea"); field.value = value; document.body.appendChild(field); field.select(); document.execCommand("copy"); field.remove(); }
+    const value = kind === "text" ? text : htmlForCopy(text, italianFeedback ? contentLanguage : undefined);
+    try {
+      if (kind === "html" && italianFeedback && "ClipboardItem" in window && navigator.clipboard?.write) {
+        await navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([value], { type: "text/html" }), "text/plain": new Blob([text], { type: "text/plain" }) })]);
+      } else if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(value);
+      else {
+        const field = document.createElement("textarea"); field.value = value; document.body.appendChild(field); field.select();
+        const copiedSuccessfully = document.execCommand("copy"); field.remove();
+        if (italianFeedback && !copiedSuccessfully) throw new Error("Copia non disponibile.");
+      }
+    } catch {
+      if (italianFeedback) {
+        try {
+          const field = document.createElement("textarea"); field.value = value; document.body.appendChild(field); field.select();
+          const copiedSuccessfully = document.execCommand("copy"); field.remove();
+          if (!copiedSuccessfully) return;
+        } catch { return; }
+      } else {
+        const field = document.createElement("textarea"); field.value = value; document.body.appendChild(field); field.select(); document.execCommand("copy"); field.remove();
+      }
+    }
     setCopied(kind);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setCopied(null), 1800);
   }
 
+  const copyLabel = italianFeedback ? <span className="italian-copy-label italian-copy-text-label"><span>{copied === "text" ? copy.generator.copied : copy.generator.copy}</span></span> : copied === "text" ? copy.generator.copied : copy.generator.copy;
+  const htmlLabel = italianFeedback ? <span className="italian-copy-label italian-copy-html-label"><span>{copied === "html" ? "HTML copiato" : copy.generator.copyHtml}</span></span> : copied === "html" ? copy.generator.copied : copy.generator.copyHtml;
   return <div className="result-actions">
-    <Button type="button" variant="outline" className="action-button primary-copy" onClick={() => copyValue("text")}>{copied === "text" ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copied === "text" ? copy.generator.copied : copy.generator.copy}</Button>
-    <Button type="button" variant="outline" className="action-button secondary-action" onClick={() => copyValue("html")}>{copied === "html" ? <Check aria-hidden="true" /> : <Code2 aria-hidden="true" />}{copied === "html" ? copy.generator.copied : copy.generator.copyHtml}</Button>
+    <Button type="button" variant="outline" className={`action-button primary-copy${italianFeedback && copied === "text" ? " italian-copy-success" : ""}`} onClick={() => copyValue("text")}>{copied === "text" ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copyLabel}</Button>
+    <Button type="button" variant="outline" className={`action-button secondary-action${italianFeedback && copied === "html" ? " italian-copy-html-success" : ""}`} onClick={() => copyValue("html")}>{copied === "html" ? <Check aria-hidden="true" /> : <Code2 aria-hidden="true" />}{htmlLabel}</Button>
     <Button type="button" variant="outline" className="action-button secondary-action" onClick={onRegenerate}><RefreshCw aria-hidden="true" /> {copy.generator.regenerate}</Button>
   </div>;
 }
@@ -69,9 +90,9 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   const [contentLanguage, setContentLanguage] = useState<ThemedLanguage>(config.defaultContentLanguage);
   const [mode, setMode] = useState<MainMode>("layout");
   const [words, setWords] = useState(250);
-  const [paragraphs, setParagraphs] = useState(3);
+  const [paragraphs, setParagraphs] = useState(config.locale === "it" ? 1 : 3);
   const [wordsInput, setWordsInput] = useState("250");
-  const [paragraphsInput, setParagraphsInput] = useState("3");
+  const [paragraphsInput, setParagraphsInput] = useState(config.locale === "it" ? "1" : "3");
   const [amount, setAmount] = useState(300);
   const [variation, setVariation] = useState(0);
 
@@ -80,7 +101,12 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
     return () => { document.documentElement.lang = "en"; };
   }, [config.locale]);
 
-  const result = useMemo(() => generateThemedIpsum({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation }), [topic, contentLanguage, mode, words, paragraphs, amount, variation]);
+  const generated = useMemo(() => config.locale === "it"
+    ? generateItalianThemedIpsum({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation })
+    : { text: generateThemedIpsum({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation }), error: "" },
+  [config.locale, topic, contentLanguage, mode, words, paragraphs, amount, variation]);
+  const result = generated.text;
+  const generationError = generated.error;
   const resultStats = stats(result);
 
   function selectMode(next: MainMode) {
@@ -91,26 +117,26 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
     setWordsInput(value);
     if (value === "") return;
     const parsed = Number(value);
-    if (Number.isFinite(parsed)) setWords(Math.max(paragraphs, Math.min(4000, parsed)));
+    if (Number.isFinite(parsed)) setWords(config.locale === "it" ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed)));
   }
   function commitWords() {
     const parsed = Number(wordsInput);
-    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(paragraphs, Math.min(4000, parsed)) : words;
+    const next = Number.isFinite(parsed) && parsed > 0 ? (config.locale === "it" ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed))) : words;
     setWords(next); setWordsInput(String(next));
   }
   function updateParagraphs(value: string) {
     setParagraphsInput(value);
     if (value === "") return;
     const parsed = Number(value);
-    if (Number.isFinite(parsed)) setParagraphs(Math.max(1, Math.min(100, words, parsed)));
+    if (Number.isFinite(parsed)) setParagraphs(config.locale === "it" ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed)));
   }
   function commitParagraphs() {
     const parsed = Number(paragraphsInput);
-    const next = Number.isFinite(parsed) && parsed > 0 ? Math.max(1, Math.min(100, words, parsed)) : paragraphs;
+    const next = Number.isFinite(parsed) && parsed > 0 ? (config.locale === "it" ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed))) : paragraphs;
     setParagraphs(next); setParagraphsInput(String(next));
   }
   function setPresetWords(value: number) {
-    const next = Math.max(paragraphs, value);
+    const next = config.locale === "it" ? value : Math.max(paragraphs, value);
     setWords(next); setWordsInput(String(next));
   }
   function exploreTopic(next: ThemedTopic) {
@@ -144,14 +170,22 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
               </div>
             </div>}
             <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList>{modes.map(item => <TabsContent key={item} value={item} hidden aria-hidden="true" />)}</Tabs></div>
-            {mode === "layout" ? <div className="layout-amounts">
+            {config.locale === "it" ? <div className="layout-amounts italian-generator-amounts">
+              <div className="amount-control">
+                <label className="field-label" htmlFor={mode === "layout" ? "themed-word-amount" : "themed-amount"}>{mode === "layout" ? copy.generator.words : mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label>
+                {mode === "layout"
+                  ? <Input id="themed-word-amount" type="number" min={1} max={4000} value={wordsInput} onChange={event => updateWords(event.target.value)} onBlur={commitWords} />
+                  : <Input id="themed-amount" type="number" min={1} max={mode === "characters" ? 20000 : 100} value={amount} onChange={event => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(event.target.value) || 1)))} />}
+              </div>
+              <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="themed-paragraph-amount">{copy.generator.paragraphs}</label><Input id="themed-paragraph-amount" type="number" min={1} max={italianParagraphLimit(mode === "layout" ? "words" : mode, mode === "layout" ? words : amount)} value={paragraphsInput} onChange={event => updateParagraphs(event.target.value)} onBlur={commitParagraphs} /></div>
+            </div> : mode === "layout" ? <div className="layout-amounts">
               <div className="amount-control words-control"><label className="field-label" htmlFor="themed-word-amount">{copy.generator.words}</label><Input id="themed-word-amount" type="number" min={paragraphs} max={4000} value={wordsInput} onChange={event => updateWords(event.target.value)} onBlur={commitWords} /></div>
               <div className="amount-control paragraphs-control"><label className="field-label" htmlFor="themed-paragraph-amount">{copy.generator.paragraphs}</label><Input id="themed-paragraph-amount" type="number" min={1} max={Math.min(100, words)} value={paragraphsInput} onChange={event => updateParagraphs(event.target.value)} onBlur={commitParagraphs} /></div>
             </div> : <div className="amount-control precision-amount"><label className="field-label" htmlFor="themed-amount">{mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label><Input id="themed-amount" type="number" min="1" max={mode === "characters" ? 20000 : 100} value={amount} onChange={event => setAmount(Math.max(1, Math.min(mode === "characters" ? 20000 : 100, Number(event.target.value) || 1)))} /></div>}
             <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setAmount(value)}>{value}</Button>)}</div></div>
           </div>
-          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" role="region" aria-label={copy.generator.outputAria}>{result.split("\n\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div></div>
-          <div className="module-footer"><dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{resultStats.words}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{resultStats.characters}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{resultStats.charactersNoSpaces}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{resultStats.sentences}</dd></div></dl><ThemedCopyActions text={result} copy={copy} onRegenerate={() => setVariation(current => current + 1)} /></div>
+          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" lang={config.locale === "it" ? contentLanguage : undefined} role="region" aria-label={copy.generator.outputAria}>{result.split("\n\n").map((paragraph, index) => <p key={index} lang={config.locale === "it" ? contentLanguage : undefined}>{paragraph}</p>)}</div>{config.locale === "it" && generationError && <p className="italian-generation-error" role="alert">{generationError}</p>}</div>
+          <div className="module-footer"><dl className="stat-strip compact-stats"><div><dt>{copy.generator.stats.words}</dt><dd>{resultStats.words}</dd></div><div><dt>{copy.generator.stats.characters}</dt><dd>{resultStats.characters}</dd></div><div><dt>{copy.generator.stats.withoutSpaces}</dt><dd>{resultStats.charactersNoSpaces}</dd></div><div><dt>{copy.generator.stats.sentences}</dt><dd>{resultStats.sentences}</dd></div></dl><ThemedCopyActions key={`${variation}-${topic}-${contentLanguage}-${mode}-${words}-${paragraphs}-${amount}-${result}`} text={result} copy={copy} onRegenerate={() => setVariation(current => current + 1)} italianFeedback={config.locale === "it"} contentLanguage={contentLanguage} /></div>
         </div>
       </section>
       <section className="themed-explore-section" aria-labelledby="themed-explore-title">

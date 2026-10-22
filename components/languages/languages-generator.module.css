@@ -38,7 +38,7 @@
 .controls { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr) minmax(0, .9fr); border-bottom: 1px solid var(--grid); }
 .control { min-width: 0; padding: 18px; }
 .control + .control { border-left: 1px solid var(--grid); }
-.control input { width: 100%; border: 1px solid var(--grid); border-radius: 0; background: var(--paper); color: var(--ink); height: 39px; }
+.control input { width: 100%; border: 1px solid var(--grid); border-radius: 0; background: var(--paper); color: var(--ink); height: 39px; font-family: var(--font-mono); font-size: 17px; font-variant-numeric: tabular-nums; }
 .amounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .amounts > div { min-width: 0; }
 .modes, .presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--grid); }

@@ -6,7 +6,7 @@ import type { HomepageCopy } from "./homepage-copy";
 import type { ThemedPageLocale } from "./themed-copy";
 
 type ThemeChoice = "light" | "dark";
-type ExperienceSection = "classic" | "themed";
+type ExperienceSection = "classic" | "themed" | "languages";
 
 const localeOptions = [
   ["de", "Deutsch", "/de/"],
@@ -160,6 +160,12 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const labels = experience[locale];
+  const destinations: { section: ExperienceSection; href: string; label: string }[] = [
+    { section: "classic", href: labels.homePath, label: locale === "it" ? "Lorem Ipsum" : labels.classicLabel },
+    { section: "themed", href: labels.themedPath, label: labels.themedLabel },
+    ...(locale === "it" ? [{ section: "languages" as const, href: "/it/testo-segnaposto-lingue/", label: "Lingue asiatiche" }] : []),
+  ];
+  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "it") : localeOptions;
   const mobileNavigationId = `${locale}-mobile-navigation`;
 
   useEffect(() => {
@@ -199,6 +205,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   }
 
   function hrefForLocale(code: string, classicHref: string) {
+    if (active === "languages") return "/it/testo-segnaposto-lingue/";
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;
@@ -220,21 +227,19 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   return <header ref={headerRef} className="italian-experience-header">
     <a className="italian-header-logo" href={labels.homePath} aria-label={labels.classicLabel}><span className="italian-header-logo-mark" aria-hidden="true" /></a>
     <nav className="italian-experience-nav" aria-label={labels.navLabel}>
-      <a href={labels.homePath} aria-current={active === "classic" ? "page" : undefined}>{labels.classicLabel}</a>
-      <a href={labels.themedPath} aria-current={active === "themed" ? "page" : undefined}>{labels.themedLabel}</a>
+      {destinations.map(item => <a key={item.section} href={item.href} aria-current={active === item.section ? "page" : undefined}>{item.label}</a>)}
     </nav>
     <div className="header-actions italian-desktop-actions">
-      <details className="language-picker"><summary aria-label={copy.languageLabel}>{labels.languageName}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={hrefForLocale(code, href)} aria-current={code === locale ? "true" : undefined}>{label}</a>)}</div></details>
+      <details className="language-picker"><summary aria-label={copy.languageLabel}>{labels.languageName}</summary><div className="language-menu">{availableLocales.map(([code, label, href]) => <a key={code} href={hrefForLocale(code, href)} aria-current={code === locale ? "true" : undefined}>{label}</a>)}</div></details>
       <div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div>
     </div>
     <div className="italian-mobile-actions">
-      <details className="language-picker"><summary aria-label={copy.languageLabel}>{labels.languageName}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={hrefForLocale(code, href)} aria-current={code === locale ? "true" : undefined}>{label}</a>)}</div></details>
+      <details className="language-picker"><summary aria-label={copy.languageLabel}>{labels.languageName}</summary><div className="language-menu">{availableLocales.map(([code, label, href]) => <a key={code} href={hrefForLocale(code, href)} aria-current={code === locale ? "true" : undefined}>{label}</a>)}</div></details>
       <button className="italian-mobile-icon-button" type="button" onClick={() => selectTheme(currentThemeIsDark ? "light" : "dark")} aria-label={currentThemeIsDark ? labels.lightLabel : labels.darkLabel}>{currentThemeIsDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}</button>
       <button className="italian-mobile-icon-button" type="button" onClick={() => setMobileMenuOpen(open => !open)} aria-expanded={mobileMenuOpen} aria-controls={mobileNavigationId} aria-label={mobileMenuOpen ? labels.closeMenuLabel : labels.openMenuLabel}>{mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
     </div>
     <nav id={mobileNavigationId} className="italian-mobile-nav" aria-label={labels.mobileNavLabel} hidden={!mobileMenuOpen}>
-      <a href={labels.homePath} aria-current={active === "classic" ? "page" : undefined} onClick={closeMobileMenu}>{labels.classicLabel}</a>
-      <a href={labels.themedPath} aria-current={active === "themed" ? "page" : undefined} onClick={closeMobileMenu}>{labels.themedLabel}</a>
+      {destinations.map(item => <a key={item.section} href={item.href} aria-current={active === item.section ? "page" : undefined} onClick={closeMobileMenu}>{item.label}</a>)}
     </nav>
   </header>;
 }

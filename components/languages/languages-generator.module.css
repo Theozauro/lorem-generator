@@ -1,0 +1,77 @@
+.page :global(.main-section + .about-section) { border-top: 0; }
+.page :global(.main-section h1) { white-space: normal; }
+.checklist { margin: 0; padding-left: 18px; list-style: disc; color: var(--quiet); font-size: 15px; line-height: 1.65; }
+.checklist li + li { margin-top: 8px; }
+.generator { position: relative; }
+:global(:root[data-theme="dark"]) .generator { --paper: var(--background); }
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme])) .generator { --paper: var(--background); }
+}
+.generator :global(.result-actions .action-button:last-child:hover) { background: var(--muted) !important; color: var(--ink) !important; }
+.generator :global(.result-actions .action-button) { transition: background-color 90ms ease, color 90ms ease; }
+.generator :global(.result-actions .action-button).copyAction { min-width: 112px; white-space: nowrap !important; }
+.copyLabel { display: inline-grid; }
+.copyLabel > span { grid-area: 1 / 1; }
+.copyTextLabel { min-width: 7ch; }
+.copyHtmlLabel { min-width: 12ch; }
+:global(#languages-generator).generator :global(.result-actions .primary-copy).copySuccess { background: #242424 !important; color: #fff !important; }
+:global(#languages-generator).generator :global(.result-actions .secondary-action).copySuccess { background: var(--muted) !important; color: var(--ink) !important; }
+@media (max-width: 950px) {
+  .generator :global(.result-actions .action-button).copyAction { min-width: 0; }
+  .generator :global(.result-actions .action-button).copyHtmlAction { flex: 1.4; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .generator :global(.result-actions .action-button) { transition: none !important; }
+}
+.language { min-width: 0; padding: 18px; border-bottom: 1px solid var(--grid); }
+.language :global(.field-label) { margin-bottom: 8px; }
+.languageScroll { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; }
+.languageStrip { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); min-width: 642px; overflow: hidden; border: 1px solid var(--grid); border-radius: 8px; }
+.languageOption { display: flex; min-width: 0; min-height: 64px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 9px 10px; border: 0; background: transparent; color: var(--ink); font: 500 11px/1.3 var(--font-mono); text-transform: uppercase; white-space: nowrap; scroll-snap-align: start; }
+.languageOption + .languageOption { border-left: 1px solid var(--grid); }
+.languageOption:not(:disabled):hover { background: var(--secondary); }
+.languageOption[aria-pressed="true"] { font-weight: 700; box-shadow: inset 0 -3px var(--orange); }
+.languageOption[aria-pressed="true"] .nativeName { color: var(--orange-small); }
+.languageOption:disabled, .languageOption:disabled:hover { background: transparent; opacity: 1; color: var(--quiet); cursor: default; }
+.nativeName { font: 500 15px/1.3 "Hiragino Sans", "Yu Gothic", "Microsoft YaHei", "Malgun Gothic", system-ui, sans-serif; text-transform: none; }
+.languageOption:focus-visible, .languageScroll:focus-visible { outline: 2px solid var(--orange); outline-offset: -3px; }
+.controls { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr) minmax(0, .9fr); border-bottom: 1px solid var(--grid); }
+.control { min-width: 0; padding: 18px; }
+.control + .control { border-left: 1px solid var(--grid); }
+.control input { width: 100%; border: 1px solid var(--grid); border-radius: 0; background: var(--paper); color: var(--ink); height: 39px; }
+.amounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.amounts > div { min-width: 0; }
+.modes, .presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--grid); }
+.presets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.modes button, .presets button { position: relative; min-width: 0; min-height: 38px; padding: 8px 5px; background: transparent; color: var(--ink); font: 500 11px/1.3 var(--font-mono); text-transform: uppercase; cursor: pointer; }
+.modes button { display: flex; width: 100%; align-items: center; justify-content: center; text-align: center; white-space: nowrap; }
+.modes button + button, .presets button + button { border-left: 1px solid var(--grid); }
+.modes button[aria-pressed="true"], .presets button[aria-pressed="true"] { font-weight: 700; box-shadow: inset 0 -3px var(--orange); }
+.modes button:hover, .presets button:hover { background: var(--secondary); }
+.modes button:focus-visible, .presets button:focus-visible { outline: 2px solid var(--orange); outline-offset: -3px; }
+.output { letter-spacing: normal; line-height: 1.8; word-break: normal; line-break: strict; }
+.output-ja { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, system-ui, sans-serif; }
+.output-zh-Hans { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", system-ui, sans-serif; }
+.output-zh-Hant { font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Source Han Sans TC", system-ui, sans-serif; }
+.output-ko { font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif; word-break: keep-all; overflow-wrap: anywhere; line-height: 1.9; }
+.output p { letter-spacing: normal; line-height: 1.8; }
+.output-ko p { line-height: 1.9; }
+.empty { min-height: 210px; }
+.stats { flex-wrap: wrap; gap: 8px 12px; min-width: 0; }
+.status { position: absolute; top: 100%; right: 0; font-size: 12px; color: var(--quiet); margin-top: 4px; }
+.error { color: var(--ink); border-left: 3px solid var(--orange); padding-left: 10px; margin-bottom: 16px; }
+@media (max-width: 991px) {
+  .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .control:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--grid); }
+  .control:nth-child(2) { border-left: 0; }
+  .footer { grid-template-columns: minmax(0, 1fr); }
+  .footer > div { border-top: 1px solid var(--grid); border-left: 0; }
+}
+@media (max-width: 560px) {
+  .language { padding: 14px 13px; }
+  .control { padding: 14px 13px; }
+  .modes button { min-height: 44px; }
+  .controls { grid-template-columns: minmax(0, 1fr); }
+  .control:nth-child(3) { border-left: 0; border-top: 1px solid var(--grid); }
+  .output { font-size: 15px; }
+}

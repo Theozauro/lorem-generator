@@ -24,7 +24,7 @@
   --ring: #f15a24;
   --radius: 0.125rem;
   --orange: #f15a24;
-  --orange-small: #a83d17;
+  --orange-small: #f15a24;
   --ink: #242424;
   --paper: #fbfbf9;
   --quiet: #666662;
@@ -56,12 +56,12 @@
     --primary: #f2f0e9; --primary-foreground: #11110f;
     --secondary: #20201d; --secondary-foreground: #f2f0e9;
     --muted: #20201d; --muted-foreground: #a4a19a;
-    --accent: #ff5a1f; --accent-foreground: #11110f;
-    --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #ff5a1f;
-    --orange: #ff5a1f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
+    --accent: #f15a24; --accent-foreground: #11110f;
+    --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #f15a24;
+    --orange: #f15a24; --orange-small: #f15a24; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
     --grid: #5a5750; --ad-bg: #191917; --ad-border: #45443f; --ad-text: #918e87;
     --preview-bg: #20201d; --slider-track: #5a5750;
-    --active-bg: transparent; --active-text: #ff5a1f; --active-edge: #ff5a1f;
+    --active-bg: transparent; --active-text: var(--orange); --active-edge: var(--orange);
   }
 }
 :root[data-theme="dark"] {
@@ -72,12 +72,12 @@
   --primary: #f2f0e9; --primary-foreground: #11110f;
   --secondary: #20201d; --secondary-foreground: #f2f0e9;
   --muted: #20201d; --muted-foreground: #a4a19a;
-  --accent: #ff5a1f; --accent-foreground: #11110f;
-  --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #ff5a1f;
-  --orange: #ff5a1f; --orange-small: #ff5a1f; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
+  --accent: #f15a24; --accent-foreground: #11110f;
+  --destructive: #ff6a32; --border: #5a5750; --input: #5a5750; --ring: #f15a24;
+  --orange: #f15a24; --orange-small: #f15a24; --ink: #f2f0e9; --paper: #181816; --quiet: #a4a19a;
   --grid: #5a5750; --ad-bg: #191917; --ad-border: #45443f; --ad-text: #918e87;
   --preview-bg: #20201d; --slider-track: #5a5750;
-  --active-bg: transparent; --active-text: #ff5a1f; --active-edge: #ff5a1f;
+  --active-bg: transparent; --active-text: var(--orange); --active-edge: var(--orange);
 }
 @theme inline {
   --color-background: var(--background);
@@ -118,7 +118,8 @@ button:disabled { cursor: not-allowed; }
   --active-edge: var(--orange);
 }
 .site-shell[lang="it"] .tool-card button[aria-pressed="true"] { border-color: var(--grid) !important; }
-.site-shell[lang="it"] .action-button.initial-generate { background: var(--orange) !important; color: var(--accent-foreground) !important; }
+.site-shell[lang="it"] .action-button.initial-generate { background: var(--orange) !important; color: #fff !important; }
+.site-shell[lang="it"] .action-button.initial-generate:hover { background: var(--muted) !important; color: var(--ink) !important; }
 .page-content, .site-footer { width: min(100% - 96px, 1200px); margin-inline: auto; }
 .eyebrow, .field-label {
   font: 700 11px/1.25 var(--font-mono);

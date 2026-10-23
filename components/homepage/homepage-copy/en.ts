@@ -56,11 +56,11 @@ export const enHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Privacy and cookie notice",
     "title": "Privacy preferences",
-    "intro": "We use only the technical tools needed to run the site. Usage analytics are collected only with your consent. You can accept or reject optional tracking.",
+    "intro": "We use technical tools necessary for the site to function. With your consent, we collect usage statistics through Ahrefs Analytics. You can accept or reject optional tracking.",
     "necessary": "Necessary",
     "necessaryNote": "Theme and consent preferences.",
     "analytics": "Analytics",
-    "analyticsNote": "Anonymous usage statistics",
+    "analyticsNote": "Optional Ahrefs analytics",
     "accept": "Accept all",
     "reject": "Reject optional",
     "customize": "Customize",

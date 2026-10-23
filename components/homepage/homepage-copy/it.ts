@@ -56,11 +56,11 @@ export const itHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Avviso su privacy e cookie",
     "title": "Preferenze sulla privacy",
-    "intro": "Utilizziamo solo gli strumenti tecnici necessari al funzionamento del sito. Le statistiche di utilizzo vengono raccolte esclusivamente con il tuo consenso. Puoi accettare o rifiutare il tracciamento facoltativo.",
+    "intro": "Utilizziamo strumenti tecnici necessari al funzionamento del sito. Con il tuo consenso raccogliamo statistiche di utilizzo tramite Ahrefs Analytics. Puoi accettare o rifiutare il tracciamento facoltativo.",
     "necessary": "Necessari",
     "necessaryNote": "Tema e preferenze del consenso.",
     "analytics": "Analytics",
-    "analyticsNote": "Statistiche anonime sull’utilizzo del sito.",
+    "analyticsNote": "Analytics facoltativi di Ahrefs",
     "accept": "Accetta tutto",
     "reject": "Rifiuta",
     "customize": "Personalizza",

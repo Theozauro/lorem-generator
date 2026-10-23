@@ -24,10 +24,10 @@ export const enHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Mode",
     "modeLabel": "Generation mode",
-    "layout": "Words + paragraphs",
+    "layout": "Words",
     "characters": "Characters",
     "sentences": "Sentences",
-    "quickWords": "Quick word counts",
+    "quickWords": "Presets",
     "presets": "Presets",
     "options": "Options",
     "startClassic": "Start with “Lorem ipsum…”",
@@ -56,7 +56,7 @@ export const enHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Privacy and cookie notice",
     "title": "Privacy preferences",
-    "intro": "We use local storage for essential preferences. Optional analytics remain off until you choose it.",
+    "intro": "We use only the technical tools needed to run the site. Usage analytics are collected only with your consent. You can accept or reject optional tracking.",
     "necessary": "Necessary",
     "necessaryNote": "Theme and consent preferences.",
     "analytics": "Analytics",

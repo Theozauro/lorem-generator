@@ -160,12 +160,13 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const labels = experience[locale];
+  const languagesLabel = locale === "it" ? "Ipsum asiatico" : "Asian Ipsum";
   const destinations: { section: ExperienceSection; href: string; label: string }[] = [
-    { section: "classic", href: labels.homePath, label: locale === "it" ? "Lorem Ipsum" : labels.classicLabel },
+    { section: "classic", href: labels.homePath, label: locale === "it" || locale === "en" ? "Lorem Ipsum" : labels.classicLabel },
     { section: "themed", href: labels.themedPath, label: labels.themedLabel },
-    ...(locale === "it" ? [{ section: "languages" as const, href: "/it/testo-segnaposto-lingue/", label: "Lingue asiatiche" }] : []),
+    ...(locale === "it" || locale === "en" ? [{ section: "languages" as const, href: locale === "it" ? "/it/ipsum-asiatico/" : "/asian-ipsum/", label: languagesLabel }] : []),
   ];
-  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "it") : localeOptions;
+  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it") : localeOptions;
   const mobileNavigationId = `${locale}-mobile-navigation`;
 
   useEffect(() => {
@@ -205,7 +206,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   }
 
   function hrefForLocale(code: string, classicHref: string) {
-    if (active === "languages") return "/it/testo-segnaposto-lingue/";
+    if (active === "languages") return code === "en" ? "/asian-ipsum/" : code === "it" ? "/it/ipsum-asiatico/" : classicHref;
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;

@@ -26,6 +26,8 @@ type GeneratorSettings = { mode: MainMode; words: number; paragraphs: number; am
 const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500], sentences: [2, 5, 10] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
+const canonicalSiteUrl = "https://lorem-generator.com";
+const canonicalWebsiteId = `${canonicalSiteUrl}/#website`;
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
 const localeOptions = [
   ["de", "Deutsch", "/de/"],
@@ -141,8 +143,9 @@ function StatStrip({ text, copy }: { text: string; copy: HomepageCopy }) {
 function ToolHead({ title, note }: { title: string; note: string }) {
   return <div className="tool-head"><div><h2>{title}</h2><p>{note}</p></div></div>;
 }
-function FaqSection({ copy, additionalItems = [] }: { copy: HomepageCopy; additionalItems?: [string, string][] }) {
-  return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{[...copy.faq.items, ...additionalItems].map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: copy.faq.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
+function FaqSection({ copy, pageUrl, additionalItems = [] }: { copy: HomepageCopy; pageUrl: string; additionalItems?: [string, string][] }) {
+  const faqItems = [...copy.faq.items, ...additionalItems];
+  return <section className="faq-section" aria-labelledby="faq-title"><div className="faq-heading"><span className="eyebrow">{copy.faq.eyebrow}</span><h2 id="faq-title">{copy.faq.title}</h2><p>{copy.faq.intro}</p></div><div className="faq-list">{faqItems.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "@id": `${pageUrl}#faq`, url: pageUrl, inLanguage: copy.locale, isPartOf: { "@id": canonicalWebsiteId }, mainEntity: faqItems.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }) }} /></section>;
 }
 function ConsentBanner({ copy }: { copy: HomepageCopy }) {
   const [visible, setVisible] = useState(false);
@@ -401,8 +404,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       <section className="main-section" aria-labelledby="page-title">{!experienceLocale && <div className="utility-row"><div className="header-actions"><details className="language-picker"><summary aria-label={copy.languageLabel}>{currentLocaleLabel}</summary><div className="language-menu">{localeOptions.map(([code, label, href]) => <a key={code} href={href} aria-current={href === localePath ? "page" : undefined}>{label}</a>)}</div></details><div className="theme-switch" role="group" aria-label={copy.themeLabel}>{(["light", "dark"] as const).map(choice => <button key={choice} type="button" aria-pressed={activeTheme === choice} onClick={() => selectTheme(choice)}>{choice === "light" && <Sun className="theme-icon" aria-hidden="true" />}{choice === "dark" && <Moon className="theme-icon" aria-hidden="true" />}{choice === "light" ? copy.theme.light : copy.theme.dark}</button>)}</div></div></div>}<div className="title-row"><div className="brand-lockup"><h1 id="page-title">{copy.title}<span className="title-period">.</span></h1></div></div>
         <p className="seo-intro">{copy.intro}</p>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [
-          { "@type": "WebSite", name: "lorem-generator.com", url: `https://lorem-generator.com${localePath}`, inLanguage: locale },
-          { "@type": "WebApplication", name: "Lorem Ipsum Generator", url: `https://lorem-generator.com${localePath}`, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, offers: { "@type": "Offer", price: 0 }, featureList: copy.schema.featureList }
+          { "@type": "WebSite", "@id": canonicalWebsiteId, name: "lorem-generator.com", url: `${canonicalSiteUrl}/` },
+          { "@type": "WebApplication", "@id": `${canonicalSiteUrl}${localePath}#application`, name: "Lorem Ipsum Generator", url: `${canonicalSiteUrl}${localePath}`, inLanguage: locale, isPartOf: { "@id": canonicalWebsiteId }, applicationCategory: "DesignApplication", operatingSystem: "Any", description: copy.schema.description, isAccessibleForFree: true, offers: { "@type": "Offer", price: 0 }, featureList: copy.schema.featureList }
         ] }) }} />
         <div className="generator-panel generator-module">
           <div className={`controls-grid classic-controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
@@ -437,7 +440,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       {(locale === "fr" || locale === "pt-BR") && (locale === "fr" ? <FrenchHomepageEditorial /> : <BrazilianPortugueseHomepageEditorial />)}
       {(locale === "nl-NL" || locale === "pl") && (locale === "nl-NL" ? <DutchHomepageEditorial /> : <PolishHomepageEditorial />)}
       {(locale === "tr" || locale === "hu") && (locale === "tr" ? <TurkishHomepageEditorial /> : <HungarianHomepageEditorial />)}
-      <FaqSection copy={copy} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : locale === "nl-NL" ? dutchHomepageFaqItems : locale === "pl" ? polishHomepageFaqItems : locale === "tr" ? turkishHomepageFaqItems : locale === "hu" ? hungarianHomepageFaqItems : undefined} />
+      <FaqSection copy={copy} pageUrl={`${canonicalSiteUrl}${localePath}`} additionalItems={locale === "it" ? italianHomepageFaqItems : locale === "en" ? englishHomepageFaqItems : locale === "es" ? spanishHomepageFaqItems : locale === "de" ? germanHomepageFaqItems : locale === "fr" ? frenchHomepageFaqItems : locale === "pt-BR" ? brazilianPortugueseHomepageFaqItems : locale === "nl-NL" ? dutchHomepageFaqItems : locale === "pl" ? polishHomepageFaqItems : locale === "tr" ? turkishHomepageFaqItems : locale === "hu" ? hungarianHomepageFaqItems : undefined} />
     </div><HomepageFooter copy={copy} />
   </main>;
 }

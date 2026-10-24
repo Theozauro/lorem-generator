@@ -18,7 +18,7 @@ import { BrazilianPortugueseHomepageEditorial, brazilianPortugueseHomepageFaqIte
 import { DutchHomepageEditorial, PolishHomepageEditorial, dutchHomepageFaqItems, polishHomepageFaqItems } from "./dutch-polish-editorial";
 import { HungarianHomepageEditorial, TurkishHomepageEditorial, hungarianHomepageFaqItems, turkishHomepageFaqItems } from "./turkish-hungarian-editorial";
 import { generateItalianClassic, italianParagraphLimit } from "./italian-generator-paragraphs";
-import { englishParagraphLimit, generateEnglishClassic } from "./english-generator-paragraphs";
+import { englishParagraphLimit, generateEnglishClassic, spanishParagraphMessages } from "./english-generator-paragraphs";
 
 type MainMode = "layout" | "characters" | "sentences";
 type ThemeChoice = "light" | "dark";
@@ -26,6 +26,7 @@ type GeneratorSettings = { mode: MainMode; words: number; paragraphs: number; am
 const modes: MainMode[] = ["layout", "characters", "sentences"];
 const presets: Record<MainMode, number[]> = { layout: [50, 100, 250], characters: [150, 300, 500], sentences: [2, 5, 10] };
 const defaults: Record<MainMode, number> = { layout: 250, characters: 300, sentences: 5 };
+const paragraphAwareLocale = (locale: HomepageLocale) => locale === "it" || locale === "en" || locale === "es";
 const canonicalSiteUrl = "https://lorem-generator.com";
 const canonicalWebsiteId = `${canonicalSiteUrl}/#website`;
 const formatCount = (count: number, locale = "en-US") => new Intl.NumberFormat(locale).format(count);
@@ -242,15 +243,16 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   const localePath = locale === "it" ? "/it/" : locale === "es" ? "/es/" : locale === "fr" ? "/fr/" : locale === "de" ? "/de/" : locale === "pt-BR" ? "/pt-br/" : locale === "nl-NL" ? "/nl/" : locale === "tr" ? "/tr/" : locale === "pl" ? "/pl/" : locale === "hu" ? "/hu/" : "/";
   const currentLocaleLabel = localeOptions.find(([, , path]) => path === localePath)?.[1] ?? "English";
   const experienceLocale = locale === "en" || locale === "it" || locale === "es" || locale === "de" || locale === "fr" || locale === "pt-BR" || locale === "nl-NL" || locale === "pl" || locale === "tr" || locale === "hu" ? (locale === "nl-NL" ? "nl" : locale) : null;
+  const usesParagraphControls = paragraphAwareLocale(locale);
   useEffect(() => {
     document.documentElement.lang = locale === "nl-NL" ? "nl" : locale;
     return () => { document.documentElement.lang = "en"; };
   }, [locale]);
   const [mode, setMode] = useState<MainMode>("layout");
   const [words, setWords] = useState(250);
-  const [paragraphs, setParagraphs] = useState(locale === "it" || locale === "en" ? 1 : 3);
+  const [paragraphs, setParagraphs] = useState(usesParagraphControls ? 1 : 3);
   const [wordsInput, setWordsInput] = useState("250");
-  const [paragraphsInput, setParagraphsInput] = useState(locale === "it" || locale === "en" ? "1" : "3");
+  const [paragraphsInput, setParagraphsInput] = useState(usesParagraphControls ? "1" : "3");
   const [amount, setAmount] = useState(300);
   const [amountInput, setAmountInput] = useState("300");
   const [startClassic, setStartClassic] = useState(true);
@@ -271,14 +273,15 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
       }
     }
     if (locale === "en") return generateEnglishClassic({ mode: next.mode === "layout" ? "words" : next.mode, words: next.words, amount: next.amount, paragraphs: next.paragraphs, startClassic: next.startClassic });
+    if (locale === "es") return generateEnglishClassic({ mode: next.mode === "layout" ? "words" : next.mode, words: next.words, amount: next.amount, paragraphs: next.paragraphs, startClassic: next.startClassic, messages: spanishParagraphMessages });
     return { text: next.mode === "layout" ? generateLayout(next.words, next.paragraphs, next.startClassic, Math.random) : generateLorem(next.mode, next.amount, next.startClassic), error: "" };
   }, [locale, generationRevision]);
-  const paragraphAwareOutput = useMemo(() => (locale === "it" || locale === "en") && hasGenerated
+  const paragraphAwareOutput = useMemo(() => usesParagraphControls && hasGenerated
     ? createOutput({ mode, words, paragraphs, amount, startClassic }, generationRevision)
     : null,
-  [locale, hasGenerated, mode, words, paragraphs, amount, startClassic, generationRevision, createOutput]);
-  const displayResult = locale === "it" || locale === "en" ? paragraphAwareOutput?.text ?? "" : result;
-  const displayError = locale === "it" || locale === "en" ? paragraphAwareOutput?.error ?? "" : "";
+  [usesParagraphControls, hasGenerated, mode, words, paragraphs, amount, startClassic, generationRevision, createOutput]);
+  const displayResult = usesParagraphControls ? paragraphAwareOutput?.text ?? "" : result;
+  const displayError = usesParagraphControls ? paragraphAwareOutput?.error ?? "" : "";
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem("lorem-theme");
@@ -308,7 +311,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
   useEffect(() => {
     if (!hasGenerated) return;
     const previous = previousSettings.current;
-    if (locale === "it" || locale === "en") {
+    if (usesParagraphControls) {
       previousSettings.current = { mode, words, paragraphs, amount, startClassic };
       return;
     }
@@ -318,9 +321,9 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
         ? resizeLorem(current, mode, previous.amount, amount, startClassic)
         : generateLorem(mode, amount, startClassic));
     previousSettings.current = { mode, words, paragraphs, amount, startClassic };
-  }, [hasGenerated, mode, words, paragraphs, amount, startClassic, locale, createOutput]);
+  }, [hasGenerated, mode, words, paragraphs, amount, startClassic, locale, createOutput, usesParagraphControls]);
   function generateWithSettings(next: GeneratorSettings) {
-    if (locale === "it" || locale === "en") setGenerationRevision(revision => revision + 1);
+    if (usesParagraphControls) setGenerationRevision(revision => revision + 1);
     else setResult(createOutput(next).text);
     previousSettings.current = next;
     setHasGenerated(true);
@@ -336,13 +339,13 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     if (value === "") { pendingWordsChange.current = false; return; }
     const parsed = Number(value);
     if (!Number.isFinite(parsed)) { pendingWordsChange.current = false; return; }
-    const next = locale === "it" || locale === "en" ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed));
+    const next = usesParagraphControls ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed));
     if (next !== words) pendingWordsChange.current = true;
     setWords(next);
   }
   function commitWords() {
     const parsed = Number(wordsInput);
-    const next = Number.isFinite(parsed) && parsed > 0 ? (locale === "it" || locale === "en" ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed))) : words;
+    const next = Number.isFinite(parsed) && parsed > 0 ? (usesParagraphControls ? Math.max(1, Math.min(4000, parsed)) : Math.max(paragraphs, Math.min(4000, parsed))) : words;
     const shouldGenerate = !hasGenerated && pendingWordsChange.current;
     pendingWordsChange.current = false;
     setWords(next); setWordsInput(String(next));
@@ -353,20 +356,20 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
     if (value === "") { pendingParagraphsChange.current = false; return; }
     const parsed = Number(value);
     if (!Number.isFinite(parsed)) { pendingParagraphsChange.current = false; return; }
-    const next = locale === "it" || locale === "en" ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed));
+    const next = usesParagraphControls ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed));
     if (next !== paragraphs) pendingParagraphsChange.current = true;
     setParagraphs(next);
   }
   function commitParagraphs() {
     const parsed = Number(paragraphsInput);
-    const next = Number.isFinite(parsed) && parsed > 0 ? (locale === "it" || locale === "en" ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed))) : paragraphs;
+    const next = Number.isFinite(parsed) && parsed > 0 ? (usesParagraphControls ? Math.max(1, Math.min(100, parsed)) : Math.max(1, Math.min(100, words, parsed))) : paragraphs;
     const shouldGenerate = !hasGenerated && pendingParagraphsChange.current;
     pendingParagraphsChange.current = false;
     setParagraphs(next); setParagraphsInput(String(next));
     if (shouldGenerate) generateWithSettings({ mode, words, paragraphs: next, amount, startClassic });
   }
   function setPresetWords(value: number) {
-    const next = locale === "it" || locale === "en" ? value : Math.max(paragraphs, value);
+    const next = usesParagraphControls ? value : Math.max(paragraphs, value);
     setWords(next); setWordsInput(String(next));
     if (!hasGenerated) generateWithSettings({ mode, words: next, paragraphs, amount, startClassic });
   }
@@ -410,7 +413,7 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
         <div className="generator-panel generator-module">
           <div className={`controls-grid classic-controls-grid ${mode === "layout" ? "layout-mode" : "precision-mode"}`}>
             <div className="unit-control"><span className="field-label">{copy.generator.mode}</span><Tabs value={mode} onValueChange={value => selectMode(value as MainMode)}><TabsList className="unit-tabs" aria-label={copy.generator.modeLabel}>{modes.map(item => <TabsTrigger key={item} value={item} className="unit-tab">{item === "layout" ? copy.generator.layout : item === "characters" ? copy.generator.characters : copy.generator.sentences}</TabsTrigger>)}</TabsList>{modes.map(item => <TabsContent key={item} value={item} hidden aria-hidden="true" />)}</Tabs></div>
-            {locale === "it" || locale === "en" ? <div className="layout-amounts italian-generator-amounts">
+            {usesParagraphControls ? <div className="layout-amounts italian-generator-amounts">
               <div className="amount-control">
                 <label className="field-label" htmlFor={mode === "layout" ? "word-amount" : "amount"}>{mode === "layout" ? copy.generator.words : mode === "characters" ? copy.generator.characters : copy.generator.sentences}</label>
                 {mode === "layout"
@@ -425,8 +428,8 @@ export default function Home({ locale, copy }: { locale: HomepageLocale; copy: H
             <div className="presets"><span className="field-label">{mode === "layout" ? copy.generator.quickWords : copy.generator.presets}</span><div className="preset-buttons">{presets[mode].map(value => <Button type="button" key={value} variant="outline" className="preset-button" aria-pressed={(mode === "layout" ? words : amount) === value} onClick={() => mode === "layout" ? setPresetWords(value) : setPresetAmount(value)}>{value}</Button>)}</div></div>
           </div>
           <div className="start-control-row"><label className="check-option classic-option"><Checkbox checked={startClassic} onCheckedChange={checked => toggleStartClassic(checked === true)} /><span>{copy.generator.startClassic}</span></label></div>
-          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" lang={locale === "it" || locale === "en" ? locale : undefined} role="region" aria-label={copy.generator.outputAria}>{displayResult ? displayResult.split("\n\n").map((paragraph, index) => <p key={index} lang={locale === "it" || locale === "en" ? locale : undefined}>{paragraph}</p>) : !displayError && <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div>{displayError && (locale === "it" || locale === "en") && <p className="italian-generation-error" role="alert">{displayError}</p>}</div>
-          <div className="module-footer"><StatStrip text={displayResult} copy={copy} /><div className="result-actions"><ActionCopy key={locale === "it" || locale === "en" ? `${generationRevision}-${mode}-${words}-${paragraphs}-${amount}-${startClassic}-${displayResult}` : result} text={displayResult} copy={copy} italianFeedback={locale === "it" || locale === "en"} /><ActionCopyHtml key={locale === "it" || locale === "en" ? `html-${generationRevision}-${mode}-${words}-${paragraphs}-${amount}-${startClassic}-${displayResult}` : `html-${result}`} text={displayResult} copy={copy} italianFeedback={locale === "it" || locale === "en"} copyLanguage={locale === "it" ? "it" : "en"} /><Button type="button" variant="outline" className={`action-button secondary-action${(locale === "it" || locale === "en") && !hasGenerated ? " initial-generate" : ""}`} onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
+          <div className="output-panel"><span className="field-label">{copy.generator.output}</span><div className="reading-area" lang={usesParagraphControls ? locale : undefined} role="region" aria-label={copy.generator.outputAria}>{displayResult ? displayResult.split("\n\n").map((paragraph, index) => <p key={index} lang={usesParagraphControls ? locale : undefined}>{paragraph}</p>) : !displayError && <p className="generator-empty-state">{copy.generator.emptyState}</p>}</div>{displayError && usesParagraphControls && <p className="italian-generation-error" role="alert">{displayError}</p>}</div>
+          <div className="module-footer"><StatStrip text={displayResult} copy={copy} /><div className="result-actions"><ActionCopy key={usesParagraphControls ? `${generationRevision}-${mode}-${words}-${paragraphs}-${amount}-${startClassic}-${displayResult}` : result} text={displayResult} copy={copy} italianFeedback={usesParagraphControls} /><ActionCopyHtml key={usesParagraphControls ? `html-${generationRevision}-${mode}-${words}-${paragraphs}-${amount}-${startClassic}-${displayResult}` : `html-${result}`} text={displayResult} copy={copy} italianFeedback={usesParagraphControls} copyLanguage={locale === "it" ? "it" : locale === "es" ? "es" : "en"} /><Button type="button" variant="outline" className={`action-button secondary-action${usesParagraphControls && !hasGenerated ? " initial-generate" : ""}`} onClick={generateResult}><RefreshCw aria-hidden="true" /> {hasGenerated ? copy.generator.regenerate : copy.generator.generate}</Button></div></div>
         </div>
       </section>
       <section className="designer-section" aria-label={copy.fit.aria}><FitTool copy={copy} /></section>

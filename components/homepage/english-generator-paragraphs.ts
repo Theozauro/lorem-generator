@@ -2,6 +2,20 @@ import { generateLayout, generateLorem, stats } from "@/lib/lorem";
 import { generateThemedIpsum, type ThemedLanguage, type ThemedMode, type ThemedTheme } from "@/lib/themed-ipsum";
 
 export type EnglishGeneratorMode = "words" | "characters" | "sentences";
+export type ParagraphMessages = { invalidParagraphs: string; invalidAmount: string; unsupportedParagraphs: (maximum: number) => string; unsupportedOutput: string };
+
+const englishMessages: ParagraphMessages = {
+  invalidParagraphs: "Enter a paragraph count between 1 and 100.",
+  invalidAmount: "Enter a valid whole-number quantity.",
+  unsupportedParagraphs: maximum => `This quantity supports up to ${maximum} ${maximum === 1 ? "paragraph" : "paragraphs"}. Your requested quantity has not been changed.`,
+  unsupportedOutput: "This combination is not available. Your requested quantity and paragraph count have not been changed.",
+};
+export const spanishParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Introduce un número de párrafos entre 1 y 100.",
+  invalidAmount: "Introduce una cantidad entera válida.",
+  unsupportedParagraphs: maximum => `Esta cantidad permite hasta ${maximum} ${maximum === 1 ? "párrafo" : "párrafos"}. No se ha modificado la cantidad solicitada.`,
+  unsupportedOutput: "Esta combinación no está disponible. No se han modificado la cantidad ni el número de párrafos solicitados.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);
@@ -14,11 +28,11 @@ export function englishParagraphLimit(mode: EnglishGeneratorMode, amount: number
   return Math.max(0, Math.min(100, contentMinimum));
 }
 
-export function englishParagraphError(mode: EnglishGeneratorMode, amount: number, paragraphs: number): string {
-  if (!Number.isInteger(paragraphs) || paragraphs < 1 || paragraphs > 100) return "Enter a paragraph count between 1 and 100.";
-  if (!Number.isInteger(amount) || amount < 1) return "Enter a valid whole-number quantity.";
+export function englishParagraphError(mode: EnglishGeneratorMode, amount: number, paragraphs: number, messages = englishMessages): string {
+  if (!Number.isInteger(paragraphs) || paragraphs < 1 || paragraphs > 100) return messages.invalidParagraphs;
+  if (!Number.isInteger(amount) || amount < 1) return messages.invalidAmount;
   const maximum = englishParagraphLimit(mode, amount);
-  if (paragraphs > maximum) return `This quantity supports up to ${maximum} ${maximum === 1 ? "paragraph" : "paragraphs"}. Your requested quantity has not been changed.`;
+  if (paragraphs > maximum) return messages.unsupportedParagraphs(maximum);
   return "";
 }
 
@@ -28,15 +42,17 @@ export function generateEnglishClassic({
   amount,
   paragraphs,
   startClassic,
+  messages = englishMessages,
 }: {
   mode: EnglishGeneratorMode;
   words: number;
   amount: number;
   paragraphs: number;
   startClassic: boolean;
+  messages?: ParagraphMessages;
 }): { text: string; error: string } {
   const target = mode === "words" ? words : amount;
-  const error = englishParagraphError(mode, target, paragraphs);
+  const error = englishParagraphError(mode, target, paragraphs, messages);
   if (error) return { text: "", error };
 
   let text = "";
@@ -57,7 +73,7 @@ export function generateEnglishClassic({
 
   const exact = mode === "words" ? stats(text).words === words : mode === "characters" ? text.length === amount : stats(text).sentences === amount;
   if (!exact || text.split("\n\n").length !== paragraphs || text.split("\n\n").some(paragraph => !paragraph.trim())) {
-    return { text: "", error: "This combination is not available. Your requested quantity and paragraph count have not been changed." };
+    return { text: "", error: messages.unsupportedOutput };
   }
   return { text, error: "" };
 }
@@ -70,6 +86,7 @@ export function generateEnglishThemed({
   amount,
   paragraphs,
   variation,
+  messages = englishMessages,
 }: {
   theme: ThemedTheme;
   language: ThemedLanguage;
@@ -78,10 +95,11 @@ export function generateEnglishThemed({
   amount: number;
   paragraphs: number;
   variation: number;
+  messages?: ParagraphMessages;
 }): { text: string; error: string } {
   const target = mode === "layout" ? words : amount;
   const generatorMode: EnglishGeneratorMode = mode === "layout" ? "words" : mode;
-  const error = englishParagraphError(generatorMode, target, paragraphs);
+  const error = englishParagraphError(generatorMode, target, paragraphs, messages);
   if (error) return { text: "", error };
 
   let text = "";
@@ -105,12 +123,12 @@ export function generateEnglishThemed({
       }).join(" ")).join("\n\n");
     }
   } catch {
-    return { text: "", error: "This quantity and paragraph combination is not available. Your requested quantity and paragraph count have not been changed." };
+    return { text: "", error: messages.unsupportedOutput };
   }
 
   const exact = mode === "layout" ? stats(text).words === words : mode === "characters" ? text.length === amount : stats(text).sentences === amount;
   if (!exact || text.split("\n\n").length !== paragraphs || text.split("\n\n").some(paragraph => !paragraph.trim())) {
-    return { text: "", error: "This combination is not available. Your requested quantity and paragraph count have not been changed." };
+    return { text: "", error: messages.unsupportedOutput };
   }
   return { text, error: "" };
 }

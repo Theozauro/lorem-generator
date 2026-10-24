@@ -9,6 +9,7 @@ import { nlHomepageCopy } from "./homepage-copy/nl";
 import type { ThemedLanguage, ThemedTheme } from "@/lib/themed-ipsum";
 import { trHomepageCopy } from "./homepage-copy/tr";
 import { huHomepageCopy } from "./homepage-copy/hu";
+import { esHomepageCopy } from "./homepage-copy/es";
 
 export type ThemedPageLocale = "en" | "it" | "es" | "de" | "fr" | "pt-BR" | "nl" | "pl" | "tr" | "hu";
 
@@ -264,16 +265,16 @@ export const englishThemedPageConfig: ThemedPageConfig = {
 export const spanishThemedPageConfig: ThemedPageConfig = {
   locale: "es",
   copy: {
-    ...enHomepageCopy,
+    ...esHomepageCopy,
     locale: "es",
     languageLabel: "Idioma",
     themeLabel: "Tema de color",
     theme: { system: "Automático", light: "Claro", dark: "Oscuro" },
     generator: {
-      ...enHomepageCopy.generator,
+      ...esHomepageCopy.generator,
       mode: "Modo",
       modeLabel: "Modo de generación",
-      layout: "Palabras + párrafos",
+      layout: "Palabras",
       characters: "Caracteres",
       sentences: "Frases",
       quickWords: "Cantidades rápidas",

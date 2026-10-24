@@ -1,6 +1,8 @@
 import type { AvailableContentLanguage } from "@/lib/languages/registry";
 
 export type LanguagesCopy = {
+  title: string;
+  intro: string;
   numberLocale: string;
   contentLanguage: string;
   mode: string;
@@ -27,6 +29,8 @@ export type LanguagesCopy = {
 };
 
 export const italianLanguagesCopy: LanguagesCopy = {
+  title: "Generatore di testo segnaposto per lingue asiatiche",
+  intro: "Genera testo di prova in giapponese, cinese o coreano per verificare interfacce, layout e prototipi multilingua con conteggi precisi.",
   numberLocale: "it-IT",
   contentLanguage: "Lingua del testo",
   mode: "Modalità",
@@ -53,6 +57,8 @@ export const italianLanguagesCopy: LanguagesCopy = {
 };
 
 export const englishLanguagesCopy: LanguagesCopy = {
+  title: "Asian-Language Placeholder Text Generator",
+  intro: "Generate placeholder text in Japanese, Chinese or Korean to test multilingual interfaces, layouts and prototypes. Check visual density, line breaks and spacing with precise counts and copy-ready output.",
   numberLocale: "en-US",
   contentLanguage: "Content language",
   mode: "Mode",
@@ -76,6 +82,34 @@ export const englishLanguagesCopy: LanguagesCopy = {
   copyFailed: "Copy failed. Check your browser permissions and try again.",
   copiedNotice: "Text copied.",
   copiedHtmlNotice: "HTML copied.",
+};
+
+export const spanishLanguagesCopy: LanguagesCopy = {
+  title: "Generador de texto en idiomas asiáticos",
+  intro: "Genera texto de prueba en japonés, chino o coreano para comprobar interfaces, diseños y prototipos multilingües. Evalúa la densidad visual, los saltos de línea y el espaciado con cantidades exactas y texto listo para copiar.",
+  numberLocale: "es-ES",
+  contentLanguage: "Idioma del texto",
+  mode: "Modo",
+  contentLanguages: { ja: "Japonés", "zh-Hans": "Chino simplificado", "zh-Hant": "Chino tradicional", ko: "Coreano" },
+  modes: { words: "Palabras", characters: "Caracteres", sentences: "Frases" },
+  paragraphs: "Párrafos",
+  presets: "Valores rápidos",
+  output: "Resultado",
+  outputAria: "Texto generado",
+  emptyState: "Elige los ajustes y genera texto de prueba.",
+  generate: "Generar",
+  regenerate: "Regenerar",
+  copy: "Copiar",
+  copied: "Copiado",
+  copyHtml: "Copiar HTML",
+  copiedHtml: "HTML copiado",
+  invalidAmount: "Introduce una cantidad entera de {mode} entre {min} y {max}.",
+  invalidParagraphs: "Introduce un número entero válido de párrafos.",
+  unsupportedCombination: "Esta combinación de cantidad y párrafos no está disponible para el idioma seleccionado. No se ha modificado la cantidad solicitada.",
+  adjustedParagraphs: "Los párrafos se han ajustado a {paragraphs} para mantener exacta la cantidad solicitada.",
+  copyFailed: "No se pudo copiar. Comprueba los permisos del navegador e inténtalo de nuevo.",
+  copiedNotice: "Texto copiado.",
+  copiedHtmlNotice: "HTML copiado.",
 };
 
 export function languageHtml(text: string, language: AvailableContentLanguage): string {

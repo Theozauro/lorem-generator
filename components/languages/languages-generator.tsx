@@ -14,10 +14,10 @@ const modes: GeneratorMode[] = ["words", "characters", "sentences"];
 const zeroStats = { words: 0, characters: 0, sentences: 0, paragraphs: 0 };
 const initialGeneration = { language: "ja" as const, mode: "words" as const, amount: modeSettings.words.default, paragraphs: 1, seed: 0x4c4f5245 };
 const languageChoices = [
-  { id: "ja", label: "Giapponese", nativeName: "日本語" },
-  { id: "zh-Hans", label: "Cinese semplificato", nativeName: "简体中文" },
-  { id: "zh-Hant", label: "Cinese tradizionale", nativeName: "繁體中文" },
-  { id: "ko", label: "Coreano", nativeName: "한국어" },
+  { id: "ja", nativeName: "日本語" },
+  { id: "zh-Hans", nativeName: "简体中文" },
+  { id: "zh-Hant", nativeName: "繁體中文" },
+  { id: "ko", nativeName: "한국어" },
 ] as const;
 
 export function LanguagesGenerator({ copy }: { copy: LanguagesCopy }) {

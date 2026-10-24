@@ -160,13 +160,16 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const labels = experience[locale];
-  const languagesLabel = locale === "it" ? "Ipsum asiatico" : "Asian Ipsum";
+  const languagesLabel = locale === "it" ? "Ipsum asiatico" : locale === "es" ? "Ipsum asiático" : "Asian Ipsum";
+  const classicLabel = locale === "it" || locale === "en" || locale === "es" ? "Lorem Ipsum" : labels.classicLabel;
+  const themedLabel = locale === "en" ? "Themed Ipsum" : labels.themedLabel;
+  const asianRoute: Record<"en" | "it" | "es", string> = { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: "/es/ipsum-asiatico/" };
   const destinations: { section: ExperienceSection; href: string; label: string }[] = [
-    { section: "classic", href: labels.homePath, label: locale === "it" || locale === "en" ? "Lorem Ipsum" : labels.classicLabel },
-    { section: "themed", href: labels.themedPath, label: labels.themedLabel },
-    ...(locale === "it" || locale === "en" ? [{ section: "languages" as const, href: locale === "it" ? "/it/ipsum-asiatico/" : "/asian-ipsum/", label: languagesLabel }] : []),
+    { section: "classic", href: labels.homePath, label: classicLabel },
+    { section: "themed", href: labels.themedPath, label: themedLabel },
+    ...(locale === "it" || locale === "en" || locale === "es" ? [{ section: "languages" as const, href: asianRoute[locale], label: languagesLabel }] : []),
   ];
-  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it") : localeOptions;
+  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it" || code === "es") : localeOptions;
   const mobileNavigationId = `${locale}-mobile-navigation`;
 
   useEffect(() => {
@@ -206,7 +209,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   }
 
   function hrefForLocale(code: string, classicHref: string) {
-    if (active === "languages") return code === "en" ? "/asian-ipsum/" : code === "it" ? "/it/ipsum-asiatico/" : classicHref;
+    if (active === "languages") return (code === "en" || code === "it" || code === "es") ? asianRoute[code] : classicHref;
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;

@@ -307,6 +307,7 @@ const spanishThemedIpsumData: Record<ThemedTheme, ThemeData> = {
 
 const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   corporate: {
+    clauses: terms("Ja., Der Plan steht., Das Team arbeitet., Das Budget bleibt stabil., Das Team prüft die Roadmap., Die Leitung stimmt neue Prioritäten ab., Der Vertrieb meldet veränderte Nachfrage., Das Unternehmen plant den nächsten Quartalszyklus., Die Finanzabteilung vergleicht Kosten und Prognosen., Die Teams verfolgen gemeinsame Ziele., Das Management überprüft die Geschäftsentwicklung., Die Geschäftsbereiche stimmen ihre Abläufe aufeinander ab., Ein klarer Zeitplan erleichtert die Zusammenarbeit zwischen den Abteilungen., Die Kennzahlen zeigen eine stabile Entwicklung im laufenden Quartal., Die Partner vereinbaren realistische Termine für die nächste Lieferung., Das Unternehmen investiert gezielt in nachhaltiges Wachstum., Der Vorstand bewertet die vorgeschlagenen Maßnahmen vor der Entscheidung., Jede Abteilung meldet ihren aktuellen Bedarf an das Projektteam., Das Projekt erreicht die nächste Etappe des geplanten Ablaufs."),
     openers: [
       "Führungsteams verbinden strategische Ziele mit operativer Effizienz und messbaren Geschäftsergebnissen.",
       "Unternehmen entwickeln belastbare Roadmaps und beschleunigen die Wertschöpfung über alle Geschäftsbereiche.",
@@ -320,6 +321,7 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("ausrichten, beschleunigen, bewerten, bauen, liefern, treiben, ermöglichen, erweitern, ausführen, maximieren, optimieren, priorisieren, skalieren, vereinfachen, transformieren, erschließen"),
   },
   tech: {
+    clauses: terms("Ja., Das System läuft., Der Dienst antwortet., Das Team prüft die API., Die Anwendung speichert neue Einstellungen., Der Server verarbeitet jede Anfrage., Das Team überwacht die Verfügbarkeit., Die Pipeline prüft den bereitgestellten Code., Die Plattform verteilt die eingehende Last., Die Datenbank sichert wichtige Änderungen., Die Entwickler testen den neuen Endpunkt., Der Cache reduziert wiederholte Anfragen., Die Dienste tauschen Ereignisse über versionierte APIs aus., Das Team untersucht die erhöhte Latenz in der Produktionsumgebung., Die Plattform stellt neue Container in mehreren Regionen bereit., Automatisierte Tests prüfen die wichtigsten Abläufe vor jedem Deployment., Das Monitoring meldet drohende Fehler frühzeitig., Die Dokumentation beschreibt die Schnittstellen und ihre vorgesehenen Antworten."),
     openers: [
       "Moderne Engineering-Teams betreiben verteilte Microservices auf Kubernetes-Clustern mit automatisierten CI/CD-Pipelines.",
       "Cloud-native Plattformen orchestrieren ereignisgesteuerte Systeme durch skalierbare Infrastruktur und hohe Verfügbarkeit.",
@@ -333,6 +335,7 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("authentifizieren, cachen, kompilieren, verbinden, deployen, verteilen, ausführen, integrieren, überwachen, orchestrieren, speichern, bereitstellen, replizieren, routen, skalieren, streamen, synchronisieren, validieren"),
   },
   ai: {
+    clauses: terms("Ja., Das Modell lernt., Die Suche funktioniert., Das Team prüft Beispiele., Der Agent sucht passende Quellen., Die Daten werden vor dem Training geprüft., Das Modell berücksichtigt den verfügbaren Kontext., Die Evaluation vergleicht mehrere Modellantworten., Das Team dokumentiert bekannte Einschränkungen., Die Suche findet relevante Abschnitte in den Dokumenten., Ein zusätzlicher Test überprüft die Qualität der Ergebnisse., Die Forschenden vergleichen Antworten mit geprüften Beispielen., Das System ergänzt die Anfrage um passende Informationen., Die Trainingsdaten werden vor der Verwendung sorgfältig bereinigt., Das Modell fasst die gefundenen Quellen in einer Antwort zusammen., Die Bewertung berücksichtigt Genauigkeit und Einhaltung der Anweisungen., Das Team gleicht Modellantworten mit den angegebenen Quellen ab., Die Tests erfassen unterschiedliche Formulierungen derselben Frage."),
     openers: [
       "Large Language Models verarbeiten multimodale Tokens durch Attention-Schichten und erzeugen kontextbezogene Embeddings.",
       "KI-Teams optimieren Foundation Models mit kuratierten Trainingsdaten, Fine-Tuning und sorgfältiger Modellevaluierung.",
@@ -346,6 +349,7 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("klassifizieren, einbetten, evaluieren, feinabstimmen, generieren, schlussfolgern, optimieren, vorhersagen, vortrainieren, ranken, abrufen, sampeln, trainieren, tokenisieren, transformieren"),
   },
   design: {
+    clauses: terms("Ja., Das Raster passt., Die Ansicht bleibt klar., Das Team prüft den Entwurf., Die Beschriftung erklärt die Aktion., Der Prototyp zeigt den Ablauf., Die Komponenten behalten ihren Kontrast., Das Designsystem dokumentiert wiederverwendbare Muster., Die Navigation führt eindeutig zum nächsten Schritt., Das Team vergleicht mehrere Layoutvarianten., Der größere Zeilenabstand verbessert die Lesbarkeit., Die Oberfläche passt sich schmalen Bildschirmen an., Ein konsistentes Raster ordnet die Inhalte auf jeder Seite., Die Gestaltungsprüfung berücksichtigt Kontrast und Textdichte., Das Team testet die wichtigsten Interaktionen vor der Umsetzung., Die Beschriftungen bleiben auch in kompakten Komponenten verständlich., Ein klarer visueller Rhythmus verbindet Text und Bedienelemente., Das aktualisierte Designsystem hält die Abstände über alle Ansichten hinweg konsistent."),
     openers: [
       "Produktteams gestalten responsive Interfaces mit modularen Komponenten, klarer visueller Hierarchie und einem konsistenten Schriftsystem.",
       "Designsysteme verbinden wiederverwendbare Komponenten, zugängliche Interaktionsmuster und responsive Raster über alle Bildschirme.",
@@ -359,6 +363,7 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("ausrichten, komponieren, gestalten, iterieren, prototypisieren, verfeinern, skalieren, strukturieren, stylen, testen, visualisieren, balancieren, organisieren, anpassen"),
   },
   fashion: {
+    clauses: terms("Ja., Der Schnitt sitzt., Die Kollektion wirkt stimmig., Das Atelier prüft den Entwurf., Die Stylistin kombiniert passende Accessoires., Das Team vergleicht verschiedene Stoffproben., Die Kollektion greift ein klares Farbthema auf., Die Schneiderin passt den Ärmel an., Die Materialien fühlen sich angenehm an., Der Look verbindet moderne Formen mit klassischen Details., Das Atelier prüft die Verarbeitung vor der Freigabe., Die Redaktion wählt passende Bilder für die neue Kollektion aus., Die Anprobe zeigt, wo sich der Schnitt noch verbessern lässt., Das Designteam stimmt Stoffe und Farben aufeinander ab., Eine sorgfältige Verarbeitung sorgt für ein sauberes Finish., Die Kollektion verbindet tragbare Formen mit ausgewählten Akzenten., Die Kampagne zeigt die Materialien und Details aus nächster Nähe., Das Lookbook ordnet die Entwürfe nach Farbe und Silhouette."),
     openers: [
       "Zeitgenössische Modehäuser entwickeln saisonale Kollektionen mit raffinierten Silhouetten, haptischen Materialien und sorgfältigen Details.",
       "Redaktionelle Teams verbinden moderne Proportionen, texturalen Kontrast und zeitgemäßes Tailoring in jedem Look.",
@@ -372,6 +377,7 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("kombinieren, konstruieren, fertigen, drapieren, schichten, verfeinern, neu interpretieren, formen, stylen, schneidern, weben, vollenden"),
   },
   zombie: {
+    clauses: terms("Ja., Die Tür hält., Der Konvoi fährt., Das Team bleibt wachsam., Die Wache prüft den Eingang., Die Gruppe sichert den Vorrat., Die Sirene warnt die Bewohner., Der Konvoi erreicht den Kontrollpunkt., Die Überlebenden verstärken den Schutzraum., Das Funkgerät empfängt ein schwaches Signal., Die Patrouille kehrt vor Einbruch der Nacht zurück., Das Rettungsteam bringt die Medikamente ins Lager., Eine Barrikade hält die Infizierten von der Straße fern., Die Wache meldet eine Bewegung am äußeren Zaun., Der Konvoi folgt der markierten Route zum sicheren Bereich., Die Gruppe teilt die Vorräte vor der nächsten Patrouille auf., Das Team verschließt den Eingang rechtzeitig., Die Überlebenden verlassen das Lager nach der Freigabe der Straße."),
     openers: [
       "Die letzten Überlebenden verstärken das Versteck, während eine weitere Zombiehorde durch die verlassenen Straßen zieht.",
       "Eine Notfunkmeldung führt den Konvoi zu einem verlassenen Kontrollpunkt mit Medikamenten und Überlebensvorräten.",
@@ -385,6 +391,14 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     verbs: terms("fliehen, überleben, verbarrikadieren, verstärken, evakuieren, plündern, infizieren, ausbreiten, patrouillieren, suchen, verstecken, retten, eindämmen, durchbrechen, verteidigen, sichern, signalisieren, warnen, vorrücken"),
   },
 };
+
+for (const data of Object.values(germanThemedIpsumData)) {
+  data.clauses = data.clauses?.filter(clause => clause !== "Ja.");
+  data.completeClauses = true;
+  data.requireCompleteClauseFit = true;
+  data.completeCharacterSentences = true;
+  data.sentenceAtomic = true;
+}
 
 const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   corporate: {

@@ -24,10 +24,10 @@ export const deHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Modus",
     "modeLabel": "Generierungsmodus",
-    "layout": "Wörter + Absätze",
+    "layout": "Wörter",
     "characters": "Zeichen",
     "sentences": "Sätze",
-    "quickWords": "Schnellauswahl",
+    "quickWords": "Vorgaben",
     "presets": "Vorgaben",
     "options": "Optionen",
     "startClassic": "Mit „Lorem ipsum…“ beginnen",

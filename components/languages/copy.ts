@@ -140,6 +140,34 @@ export const frenchLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML copié.",
 };
 
+export const germanLanguagesCopy: LanguagesCopy = {
+  title: "Asiatischer Blindtext-Generator",
+  intro: "Erzeuge japanischen, chinesischen oder koreanischen Blindtext, um mehrsprachige Oberflächen, Layouts und Prototypen zu testen. Prüfe Textdichte, Zeilenumbrüche und Abstände mit exakten Mengen.",
+  numberLocale: "de-DE",
+  contentLanguage: "Textsprache",
+  mode: "Modus",
+  contentLanguages: { ja: "Japanisch", "zh-Hans": "Vereinfachtes Chinesisch", "zh-Hant": "Traditionelles Chinesisch", ko: "Koreanisch" },
+  modes: { words: "Wörter", characters: "Zeichen", sentences: "Sätze" },
+  paragraphs: "Absätze",
+  presets: "Vorgaben",
+  output: "Ergebnis",
+  outputAria: "Generierter Text",
+  emptyState: "Wähle die Einstellungen und erzeuge Blindtext.",
+  generate: "Generieren",
+  regenerate: "Neu generieren",
+  copy: "Kopieren",
+  copied: "Kopiert",
+  copyHtml: "HTML kopieren",
+  copiedHtml: "HTML kopiert",
+  invalidAmount: "Gib eine ganze Zahl für {mode} zwischen {min} und {max} ein.",
+  invalidParagraphs: "Gib eine gültige ganze Absatzanzahl ein.",
+  unsupportedCombination: "Diese Kombination ist für die gewählte Sprache nicht verfügbar. Die gewünschte Menge wurde nicht geändert.",
+  adjustedParagraphs: "Die Absatzanzahl wurde auf {paragraphs} angepasst, damit die gewünschte Menge exakt bleibt.",
+  copyFailed: "Kopieren nicht möglich. Prüfe die Browserberechtigungen und versuche es erneut.",
+  copiedNotice: "Text kopiert.",
+  copiedHtmlNotice: "HTML kopiert.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

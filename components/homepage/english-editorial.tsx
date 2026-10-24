@@ -4,6 +4,8 @@ import styles from "./italian-editorial.module.css";
 export const englishHomepageFaqItems: [string, string][] = [
   ["Does Lorem Ipsum actually mean anything?", "Modern Lorem Ipsum is derived from classical Latin, but the text has been altered and rearranged over time. It therefore looks like natural language without forming a coherent passage."],
   ["What is the difference between Lorem Ipsum, dummy text and placeholder text?", "Dummy text and placeholder text are general terms for temporary text used inside a layout. Lorem Ipsum is one of the most widely used forms of placeholder text."],
+  ["How can I generate 100, 150 or 250 characters of Lorem Ipsum?", "Select Characters and enter the length you need. The generator creates Lorem Ipsum with the requested character count, including spaces and punctuation. You can use it to test short descriptions, cards and other text areas with fixed limits."],
+  ["Does the Lorem Ipsum character count include spaces?", "Yes. The Characters mode includes spaces and punctuation in the total. A separate “Without spaces” counter shows the length excluding spaces. This does not remove spaces from the generated text."],
 ];
 
 export function EnglishHomepageEditorial() {

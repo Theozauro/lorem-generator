@@ -106,7 +106,7 @@ export const enHomepageCopy: HomepageCopy = {
     "aboutEyebrow": "A NOTE ON PLACEHOLDER TEXT",
     "aboutTitle": "Placeholder text generator for layouts and prototypes",
     "aboutOne": "Generate filler text for mockups, wireframes and interface tests with precise control over words, paragraphs, sentences and characters.",
-    "aboutTwo": "",
+    "aboutTwo": "Need a specific text length? Generate 150 or 250 words of Lorem Ipsum for content previews, or create exactly 100, 150 or 250 characters for captions, cards and other interface elements. Choose Words or Characters, enter your target length and set the number of paragraphs separately. The output counters let you check the result before copying it.",
     "seoEyebrow": "BUILT FOR REAL LAYOUTS",
     "seoTitle": "A Lorem Ipsum Generator for designers and developers.",
     "seoOneTitle": "Keep the layout honest.",
@@ -176,8 +176,8 @@ export const enHomepageCopy: HomepageCopy = {
         "A Lorem Ipsum generator creates temporary placeholder copy so you can evaluate hierarchy, spacing, line length, and layout before final content is ready."
       ],
       [
-        "Can I generate an exact number of words and paragraphs?",
-        "Yes. Set Words and Paragraphs together. The generator keeps the total word count exact while distributing the copy across naturally varied paragraphs."
+        "Can I generate exactly 150 or 250 words of Lorem Ipsum?",
+        "Yes. Select Words and enter 150, or use the 250-word preset. You can also choose how many paragraphs to generate. The total word count stays exact, regardless of how the text is divided into paragraphs."
       ],
       [
         "Can I use generated Lorem Ipsum in a commercial project?",

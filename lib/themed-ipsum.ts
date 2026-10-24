@@ -13,6 +13,8 @@ type ThemeData = {
   attachSingleWordToPrevious?: boolean;
   avoidRepeatedClauses?: boolean;
   completeClauses?: boolean;
+  requireCompleteClauseFit?: boolean;
+  completeCharacterSentences?: boolean;
   sentenceAtomic?: boolean;
   punctuateTailPhrases?: boolean;
   strictClauseCooldown?: boolean;
@@ -387,8 +389,11 @@ const germanThemedIpsumData: Record<ThemedTheme, ThemeData> = {
 const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   corporate: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, souvent, régulièrement, progressivement, clairement, désormais, directement"),
-    clauses: terms("l’équipe compare les résultats, les responsables suivent les objectifs, le service prépare son budget, chaque projet avance selon le calendrier, les équipes partagent leurs priorités, la direction examine les prévisions, les partenaires définissent un plan commun, les clients évaluent le nouveau service, le comité ajuste les prochaines étapes, les équipes répartissent les ressources, le rapport présente les résultats obtenus, la stratégie accompagne la croissance, les équipes avancent ensemble, le budget reste maîtrisé, les délais sont respectés, les ventes progressent régulièrement, l’équipe avance, le budget tient, les ventes progressent, tout avance"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
+    clauses: terms("l’équipe compare les résultats, les responsables suivent les objectifs, le service prépare son budget, chaque projet avance selon le calendrier, les équipes partagent leurs priorités, la direction examine les prévisions, les partenaires définissent un plan commun, les clients évaluent le nouveau service, le comité ajuste les prochaines étapes, les équipes répartissent les ressources, le rapport présente les résultats obtenus, la stratégie accompagne la croissance, les équipes avancent ensemble, le budget reste maîtrisé, les délais sont respectés, les ventes progressent régulièrement, l’équipe avance, le budget tient, les ventes progressent, le plan avance, tout avance"),
     openers: [
       "Les équipes dirigeantes relient les priorités stratégiques aux résultats concrets et aux besoins du terrain.",
       "La direction répartit les ressources entre les projets pour tenir les objectifs du trimestre.",
@@ -405,7 +410,10 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
   tech: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, souvent, rapidement, régulièrement, automatiquement, progressivement, correctement"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
     clauses: terms("l’équipe déploie une nouvelle version, les services échangent des événements, le système vérifie chaque requête, les développeurs corrigent le composant, la plateforme répartit la charge, les tests couvrent les principaux parcours, le serveur transmet les données, les journaux signalent une erreur, les conteneurs isolent les applications, la chaîne prépare la livraison, le cache réduit les appels répétés, les équipes surveillent la disponibilité, les données transitent par l’API, le service répond rapidement, les erreurs sont consignées, les alertes préviennent l’équipe, le service répond, le système tourne, les données circulent, tout fonctionne"),
     openers: [
       "Les équipes techniques relient les services de la plateforme au moyen d’API documentées et de contrôles automatisés.",
@@ -423,7 +431,10 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
   ai: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, souvent, précisément, progressivement, clairement, correctement, désormais"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
     clauses: terms("l’équipe évalue plusieurs modèles, le système retrouve des documents utiles, les données sont vérifiées avant l’entraînement, les chercheurs comparent les réponses, le modèle suit les consignes reçues, les agents répartissent les tâches, les tests mesurent la qualité, le corpus contient des exemples variés, le moteur classe les résultats, chaque requête fournit un contexte, les évaluations révèlent des écarts, le modèle génère une réponse, les sources sont ajoutées au contexte, l’agent transmet la demande, les résultats sont relus avant publication, la recherche améliore la réponse, le modèle répond, l’agent apprend, les résultats convergent, tout converge"),
     openers: [
       "Les modèles de langage apprennent à partir de corpus préparés et sont évalués sur des exemples représentatifs.",
@@ -441,7 +452,10 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
   design: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, souvent, clairement, soigneusement, progressivement, désormais, simplement"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
     clauses: terms("l’équipe teste plusieurs parcours, les composants gardent une taille cohérente, le prototype montre les interactions, les designers ajustent les espacements, la grille organise les contenus, les retours révèlent un défaut, chaque écran respecte les contrastes, la maquette présente les états utiles, le système rassemble les règles communes, les titres guident la lecture, la bibliothèque facilite les mises à jour, les textes restent lisibles, le menu suit la navigation, les couleurs signalent les actions, les équipes valident le prototype, le parcours devient plus clair, la grille tient, le texte passe, le rendu évolue, tout s’aligne"),
     openers: [
       "Les équipes produit organisent l’interface autour d’une hiérarchie visuelle claire et de composants réutilisables.",
@@ -459,7 +473,10 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
   fashion: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, souvent, harmonieusement, soigneusement, progressivement, élégamment, désormais"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
     clauses: terms("l’atelier prépare les pièces, les stylistes choisissent les matières, chaque coupe suit le patron, la collection réunit des formes sobres, les essayages corrigent les proportions, les équipes vérifient les finitions, la maison présente sa nouvelle ligne, le tissu garde un tombé souple, les accessoires complètent la silhouette, les modèles sont réalisés en série, les couleurs restent harmonieuses, la couture souligne le détail, les pièces suivent la tendance, la coupe dessine le volume, les matières résistent à l’usage, le studio prépare les images, la coupe tombe, le tissu bouge, le style évolue, tout s’accorde"),
     openers: [
       "Les ateliers préparent la collection de saison en choisissant les matières et les finitions de chaque pièce.",
@@ -477,7 +494,10 @@ const frenchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
   zombie: {
     phraseHeavy: true,
-    sentenceWords: terms("ensemble, encore, parfois, rapidement, discrètement, progressivement, désormais, dehors"),
+    completeClauses: true,
+    requireCompleteClauseFit: true,
+    completeCharacterSentences: true,
+    sentenceAtomic: true,
     clauses: terms("les survivants renforcent le refuge, la patrouille rejoint le convoi, les guetteurs observent les rues, une alerte retentit près du bunker, l’équipe récupère les médicaments, les infectés avancent vers le poste, le véhicule transporte les dernières rations, les secours répondent au signal radio, la porte protège les survivants, le groupe quitte la zone contaminée, les rôdeurs encerclent le dépôt, la sirène annonce l’évacuation, le convoi franchit le barrage, les survivants cherchent un abri, les secours ferment le périmètre, la radio transmet un nouvel ordre, la horde approche, ils avancent, la sirène retentit, tout recommence"),
     openers: [
       "Les survivants barricadent le refuge tandis qu’une horde avance dans les rues désertes de la ville.",
@@ -1051,7 +1071,9 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
     }
     const fresh = ordered.filter(clause => !usedClauses.has(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()));
     const fallbackClauses = ordered.filter(clause => !recentPhrases.includes(clause.toLocaleLowerCase()) && (!data.strictClauseCooldown || !usedClauses.has(clause.toLocaleLowerCase())));
-    const fitted = fit(fresh, targetWords) ?? fit(fallbackClauses, targetWords);
+    const fitted = fit(fresh, targetWords)
+      ?? fit(fallbackClauses, targetWords)
+      ?? (data.requireCompleteClauseFit ? fit(ordered, targetWords) : null);
     if (fitted) {
       for (const clause of fitted) {
         usedClauses.add(clause.toLocaleLowerCase());
@@ -1067,6 +1089,7 @@ function denseSentence(data: ThemeData, targetWords: number, random: () => numbe
       }
       return fitted.map(clause => `${capitalizeFirst(clause, true).replace(/[,:;.!?]+$/u, "")}.`).join(" ");
     }
+    if (data.requireCompleteClauseFit) throw new Error("No exact composition of complete French sentences is available for this word target");
   }
   const components: string[] = [];
   const sentencePhrases = new Set<string>();
@@ -1231,7 +1254,9 @@ function generateSentences(data: ThemeData, amount: number, random: () => number
       const available = clauses.filter(clause => !used.has(clause.toLocaleLowerCase("tr-TR")));
       const sentence = pick(available.length ? available : clauses, random);
       used.add(sentence.toLocaleLowerCase("tr-TR"));
-      generated.push(sentence);
+      generated.push(data.requireCompleteClauseFit
+        ? `${capitalizeFirst(sentence, true).replace(/[,:;.!?]+$/u, "")}.`
+        : sentence);
     }
     return generated.join(" ");
   }
@@ -1265,7 +1290,46 @@ const characterConnectors: Record<ThemedLanguage, string[]> = {
   hu: ["a", "az", "és", "vagy", "hogy", "mint", "mert", "ha", "is", "meg", "már", "egy", "ezt", "ennek", "között", "alatt", "után", "előtt", "szerint", "miatt", "nélkül", "közben"],
 };
 
+function exactFrenchCharacterSentences(data: ThemeData, amount: number, random: () => number) {
+  const candidates = [...new Set([...(data.openers ?? []), ...(data.clauses ?? [])].map(sentence => {
+    const clean = sentence.trim().replace(/[.!?]+$/u, "");
+    return `${clean.charAt(0).toLocaleUpperCase("fr-FR")}${clean.slice(1)}.`;
+  }))];
+  const costs = candidates.map(sentence => sentence.length + 1);
+  const target = amount + 1;
+  const reachable = Array.from({ length: target + 1 }, () => new Uint8Array(candidates.length + 1));
+  const choices = Array.from({ length: target + 1 }, () => [] as number[]);
+  reachable[0].fill(1);
+
+  for (let total = 1; total <= target; total += 1) {
+    const options = choices[total];
+    for (let index = 0; index < candidates.length; index += 1) {
+      const previousTotal = total - costs[index];
+      if (previousTotal >= 0 && reachable[previousTotal][index]) options.push(index);
+    }
+    for (let previous = 0; previous <= candidates.length; previous += 1) {
+      if (options.some(index => index !== previous)) reachable[total][previous] = 1;
+    }
+  }
+
+  if (!reachable[target][candidates.length]) throw new Error("No exact character composition of complete French sentences is available");
+
+  const sentences: string[] = [];
+  let remaining = target;
+  let previous = candidates.length;
+  while (remaining > 0) {
+    const options = choices[remaining].filter(index => index !== previous);
+    if (options.length === 0) throw new Error("No exact character composition of complete French sentences is available");
+    const selected = options[Math.floor(random() * options.length)];
+    sentences.push(candidates[selected]);
+    remaining -= costs[selected];
+    previous = selected;
+  }
+  return sentences.join(" ");
+}
+
 function exactCharacterTail(data: ThemeData, connectors: string[], amount: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], includeStandaloneVerbs = true) {
+  if (data.completeCharacterSentences) return exactFrenchCharacterSentences(data, amount, random);
   if (data.completeClauses) {
     const candidates = [...(data.punctuateTailPhrases ? [] : data.phrases.map(phrase => /[.!?]$/u.test(phrase) ? phrase : `${phrase}.`)), ...(data.clauses ?? [])]
       .filter(clause => !recentComponents.includes(clause.toLocaleLowerCase()) && !recentPhrases.includes(clause.toLocaleLowerCase()))
@@ -1348,6 +1412,7 @@ function exactCharacterTail(data: ThemeData, connectors: string[], amount: numbe
 }
 
 function generateCharacters(data: ThemeData, connectors: string[], amount: number, random: () => number, bridges: string[], includeStandaloneVerbs: boolean) {
+  if (data.completeCharacterSentences) return exactFrenchCharacterSentences(data, amount, random);
   let text = "";
   let lastToken = "";
   const recentComponents: string[] = [];

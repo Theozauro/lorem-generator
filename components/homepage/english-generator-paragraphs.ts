@@ -16,6 +16,12 @@ export const spanishParagraphMessages: ParagraphMessages = {
   unsupportedParagraphs: maximum => `Esta cantidad permite hasta ${maximum} ${maximum === 1 ? "párrafo" : "párrafos"}. No se ha modificado la cantidad solicitada.`,
   unsupportedOutput: "Esta combinación no está disponible. No se han modificado la cantidad ni el número de párrafos solicitados.",
 };
+export const frenchParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Saisissez un nombre de paragraphes compris entre 1 et 100.",
+  invalidAmount: "Saisissez une quantité entière valide.",
+  unsupportedParagraphs: maximum => `Cette quantité permet jusqu’à ${maximum} ${maximum === 1 ? "paragraphe" : "paragraphes"}. La quantité demandée n’a pas été modifiée.`,
+  unsupportedOutput: "Cette combinaison n’est pas disponible. La quantité et le nombre de paragraphes demandés n’ont pas été modifiés.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);

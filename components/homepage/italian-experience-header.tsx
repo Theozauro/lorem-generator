@@ -160,16 +160,16 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const labels = experience[locale];
-  const languagesLabel = locale === "it" ? "Ipsum asiatico" : locale === "es" ? "Ipsum asiático" : "Asian Ipsum";
-  const classicLabel = locale === "it" || locale === "en" || locale === "es" ? "Lorem Ipsum" : labels.classicLabel;
-  const themedLabel = locale === "en" ? "Themed Ipsum" : labels.themedLabel;
-  const asianRoute: Record<"en" | "it" | "es", string> = { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: "/es/ipsum-asiatico/" };
+  const languagesLabel = locale === "it" ? "Ipsum asiatico" : locale === "es" ? "Ipsum asiático" : locale === "fr" ? "Ipsum asiatique" : "Asian Ipsum";
+  const classicLabel = locale === "it" || locale === "en" || locale === "es" || locale === "fr" ? "Lorem Ipsum" : labels.classicLabel;
+  const themedLabel = locale === "en" ? "Themed Ipsum" : locale === "fr" ? "Ipsum thématique" : labels.themedLabel;
+  const asianRoute: Record<"en" | "it" | "es" | "fr", string> = { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: "/es/ipsum-asiatico/", fr: "/fr/ipsum-asiatique/" };
   const destinations: { section: ExperienceSection; href: string; label: string }[] = [
     { section: "classic", href: labels.homePath, label: classicLabel },
     { section: "themed", href: labels.themedPath, label: themedLabel },
-    ...(locale === "it" || locale === "en" || locale === "es" ? [{ section: "languages" as const, href: asianRoute[locale], label: languagesLabel }] : []),
+    ...(locale === "it" || locale === "en" || locale === "es" || locale === "fr" ? [{ section: "languages" as const, href: asianRoute[locale], label: languagesLabel }] : []),
   ];
-  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it" || code === "es") : localeOptions;
+  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it" || code === "es" || code === "fr") : localeOptions;
   const mobileNavigationId = `${locale}-mobile-navigation`;
 
   useEffect(() => {
@@ -209,7 +209,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   }
 
   function hrefForLocale(code: string, classicHref: string) {
-    if (active === "languages") return (code === "en" || code === "it" || code === "es") ? asianRoute[code] : classicHref;
+    if (active === "languages") return (code === "en" || code === "it" || code === "es" || code === "fr") ? asianRoute[code] : classicHref;
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;

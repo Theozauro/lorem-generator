@@ -41,7 +41,7 @@ export const frenchThemedPageConfig: ThemedPageConfig = {
     ...frHomepageCopy,
     generator: {
       ...frHomepageCopy.generator,
-      layout: "MOTS + PARAGRAPHES",
+      layout: "MOTS",
       characters: "CARACTÈRES",
       sentences: "PHRASES",
       quickWords: "VALEURS RAPIDES",

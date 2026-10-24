@@ -112,6 +112,34 @@ export const spanishLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML copiado.",
 };
 
+export const frenchLanguagesCopy: LanguagesCopy = {
+  title: "Générateur de texte en langues asiatiques",
+  intro: "Générez du texte en japonais, chinois ou coréen pour vérifier des interfaces, des mises en page et des prototypes multilingues, avec un décompte précis.",
+  numberLocale: "fr-FR",
+  contentLanguage: "Langue du texte",
+  mode: "Mode",
+  contentLanguages: { ja: "Japonais", "zh-Hans": "Chinois simplifié", "zh-Hant": "Chinois traditionnel", ko: "Coréen" },
+  modes: { words: "Mots", characters: "Caractères", sentences: "Phrases" },
+  paragraphs: "Paragraphes",
+  presets: "Préréglages",
+  output: "Résultat",
+  outputAria: "Texte généré",
+  emptyState: "Choisissez les réglages et générez le texte de substitution.",
+  generate: "Générer",
+  regenerate: "Régénérer",
+  copy: "Copier",
+  copied: "Copié",
+  copyHtml: "Copier le HTML",
+  copiedHtml: "HTML copié",
+  invalidAmount: "Saisissez un nombre entier de {mode} compris entre {min} et {max}.",
+  invalidParagraphs: "Saisissez un nombre entier valide de paragraphes.",
+  unsupportedCombination: "Cette combinaison de quantité et de paragraphes n’est pas disponible pour la langue sélectionnée. La quantité demandée n’a pas été modifiée.",
+  adjustedParagraphs: "Le nombre de paragraphes a été ajusté à {paragraphs} pour conserver la quantité demandée.",
+  copyFailed: "La copie a échoué. Vérifiez les autorisations du navigateur et réessayez.",
+  copiedNotice: "Texte copié.",
+  copiedHtmlNotice: "HTML copié.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

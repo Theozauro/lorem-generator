@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title,
   description,
   robots: { index: true, follow: true },
-  alternates: { canonical: path, languages: { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: path } },
+  alternates: { canonical: path, languages: { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: path, fr: "/fr/ipsum-asiatique/" } },
   openGraph: { type: "website", url: `${siteUrl}${path}`, locale: "es_ES", title, description, siteName: "lorem-generator.com", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
 };

@@ -24,7 +24,7 @@ export const frHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Mode",
     "modeLabel": "Mode de génération",
-    "layout": "Mots + paragraphes",
+    "layout": "Mots",
     "characters": "Caractères",
     "sentences": "Phrases",
     "quickWords": "Quantités rapides",

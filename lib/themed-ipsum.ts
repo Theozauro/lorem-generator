@@ -652,6 +652,17 @@ const brazilianPortugueseThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   },
 };
 
+// Brazilian Portuguese uses reviewed, fully inflected clauses rather than
+// attaching free adverbs to arbitrary phrase endings.
+for (const data of Object.values(brazilianPortugueseThemedIpsumData)) {
+  data.phraseHeavy = true;
+  data.avoidRepeatedClauses = true;
+  data.completeClauses = true;
+  data.requireCompleteClauseFit = true;
+  data.completeCharacterSentences = true;
+  data.sentenceAtomic = true;
+}
+
 // Polish clauses are already inflected. Short adverbial completions preserve
 // word budgets without splicing arbitrary infinitives into a finished clause.
 const polishSentenceWords = terms("dziś, teraz, razem, sprawnie, uważnie, regularnie, dokładnie, stopniowo, wspólnie, świadomie, ponownie, systematycznie");

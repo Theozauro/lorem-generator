@@ -168,6 +168,34 @@ export const germanLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML kopiert.",
 };
 
+export const brazilianPortugueseLanguagesCopy: LanguagesCopy = {
+  title: "Gerador de Ipsum Asiático",
+  intro: "Gere texto em japonês, chinês simplificado, chinês tradicional ou coreano para testar interfaces e layouts multilíngues com contagens exatas.",
+  numberLocale: "pt-BR",
+  contentLanguage: "Idioma do texto",
+  mode: "Modo",
+  contentLanguages: { ja: "Japonês", "zh-Hans": "Chinês simplificado", "zh-Hant": "Chinês tradicional", ko: "Coreano" },
+  modes: { words: "Palavras", characters: "Caracteres", sentences: "Frases" },
+  paragraphs: "Parágrafos",
+  presets: "Presets",
+  output: "Resultado",
+  outputAria: "Texto gerado",
+  emptyState: "Escolha as configurações e gere o texto.",
+  generate: "Gerar",
+  regenerate: "Gerar novamente",
+  copy: "Copiar",
+  copied: "Copiado",
+  copyHtml: "Copiar HTML",
+  copiedHtml: "HTML copiado",
+  invalidAmount: "Informe uma quantidade inteira de {mode} entre {min} e {max}.",
+  invalidParagraphs: "Informe uma quantidade válida de parágrafos.",
+  unsupportedCombination: "Essa combinação não está disponível para o idioma selecionado. A quantidade solicitada não foi alterada.",
+  adjustedParagraphs: "A quantidade de parágrafos foi ajustada para {paragraphs} para manter o total solicitado exato.",
+  copyFailed: "Não foi possível copiar. Verifique as permissões do navegador e tente novamente.",
+  copiedNotice: "Texto copiado.",
+  copiedHtmlNotice: "HTML copiado.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

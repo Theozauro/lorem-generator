@@ -7,16 +7,18 @@ import { EnglishLanguagesEditorial } from "./english-languages-editorial";
 import { SpanishLanguagesEditorial } from "./spanish-languages-editorial";
 import { FrenchLanguagesEditorial } from "./french-languages-editorial";
 import { GermanLanguagesEditorial } from "./german-languages-editorial";
-import { englishLanguagesCopy, frenchLanguagesCopy, germanLanguagesCopy, italianLanguagesCopy, spanishLanguagesCopy } from "./copy";
+import { BrazilianPortugueseLanguagesEditorial } from "./brazilian-portuguese-languages-editorial";
+import { brazilianPortugueseLanguagesCopy, englishLanguagesCopy, frenchLanguagesCopy, germanLanguagesCopy, italianLanguagesCopy, spanishLanguagesCopy } from "./copy";
 import styles from "./languages-generator.module.css";
 
-export function LanguagesPage({ locale = "it" }: { locale?: "en" | "it" | "es" | "fr" | "de" }) {
+export function LanguagesPage({ locale = "it" }: { locale?: "en" | "it" | "es" | "fr" | "de" | "pt-BR" }) {
   const isEnglish = locale === "en";
   const isSpanish = locale === "es";
   const isFrench = locale === "fr";
   const isGerman = locale === "de";
+  const isBrazilianPortuguese = locale === "pt-BR";
   const copy = homepageCopy[locale];
-  const languagesCopy = isEnglish ? englishLanguagesCopy : isSpanish ? spanishLanguagesCopy : isFrench ? frenchLanguagesCopy : isGerman ? germanLanguagesCopy : italianLanguagesCopy;
+  const languagesCopy = isEnglish ? englishLanguagesCopy : isSpanish ? spanishLanguagesCopy : isFrench ? frenchLanguagesCopy : isGerman ? germanLanguagesCopy : isBrazilianPortuguese ? brazilianPortugueseLanguagesCopy : italianLanguagesCopy;
   return <main className={`site-shell ${styles.page}`} lang={locale}><div className="page-content italian-experience-page">
     <ExperienceHeader locale={locale} active="languages" copy={copy} />
     <section className="main-section" aria-labelledby="languages-title">
@@ -24,7 +26,7 @@ export function LanguagesPage({ locale = "it" }: { locale?: "en" | "it" | "es" |
       <p className="seo-intro">{languagesCopy.intro}</p>
       <LanguagesGenerator copy={languagesCopy} />
     </section>
-    {isEnglish ? <EnglishLanguagesEditorial /> : isSpanish ? <SpanishLanguagesEditorial /> : isFrench ? <FrenchLanguagesEditorial /> : isGerman ? <GermanLanguagesEditorial /> : <ItalianLanguagesEditorial />}
+    {isEnglish ? <EnglishLanguagesEditorial /> : isSpanish ? <SpanishLanguagesEditorial /> : isFrench ? <FrenchLanguagesEditorial /> : isGerman ? <GermanLanguagesEditorial /> : isBrazilianPortuguese ? <BrazilianPortugueseLanguagesEditorial /> : <ItalianLanguagesEditorial />}
     <HomepageFooter copy={copy} />
   </div></main>;
 }

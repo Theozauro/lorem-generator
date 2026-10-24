@@ -28,6 +28,12 @@ export const germanParagraphMessages: ParagraphMessages = {
   unsupportedParagraphs: maximum => `Für diese Menge sind höchstens ${maximum} ${maximum === 1 ? "Absatz" : "Absätze"} möglich. Die gewünschte Menge wurde nicht geändert.`,
   unsupportedOutput: "Diese Kombination ist nicht verfügbar. Die gewünschte Menge und Absatzanzahl wurden nicht geändert.",
 };
+export const brazilianPortugueseParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Informe uma quantidade de parágrafos entre 1 e 100.",
+  invalidAmount: "Informe uma quantidade inteira válida.",
+  unsupportedParagraphs: maximum => `Essa quantidade permite até ${maximum} ${maximum === 1 ? "parágrafo" : "parágrafos"}. A quantidade solicitada não foi alterada.`,
+  unsupportedOutput: "Essa combinação não está disponível. A quantidade solicitada e o número de parágrafos não foram alterados.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);

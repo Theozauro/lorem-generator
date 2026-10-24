@@ -24,7 +24,7 @@ export const ptbrHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Modo",
     "modeLabel": "Modo de geração",
-    "layout": "Palavras + parágrafos",
+    "layout": "Palavras",
     "characters": "Caracteres",
     "sentences": "Frases",
     "quickWords": "Quantidades rápidas",

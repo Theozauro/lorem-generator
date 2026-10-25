@@ -34,6 +34,12 @@ export const brazilianPortugueseParagraphMessages: ParagraphMessages = {
   unsupportedParagraphs: maximum => `Essa quantidade permite até ${maximum} ${maximum === 1 ? "parágrafo" : "parágrafos"}. A quantidade solicitada não foi alterada.`,
   unsupportedOutput: "Essa combinação não está disponível. A quantidade solicitada e o número de parágrafos não foram alterados.",
 };
+export const dutchParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Voer een aantal alinea’s tussen 1 en 100 in.",
+  invalidAmount: "Voer een geldig geheel getal in.",
+  unsupportedParagraphs: maximum => `Voor deze hoeveelheid zijn maximaal ${maximum} ${maximum === 1 ? "alinea" : "alinea’s"} mogelijk. De gevraagde hoeveelheid is niet gewijzigd.`,
+  unsupportedOutput: "Deze combinatie is niet beschikbaar. De gevraagde hoeveelheid en het aantal alinea’s zijn niet gewijzigd.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);

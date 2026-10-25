@@ -24,7 +24,7 @@ export const nlHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Modus",
     "modeLabel": "Generatiemodus",
-    "layout": "Woorden + alinea’s",
+    "layout": "Woorden",
     "characters": "Tekens",
     "sentences": "Zinnen",
     "quickWords": "Snelle aantallen",

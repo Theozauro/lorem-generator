@@ -16,6 +16,7 @@ type ThemeData = {
   requireCompleteClauseFit?: boolean;
   completeCharacterSentences?: boolean;
   sentenceAtomic?: boolean;
+  paragraphClauseAtomic?: boolean;
   punctuateTailPhrases?: boolean;
   strictClauseCooldown?: boolean;
   joinCompleteClauses?: boolean;
@@ -121,7 +122,7 @@ const dutchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     openers: ["Modellen leren van zorgvuldig samengestelde datasets en worden beoordeeld met representatieve voorbeelden.", "Onderzoeksteams vergelijken modellen voordat ze een aanpak voor het product kiezen.", "Een retrievalsysteem vindt relevante documenten en geeft die mee als context aan het model.", "Evaluaties meten kwaliteit, consistentie en naleving van instructies in verschillende scenario's.", "De trainingsset wordt gecontroleerd om duplicaten en gevoelige informatie te beperken.", "Agents verdelen taken over tools en houden de resultaten van elke stap bij.", "De inferentie-instellingen balanceren nauwkeurigheid, snelheid en kosten.", "Een semantische zoeklaag brengt documenten samen die bij de vraag passen."],
     vocabulary: terms("agent, algoritme, analyse, aandacht, context, dataset, data, decoder, embedding, evaluatie, inferentie, instructie, intelligentie, kennisbank, model, multimodaal, neuraal, parameter, prompt, retrieval, redenering, respons, veiligheid, sampling, semantiek, token, training, transformer, vector, verificatie, voorspelling, optimalisatie, classificatie, generatie, machine learning, benchmark, kwaliteit, bron, zoeklaag, voorbeeld, taak, uitkomst, patroon, filter, document, contextvenster, feedback, fine-tuning, workflow, validatie"),
     phrases: terms("zorgvuldig samengestelde datasets, relevante context, semantische zoeklaag, retrieval en generatie, modelkwaliteit, betrouwbare evaluatie, multimodale modellen, gecontroleerde inferentie, menselijke beoordeling, duidelijke instructies, relevante bronnen, trainingsgegevens"),
-    clauses: terms("het model vergelijkt antwoorden, de evaluatie registreert sterke punten, de zoeklaag vindt bronnen, de agent verdeelt de taak, de dataset wordt gecontroleerd, onderzoekers testen prompts, het systeem bewaart context, de filter verwijdert dubbele voorbeelden, parameters worden aangepast, de respons wordt nagekeken"),
+    clauses: terms("het model vergelijkt antwoorden, de evaluatie registreert sterke punten, de zoeklaag vindt bronnen, de agent verdeelt de taak, de dataset wordt gecontroleerd, onderzoekers testen prompts, het systeem bewaart context, het filter verwijdert dubbele voorbeelden, parameters worden aangepast, de respons wordt nagekeken"),
     verbs: terms("analyseren, classificeren, evalueren, genereren, insluiten, leren, optimaliseren, voorspellen, rangschikken, redeneren, ophalen, samplen, trainen, transformeren, verifiëren, vergelijken, afstemmen, testen") },
   design: { phraseHeavy: true, attachSingleWordToPrevious: true, avoidRepeatedClauses: true,
     openers: ["Productteams bouwen responsieve interfaces met herbruikbare componenten en een duidelijke visuele hiërarchie.", "Een design system verbindt toegankelijke interacties, consistente typografie en flexibele grids.", "Creatieve teams verfijnen een visuele identiteit met rustige composities en doelgerichte witruimte.", "Interfaceontwerpers verbinden gebruikersstromen, componentstaten en ritme in één herkenbare taal.", "Designreviews vergelijken contrast, inhoudsdichtheid en interactie voordat een component wordt gebouwd.", "Prototypes maken navigatie en feedback zichtbaar voordat de technische implementatie start.", "Een typografisch systeem geeft koppen, tekst en labels een voorspelbare verhouding.", "Ontwerpers testen verschillende layouts om elke schermervaring helder te houden."],
@@ -142,6 +143,16 @@ const dutchThemedIpsumData: Record<ThemedTheme, ThemeData> = {
     clauses: terms("de overlevenden versterken de schuilplaats, de patrouille bereikt de karavaan, wachters houden de straat in de gaten, het alarm klinkt bij de bunker, de groep zoekt medicijnen, geïnfecteerden naderen het checkpoint, het voertuig vervoert de voorraad, de radio antwoordt op het signaal, de poort beschermt de groep, de sirene kondigt evacuatie aan, de wachttoren ziet beweging, de ploeg controleert elke kamer"),
     verbs: terms("barricaderen, beschermen, evacueren, ontsnappen, overleven, patrouilleren, redden, zoeken, signaleren, versterken, vluchten, verbergen, waarschuwen, verdedigen, controleren, afsluiten") },
 };
+
+// Dutch phrase-level word assembly can join an incomplete verb phrase to a
+// leftover noun or adjective. Keep this locale on reviewed, complete clauses.
+for (const data of Object.values(dutchThemedIpsumData)) {
+  data.completeClauses = true;
+  data.requireCompleteClauseFit = true;
+  data.completeCharacterSentences = true;
+  data.sentenceAtomic = true;
+  data.paragraphClauseAtomic = true;
+}
 
 const italianThemedIpsumData: Record<ThemedTheme, ThemeData> = {
   corporate: {
@@ -1227,6 +1238,42 @@ function sentenceBudgets(total: number, random: () => number) {
 }
 
 function paragraphForBudget(data: ThemeData, budget: number, random: () => number, avoidStartToken = "", recentComponents: string[] = [], recentPhrases: string[] = [], recentOpeners: string[] = [], bridges: string[] = [], includeStandaloneVerbs = true, usedClauses: Set<string> = new Set()) {
+  if (data.paragraphClauseAtomic && data.clauses?.length) {
+    const resources = [...data.openers, ...data.clauses.map(clause => `${capitalizeFirst(clause, true).replace(/[,:;.!?]+$/u, "")}.`)]
+      .filter((sentence, index, all) => all.findIndex(candidate => candidate.toLocaleLowerCase() === sentence.toLocaleLowerCase()) === index)
+      .map(sentence => ({ sentence, key: sentence.toLocaleLowerCase(), cost: wordCount(sentence) }));
+    const reachable = Array<boolean>(budget + 1).fill(false);
+    reachable[0] = true;
+    for (let total = 1; total <= budget; total += 1) {
+      reachable[total] = resources.some(resource => resource.cost <= total && reachable[total - resource.cost]);
+    }
+    if (!reachable[budget]) throw new Error("No exact composition of complete Dutch sentences is available for this word target");
+
+    const sentences: string[] = [];
+    let remaining = budget;
+    let previous = "";
+    let firstSentence = true;
+    while (remaining > 0) {
+      let options = resources.filter(resource => resource.cost <= remaining && reachable[remaining - resource.cost] && resource.key !== previous);
+      if (firstSentence && avoidStartToken) {
+        const withoutRepeatedOpening = options.filter(resource => comparableToken(resource.sentence.split(/\s+/)[0]) !== avoidStartToken);
+        if (withoutRepeatedOpening.length) options = withoutRepeatedOpening;
+      }
+      const fresh = options.filter(resource => !usedClauses.has(resource.key));
+      if (fresh.length) options = fresh;
+      if (!options.length) options = resources.filter(resource => resource.cost <= remaining && reachable[remaining - resource.cost]);
+      const selected = pick(options, random);
+      sentences.push(selected.sentence);
+      previous = selected.key;
+      usedClauses.add(selected.key);
+      if (data.openers.includes(selected.sentence)) rememberComponent(recentOpeners, selected.sentence);
+      rememberComponent(recentComponents, selected.sentence);
+      remaining -= selected.cost;
+      firstSentence = false;
+    }
+    return sentences.join(" ");
+  }
+
   const sentences: string[] = [];
   const fittingOpeners = data.openers.filter(opener => {
     const remaining = budget - wordCount(opener);

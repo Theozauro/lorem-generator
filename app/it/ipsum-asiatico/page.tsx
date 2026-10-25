@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title,
   description,
   robots: { index: true, follow: true },
-  alternates: { canonical: path, languages: { it: path, en: "/asian-ipsum/", es: "/es/ipsum-asiatico/", fr: "/fr/ipsum-asiatique/", de: "/de/asiatisches-ipsum/", "pt-BR": "/pt-br/ipsum-asiatico/" } },
+  alternates: { canonical: path, languages: { it: path, en: "/asian-ipsum/", es: "/es/ipsum-asiatico/", fr: "/fr/ipsum-asiatique/", de: "/de/asiatisches-ipsum/", "pt-BR": "/pt-br/ipsum-asiatico/", nl: "/nl/aziatisch-ipsum/" } },
   openGraph: {
     type: "website",
     url: `${siteUrl}${path}`,

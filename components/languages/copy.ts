@@ -196,6 +196,34 @@ export const brazilianPortugueseLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML copiado.",
 };
 
+export const dutchLanguagesCopy: LanguagesCopy = {
+  title: "Aziatisch Ipsum-generator",
+  intro: "Genereer tekst in het Japans, vereenvoudigd of traditioneel Chinees en Koreaans om meertalige interfaces, layouts en prototypes met exacte aantallen te testen.",
+  numberLocale: "nl-NL",
+  contentLanguage: "Teksttaal",
+  mode: "Modus",
+  contentLanguages: { ja: "Japans", "zh-Hans": "Vereenvoudigd Chinees", "zh-Hant": "Traditioneel Chinees", ko: "Koreaans" },
+  modes: { words: "Woorden", characters: "Tekens", sentences: "Zinnen" },
+  paragraphs: "Alinea’s",
+  presets: "Voorinstellingen",
+  output: "Resultaat",
+  outputAria: "Gegenereerde tekst",
+  emptyState: "Kies de instellingen en genereer Aziatisch Ipsum.",
+  generate: "Genereren",
+  regenerate: "Opnieuw genereren",
+  copy: "Kopiëren",
+  copied: "Gekopieerd",
+  copyHtml: "HTML kopiëren",
+  copiedHtml: "HTML gekopieerd",
+  invalidAmount: "Voer voor {mode} een geheel getal tussen {min} en {max} in.",
+  invalidParagraphs: "Voer een geldig geheel aantal alinea’s in.",
+  unsupportedCombination: "Deze combinatie is niet beschikbaar voor de gekozen taal. De gevraagde hoeveelheid is niet gewijzigd.",
+  adjustedParagraphs: "Het aantal alinea’s is aangepast naar {paragraphs}, zodat de gevraagde hoeveelheid exact blijft.",
+  copyFailed: "Kopiëren is niet gelukt. Controleer de browsermachtigingen en probeer het opnieuw.",
+  copiedNotice: "Tekst gekopieerd.",
+  copiedHtmlNotice: "HTML gekopieerd.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

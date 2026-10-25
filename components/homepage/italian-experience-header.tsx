@@ -143,7 +143,7 @@ const experience = {
     homePath: "/hu/",
     themedPath: "/hu/tematikus-lorem-ipsum/",
     languageName: "Magyar",
-    classicLabel: "Lorem Ipsum generátor",
+    classicLabel: "Lorem Ipsum",
     themedLabel: "Tematikus Ipsum",
     navLabel: "Lorem Ipsum-eszközök",
     mobileNavLabel: "Magyar navigáció",
@@ -160,16 +160,16 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const labels = experience[locale];
-  const languagesLabel = locale === "it" ? "Ipsum asiatico" : locale === "es" || locale === "pt-BR" ? "Ipsum asiático" : locale === "fr" ? "Ipsum asiatique" : locale === "de" ? "Asiatisches Ipsum" : locale === "nl" ? "Aziatisch Ipsum" : locale === "pl" ? "Ipsum azjatyckie" : locale === "tr" ? "Asya Ipsum" : "Asian Ipsum";
+  const languagesLabel = locale === "it" ? "Ipsum asiatico" : locale === "es" || locale === "pt-BR" ? "Ipsum asiático" : locale === "fr" ? "Ipsum asiatique" : locale === "de" ? "Asiatisches Ipsum" : locale === "nl" ? "Aziatisch Ipsum" : locale === "pl" ? "Ipsum azjatyckie" : locale === "tr" ? "Asya Ipsum" : locale === "hu" ? "Ázsiai Ipsum" : "Asian Ipsum";
   const classicLabel = locale === "it" || locale === "en" || locale === "es" || locale === "fr" || locale === "de" || locale === "pt-BR" ? "Lorem Ipsum" : labels.classicLabel;
   const themedLabel = locale === "en" ? "Themed Ipsum" : locale === "fr" ? "Ipsum thématique" : labels.themedLabel;
-  const asianRoute: Record<"en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl" | "pl" | "tr", string> = { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: "/es/ipsum-asiatico/", fr: "/fr/ipsum-asiatique/", de: "/de/asiatisches-ipsum/", "pt-BR": "/pt-br/ipsum-asiatico/", nl: "/nl/aziatisch-ipsum/", pl: "/pl/azjatyckie-ipsum/", tr: "/tr/asya-ipsum/" };
+  const asianRoute: Record<"en" | "it" | "es" | "fr" | "de" | "pt-BR" | "nl" | "pl" | "tr" | "hu", string> = { en: "/asian-ipsum/", it: "/it/ipsum-asiatico/", es: "/es/ipsum-asiatico/", fr: "/fr/ipsum-asiatique/", de: "/de/asiatisches-ipsum/", "pt-BR": "/pt-br/ipsum-asiatico/", nl: "/nl/aziatisch-ipsum/", pl: "/pl/azjatyckie-ipsum/", tr: "/tr/asya-ipsum/", hu: "/hu/azsiai-ipsum/" };
   const destinations: { section: ExperienceSection; href: string; label: string }[] = [
     { section: "classic", href: labels.homePath, label: classicLabel },
     { section: "themed", href: labels.themedPath, label: themedLabel },
-    ...(locale === "it" || locale === "en" || locale === "es" || locale === "fr" || locale === "de" || locale === "pt-BR" || locale === "nl" || locale === "pl" || locale === "tr" ? [{ section: "languages" as const, href: asianRoute[locale], label: languagesLabel }] : []),
+    ...(locale === "it" || locale === "en" || locale === "es" || locale === "fr" || locale === "de" || locale === "pt-BR" || locale === "nl" || locale === "pl" || locale === "tr" || locale === "hu" ? [{ section: "languages" as const, href: asianRoute[locale], label: languagesLabel }] : []),
   ];
-  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code === "en" || code === "it" || code === "es" || code === "fr" || code === "de" || code === "pt-BR" || code === "nl" || code === "pl" || code === "tr") : localeOptions;
+  const availableLocales = active === "languages" ? localeOptions.filter(([code]) => code in asianRoute) : localeOptions;
   const mobileNavigationId = `${locale}-mobile-navigation`;
 
   useEffect(() => {
@@ -209,7 +209,7 @@ export function ExperienceHeader({ active, copy, locale }: { active: ExperienceS
   }
 
   function hrefForLocale(code: string, classicHref: string) {
-    if (active === "languages") return (code === "en" || code === "it" || code === "es" || code === "fr" || code === "de" || code === "pt-BR" || code === "nl" || code === "pl" || code === "tr") ? asianRoute[code] : classicHref;
+    if (active === "languages") return code in asianRoute ? asianRoute[code as keyof typeof asianRoute] : classicHref;
     if (active !== "themed") return classicHref;
     if (code === "en") return experience.en.themedPath;
     if (code === "it") return experience.it.themedPath;

@@ -280,6 +280,34 @@ export const turkishLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML kopyalandı.",
 };
 
+export const hungarianLanguagesCopy: LanguagesCopy = {
+  title: "Ázsiai Ipsum-generátor",
+  intro: "Generálj japán, egyszerűsített vagy hagyományos kínai, illetve koreai szöveget többnyelvű felületek és elrendezések teszteléséhez, pontos szószám-, karakterszám- vagy mondatszám-beállítással.",
+  numberLocale: "hu-HU",
+  contentLanguage: "A szöveg nyelve",
+  mode: "Mód",
+  contentLanguages: { ja: "Japán", "zh-Hans": "Egyszerűsített kínai", "zh-Hant": "Hagyományos kínai", ko: "Koreai" },
+  modes: { words: "Szavak", characters: "Karakterek", sentences: "Mondatok" },
+  paragraphs: "Bekezdések",
+  presets: "Előbeállítások",
+  output: "Eredmény",
+  outputAria: "Generált szöveg",
+  emptyState: "Válaszd ki a beállításokat, majd generálj szöveget.",
+  generate: "Generálás",
+  regenerate: "Újragenerálás",
+  copy: "Másolás",
+  copied: "Másolva",
+  copyHtml: "HTML másolása",
+  copiedHtml: "HTML másolva",
+  invalidAmount: "Adj meg egész számot {min} és {max} között a(z) {mode} módhoz.",
+  invalidParagraphs: "Adj meg érvényes egész bekezdésszámot.",
+  unsupportedCombination: "Ez a mennyiség és bekezdésszám nem érhető el a kiválasztott nyelven. A kért mennyiség nem változott.",
+  adjustedParagraphs: "A pontos mennyiség megtartásához a bekezdések száma {paragraphs} lett.",
+  copyFailed: "A másolás nem sikerült. Ellenőrizd a böngésző engedélyeit, majd próbáld újra.",
+  copiedNotice: "A szöveg vágólapra másolva.",
+  copiedHtmlNotice: "A HTML vágólapra másolva.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

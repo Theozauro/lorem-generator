@@ -41,8 +41,8 @@ export function HungarianHomepageEditorial() {
       <EditorialTable label="A felhasználáshoz ajánlott Lorem Ipsum-mennyiségek" compact headers={["Felhasználás", "Ajánlott mennyiség", "Mód"]} rows={[
         ["Microcopy vagy rövid képaláírás", "100–150 karakter", "Karakter"], ["Hero alcím", "150–250 karakter", "Karakter"],
         ["Termék- vagy szolgáltatáskártya", "50–80 szó", "Szavak"], ["Leíró blokk", "körülbelül 100 szó", "Szavak"],
-        ["Cikkelőnézet", "150–250 szó", "Szavak"], ["Szerkesztőségi szakasz", "3–5 bekezdés", "Szavak + bekezdések"],
-        ["Hosszú formátumú layout", "5–8 bekezdés", "Szavak + bekezdések"],
+        ["Cikkelőnézet", "150–250 szó", "Szavak"], ["Szerkesztőségi szakasz", "3–5 bekezdés", "Szavak"],
+        ["Hosszú formátumú layout", "5–8 bekezdés", "Szavak"],
       ]} />
       <p>Ezek az értékek nem szigorú szabályok. Használd őket gyakorlati kiindulópontként valósághű tartalomhosszak szimulálásához. Ha pontos korlátot szeretnél tesztelni, válts Karakter módra, vagy add meg közvetlenül a szükséges szavak számát.</p>
     </EditorialSection>

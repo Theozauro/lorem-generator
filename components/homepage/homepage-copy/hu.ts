@@ -24,7 +24,7 @@ export const huHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Mód",
     "modeLabel": "Generálási mód",
-    "layout": "Szavak + bekezdések",
+    "layout": "Szavak",
     "characters": "Karakterek",
     "sentences": "Mondatok",
     "quickWords": "Gyors szószámok",

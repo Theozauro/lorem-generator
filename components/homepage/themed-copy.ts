@@ -217,7 +217,7 @@ export const turkishThemedPageConfig: ThemedPageConfig = {
 export const hungarianThemedPageConfig: ThemedPageConfig = {
   locale: "hu",
   copy: { ...huHomepageCopy, generator: { ...huHomepageCopy.generator,
-    mode: "MÓD", modeLabel: "Generálási mód", layout: "SZAVAK + BEKEZDÉSEK",
+    mode: "MÓD", modeLabel: "Generálási mód", layout: "SZAVAK",
     characters: "KARAKTEREK", sentences: "MONDATOK", words: "SZAVAK",
     paragraphs: "BEKEZDÉSEK", quickWords: "GYORS ÉRTÉKEK", presets: "GYORS ÉRTÉKEK",
     generate: "Generálás", regenerate: "Újragenerálás", copy: "Másolás", copyHtml: "HTML másolása",

@@ -20,7 +20,7 @@ import { EnglishThemedEditorial } from "./english-editorial";
 import { GermanThemedEditorial, SpanishThemedEditorial } from "./spanish-german-editorial";
 import { BrazilianPortugueseThemedEditorial, FrenchThemedEditorial } from "./french-portuguese-editorial";
 import { generateItalianThemedIpsum, italianParagraphLimit } from "./italian-generator-paragraphs";
-import { englishParagraphLimit, frenchParagraphMessages, generateEnglishThemed, germanParagraphMessages, spanishParagraphMessages, brazilianPortugueseParagraphMessages, dutchParagraphMessages, polishParagraphMessages, turkishParagraphMessages } from "./english-generator-paragraphs";
+import { englishParagraphLimit, frenchParagraphMessages, generateEnglishThemed, germanParagraphMessages, spanishParagraphMessages, brazilianPortugueseParagraphMessages, dutchParagraphMessages, polishParagraphMessages, turkishParagraphMessages, hungarianParagraphMessages } from "./english-generator-paragraphs";
 
 type MainMode = ThemedMode;
 type ThemedTopic = ThemedTheme;
@@ -76,7 +76,7 @@ function ThemedCopyActions({ text, onRegenerate, copy, italianFeedback = false, 
   }
 
   const copyLabel = italianFeedback ? <span className="italian-copy-label italian-copy-text-label"><span>{copied === "text" ? copy.generator.copied : copy.generator.copy}</span></span> : copied === "text" ? copy.generator.copied : copy.generator.copy;
-  const htmlLabel = italianFeedback ? <span className="italian-copy-label italian-copy-html-label"><span>{copied === "html" ? (copy.locale === "en" ? "HTML copied" : copy.locale === "es" || copy.locale === "pt-BR" ? "HTML copiado" : copy.locale === "fr" ? "HTML copié" : copy.locale === "de" ? "HTML kopiert" : copy.locale === "nl-NL" ? "HTML gekopieerd" : copy.locale === "pl" ? "Skopiowano HTML" : copy.locale === "tr" ? "HTML kopyalandı" : "HTML copiato") : copy.generator.copyHtml}</span></span> : copied === "html" ? copy.generator.copied : copy.generator.copyHtml;
+  const htmlLabel = italianFeedback ? <span className="italian-copy-label italian-copy-html-label"><span>{copied === "html" ? (copy.locale === "en" ? "HTML copied" : copy.locale === "es" || copy.locale === "pt-BR" ? "HTML copiado" : copy.locale === "fr" ? "HTML copié" : copy.locale === "de" ? "HTML kopiert" : copy.locale === "nl-NL" ? "HTML gekopieerd" : copy.locale === "pl" ? "Skopiowano HTML" : copy.locale === "tr" ? "HTML kopyalandı" : copy.locale === "hu" ? "HTML másolva" : "HTML copiato") : copy.generator.copyHtml}</span></span> : copied === "html" ? copy.generator.copied : copy.generator.copyHtml;
   return <div className="result-actions">
     <Button type="button" variant="outline" className={`action-button primary-copy${italianFeedback && copied === "text" ? " italian-copy-success" : ""}`} onClick={() => copyValue("text")}>{copied === "text" ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copyLabel}</Button>
     <Button type="button" variant="outline" className={`action-button secondary-action${italianFeedback && copied === "html" ? " italian-copy-html-success" : ""}`} onClick={() => copyValue("html")}>{copied === "html" ? <Check aria-hidden="true" /> : <Code2 aria-hidden="true" />}{htmlLabel}</Button>
@@ -86,7 +86,7 @@ function ThemedCopyActions({ text, onRegenerate, copy, italianFeedback = false, 
 
 export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
   const copy = config.copy;
-  const paragraphControls = config.locale === "it" || config.locale === "en" || config.locale === "es" || config.locale === "fr" || config.locale === "de" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl" || config.locale === "tr";
+  const paragraphControls = config.locale === "it" || config.locale === "en" || config.locale === "es" || config.locale === "fr" || config.locale === "de" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu";
   const editorialStandard = config.locale === "en" || config.locale === "it" || config.locale === "es" || config.locale === "de" || config.locale === "fr" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu";
   const [topic, setTopic] = useState<ThemedTopic>("corporate");
   const [contentLanguage, setContentLanguage] = useState<ThemedLanguage>(config.defaultContentLanguage);
@@ -105,8 +105,8 @@ export function ThemedIpsumPage({ config }: { config: ThemedPageConfig }) {
 
   const generated = useMemo(() => config.locale === "it"
     ? generateItalianThemedIpsum({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation })
-      : config.locale === "en" || config.locale === "es" || config.locale === "fr" || config.locale === "de" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl" || config.locale === "tr"
-      ? generateEnglishThemed({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation, ...(config.locale === "es" ? { messages: spanishParagraphMessages } : config.locale === "fr" ? { messages: frenchParagraphMessages } : config.locale === "de" ? { messages: germanParagraphMessages } : config.locale === "pt-BR" ? { messages: brazilianPortugueseParagraphMessages } : config.locale === "nl" ? { messages: dutchParagraphMessages } : config.locale === "pl" ? { messages: polishParagraphMessages } : config.locale === "tr" ? { messages: turkishParagraphMessages } : {}) })
+      : config.locale === "en" || config.locale === "es" || config.locale === "fr" || config.locale === "de" || config.locale === "pt-BR" || config.locale === "nl" || config.locale === "pl" || config.locale === "tr" || config.locale === "hu"
+      ? generateEnglishThemed({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation, ...(config.locale === "es" ? { messages: spanishParagraphMessages } : config.locale === "fr" ? { messages: frenchParagraphMessages } : config.locale === "de" ? { messages: germanParagraphMessages } : config.locale === "pt-BR" ? { messages: brazilianPortugueseParagraphMessages } : config.locale === "nl" ? { messages: dutchParagraphMessages } : config.locale === "pl" ? { messages: polishParagraphMessages } : config.locale === "tr" ? { messages: turkishParagraphMessages } : config.locale === "hu" ? { messages: hungarianParagraphMessages } : {}) })
       : { text: generateThemedIpsum({ theme: topic, language: contentLanguage, mode, words, paragraphs, amount, variation }), error: "" },
   [config.locale, topic, contentLanguage, mode, words, paragraphs, amount, variation]);
   const result = generated.text;

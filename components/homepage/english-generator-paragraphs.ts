@@ -57,6 +57,12 @@ export const turkishParagraphMessages: ParagraphMessages = {
   unsupportedParagraphs: maximum => `Bu miktar için en fazla ${maximum} paragraf oluşturulabilir. İstenen miktar değiştirilmedi.`,
   unsupportedOutput: "Bu birleşim desteklenmiyor. İstenen miktar ve paragraf sayısı değiştirilmedi.",
 };
+export const hungarianParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Adj meg 1 és 100 közötti egész bekezdésszámot.",
+  invalidAmount: "Adj meg érvényes egész számot.",
+  unsupportedParagraphs: maximum => `Ehhez a mennyiséghez legfeljebb ${maximum} bekezdés készíthető. A kért mennyiség nem változott.`,
+  unsupportedOutput: "Ez a kombináció nem érhető el. A kért mennyiség és bekezdésszám nem változott.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);

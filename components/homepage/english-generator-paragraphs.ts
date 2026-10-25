@@ -40,6 +40,17 @@ export const dutchParagraphMessages: ParagraphMessages = {
   unsupportedParagraphs: maximum => `Voor deze hoeveelheid zijn maximaal ${maximum} ${maximum === 1 ? "alinea" : "alinea’s"} mogelijk. De gevraagde hoeveelheid is niet gewijzigd.`,
   unsupportedOutput: "Deze combinatie is niet beschikbaar. De gevraagde hoeveelheid en het aantal alinea’s zijn niet gewijzigd.",
 };
+export const polishParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "Wpisz liczbę akapitów z zakresu od 1 do 100.",
+  invalidAmount: "Wpisz prawidłową liczbę całkowitą.",
+  unsupportedParagraphs: maximum => {
+    const remainder10 = maximum % 10;
+    const remainder100 = maximum % 100;
+    const noun = maximum === 1 ? "akapit" : remainder10 >= 2 && remainder10 <= 4 && (remainder100 < 12 || remainder100 > 14) ? "akapity" : "akapitów";
+    return `Dla tej wartości można wygenerować najwyżej ${maximum} ${noun}. Żądana wartość nie została zmieniona.`;
+  },
+  unsupportedOutput: "Ta kombinacja nie jest dostępna. Żądana ilość tekstu ani liczba akapitów nie zostały zmienione.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);
@@ -137,14 +148,26 @@ export function generateEnglishThemed({
       })).join("\n\n");
     } else {
       const sentenceCounts = distribute(amount, paragraphs);
-      let sentenceIndex = 0;
-      text = sentenceCounts.map(count => Array.from({ length: count }, () => {
-        const sentence = generateThemedIpsum({
-          theme, language, mode, words, paragraphs: 1, amount: 1, variation: variation + sentenceIndex,
-        });
-        sentenceIndex += 1;
-        return sentence;
-      }).join(" ")).join("\n\n");
+      if (language === "pl") {
+        const generatedSentences = generateThemedIpsum({ theme, language, mode, words, paragraphs: 1, amount, variation })
+          .match(/[^.!?]+[.!?]+/gu)?.map(sentence => sentence.trim()) ?? [];
+        if (generatedSentences.length !== amount) return { text: "", error: messages.unsupportedOutput };
+        let offset = 0;
+        text = sentenceCounts.map(count => {
+          const paragraph = generatedSentences.slice(offset, offset + count).join(" ");
+          offset += count;
+          return paragraph;
+        }).join("\n\n");
+      } else {
+        let sentenceIndex = 0;
+        text = sentenceCounts.map(count => Array.from({ length: count }, () => {
+          const sentence = generateThemedIpsum({
+            theme, language, mode, words, paragraphs: 1, amount: 1, variation: variation + sentenceIndex,
+          });
+          sentenceIndex += 1;
+          return sentence;
+        }).join(" ")).join("\n\n");
+      }
     }
   } catch {
     return { text: "", error: messages.unsupportedOutput };

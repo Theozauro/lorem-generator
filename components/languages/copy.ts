@@ -224,6 +224,34 @@ export const dutchLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "HTML gekopieerd.",
 };
 
+export const polishLanguagesCopy: LanguagesCopy = {
+  title: "Generator tekstu w językach azjatyckich",
+  intro: "Generuj tekst po japońsku, chińsku uproszczonym lub tradycyjnym oraz koreańsku, aby sprawdzać wielojęzyczne interfejsy i układy z dokładnie określoną liczbą słów, znaków lub zdań.",
+  numberLocale: "pl-PL",
+  contentLanguage: "Język tekstu",
+  mode: "Tryb",
+  contentLanguages: { ja: "Japoński", "zh-Hans": "Chiński uproszczony", "zh-Hant": "Chiński tradycyjny", ko: "Koreański" },
+  modes: { words: "Słowa", characters: "Znaki", sentences: "Zdania" },
+  paragraphs: "Akapity",
+  presets: "Presety",
+  output: "Wynik",
+  outputAria: "Wygenerowany tekst",
+  emptyState: "Wybierz ustawienia i wygeneruj tekst.",
+  generate: "Generuj",
+  regenerate: "Generuj ponownie",
+  copy: "Kopiuj",
+  copied: "Skopiowano",
+  copyHtml: "Kopiuj HTML",
+  copiedHtml: "Skopiowano HTML",
+  invalidAmount: "Wpisz prawidłową liczbę całkowitą z zakresu od {min} do {max}.",
+  invalidParagraphs: "Wpisz prawidłową liczbę całkowitą akapitów.",
+  unsupportedCombination: "Ta kombinacja nie jest dostępna dla wybranego języka. Żądana wartość nie została zmieniona.",
+  adjustedParagraphs: "Aby zachować dokładną żądaną wartość, liczbę akapitów zmieniono na {paragraphs}.",
+  copyFailed: "Nie udało się skopiować tekstu. Sprawdź uprawnienia przeglądarki i spróbuj ponownie.",
+  copiedNotice: "Skopiowano tekst.",
+  copiedHtmlNotice: "Skopiowano HTML.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

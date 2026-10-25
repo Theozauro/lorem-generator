@@ -112,23 +112,24 @@ button { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
 ::selection { background: var(--orange); color: var(--accent-foreground); }
 .site-shell { position: relative; min-height: 100vh; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]), .themed-editorial-standard {
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]), .themed-editorial-standard {
   --active-bg: transparent;
   --active-text: var(--ink);
   --active-edge: var(--orange);
 }
 .site-shell[lang="it"] .tool-card button[aria-pressed="true"] { border-color: var(--grid) !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .action-button.initial-generate { background: var(--orange) !important; color: #fff !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .action-button.initial-generate:hover { background: var(--muted) !important; color: var(--ink) !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .unit-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .unit-tab { text-align: center; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-label { display: inline-grid; white-space: nowrap; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-label > span { grid-area: 1 / 1; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-text-label { min-width: 7ch; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-html-label { min-width: 12ch; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-success { background: #242424 !important; color: #fff !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-html-success { background: var(--muted) !important; color: var(--ink) !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-generation-error { margin: 0; border-left: 3px solid var(--orange); padding: 9px 12px; color: var(--ink); font-size: 13px; line-height: 1.5; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .action-button.initial-generate { background: var(--orange) !important; color: #fff !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .action-button.initial-generate:hover { background: var(--muted) !important; color: var(--ink) !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .unit-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .unit-tab { text-align: center; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-label { display: inline-grid; white-space: nowrap; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-label > span { grid-area: 1 / 1; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-text-label { min-width: 7ch; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-html-label { min-width: 12ch; }
+.site-shell[lang="pl"] .italian-copy-html-label { min-width: 16ch; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-success { background: #242424 !important; color: #fff !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-html-success { background: var(--muted) !important; color: var(--ink) !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-generation-error { margin: 0; border-left: 3px solid var(--orange); padding: 9px 12px; color: var(--ink); font-size: 13px; line-height: 1.5; }
 .page-content, .site-footer { width: min(100% - 96px, 1200px); margin-inline: auto; }
 .eyebrow, .field-label {
   font: 700 11px/1.25 var(--font-mono);
@@ -297,9 +298,9 @@ button:disabled { cursor: not-allowed; }
   border-radius: 11px;
   background: var(--paper);
 }
-:root[data-theme="dark"] .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .generator-panel { --paper: var(--background); }
+:root[data-theme="dark"] .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .generator-panel { --paper: var(--background); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .generator-panel { --paper: var(--background); }
+  :root:not([data-theme]) .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .generator-panel { --paper: var(--background); }
 }
 .controls-grid {
   display: grid;
@@ -438,9 +439,9 @@ button:disabled { cursor: not-allowed; }
 .action-button svg { width: 15px; height: 15px; }
 .primary-copy { background: var(--ink) !important; color: var(--background) !important; }
 .primary-copy:hover { background: var(--orange) !important; color: var(--accent-foreground) !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], .themed-editorial-standard) .primary-copy:not(:disabled) { background: var(--orange) !important; color: #fff !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], .themed-editorial-standard) .primary-copy:not(:disabled):hover { background: #242424 !important; color: #fff !important; }
-.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .main-section .primary-copy:disabled { background: transparent !important; color: var(--ink) !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"], .themed-editorial-standard) .primary-copy:not(:disabled) { background: var(--orange) !important; color: #fff !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"], .themed-editorial-standard) .primary-copy:not(:disabled):hover { background: #242424 !important; color: #fff !important; }
+.site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .main-section .primary-copy:disabled { background: transparent !important; color: var(--ink) !important; }
 .secondary-action:hover { background: var(--muted) !important; color: var(--ink) !important; }
 
 /* Designer tools continue the same grid below the primary workspace. */
@@ -477,9 +478,9 @@ button:disabled { cursor: not-allowed; }
   border-radius: 11px;
   background: var(--paper);
 }
-:root[data-theme="dark"] .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]):not(.themed-site-shell) .tool-card { background: var(--background); }
+:root[data-theme="dark"] .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]):not(.themed-site-shell) .tool-card { background: var(--background); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]):not(.themed-site-shell) .tool-card { background: var(--background); }
+  :root:not([data-theme]) .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]):not(.themed-site-shell) .tool-card { background: var(--background); }
 }
 .tool-head { display: flex; align-items: start; min-height: 80px; }
 .tool-head h2 { margin: 0 0 5px; font-size: 22px; line-height: 1.1; letter-spacing: -.04em; font-weight: 700; }
@@ -571,7 +572,7 @@ button:disabled { cursor: not-allowed; }
 .about-copy p { max-width: 640px; margin: 0 0 13px; color: var(--quiet); font-size: 15px; line-height: 1.65; }
 .faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; padding: 42px 0 58px; border-top: 2px solid var(--grid); }
 @media (min-width: 741px) {
-  .site-shell:is([lang="it"], .themed-editorial-standard) .faq-section { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .site-shell:is([lang="it"], [lang="pl"], .themed-editorial-standard) .faq-section { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 .seo-content { padding: 42px 0 48px; border-top: 2px solid var(--grid); }
 .seo-content-heading { max-width: 650px; }
@@ -736,9 +737,9 @@ button:disabled { cursor: not-allowed; }
   .themed-topic-button { min-height: 52px; }
   .themed-topic-button { scroll-snap-align: start; }
   .themed-generator-panel .reading-area { min-height: 190px; }
-  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .result-actions .action-button { min-width: 0; gap: 5px; padding-inline: 6px; }
-  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .result-actions .action-button:nth-child(2) { flex: 1.4; }
-  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .result-actions .action-button:last-child { flex: 1.2; }
+  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .result-actions .action-button { min-width: 0; gap: 5px; padding-inline: 6px; }
+  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .result-actions .action-button:nth-child(2) { flex: 1.4; }
+  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .result-actions .action-button:last-child { flex: 1.2; }
   .themed-explore-section { padding-bottom: 52px; }
   .themed-explore-grid { grid-template-columns: 1fr; }
   .themed-explore-card { min-height: 0; padding: 20px; }
@@ -807,8 +808,8 @@ button:disabled { cursor: not-allowed; }
   .consent-actions button:last-child { order: 3; }
 }
 @media (max-width: 350px) {
-  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .result-actions .action-button { gap: 3px; padding-inline: 3px; font-size: 9px; }
-  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"]) .italian-copy-html-label { min-width: 11ch; }
+  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .result-actions .action-button { gap: 3px; padding-inline: 3px; font-size: 9px; }
+  .site-shell:is([lang="it"], [lang="en"], [lang="es"], [lang="fr"], [lang="de"], [lang="pt-BR"], [lang="nl"], [lang="nl-NL"], [lang="pl"]) .italian-copy-html-label { min-width: 11ch; }
   .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button { gap: 2px; padding-inline: 2px; }
   .site-shell[lang="hu"].themed-site-shell .themed-generator-panel .result-actions .action-button:last-child { flex: 1.1; }
   .site-shell:is([lang="nl"], [lang="nl-NL"]) .unit-tab { font-size: 7.5px !important; padding-inline: 2px !important; }

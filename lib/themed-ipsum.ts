@@ -937,6 +937,8 @@ for (const theme of Object.keys(polishThemedIpsumData) as ThemedTheme[]) {
   const data = polishThemedIpsumData[theme];
   data.clauses = [...(data.clauses ?? []), ...polishExtraClauses[theme], ...polishShortClauses[theme]];
   data.completeClauses = true;
+  data.completeCharacterSentences = true;
+  data.sentenceAtomic = true;
 }
 
 turkishThemedIpsumData.tech.clauses = turkishThemedIpsumData.tech.clauses?.map(clause =>

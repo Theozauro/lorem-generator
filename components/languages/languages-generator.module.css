@@ -13,6 +13,7 @@
 .copyLabel { display: inline-grid; }
 .copyLabel > span { grid-area: 1 / 1; }
 .copyTextLabel { min-width: 7ch; }
+:global(.site-shell[lang="tr"]) .copyHtmlLabel { min-width: 15ch; }
 .copyHtmlLabel { min-width: 12ch; }
 :global(#languages-generator).generator :global(.result-actions .primary-copy).copySuccess { background: #242424 !important; color: #fff !important; }
 :global(#languages-generator).generator :global(.result-actions .secondary-action).copySuccess { background: var(--muted) !important; color: var(--ink) !important; }

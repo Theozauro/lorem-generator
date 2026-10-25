@@ -252,6 +252,34 @@ export const polishLanguagesCopy: LanguagesCopy = {
   copiedHtmlNotice: "Skopiowano HTML.",
 };
 
+export const turkishLanguagesCopy: LanguagesCopy = {
+  title: "Asya Ipsum Oluşturucu",
+  intro: "Çok dilli arayüzleri ve mizanpajları test etmek için Japonca, Basitleştirilmiş Çince, Geleneksel Çince veya Korece metin oluşturun. Sözcük, karakter ve cümle sayılarını ayrı ayrı belirleyin.",
+  numberLocale: "tr-TR",
+  contentLanguage: "Metnin dili",
+  mode: "Mod",
+  contentLanguages: { ja: "Japonca", "zh-Hans": "Basitleştirilmiş Çince", "zh-Hant": "Geleneksel Çince", ko: "Korece" },
+  modes: { words: "Kelimeler", characters: "Karakterler", sentences: "Cümleler" },
+  paragraphs: "Paragraflar",
+  presets: "Hazır değerler",
+  output: "Sonuç",
+  outputAria: "Oluşturulan metin",
+  emptyState: "Metin oluşturuluyor…",
+  generate: "Oluştur",
+  regenerate: "Yeniden oluştur",
+  copy: "Kopyala",
+  copied: "Kopyalandı",
+  copyHtml: "HTML Kopyala",
+  copiedHtml: "HTML Kopyalandı",
+  invalidAmount: "{mode} modunda {min} ile {max} arasında bir tam sayı girin.",
+  invalidParagraphs: "1 ile 100 arasında geçerli bir paragraf sayısı girin.",
+  unsupportedCombination: "Bu miktar ve paragraf birleşimi seçilen dilde desteklenmiyor. İstenen miktar değiştirilmedi.",
+  adjustedParagraphs: "İstenen miktarı tam korumak için paragraf sayısı {paragraphs} olarak ayarlandı.",
+  copyFailed: "Kopyalama başarısız oldu. Tarayıcı izinlerini kontrol edip yeniden deneyin.",
+  copiedNotice: "Metin kopyalandı.",
+  copiedHtmlNotice: "HTML kopyalandı.",
+};
+
 export function languageHtml(text: string, language: AvailableContentLanguage): string {
   const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   return text.split("\n\n").filter(Boolean).map(paragraph => `<p lang="${language}">${paragraph.replace(/[&<>"']/g, character => entities[character])}</p>`).join("\n");

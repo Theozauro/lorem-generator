@@ -24,10 +24,10 @@ export const trHomepageCopy: HomepageCopy = {
   "generator": {
     "mode": "Mod",
     "modeLabel": "Oluşturma modu",
-    "layout": "Sözcükler + paragraflar",
+    "layout": "Kelimeler",
     "characters": "Karakterler",
     "sentences": "Cümleler",
-    "quickWords": "Hızlı sözcük sayıları",
+    "quickWords": "Hazır değerler",
     "presets": "Hazır değerler",
     "options": "Seçenekler",
     "startClassic": "“Lorem ipsum…” ile başla",
@@ -39,10 +39,10 @@ export const trHomepageCopy: HomepageCopy = {
     "outputAria": "Oluşturulan Lorem Ipsum",
     "emptyState": "Ayarlarınızı seçin ve Lorem Ipsum metni oluşturun.",
     "generate": "Oluştur",
-    "words": "Sözcükler",
+    "words": "Kelimeler",
     "paragraphs": "Paragraflar",
     "stats": {
-      "words": "sözcük",
+      "words": "kelime",
       "characters": "karakter",
       "withoutSpaces": "boşluksuz",
       "sentences": "cümle",
@@ -50,7 +50,7 @@ export const trHomepageCopy: HomepageCopy = {
     },
     "copy": "Kopyala",
     "copied": "Kopyalandı",
-    "copyHtml": "HTML'yi Kopyala",
+    "copyHtml": "HTML Kopyala",
     "regenerate": "Yeniden Oluştur"
   },
   "consent": {

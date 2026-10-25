@@ -51,6 +51,12 @@ export const polishParagraphMessages: ParagraphMessages = {
   },
   unsupportedOutput: "Ta kombinacja nie jest dostępna. Żądana ilość tekstu ani liczba akapitów nie zostały zmienione.",
 };
+export const turkishParagraphMessages: ParagraphMessages = {
+  invalidParagraphs: "1 ile 100 arasında bir paragraf sayısı girin.",
+  invalidAmount: "Geçerli bir tam sayı girin.",
+  unsupportedParagraphs: maximum => `Bu miktar için en fazla ${maximum} paragraf oluşturulabilir. İstenen miktar değiştirilmedi.`,
+  unsupportedOutput: "Bu birleşim desteklenmiyor. İstenen miktar ve paragraf sayısı değiştirilmedi.",
+};
 
 function distribute(total: number, parts: number): number[] {
   const base = Math.floor(total / parts);

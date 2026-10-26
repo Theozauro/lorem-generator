@@ -56,11 +56,11 @@ export const trHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Gizlilik ve çerez bildirimi",
     "title": "Gizlilik tercihleri",
-    "intro": "Temel tercihler için tarayıcının yerel depolamasını kullanıyoruz. İsteğe bağlı analiz özelliği siz etkinleştirene kadar kapalı kalır.",
+    "intro": "Sitenin çalışması için gerekli teknik araçları kullanıyoruz. İzninizle Ahrefs Analytics üzerinden kullanım istatistikleri topluyoruz. İsteğe bağlı izlemeyi kabul edebilir veya reddedebilirsiniz.",
     "necessary": "Gerekli",
     "necessaryNote": "Tema ve izin tercihleri.",
     "analytics": "Analiz",
-    "analyticsNote": "Anonim kullanım istatistikleri",
+    "analyticsNote": "İsteğe bağlı Ahrefs Analytics",
     "accept": "Tümünü kabul et",
     "reject": "İsteğe bağlı olanları reddet",
     "customize": "Özelleştir",

@@ -91,11 +91,11 @@ export const esHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Aviso de privacidad y cookies",
     "title": "Preferencias de privacidad",
-    "intro": "Usamos el almacenamiento local del navegador para guardar preferencias esenciales. La analítica opcional permanece desactivada hasta que la actives.",
+    "intro": "Utilizamos herramientas técnicas necesarias para que el sitio funcione. Con tu consentimiento, recopilamos estadísticas de uso mediante Ahrefs Analytics. Puedes aceptar o rechazar el seguimiento opcional.",
     "necessary": "Esenciales",
     "necessaryNote": "Preferencias de tema y consentimiento.",
     "analytics": "Analítica",
-    "analyticsNote": "Estadísticas de uso anónimas",
+    "analyticsNote": "Analítica opcional de Ahrefs",
     "accept": "Aceptar todo",
     "reject": "Rechazar todo",
     "customize": "Personalizar",

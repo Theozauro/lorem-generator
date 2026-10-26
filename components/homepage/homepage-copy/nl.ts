@@ -56,11 +56,11 @@ export const nlHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Privacy- en cookiemelding",
     "title": "Privacyvoorkeuren",
-    "intro": "We gebruiken lokale browseropslag voor essentiële voorkeuren. Optionele analysefuncties blijven uitgeschakeld totdat je ze inschakelt.",
+    "intro": "We gebruiken technische hulpmiddelen die nodig zijn om de website te laten werken. Met je toestemming verzamelen we gebruiksstatistieken via Ahrefs Analytics. Je kunt optionele tracking accepteren of weigeren.",
     "necessary": "Essentieel",
     "necessaryNote": "Thema- en toestemmingsvoorkeuren.",
     "analytics": "Analyse",
-    "analyticsNote": "Anonieme gebruiksstatistieken",
+    "analyticsNote": "Optionele Ahrefs Analytics",
     "accept": "Alles accepteren",
     "reject": "Optionele functies weigeren",
     "customize": "Aanpassen",

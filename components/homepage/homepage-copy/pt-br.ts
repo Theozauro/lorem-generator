@@ -56,11 +56,11 @@ export const ptbrHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Aviso de privacidade e cookies",
     "title": "Preferências de privacidade",
-    "intro": "Usamos o armazenamento local do navegador para preferências essenciais. As análises opcionais permanecem desativadas até que você as ative.",
+    "intro": "Usamos ferramentas técnicas necessárias para o funcionamento do site. Com seu consentimento, coletamos estatísticas de uso pelo Ahrefs Analytics. Você pode aceitar ou recusar o rastreamento opcional.",
     "necessary": "Essenciais",
     "necessaryNote": "Preferências de tema e consentimento.",
     "analytics": "Análises",
-    "analyticsNote": "Estatísticas anônimas de uso",
+    "analyticsNote": "Analytics opcional do Ahrefs",
     "accept": "Aceitar tudo",
     "reject": "Recusar opcionais",
     "customize": "Personalizar",

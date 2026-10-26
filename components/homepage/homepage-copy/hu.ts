@@ -56,11 +56,11 @@ export const huHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Adatvédelmi és cookie-tájékoztató",
     "title": "Adatvédelmi beállítások",
-    "intro": "A szükséges beállításokat a böngésző helyi tárhelyén tároljuk. Az opcionális analitika mindaddig kikapcsolva marad, amíg nem engedélyezed.",
+    "intro": "A webhely működéséhez szükséges technikai eszközöket használunk. Hozzájárulásoddal az Ahrefs Analytics segítségével használati statisztikákat gyűjtünk. Az opcionális követést elfogadhatod vagy elutasíthatod.",
     "necessary": "Szükséges",
     "necessaryNote": "Téma- és hozzájárulási beállítások.",
     "analytics": "Analitika",
-    "analyticsNote": "Anonim használati statisztikák",
+    "analyticsNote": "Opcionális Ahrefs-analitika",
     "accept": "Összes elfogadása",
     "reject": "Opcionális beállítások elutasítása",
     "customize": "Testreszabás",

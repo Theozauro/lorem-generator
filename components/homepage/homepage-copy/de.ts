@@ -91,11 +91,11 @@ export const deHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Hinweis zu Datenschutz und Cookies",
     "title": "Datenschutzeinstellungen",
-    "intro": "Wir verwenden den lokalen Browserspeicher für notwendige Einstellungen. Optionale Analyse bleibt deaktiviert, bis du sie aktivierst.",
+    "intro": "Wir verwenden technische Hilfsmittel, die für den Betrieb der Website erforderlich sind. Mit deiner Einwilligung erfassen wir Nutzungsstatistiken über Ahrefs Analytics. Du kannst dem optionalen Tracking zustimmen oder es ablehnen.",
     "necessary": "Notwendig",
     "necessaryNote": "Design- und Einwilligungseinstellungen.",
     "analytics": "Analyse",
-    "analyticsNote": "Anonyme Nutzungsstatistiken",
+    "analyticsNote": "Optionale Ahrefs-Analytics",
     "accept": "Alle akzeptieren",
     "reject": "Alle ablehnen",
     "customize": "Einstellungen",

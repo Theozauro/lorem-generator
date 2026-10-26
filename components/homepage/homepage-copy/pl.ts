@@ -56,11 +56,11 @@ export const plHomepageCopy: HomepageCopy = {
   "consent": {
     "aria": "Informacja o prywatności i plikach cookie",
     "title": "Ustawienia prywatności",
-    "intro": "Używamy pamięci lokalnej do podstawowych ustawień. Analityka pozostaje wyłączona, dopóki jej nie włączysz.",
+    "intro": "Używamy narzędzi technicznych niezbędnych do działania witryny. Za Twoją zgodą zbieramy statystyki użytkowania za pomocą Ahrefs Analytics. Możesz zaakceptować lub odrzucić opcjonalne śledzenie.",
     "necessary": "Niezbędne",
     "necessaryNote": "Ustawienia motywu i zgody.",
     "analytics": "Analityka",
-    "analyticsNote": "Anonimowe statystyki użytkowania",
+    "analyticsNote": "Opcjonalna analityka Ahrefs",
     "accept": "Akceptuj wszystko",
     "reject": "Odrzuć opcjonalne",
     "customize": "Dostosuj",

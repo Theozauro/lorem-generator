@@ -152,8 +152,17 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
   const [visible, setVisible] = useState(false);
   const [customize, setCustomize] = useState(false);
   const [analytics, setAnalytics] = useState(false);
+  const bannerRef = useRef<HTMLElement | null>(null);
+  const analyticsInputRef = useRef<HTMLInputElement | null>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
+  const pendingFocusRef = useRef<"analytics" | "return" | null>(null);
   useEffect(() => {
-    const openPrivacy = () => { setCustomize(true); setVisible(true); };
+    const openPrivacy = () => {
+      returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      pendingFocusRef.current = "analytics";
+      setCustomize(true);
+      setVisible(true);
+    };
     window.addEventListener("open-privacy", openPrivacy);
     try {
       const saved = window.localStorage.getItem("lorem-consent");
@@ -164,6 +173,51 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
     } catch { setVisible(false); }
     return () => window.removeEventListener("open-privacy", openPrivacy);
   }, []);
+  useEffect(() => {
+    if (pendingFocusRef.current === "analytics" && visible && customize) {
+      pendingFocusRef.current = null;
+      analyticsInputRef.current?.focus();
+    } else if (pendingFocusRef.current === "return" && !visible) {
+      pendingFocusRef.current = null;
+      const target = returnFocusRef.current?.isConnected
+        ? returnFocusRef.current
+        : document.querySelector<HTMLElement>(".footer-links button");
+      target?.focus();
+    }
+  }, [visible, customize]);
+  useEffect(() => {
+    const banner = bannerRef.current;
+    if (!visible || !banner) return;
+    const shell = banner.closest<HTMLElement>(".site-shell");
+    const updateClearance = () => {
+      const rect = banner.getBoundingClientRect();
+      const clearance = Math.ceil(window.innerHeight - rect.top + 12);
+      shell?.style.setProperty("--consent-banner-clearance", `${clearance}px`);
+    };
+    updateClearance();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(updateClearance);
+    observer?.observe(banner);
+    window.addEventListener("resize", updateClearance);
+    const keepFocusedControlVisible = (event: FocusEvent) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement) || banner.contains(target)) return;
+      const targetRect = target.getBoundingClientRect();
+      const bannerRect = banner.getBoundingClientRect();
+      if (targetRect.bottom <= bannerRect.top || targetRect.top >= bannerRect.bottom) return;
+      requestAnimationFrame(() => {
+        if (!target.isConnected || banner.contains(target)) return;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({ block: "center", inline: "nearest", behavior: reducedMotion ? "instant" : "smooth" });
+      });
+    };
+    document.addEventListener("focusin", keepFocusedControlVisible);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", updateClearance);
+      document.removeEventListener("focusin", keepFocusedControlVisible);
+      shell?.style.removeProperty("--consent-banner-clearance");
+    };
+  }, [visible]);
   function save(nextAnalytics: boolean) {
     let previousAnalytics = analytics;
     try {
@@ -174,12 +228,13 @@ function ConsentBanner({ copy }: { copy: HomepageCopy }) {
       }
     } catch {}
     try { window.localStorage.setItem("lorem-consent", JSON.stringify({ necessary: true, preferences: true, analytics: nextAnalytics, version: "1.0", updatedAt: new Date().toISOString() })); } catch {}
+    pendingFocusRef.current = "return";
     setAnalytics(nextAnalytics); setVisible(false); setCustomize(false);
     if (previousAnalytics && !nextAnalytics) { window.location.reload(); return; }
     window.dispatchEvent(new CustomEvent("analytics-consent-changed", { detail: { analytics: nextAnalytics } }));
   }
   if (!visible) return null;
-  return <aside className="consent-banner" aria-label={copy.consent.aria}><div className="consent-copy"><strong>{copy.consent.title}</strong><p>{copy.consent.intro}</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>{copy.consent.necessary}</b><small>{copy.consent.necessaryNote}</small></span></label><label><input type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>{copy.consent.analytics}</b><small>{copy.consent.analyticsNote}</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics)}>{copy.consent.save}</Button></> : <><Button type="button" className="consent-accept" onClick={() => save(true)}>{copy.consent.accept}</Button><Button type="button" variant="outline" onClick={() => save(false)}>{copy.consent.reject}</Button><Button type="button" variant="outline" onClick={() => setCustomize(true)}>{copy.consent.customize}</Button></>}</div></aside>;
+  return <aside ref={bannerRef} className="consent-banner" aria-label={copy.consent.aria}><div className="consent-copy"><strong>{copy.consent.title}</strong><p>{copy.consent.intro}</p>{customize && <div className="consent-options"><label><input type="checkbox" checked disabled /> <span><b>{copy.consent.necessary}</b><small>{copy.consent.necessaryNote}</small></span></label><label><input ref={analyticsInputRef} type="checkbox" checked={analytics} onChange={event => setAnalytics(event.target.checked)} /> <span><b>{copy.consent.analytics}</b><small>{copy.consent.analyticsNote}</small></span></label></div>}</div><div className="consent-actions">{customize ? <><Button type="button" variant="outline" onClick={() => save(analytics)}>{copy.consent.save}</Button></> : <><Button type="button" className="consent-accept" onClick={() => save(true)}>{copy.consent.accept}</Button><Button type="button" variant="outline" onClick={() => save(false)}>{copy.consent.reject}</Button><Button type="button" variant="outline" onClick={event => { returnFocusRef.current = event.currentTarget; pendingFocusRef.current = "analytics"; setCustomize(true); }}>{copy.consent.customize}</Button></>}</div></aside>;
 }
 export function HomepageFooter({ copy }: { copy: HomepageCopy }) {
   return <><footer className="site-footer"><DirectoryBadges copy={copy} /><div className="footer-brand"><span>lorem-generator.com © 2026</span></div><nav className="footer-links" aria-label={copy.footer.aria}><a href={copy.footer.privacyHref}>{copy.footer.privacy}</a><a href={copy.footer.cookiesHref}>{copy.footer.cookies}</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-privacy"))}>{copy.footer.manage}</button></nav></footer><ConsentBanner copy={copy} /></>;
